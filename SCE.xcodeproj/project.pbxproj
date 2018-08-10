@@ -339,6 +339,11 @@
 					};
 					C7F0B99B2112945C005A8FE2 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					C7F0B9AE2112945F005A8FE2 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -804,7 +809,6 @@
 			baseConfigurationReference = A57AC0A470301A863C8CA09A /* Pods-SCE-Mac.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "SCE-Mac/SCE_Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -827,7 +831,6 @@
 			baseConfigurationReference = 294898E9D046C12D6CD260F5 /* Pods-SCE-Mac.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "SCE-Mac/SCE_Mac.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;

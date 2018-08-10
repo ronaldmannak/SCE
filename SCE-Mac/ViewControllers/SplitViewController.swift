@@ -34,9 +34,21 @@ class SplitViewController: NSSplitViewController {
             let scrollView = splitViewItems.last!.viewController.view as! NSScrollView
             return scrollView.documentView as! NSTextView
         }()
-        if let result = run("ls") {
+        
+        runCommand("cd ~/Development/Temp && rm -rf test1 && mkdir test1 && cd test1 && touch file.txt && ls")
+//        runCommand("rm -rf test1")
+//        runCommand("mkdir test1 && cd test1")
+//        runCommand("truffle init")
+//        runCommand("<#T##cmd: String##String#>")
+//        if let result = run("ls") {
+//            consoleView.insertText(result)
+//            print(result)
+//        }
+    }
+    
+    func runCommand(_ cmd: String) {
+        if let result = run(cmd) {
             consoleView.insertText(result)
-            print(result)
         }
     }
     
