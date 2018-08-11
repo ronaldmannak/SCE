@@ -202,7 +202,7 @@
 		C7F0B99D2112945D005A8FE2 /* SCE-Mac */ = {
 			isa = PBXGroup;
 			children = (
-				C7F0B9C02113CF53005A8FE2 /* ViewControllers */,
+				C7F0B9C02113CF53005A8FE2 /* Edit Window */,
 				C7F0B99E2112945D005A8FE2 /* AppDelegate.swift */,
 				C7F0B9A22112945D005A8FE2 /* Document.swift */,
 				C7F0B9C52113EA39005A8FE2 /* run.swift */,
@@ -231,14 +231,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		C7F0B9C02113CF53005A8FE2 /* ViewControllers */ = {
+		C7F0B9C02113CF53005A8FE2 /* Edit Window */ = {
 			isa = PBXGroup;
 			children = (
 				C7F0B9C12113CF7E005A8FE2 /* SplitViewController.swift */,
 				C7F0B9C32113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift */,
 				C7F0B9A02112945D005A8FE2 /* ViewController.swift */,
 			);
-			path = ViewControllers;
+			path = "Edit Window";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

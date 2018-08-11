@@ -684,15 +684,13 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="Document Window Controller" id="jGA-0Y-lOj" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="Ckk-yw-fiv">
+                    <window key="window" title="ERC20" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="Ckk-yw-fiv">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <toolbar key="toolbar" implicitIdentifier="719E2E60-8F3D-48BB-9027-070BF074E24D" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="small" id="lhk-QH-kAL">
+                        <toolbar key="toolbar" implicitIdentifier="719E2E60-8F3D-48BB-9027-070BF074E24D" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="lhk-QH-kAL">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="lbJ-s5-BVA"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="KBv-ja-AfJ"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Bqt-lg-4QR"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="9QW-KK-5p9"/>
                                 <toolbarItem implicitItemIdentifier="45C9326B-B089-44F8-9378-4EF61D16A03E" label="Search" paletteLabel="" id="QEL-oc-DYZ">
@@ -709,10 +707,36 @@
                                         </searchFieldCell>
                                     </searchField>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="D7747E2F-83A6-4341-B30F-008802951873" label="" paletteLabel="Run" image="NSTouchBarPlayTemplate" id="tYP-A1-bOR">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="38" height="32"/>
+                                    <size key="maxSize" width="51" height="32"/>
+                                    <button key="view" verticalHuggingPriority="750" id="Roe-cR-kSm">
+                                        <rect key="frame" x="0.0" y="14" width="51" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarPlayTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fNA-uM-hVg">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="A688C330-2723-468B-B4AA-2121C7D4707B" label="Run" paletteLabel="Run" image="NSTouchBarPlayTemplate" id="Yue-Tj-mZa">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="38" height="19"/>
+                                    <size key="maxSize" width="38" height="19"/>
+                                    <button key="view" verticalHuggingPriority="750" id="mcp-7T-5SX">
+                                        <rect key="frame" x="0.0" y="14" width="38" height="19"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSTouchBarPlayTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xCf-Fa-lF4">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="cellTitle"/>
+                                        </buttonCell>
+                                    </button>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="lbJ-s5-BVA"/>
-                                <toolbarItem reference="KBv-ja-AfJ"/>
+                                <toolbarItem reference="tYP-A1-bOR"/>
+                                <toolbarItem reference="Yue-Tj-mZa"/>
                                 <toolbarItem reference="9QW-KK-5p9"/>
                                 <toolbarItem reference="QEL-oc-DYZ"/>
                             </defaultToolbarItems>
@@ -899,4 +923,7 @@ contract BasicToken is ERC20Basic {
             <point key="canvasLocation" x="1369" y="436"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSTouchBarPlayTemplate" width="14" height="30"/>
+    </resources>
 </document>
