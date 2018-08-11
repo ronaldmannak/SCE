@@ -35,7 +35,8 @@ class SplitViewController: NSSplitViewController {
             return scrollView.documentView as! NSTextView
         }()
         
-        runCommand("cd ~/Development/Temp && rm -rf test1 && mkdir test1 && cd test1 && touch file.txt && ls")
+        
+        //runCommand("cd ~/Development/Temp && rm -rf test1 && mkdir test1 && cd test1 && touch file.txt && ls")
 //        runCommand("rm -rf test1")
 //        runCommand("mkdir test1 && cd test1")
 //        runCommand("truffle init")
@@ -48,7 +49,8 @@ class SplitViewController: NSSplitViewController {
     
     func runCommand(_ cmd: String) {
         if let result = run(cmd) {
-            consoleView.insertText(result)
+            consoleView.string = consoleView.string + "\n" + result
+            print(result)
         }
     }
     
