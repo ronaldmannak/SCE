@@ -21,7 +21,7 @@ class EditWindowController: NSWindowController {
         guard let vc = contentViewController as? SplitViewController else {
             exit(1)
         }
-        vc.runCommand("ls")        
+        vc.runCommand("ls")    
     }
 
 }
