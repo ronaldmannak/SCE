@@ -825,6 +825,9 @@ Gw
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="platformClicked:" target="vuu-86-VbB" id="6pm-1c-DHG"/>
+                                </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OWq-Ej-r39">
                                 <rect key="frame" x="18" y="22" width="60" height="17"/>
@@ -847,6 +850,9 @@ Gw
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="languageClicked:" target="vuu-86-VbB" id="eI6-Xv-GlO"/>
+                                </connections>
                             </popUpButton>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTR-P6-TqM">
                                 <rect key="frame" x="0.0" y="61" width="152" height="355"/>

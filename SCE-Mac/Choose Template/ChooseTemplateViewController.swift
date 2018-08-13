@@ -24,11 +24,34 @@ class ChooseTemplateViewController: NSViewController {
     }
     
     @IBAction func ChooseClicked(_ sender: Any) {
+        
+        let savePanel = NSSavePanel() 
+        savePanel.beginSheetModal(for: view.window!) { (result) in
+            if result == .OK {
+                print("OK")
+            }
+        }
     }
     
     @IBAction func cancelClicked(_ sender: Any) {
+        self.view.window!.close()
     }
     
+    @IBAction func platformClicked(_ sender: Any) {
+        switch (sender as! NSPopUpButton).selectedItem!.title {
+        case "Ethereum":
+            language.selectItem(at: 0)
+        case "Bitcoin":
+            language.selectItem(at: 1)
+        case "Cosmos":
+            language.selectItem(at: 2)
+        default:
+            fatalError()
+        }
+    }
+    
+    @IBAction func languageClicked(_ sender: Any) {
+    }
 }
 
 extension ChooseTemplateViewController: NSTableViewDataSource {
@@ -44,11 +67,7 @@ extension ChooseTemplateViewController: NSTableViewDataSource {
 
 extension ChooseTemplateViewController: NSTableViewDelegate {
     func tableViewSelectionIsChanging(_ notification: Notification) {
-        print("is changing \(category.selectedRow)")
+//        print("is changing \(category.selectedRow)")
         // update collectionview
     }
-    
-//    func tableViewSelectionDidChange(_ notification: Notification) {
-//        print("Did change")
-//    }
 }
