@@ -15,12 +15,23 @@ class ChooseTemplateViewController: NSViewController {
     @IBOutlet weak var category: NSTableView!
     @IBOutlet weak var template: NSCollectionView!
     
-    let categories = ["    All", "    Token", "    Payment", "    Crowdsale"]
+    let categories = ["    All", "    Token", "    Payment", "    Crowdsale", "    Ownership", "    Mocks", "    Lifecycle", "    Access", "    Examples"]
+    let contracts = [
+        ["ERC-20 Basic token", "ERC-721 ", "ERC gaming"], // Token
+        ["Payment 1", "Payment 2"],
+        ["Crowdsale 1", "Crowdsale 2", "Crowdsale 3"],
+        ["Ownership 1"],
+        ["Mocks 1", "Mocks 2", "Mocks 3"],
+        ["Lifecycle 1"],
+        ["Access 1"],
+        ["Example 1"],
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         category.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
+        configureCollectionView()
     }
     
     @IBAction func ChooseClicked(_ sender: Any) {
@@ -62,6 +73,41 @@ class ChooseTemplateViewController: NSViewController {
     }
 }
 
+extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
+    
+    fileprivate func configureCollectionView() {
+        view.wantsLayer = true
+        let nib = NSNib(nibNamed: NSNib.Name(rawValue: "TemplateCollectionViewItem"), bundle: nil)
+        template.register(nib, forItemWithIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"))
+    }
+    
+    func numberOfSections(in collectionView: NSCollectionView) -> Int {
+        if category.selectedRow == 0 {
+            return categories.count - 1 // All categories, except "All"
+        } else {
+            return 1
+        }
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        if category.selectedRow == 0 {
+        }
+        return 2
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+//        if category.selectedRow == 0 {
+//        }
+
+        return template.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"), for: indexPath)
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        print(indexPaths)
+    }
+    // header?
+}
+
 extension ChooseTemplateViewController: NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -75,7 +121,6 @@ extension ChooseTemplateViewController: NSTableViewDataSource {
 
 extension ChooseTemplateViewController: NSTableViewDelegate {
     func tableViewSelectionIsChanging(_ notification: Notification) {
-//        print("is changing \(category.selectedRow)")
-        // update collectionview
+        template.reloadData()
     }
 }

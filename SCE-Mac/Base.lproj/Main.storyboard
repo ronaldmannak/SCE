@@ -906,13 +906,17 @@ Gw
                                     <rect key="frame" x="1" y="1" width="474" height="353"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView id="CV0-6W-8jO">
+                                        <collectionView selectable="YES" id="CV0-6W-8jO">
                                             <rect key="frame" x="0.0" y="0.0" width="474" height="158"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="eAM-VW-osJ">
-                                                <size key="itemSize" width="50" height="50"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="W6a-ed-gdD">
+                                                <size key="itemSize" width="150" height="150"/>
                                             </collectionViewFlowLayout>
-                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="primaryBackgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <outlet property="dataSource" destination="vuu-86-VbB" id="YLE-XS-Loe"/>
+                                                <outlet property="delegate" destination="vuu-86-VbB" id="F7C-Qa-WGX"/>
+                                            </connections>
                                         </collectionView>
                                     </subviews>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -967,6 +971,30 @@ Gw
                 <customObject id="rkP-9U-pTo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="855.5" y="884"/>
+        </scene>
+        <!--Template Collection View Item-->
+        <scene sceneID="0dB-Pb-jwD">
+            <objects>
+                <collectionViewItem storyboardIdentifier="TemplateCollectionViewItem" id="Fsd-f3-XLm" customClass="TemplateCollectionViewItem" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="L7x-ZR-pZe">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58b-Gp-aP9">
+                                <rect key="frame" x="18" y="8" width="114" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="nvq-mQ-O9B">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </collectionViewItem>
+                <customObject id="feg-Lh-GhK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1306" y="751"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="kDy-U8-NMt">
