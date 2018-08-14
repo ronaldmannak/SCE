@@ -191,7 +191,7 @@ Gw
         <scene sceneID="Zvs-Ds-wLj">
             <objects>
                 <windowController id="aiD-bt-la6" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="RCo-9e-Arc">
+                    <window key="window" title="Preparing..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="RCo-9e-Arc">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -211,24 +211,23 @@ Gw
         <!--Creating Template-->
         <scene sceneID="oPn-9l-uYc">
             <objects>
-                <viewController title="Creating Template" id="M4e-WR-LdV" sceneMemberID="viewController">
+                <viewController title="Creating Template" id="M4e-WR-LdV" customClass="PreparingViewController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ABZ-cb-tOG">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFA-xk-HK6">
-                                <rect key="frame" x="20" y="128" width="440" height="122"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <clipView key="contentView" ambiguous="YES" id="ahC-vj-Ewj">
-                                    <rect key="frame" x="1" y="1" width="438" height="120"/>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFA-xk-HK6">
+                                <rect key="frame" x="0.0" y="41" width="480" height="229"/>
+                                <clipView key="contentView" id="ahC-vj-Ewj">
+                                    <rect key="frame" x="1" y="1" width="478" height="227"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView ambiguous="YES" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="86x-4c-iaj">
-                                            <rect key="frame" x="0.0" y="0.0" width="438" height="120"/>
+                                        <textView editable="NO" selectable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="86x-4c-iaj">
+                                            <rect key="frame" x="0.0" y="0.0" width="478" height="227"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="438" height="120"/>
-                                            <size key="maxSize" width="466" height="10000000"/>
+                                            <size key="minSize" width="478" height="227"/>
+                                            <size key="maxSize" width="480" height="10000000"/>
                                             <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </textView>
                                     </subviews>
@@ -239,13 +238,12 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="zVw-3z-yXU">
-                                    <rect key="frame" x="423" y="1" width="16" height="120"/>
+                                    <rect key="frame" x="463" y="1" width="16" height="227"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jtj-Ik-Pir">
-                                <rect key="frame" x="385" y="13" width="82" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jtj-Ik-Pir">
+                                <rect key="frame" x="394" y="3" width="82" height="32"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="acu-5T-ijw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -255,7 +253,18 @@ Gw
                                 </buttonCell>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="Jtj-Ik-Pir" firstAttribute="top" secondItem="xFA-xk-HK6" secondAttribute="bottom" constant="10" id="4be-ol-3QM"/>
+                            <constraint firstAttribute="bottom" secondItem="Jtj-Ik-Pir" secondAttribute="bottom" constant="10" id="5Gt-GX-CXc"/>
+                            <constraint firstAttribute="trailing" secondItem="Jtj-Ik-Pir" secondAttribute="trailing" constant="10" id="MX2-ol-o0g"/>
+                            <constraint firstItem="xFA-xk-HK6" firstAttribute="top" secondItem="ABZ-cb-tOG" secondAttribute="top" id="Sm0-e2-sSV"/>
+                            <constraint firstAttribute="trailing" secondItem="xFA-xk-HK6" secondAttribute="trailing" id="cfJ-GP-oF9"/>
+                            <constraint firstItem="xFA-xk-HK6" firstAttribute="leading" secondItem="ABZ-cb-tOG" secondAttribute="leading" id="cmo-gT-Xpy"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="86x-4c-iaj" id="937-lW-2wT"/>
+                    </connections>
                 </viewController>
                 <customObject id="K9W-9v-9Hf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -71,6 +71,16 @@ class ChooseTemplateViewController: NSViewController {
     
     @IBAction func languageClicked(_ sender: Any) {
     }
+
+    // Set up PreparingViewController
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        let preparingViewController = ((segue.destinationController as! NSWindowController).contentViewController! as! PreparingViewController)
+        print(preparingViewController.description)
+        preparingViewController.path = "Example path"
+
+        self.view.window!.close()
+    }
 }
 
 extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
