@@ -1,0 +1,30 @@
+[
+    "ContractPlatform" : {
+        "platform" : "Ethereum"
+        "command": ""
+        "languages": ["Solidity"]
+        "categories": [
+            "contractCategory" : {
+                "name" : "Token"
+                "templates" : [
+                    "ContractTemplate": {
+                        "name" : ""
+                        "standard" : ""
+                        "filename" : ""
+                    }
+                ]
+            },
+            "contractCategory" : {
+            "name" : "Payment"
+            "templates" : [
+                "contractTemplate": {
+                "name" : ""
+                "standard" : ""
+                "filename" : ""
+               },
+            ]
+            },
+        ]
+    },
+    
+]

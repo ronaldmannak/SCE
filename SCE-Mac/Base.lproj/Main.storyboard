@@ -972,30 +972,6 @@ Gw
             </objects>
             <point key="canvasLocation" x="855.5" y="884"/>
         </scene>
-        <!--Template Collection View Item-->
-        <scene sceneID="0dB-Pb-jwD">
-            <objects>
-                <collectionViewItem storyboardIdentifier="TemplateCollectionViewItem" id="Fsd-f3-XLm" customClass="TemplateCollectionViewItem" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="L7x-ZR-pZe">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="58b-Gp-aP9">
-                                <rect key="frame" x="18" y="8" width="114" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="nvq-mQ-O9B">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </view>
-                </collectionViewItem>
-                <customObject id="feg-Lh-GhK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1306" y="751"/>
-        </scene>
         <!--Split View Controller-->
         <scene sceneID="kDy-U8-NMt">
             <objects>

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ContractPlaform: Codable {
+struct ContractPlatform: Codable {
     
     enum Platform: String, Codable {
         case Ethereum, Bitcoin, Cosmos
@@ -27,7 +27,7 @@ struct ContractPlaform: Codable {
     
     let platform: Platform
     var languages: [String] { return platform.languages }
-    let categories: [ContractCategory]
+    let categories: [ContractCategory]?
     let command: String         // E.g. init (%..)
 }
 
