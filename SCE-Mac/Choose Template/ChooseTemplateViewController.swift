@@ -25,11 +25,19 @@ class ChooseTemplateViewController: NSViewController {
     
     @IBAction func ChooseClicked(_ sender: Any) {
         
-        let savePanel = NSSavePanel() 
+        let savePanel = NSSavePanel()
+
         savePanel.beginSheetModal(for: view.window!) { (result) in
-            if result == .OK {
-                print("OK")
+
+            guard result == .OK, let directory = savePanel.url else { return }
+            do {
+                try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+            } catch {
+                assertionFailure()
+                return
             }
+
+            // TODO: run truffle script (or open new window and let new window run truffle script)
         }
     }
     
