@@ -152,7 +152,6 @@ Gw
                                 </buttonCell>
                                 <connections>
                                     <action selector="ChooseClicked:" target="mxs-pt-zAo" id="oeu-PC-8GJ"/>
-                                    <segue destination="aiD-bt-la6" kind="show" id="heh-tZ-JV8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -181,6 +180,7 @@ Gw
                         <outlet property="language" destination="hAL-Wj-B9m" id="xXl-Gp-luO"/>
                         <outlet property="platform" destination="1Hq-2Z-Fok" id="pw5-im-Nxr"/>
                         <outlet property="template" destination="gRO-Ma-8NA" id="Xzj-Uo-NSD"/>
+                        <segue destination="aiD-bt-la6" kind="show" identifier="PreparingSegue" id="Gt1-ra-VF6"/>
                     </connections>
                 </viewController>
                 <customObject id="EoG-Ib-E2H" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

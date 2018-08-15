@@ -30,4 +30,15 @@ class PreparingViewController: NSViewController {
         // Do view setup here.
     }
     
+    func executeScript(url: URL, projectname: String, templatename: String, scriptname: String) {
+        print(url)
+//        assert(url.hasDirectoryPath) // Making sure we're passed a directory
+//        print(url.baseURL!)
+        
+    }
+    
+//    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+//        self.view.window!.close()
+//    }
+    
 }

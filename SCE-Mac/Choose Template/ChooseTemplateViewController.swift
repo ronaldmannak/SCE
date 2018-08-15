@@ -15,6 +15,9 @@ class ChooseTemplateViewController: NSViewController {
     @IBOutlet weak var category: NSTableView!
     @IBOutlet weak var template: NSCollectionView!
     
+    /// url where to save the project
+    var saveURL: URL? = nil
+    
     let categories = ["    All", "    Token", "    Payment", "    Crowdsale", "    Ownership", "    Mocks", "    Lifecycle", "    Access", "    Examples"]
     let contracts = [
         ["ERC-20 Basic token", "ERC-721 ", "ERC gaming"], // Token
@@ -40,15 +43,23 @@ class ChooseTemplateViewController: NSViewController {
 
         savePanel.beginSheetModal(for: view.window!) { (result) in
 
-            guard result == .OK, let directory = savePanel.url else { return }
+            guard result == .OK, let directory = savePanel.url else {  //directory.hasDirectoryPath == true else {
+                assertionFailure()
+                return
+            }
             do {
                 try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
             } catch {
                 assertionFailure()
                 return
             }
-
-            // TODO: run truffle script (or open new window and let new window run truffle script)
+            self.saveURL = directory
+            
+            let id = NSStoryboardSegue.Identifier(rawValue: "PreparingSegue")
+//            let segue = NSStoryboardSegue(identifier: id, source: ChooseTemplateViewController.self, destination: PreparingViewController.self)
+            
+            let button = NSButton(frame: NSZeroRect)
+            self.performSegue(withIdentifier: id, sender: button)
         }
     }
     
@@ -75,9 +86,12 @@ class ChooseTemplateViewController: NSViewController {
     // Set up PreparingViewController
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
+        assert(saveURL != nil)
+        
         let preparingViewController = ((segue.destinationController as! NSWindowController).contentViewController! as! PreparingViewController)
         print(preparingViewController.description)
         preparingViewController.path = "Example path"
+        preparingViewController.executeScript(url: saveURL!, projectname: "", templatename: "", scriptname: "")
 
         self.view.window!.close()
     }
