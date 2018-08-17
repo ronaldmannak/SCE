@@ -1,0 +1,8 @@
+# npm install -g embark
+
+cd path
+embark new MyApp
+cd MyApp
+
+npm init -y
+npm install -E openzeppelin-solidity

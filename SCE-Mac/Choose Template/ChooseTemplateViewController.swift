@@ -15,10 +15,10 @@ class ChooseTemplateViewController: NSViewController {
     @IBOutlet weak var category: NSTableView!
     @IBOutlet weak var template: NSCollectionView!
     
-    /// url where to save the project
-    var saveURL: URL? = nil
+    /// Project to be created
+    var projectCreator: ProjectCreator? = nil
     
-    let categories = ["    All", "    Token", "    Payment", "    Crowdsale", "    Ownership", "    Mocks", "    Lifecycle", "    Access", "    Examples"]
+    let categories = ["    All", "    Token", "    Games", "    ICO/Crowdsale", "    Payment", "    Ownership", "    Mocks", "    Lifecycle", "    Access", "    Examples"]
     let contracts = [
         ["ERC-20 Basic token", "ERC-721 ", "ERC gaming"], // Token
         ["Payment 1", "Payment 2"],
@@ -47,19 +47,15 @@ class ChooseTemplateViewController: NSViewController {
                 assertionFailure()
                 return
             }
-            do {
-                try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-            } catch {
-                assertionFailure()
-                return
-            }
-            self.saveURL = directory
+            
+            let projectName = directory.lastPathComponent
+            let baseDirectory = directory.deletingLastPathComponent()
+            
+            let project = Project(name: projectName, baseDirectory: baseDirectory)
+            let creator = ProjectCreator(templateName: "tutorialtoken", installScript: "TruffleInit", project: project)
             
             let id = NSStoryboardSegue.Identifier(rawValue: "PreparingSegue")
-//            let segue = NSStoryboardSegue(identifier: id, source: ChooseTemplateViewController.self, destination: PreparingViewController.self)
-            
-            let button = NSButton(frame: NSZeroRect)
-            self.performSegue(withIdentifier: id, sender: button)
+            self.performSegue(withIdentifier: id, sender: self)
         }
     }
     
@@ -83,16 +79,14 @@ class ChooseTemplateViewController: NSViewController {
     @IBAction func languageClicked(_ sender: Any) {
     }
 
-    // Set up PreparingViewController
+    /// Set up PreparingViewController
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        
         super.prepare(for: segue, sender: sender)
-        assert(saveURL != nil)
+        assert(projectCreator != nil)
         
         let preparingViewController = ((segue.destinationController as! NSWindowController).contentViewController! as! PreparingViewController)
-        print(preparingViewController.description)
-        preparingViewController.path = "Example path"
-        preparingViewController.executeScript(url: saveURL!, projectname: "", templatename: "", scriptname: "")
-
+        preparingViewController.projectCreator = projectCreator
         self.view.window!.close()
     }
 }

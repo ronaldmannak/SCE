@@ -10,11 +10,21 @@
             <objects>
                 <viewController title="Choose a Template" storyboardIdentifier="ChooseTemplate" id="mxs-pt-zAo" customClass="ChooseTemplateViewController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="quD-Ja-dRD">
-                        <rect key="frame" x="0.0" y="0.0" width="627" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="697" height="416"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p3n-KV-A6a">
+                                <rect key="frame" x="596" y="13" width="87" height="32"/>
+                                <buttonCell key="cell" type="push" title="Choose" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FgV-Ee-fpk">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="ChooseClicked:" target="mxs-pt-zAo" id="oeu-PC-8GJ"/>
+                                </connections>
+                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dIl-8R-q01">
-                                <rect key="frame" x="444" y="13" width="82" height="32"/>
+                                <rect key="frame" x="514" y="13" width="82" height="32"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tTQ-rX-AZ4">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -59,6 +69,8 @@ Gw
                                     <menu key="menu" id="4Xz-eP-dRh">
                                         <items>
                                             <menuItem title="Solidity" state="on" id="YP4-jq-wZe"/>
+                                            <menuItem title="Bamboo" id="NGN-da-Y3B"/>
+                                            <menuItem title="Vyper" id="cCK-qk-1Vg"/>
                                             <menuItem title="Bitcoin Script" id="MQa-lG-XBG"/>
                                             <menuItem title="Michelson" id="7L0-1K-igV"/>
                                         </items>
@@ -115,13 +127,13 @@ Gw
                                 </scroller>
                             </scrollView>
                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axF-OE-bnA">
-                                <rect key="frame" x="151" y="61" width="476" height="355"/>
+                                <rect key="frame" x="151" y="61" width="546" height="355"/>
                                 <clipView key="contentView" drawsBackground="NO" id="tU6-xh-IdD">
-                                    <rect key="frame" x="1" y="1" width="474" height="353"/>
+                                    <rect key="frame" x="1" y="1" width="544" height="353"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView selectable="YES" id="gRO-Ma-8NA">
-                                            <rect key="frame" x="0.0" y="0.0" width="474" height="158"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="544" height="158"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="VNy-do-TMU">
                                                 <size key="itemSize" width="150" height="150"/>
@@ -144,16 +156,22 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p3n-KV-A6a">
-                                <rect key="frame" x="526" y="13" width="87" height="32"/>
-                                <buttonCell key="cell" type="push" title="Choose" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FgV-Ee-fpk">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
+                            <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CWd-tz-E4L">
+                                <rect key="frame" x="333" y="17" width="135" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="Embark" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="e17-XR-f5b" id="zgR-Oh-7al">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="YYp-zl-g0z">
+                                        <items>
+                                            <menuItem title="Embark" state="on" id="e17-XR-f5b"/>
+                                            <menuItem title="Truffle" id="ltA-Do-brL"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
                                 <connections>
-                                    <action selector="ChooseClicked:" target="mxs-pt-zAo" id="oeu-PC-8GJ"/>
+                                    <action selector="languageClicked:" target="mxs-pt-zAo" id="qtH-lt-eqV"/>
                                 </connections>
-                            </button>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="cuR-XZ-eDv" firstAttribute="leading" secondItem="quD-Ja-dRD" secondAttribute="leading" id="1PV-gQ-6Yf"/>
@@ -172,7 +190,9 @@ Gw
                             <constraint firstAttribute="trailing" secondItem="p3n-KV-A6a" secondAttribute="trailing" constant="20" id="b3g-K1-wLF"/>
                             <constraint firstItem="hAL-Wj-B9m" firstAttribute="leading" secondItem="1Hq-2Z-Fok" secondAttribute="trailing" constant="8" id="hgF-8g-W4f"/>
                             <constraint firstAttribute="bottom" secondItem="dIl-8R-q01" secondAttribute="bottom" constant="20" id="pCV-AA-dl5"/>
+                            <constraint firstItem="CWd-tz-E4L" firstAttribute="leading" secondItem="hAL-Wj-B9m" secondAttribute="trailing" constant="8" id="rf7-ca-xuF"/>
                             <constraint firstItem="1Hq-2Z-Fok" firstAttribute="leading" secondItem="0zp-Rf-mQk" secondAttribute="trailing" constant="8" id="sbJ-te-YVT"/>
+                            <constraint firstAttribute="bottom" secondItem="CWd-tz-E4L" secondAttribute="bottom" constant="20" id="yNp-GO-W9F"/>
                         </constraints>
                     </view>
                     <connections>
@@ -185,7 +205,7 @@ Gw
                 </viewController>
                 <customObject id="EoG-Ib-E2H" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="855.5" y="884"/>
+            <point key="canvasLocation" x="890.5" y="884"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="Zvs-Ds-wLj">
@@ -252,7 +272,7 @@ Gw
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <segue destination="6Qx-Ye-9Xf" kind="show" id="dB2-BZ-fY8"/>
+                                    <action selector="cancelClicked:" target="M4e-WR-LdV" id="dEX-hz-xfg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -267,6 +287,7 @@ Gw
                     </view>
                     <connections>
                         <outlet property="textView" destination="86x-4c-iaj" id="937-lW-2wT"/>
+                        <segue destination="6Qx-Ye-9Xf" kind="show" identifier="EditWindow" id="VvL-GZ-wem"/>
                     </connections>
                 </viewController>
                 <customObject id="K9W-9v-9Hf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

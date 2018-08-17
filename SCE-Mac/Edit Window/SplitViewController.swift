@@ -48,10 +48,10 @@ class SplitViewController: NSSplitViewController {
     }
     
     func runCommand(_ cmd: String) {
-        if let result = run(cmd) {
-            consoleView.string = consoleView.string + "\n" + result
-            print(result)
-        }
+//        if let result = run(cmd) {
+//            consoleView.string = consoleView.string + "\n" + result
+//            print(result)
+//        }
     }
     
 }

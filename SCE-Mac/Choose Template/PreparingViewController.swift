@@ -11,13 +11,8 @@ import Cocoa
 class PreparingViewController: NSViewController {
     
     @IBOutlet var textView: NSTextView!
-    
-    /// E.g. ~/Development/MyToken
-    var path: String = "" {
-        didSet {
-            textView.string = path
-        }
-    }
+    private var script: ScriptTask?
+    var projectCreator: ProjectCreator!
     
     /// E.g. BasicToken
     var templateName: String = ""
@@ -27,17 +22,35 @@ class PreparingViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        executeScript(url: URL(string: "test")!, projectname: "", templatename: "", scriptname: "")
     }
     
-    func executeScript(url: URL, projectname: String, templatename: String, scriptname: String) {
+    private func executeScript(url: URL, projectname: String, templatename: String, scriptname: String) {
         print(url)
-//        assert(url.hasDirectoryPath) // Making sure we're passed a directory
-//        print(url.baseURL!)
-        
+        script = ScriptTask.truffleInit(path: url, projectname: projectname, templatename: templatename, output: { (output) in
+            // Output in text view
+            let previousOutput = self.textView.string
+            let nextOutput = previousOutput + "\n" + output
+            self.textView.string = nextOutput
+            let range = NSRange(location:nextOutput.characters.count,length:0)
+            self.textView.scrollRangeToVisible(range)
+        }) {
+            print("***** FINISHED ********")
+////            let id = NSStoryboardSegue.Identifier(rawValue: "EditWindow")
+////            self.performSegue(withIdentifier: id, sender: self)
+////            view.window?.close()
+        }
     }
     
-//    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+    @IBAction func cancelClicked(_ sender: Any) {
+        print(script ?? "nil script")
+        print(script?.notification ?? "nil notification")
+//        script?.terminate()
+//        view.window?.close()
+    }
+    
+    
+    //    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
 //        self.view.window!.close()
 //    }
     
