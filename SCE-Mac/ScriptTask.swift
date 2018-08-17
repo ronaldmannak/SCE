@@ -23,7 +23,8 @@ class ScriptTask: NSObject {
     var task = Process()
     let outputPipe = Pipe()
     
-    let script: String // Script filename
+//    let script: String // Script filename
+    let launchpath: URL
     var notification: NSObjectProtocol!
     let launchpath: String
     let arguments: [String]
@@ -36,20 +37,21 @@ class ScriptTask: NSObject {
 //
 //    }
     
-    init(script: String, arguments: [String], path: URL?, output: @escaping (String)->Void, finished: @escaping () -> Void) {
-        self.script = script
+    init(script: String, launchpath: URL?, arguments: [String], output: @escaping (String)->Void, finished: @escaping () -> Void) {
+//        self.script = script
 //        self.launchpath = path.absoluteString
-        self.arguments = arguments
-        guard let path = Bundle.main.path(forResource: self.script,ofType:"command") else {
+        
+        guard let path = Bundle.main.path(forResource: script,ofType:"command") else {
             assertionFailure()
             return
         }
         launchpath = path
         
+        self.arguments = arguments
+        
+        
         self.output = output
         self.finished = finished
-        
-        
     }
     
     deinit {
@@ -111,10 +113,10 @@ class ScriptTask: NSObject {
 extension ScriptTask {
     
     /// For now, implement: https://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin
-    static func truffleInit(path: URL, projectname: String, templatename: String, output: @escaping (String)->Void, finished: @escaping () -> Void) -> ScriptTask {
-//        let task = ScriptTask(script: "TruffleInit", arguments: [""], path: path, output: output, finished: finished)
-        let task = ScriptTask(script: "listdir", arguments: [""], path: path, output: output, finished: finished)
-        task.run()
-        return task
-    }
+//    static func truffleInit(path: URL, projectname: String, templatename: String, output: @escaping (String)->Void, finished: @escaping () -> Void) -> ScriptTask {
+////        let task = ScriptTask(script: "TruffleInit", arguments: [""], path: path, output: output, finished: finished)
+//        let task = ScriptTask(script: "listdir", arguments: [""], path: path, output: output, finished: finished)
+//        task.run()
+//        return task
+//    }
 }

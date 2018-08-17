@@ -24,7 +24,7 @@ struct Project: Codable {
     // last open file, cursor position, etc
 }
 
-struct ProjectCreator: Codable {
+class ProjectCreator: Codable {
     let templateName: String
     let installScript: String
     let project: Project
@@ -44,7 +44,7 @@ struct ProjectCreator: Codable {
     
     func create(output: @escaping (String)->Void, finished: @escaping () -> Void) {
         
-        scriptTask = ScriptTask(script: "TruffleInit", arguments: [project.baseDirectory.absoluteURL.path], path: <#T##URL#>, output: output, finished: finished)
+        scriptTask = ScriptTask(script: "TruffleInit", arguments: [project.baseDirectory.absoluteURL.path, templateName], path: nil, output: output, finished: finished)
     }
     
 //    static func truffleInit(path: URL, projectname: String, templatename: String, output: @escaping (String)->Void, finished: @escaping () -> Void) -> ScriptTask {

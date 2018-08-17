@@ -22,12 +22,9 @@ class PreparingViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        executeScript(url: URL(string: "test")!, projectname: "", templatename: "", scriptname: "")
-    }
-    
-    private func executeScript(url: URL, projectname: String, templatename: String, scriptname: String) {
-        print(url)
-        script = ScriptTask.truffleInit(path: url, projectname: projectname, templatename: templatename, output: { (output) in
+//        executeScript(url: URL(string: "test")!, projectname: "", templatename: "", scriptname: "")
+        
+        projectCreator.create(output: { output in
             // Output in text view
             let previousOutput = self.textView.string
             let nextOutput = previousOutput + "\n" + output
@@ -40,7 +37,23 @@ class PreparingViewController: NSViewController {
 ////            self.performSegue(withIdentifier: id, sender: self)
 ////            view.window?.close()
         }
+        
     }
+    
+//    private func executeScript(url: URL, projectname: String, templatename: String, scriptname: String) {
+//        print(url)
+//        script = ScriptTask.truffleInit(path: url, projectname: projectname, templatename: templatename, output: { (output) in
+//            // Output in text view
+//            let previousOutput = self.textView.string
+//            let nextOutput = previousOutput + "\n" + output
+//            self.textView.string = nextOutput
+//            let range = NSRange(location:nextOutput.characters.count,length:0)
+//            self.textView.scrollRangeToVisible(range)
+//        }) {
+//            print("***** FINISHED ********")
+//
+//        }
+//    }
     
     @IBAction func cancelClicked(_ sender: Any) {
         print(script ?? "nil script")
