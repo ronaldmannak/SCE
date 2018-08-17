@@ -23,10 +23,8 @@ class ScriptTask: NSObject {
     var task = Process()
     let outputPipe = Pipe()
     
-//    let script: String // Script filename
-    let launchpath: URL
-    var notification: NSObjectProtocol!
     let launchpath: String
+    var notification: NSObjectProtocol!
     let arguments: [String]
     
     var delegate: ScriptTaskProtocol?
@@ -37,19 +35,16 @@ class ScriptTask: NSObject {
 //
 //    }
     
-    init(script: String, launchpath: URL?, arguments: [String], output: @escaping (String)->Void, finished: @escaping () -> Void) {
-//        self.script = script
-//        self.launchpath = path.absoluteString
+    init(script: String, ext: String = "command", path: URL? = nil, arguments: [String], output: @escaping (String)->Void, finished: @escaping () -> Void) throws {
         
-        guard let path = Bundle.main.path(forResource: script,ofType:"command") else {
-            assertionFailure()
-            return
+        if let path = path {
+            launchpath = path.appendingPathComponent(script, isDirectory: false).appendingPathExtension(ext).absoluteString
+        } else if let path = Bundle.main.path(forResource: script, ofType: ext) {
+            launchpath = path
+        } else {
+            throw EditorError.fileNotFound("File not found") // TODO:
         }
-        launchpath = path
-        
         self.arguments = arguments
-        
-        
         self.output = output
         self.finished = finished
     }

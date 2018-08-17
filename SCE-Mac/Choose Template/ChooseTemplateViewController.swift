@@ -52,7 +52,7 @@ class ChooseTemplateViewController: NSViewController {
             let baseDirectory = directory.deletingLastPathComponent()
             
             let project = Project(name: projectName, baseDirectory: baseDirectory)
-            let creator = ProjectCreator(templateName: "tutorialtoken", installScript: "TruffleInit", project: project)
+            self.projectCreator = ProjectCreator(templateName: "tutorialtoken", installScript: "TruffleInit", project: project)
             
             let id = NSStoryboardSegue.Identifier(rawValue: "PreparingSegue")
             self.performSegue(withIdentifier: id, sender: self)

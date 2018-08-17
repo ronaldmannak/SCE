@@ -28,6 +28,7 @@
 		C7E764572125E8C000867DA4 /* listdir.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E764562125E8C000867DA4 /* listdir.command */; };
 		C7E76459212610DA00867DA4 /* TruffleInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76458212610DA00867DA4 /* TruffleInit.command */; };
 		C7E7645B21262D1800867DA4 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645A21262D1800867DA4 /* Project.swift */; };
+		C7E7645D212675AF00867DA4 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645C212675AF00867DA4 /* Error.swift */; };
 		C7F0B977210DACCB005A8FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B976210DACCB005A8FE2 /* AppDelegate.swift */; };
 		C7F0B979210DACCB005A8FE2 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B978210DACCB005A8FE2 /* MasterViewController.swift */; };
 		C7F0B97B210DACCB005A8FE2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B97A210DACCB005A8FE2 /* DetailViewController.swift */; };
@@ -92,6 +93,7 @@
 		C7E764562125E8C000867DA4 /* listdir.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = listdir.command; sourceTree = "<group>"; };
 		C7E76458212610DA00867DA4 /* TruffleInit.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = TruffleInit.command; sourceTree = "<group>"; };
 		C7E7645A21262D1800867DA4 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		C7E7645C212675AF00867DA4 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		C7F0B973210DACCB005A8FE2 /* SCE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F0B976210DACCB005A8FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7F0B978210DACCB005A8FE2 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				C7E7645A21262D1800867DA4 /* Project.swift */,
 				C7F0B9A22112945D005A8FE2 /* Document.swift */,
 				C7F0B9C52113EA39005A8FE2 /* ScriptTask.swift */,
+				C7E7645C212675AF00867DA4 /* Error.swift */,
 				C7F0B9A42112945F005A8FE2 /* Assets.xcassets */,
 				C7F0B9A62112945F005A8FE2 /* Main.storyboard */,
 				C7F0B9A92112945F005A8FE2 /* Info.plist */,
@@ -628,6 +631,7 @@
 				C7E7643F2122A2CF00867DA4 /* TemplateCollectionViewItem.swift in Sources */,
 				C7F0B9C22113CF7E005A8FE2 /* SplitViewController.swift in Sources */,
 				C7F0B9C62113EA39005A8FE2 /* ScriptTask.swift in Sources */,
+				C7E7645D212675AF00867DA4 /* Error.swift in Sources */,
 				C7F0B99F2112945D005A8FE2 /* AppDelegate.swift in Sources */,
 				C7F0B9A32112945D005A8FE2 /* Document.swift in Sources */,
 				C7E764422122AC2100867DA4 /* ContractTemplate.swift in Sources */,

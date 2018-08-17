@@ -12,7 +12,28 @@ class PreparingViewController: NSViewController {
     
     @IBOutlet var textView: NSTextView!
     private var script: ScriptTask?
-    var projectCreator: ProjectCreator!
+    var projectCreator: ProjectCreator! {
+        didSet {
+            do {
+                try projectCreator.create(output: { output in
+                    // Output in text view
+                    let previousOutput = self.textView.string
+                    let nextOutput = previousOutput + "\n" + output
+                    self.textView.string = nextOutput
+                    let range = NSRange(location:nextOutput.characters.count,length:0)
+                    self.textView.scrollRangeToVisible(range)
+                }) {
+                    print("***** FINISHED ********")
+                    ////            let id = NSStoryboardSegue.Identifier(rawValue: "EditWindow")
+                    ////            self.performSegue(withIdentifier: id, sender: self)
+                    ////            view.window?.close()
+                }
+            } catch {
+                let alert = NSAlert(error: error)
+                alert.runModal()
+            }
+        }
+    }
     
     /// E.g. BasicToken
     var templateName: String = ""
@@ -23,21 +44,25 @@ class PreparingViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        executeScript(url: URL(string: "test")!, projectname: "", templatename: "", scriptname: "")
-        
-        projectCreator.create(output: { output in
-            // Output in text view
-            let previousOutput = self.textView.string
-            let nextOutput = previousOutput + "\n" + output
-            self.textView.string = nextOutput
-            let range = NSRange(location:nextOutput.characters.count,length:0)
-            self.textView.scrollRangeToVisible(range)
-        }) {
-            print("***** FINISHED ********")
-////            let id = NSStoryboardSegue.Identifier(rawValue: "EditWindow")
-////            self.performSegue(withIdentifier: id, sender: self)
-////            view.window?.close()
+        return
+        do {
+            try projectCreator.create(output: { output in
+                // Output in text view
+                let previousOutput = self.textView.string
+                let nextOutput = previousOutput + "\n" + output
+                self.textView.string = nextOutput
+                let range = NSRange(location:nextOutput.characters.count,length:0)
+                self.textView.scrollRangeToVisible(range)
+            }) {
+                print("***** FINISHED ********")
+    ////            let id = NSStoryboardSegue.Identifier(rawValue: "EditWindow")
+    ////            self.performSegue(withIdentifier: id, sender: self)
+    ////            view.window?.close()
+            }
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
         }
-        
     }
     
 //    private func executeScript(url: URL, projectname: String, templatename: String, scriptname: String) {

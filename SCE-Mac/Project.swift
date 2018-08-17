@@ -42,9 +42,16 @@ class ProjectCreator: Codable {
     // install additional files [source, destination]
     // default open first file
     
-    func create(output: @escaping (String)->Void, finished: @escaping () -> Void) {
-        
-        scriptTask = ScriptTask(script: "TruffleInit", arguments: [project.baseDirectory.absoluteURL.path, templateName], path: nil, output: output, finished: finished)
+    init(templateName: String, installScript: String, project: Project) {
+        self.templateName = templateName
+        self.installScript = installScript
+        self.project = project
+    }
+    
+    func create(output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
+        scriptTask = try ScriptTask(script: "listdir", arguments: [project.baseDirectory.absoluteURL.path, templateName], output: output, finished: finished)
+        scriptTask.run()
+        return scriptTask
     }
     
 //    static func truffleInit(path: URL, projectname: String, templatename: String, output: @escaping (String)->Void, finished: @escaping () -> Void) -> ScriptTask {
