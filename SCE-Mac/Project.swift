@@ -49,7 +49,7 @@ class ProjectCreator: Codable {
     }
     
     func create(output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
-        scriptTask = try ScriptTask(script: "listdir", arguments: [project.baseDirectory.absoluteURL.path, templateName], output: output, finished: finished)
+        scriptTask = try ScriptTask(script: "TruffleInit", arguments: [project.baseDirectory.absoluteURL.path, project.name, templateName], output: output, finished: finished)
         scriptTask.run()
         return scriptTask
     }

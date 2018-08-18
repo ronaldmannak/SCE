@@ -11,16 +11,16 @@ import Cocoa
 class PreparingViewController: NSViewController {
     
     @IBOutlet var textView: NSTextView!
-    private var script: ScriptTask?
+
     var projectCreator: ProjectCreator! {
         didSet {
             do {
-                try projectCreator.create(output: { output in
+                _ = try projectCreator.create(output: { output in
                     // Output in text view
                     let previousOutput = self.textView.string
                     let nextOutput = previousOutput + "\n" + output
                     self.textView.string = nextOutput
-                    let range = NSRange(location:nextOutput.characters.count,length:0)
+                    let range = NSRange(location:nextOutput.count,length:0)
                     self.textView.scrollRangeToVisible(range)
                 }) {
                     print("***** FINISHED ********")
@@ -35,56 +35,13 @@ class PreparingViewController: NSViewController {
         }
     }
     
-    /// E.g. BasicToken
-    var templateName: String = ""
-    
-    /// Name of bash script embedded in executable. E.g. TruffleScript
-    var scriptFilename: String = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        executeScript(url: URL(string: "test")!, projectname: "", templatename: "", scriptname: "")
-        return
-        do {
-            try projectCreator.create(output: { output in
-                // Output in text view
-                let previousOutput = self.textView.string
-                let nextOutput = previousOutput + "\n" + output
-                self.textView.string = nextOutput
-                let range = NSRange(location:nextOutput.characters.count,length:0)
-                self.textView.scrollRangeToVisible(range)
-            }) {
-                print("***** FINISHED ********")
-    ////            let id = NSStoryboardSegue.Identifier(rawValue: "EditWindow")
-    ////            self.performSegue(withIdentifier: id, sender: self)
-    ////            view.window?.close()
-            }
-        } catch {
-            let alert = NSAlert(error: error)
-            alert.runModal()
-        }
     }
     
-//    private func executeScript(url: URL, projectname: String, templatename: String, scriptname: String) {
-//        print(url)
-//        script = ScriptTask.truffleInit(path: url, projectname: projectname, templatename: templatename, output: { (output) in
-//            // Output in text view
-//            let previousOutput = self.textView.string
-//            let nextOutput = previousOutput + "\n" + output
-//            self.textView.string = nextOutput
-//            let range = NSRange(location:nextOutput.characters.count,length:0)
-//            self.textView.scrollRangeToVisible(range)
-//        }) {
-//            print("***** FINISHED ********")
-//
-//        }
-//    }
-    
     @IBAction func cancelClicked(_ sender: Any) {
-        print(script ?? "nil script")
-        print(script?.notification ?? "nil notification")
-//        script?.terminate()
-//        view.window?.close()
+        projectCreator.scriptTask.terminate()
+        view.window?.close()
     }
     
     

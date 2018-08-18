@@ -60,6 +60,7 @@ class ScriptTask: NSObject {
             
             self.task.launchPath = self.launchpath
             self.task.arguments = self.arguments
+            self.task.environment = ["PATH": "/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin"]                    
             
             // Handle termination
             self.task.terminationHandler = { task in
