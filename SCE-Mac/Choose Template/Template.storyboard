@@ -283,17 +283,24 @@ Gw
                                     <action selector="cancelClicked:" target="M4e-WR-LdV" id="dEX-hz-xfg"/>
                                 </connections>
                             </button>
+                            <progressIndicator wantsLayer="YES" ambiguous="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="5j4-eS-iJ8">
+                                <rect key="frame" x="20" y="10" width="100" height="20"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="5j4-eS-iJ8" secondAttribute="bottom" constant="11" id="0h8-gL-j8N"/>
                             <constraint firstItem="Jtj-Ik-Pir" firstAttribute="top" secondItem="xFA-xk-HK6" secondAttribute="bottom" constant="10" id="4be-ol-3QM"/>
                             <constraint firstAttribute="bottom" secondItem="Jtj-Ik-Pir" secondAttribute="bottom" constant="10" id="5Gt-GX-CXc"/>
                             <constraint firstAttribute="trailing" secondItem="Jtj-Ik-Pir" secondAttribute="trailing" constant="10" id="MX2-ol-o0g"/>
+                            <constraint firstItem="5j4-eS-iJ8" firstAttribute="leading" secondItem="ABZ-cb-tOG" secondAttribute="leading" constant="20" id="QOm-PN-ZWV"/>
                             <constraint firstItem="xFA-xk-HK6" firstAttribute="top" secondItem="ABZ-cb-tOG" secondAttribute="top" id="Sm0-e2-sSV"/>
                             <constraint firstAttribute="trailing" secondItem="xFA-xk-HK6" secondAttribute="trailing" id="cfJ-GP-oF9"/>
                             <constraint firstItem="xFA-xk-HK6" firstAttribute="leading" secondItem="ABZ-cb-tOG" secondAttribute="leading" id="cmo-gT-Xpy"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="Jtj-Ik-Pir" id="dDi-74-1YN"/>
+                        <outlet property="progressIndicator" destination="5j4-eS-iJ8" id="JI4-bC-CUJ"/>
                         <outlet property="textView" destination="86x-4c-iaj" id="937-lW-2wT"/>
                         <segue destination="6Qx-Ye-9Xf" kind="show" identifier="EditWindow" id="VvL-GZ-wem"/>
                     </connections>

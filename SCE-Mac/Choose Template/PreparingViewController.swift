@@ -11,9 +11,15 @@ import Cocoa
 class PreparingViewController: NSViewController {
     
     @IBOutlet var textView: NSTextView!
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    
+    @IBOutlet weak var cancelButton: NSButton!
+    var counter: Int = 0
 
     var projectCreator: ProjectCreator! {
         didSet {
+            progressIndicator.startAnimation(self)
+            progressIndicator.maxValue = 6
             do {
                 _ = try projectCreator.create(output: { output in
                     // Output in text view
@@ -22,11 +28,16 @@ class PreparingViewController: NSViewController {
                     self.textView.string = nextOutput
                     let range = NSRange(location:nextOutput.count,length:0)
                     self.textView.scrollRangeToVisible(range)
+                    self.progressIndicator.increment(by: 1)
+                    self.counter = self.counter + 1
                 }) {
+//                    print(self.counter)
+                    self.progressIndicator.stopAnimation(self)
                     let id = NSStoryboardSegue.Identifier(rawValue: "EditWindow")
                     self.performSegue(withIdentifier: id, sender: self)
                 }
             } catch {
+                self.progressIndicator.stopAnimation(self)
                 let alert = NSAlert(error: error)
                 alert.runModal()
             }

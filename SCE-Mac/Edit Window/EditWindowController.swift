@@ -24,6 +24,9 @@ class EditWindowController: NSWindowController {
     /// Sets console vc text. Called by PreparingViewController
     func setConsole(_ string: String) {
         consoleTextView.string = string
+        
+        let range = NSRange(location:consoleTextView.string.count,length:0)
+        consoleTextView.scrollRangeToVisible(range)
     }
 
     @IBAction func runButtonClicked(_ sender: Any) {

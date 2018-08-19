@@ -34,7 +34,7 @@ class ScriptTask: NSObject {
             throw EditorError.fileNotFound("File not found")
         }
         self.arguments = arguments
-        self.output = output
+        self.output = output        // TODO: Do we also need to route stderr?
         self.finished = finished
     }
     
