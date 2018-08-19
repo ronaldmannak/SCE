@@ -8,12 +8,6 @@
 
 import Foundation
 
-
-protocol ScriptTaskProtocol {
-    func taskFinished(_ task: ScriptTask)
-    func task(_ task: ScriptTask, output: String)
-}
-
 /**
  
  See: https://www.raywenderlich.com/125071/nstask-tutorial-os-x
@@ -27,13 +21,8 @@ class ScriptTask: NSObject {
     var notification: NSObjectProtocol!
     let arguments: [String]
     
-    var delegate: ScriptTaskProtocol?
     var output: ((String) -> Void)?
     var finished: (() -> Void)?
-    
-//    init(script: String, arguments: [String], path: URL, delegate: ScriptTaskProtocol) {
-//
-//    }
     
     init(script: String, ext: String = "command", path: URL? = nil, arguments: [String], output: @escaping (String)->Void, finished: @escaping () -> Void) throws {
         
@@ -42,7 +31,7 @@ class ScriptTask: NSObject {
         } else if let path = Bundle.main.path(forResource: script, ofType: ext) {
             launchpath = path
         } else {
-            throw EditorError.fileNotFound("File not found") // TODO:
+            throw EditorError.fileNotFound("File not found")
         }
         self.arguments = arguments
         self.output = output
@@ -64,11 +53,7 @@ class ScriptTask: NSObject {
             
             // Handle termination
             self.task.terminationHandler = { task in
-                DispatchQueue.main.async(execute: {
-                    print("**** ScriptTask Finished ****")
-                    self.delegate?.taskFinished(self)
-                    self.finished?()
-                })
+                DispatchQueue.main.async(execute: { self.finished?() })
             }
             
             // Handle output
@@ -90,7 +75,6 @@ class ScriptTask: NSObject {
             let outputString = String(data: output, encoding: String.Encoding.utf8) ?? ""
             
             DispatchQueue.main.async(execute: {
-                print("**** ScriptTask output ****")
                 print(outputString)
                 assert(self.output != nil)
                 self.output?(outputString)
@@ -104,15 +88,4 @@ class ScriptTask: NSObject {
     func terminate() {
         task.terminate()
     }
-}
-
-extension ScriptTask {
-    
-    /// For now, implement: https://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin
-//    static func truffleInit(path: URL, projectname: String, templatename: String, output: @escaping (String)->Void, finished: @escaping () -> Void) -> ScriptTask {
-////        let task = ScriptTask(script: "TruffleInit", arguments: [""], path: path, output: output, finished: finished)
-//        let task = ScriptTask(script: "listdir", arguments: [""], path: path, output: output, finished: finished)
-//        task.run()
-//        return task
-//    }
 }
