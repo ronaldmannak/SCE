@@ -9,6 +9,8 @@
 import Cocoa
 
 class EditWindowController: NSWindowController {
+    
+    weak var outputViewController: OutputViewController!
 
     override func windowDidLoad() {
         super.windowDidLoad()

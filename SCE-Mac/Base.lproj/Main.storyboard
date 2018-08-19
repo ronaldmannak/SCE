@@ -678,7 +678,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="67" y="-39"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -867,10 +867,10 @@ contract BasicToken is ERC20Basic {
             </objects>
             <point key="canvasLocation" x="1369" y="64"/>
         </scene>
-        <!--View Controller-->
+        <!--Output View Controller-->
         <scene sceneID="6Ke-84-cwJ">
             <objects>
-                <viewController id="3W5-We-f4V" sceneMemberID="viewController">
+                <viewController id="3W5-We-f4V" customClass="OutputViewController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <scrollView key="view" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="sJa-Zx-zL9">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -906,6 +906,9 @@ contract BasicToken is ERC20Basic {
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <connections>
+                        <outlet property="textView" destination="4fV-Zq-oeH" id="FFg-fV-NxL"/>
+                    </connections>
                 </viewController>
                 <customObject id="UCd-Vw-4oe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
