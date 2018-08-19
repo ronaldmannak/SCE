@@ -11,7 +11,8 @@ import Cocoa
 class EditWindowController: NSWindowController {
     
     var consoleTextView: NSTextView {
-        return (self.window?.contentViewController as! SplitViewController).consoleView
+        
+        return (self.window?.contentViewController?.childViewControllers[1] as! SplitViewController).consoleView
     }
 
     override func windowDidLoad() {
@@ -27,10 +28,10 @@ class EditWindowController: NSWindowController {
 
     @IBAction func runButtonClicked(_ sender: Any) {
         
-        guard let vc = contentViewController as? SplitViewController else {
-            exit(1)
-        }
-        vc.runCommand("ls")    
+//        guard let vc = contentViewController as? SplitViewController else {
+//            exit(1)
+//        }
+//        vc.runCommand("ls")
     }
 
 }
