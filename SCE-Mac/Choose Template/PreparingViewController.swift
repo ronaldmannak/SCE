@@ -23,10 +23,8 @@ class PreparingViewController: NSViewController {
                     let range = NSRange(location:nextOutput.count,length:0)
                     self.textView.scrollRangeToVisible(range)
                 }) {
-                    print("***** FINISHED ********")
-                    ////            let id = NSStoryboardSegue.Identifier(rawValue: "EditWindow")
-                    ////            self.performSegue(withIdentifier: id, sender: self)
-                    ////            view.window?.close()
+                    let id = NSStoryboardSegue.Identifier(rawValue: "EditWindow")
+                    self.performSegue(withIdentifier: id, sender: self)
                 }
             } catch {
                 let alert = NSAlert(error: error)
@@ -45,8 +43,9 @@ class PreparingViewController: NSViewController {
     }
     
     
-    //    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-//        self.view.window!.close()
-//    }
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        (segue.destinationController as! EditWindowController).setConsole(textView.string)
+        self.view.window?.close()
+    }
     
 }
