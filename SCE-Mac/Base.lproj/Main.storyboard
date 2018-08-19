@@ -799,7 +799,7 @@
             <objects>
                 <splitViewController id="SSn-7J-yjq" sceneMemberID="viewController">
                     <splitViewItems>
-                        <splitViewItem id="hPN-2l-FCd"/>
+                        <splitViewItem canCollapse="YES" id="hPN-2l-FCd"/>
                         <splitViewItem id="EGe-6l-tC8"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="eB3-ko-loa">
@@ -824,23 +824,23 @@
             <objects>
                 <viewController id="Toz-r1-A2p" sceneMemberID="viewController">
                     <view key="view" id="UyC-8V-fZV">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="125" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZK-Sh-qa1">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="125" height="300"/>
                                 <clipView key="contentView" drawsBackground="NO" id="N9Y-8C-3zt">
-                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <rect key="frame" x="1" y="1" width="123" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="g9M-tf-H1F" id="EAL-wL-HIq">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="123" height="298"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="" width="445" minWidth="16" maxWidth="1000" id="g9M-tf-H1F">
+                                                <tableColumn identifier="" width="120" minWidth="16" maxWidth="1000" id="g9M-tf-H1F">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -854,11 +854,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="HeaderCell" id="NX6-8o-nae">
-                                                            <rect key="frame" x="1" y="1" width="445" height="17"/>
+                                                            <rect key="frame" x="1" y="1" width="120" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iBF-4O-WG8">
-                                                                    <rect key="frame" x="0.0" y="1" width="445" height="14"/>
+                                                                    <rect key="frame" x="0.0" y="1" width="120" height="14"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="7f6-Pl-X8d">
                                                                         <font key="font" metaFont="smallSystemBold"/>
                                                                         <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -875,8 +875,8 @@
                                                                 <outlet property="textField" destination="iBF-4O-WG8" id="Apz-nT-7wy"/>
                                                             </connections>
                                                         </tableCellView>
-                                                        <tableCellView identifier="DataCell" id="ND6-MH-3DK">
-                                                            <rect key="frame" x="1" y="20" width="445" height="17"/>
+                                                        <tableCellView identifier="DataCell" misplaced="YES" id="ND6-MH-3DK">
+                                                            <rect key="frame" x="1" y="20" width="120" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bx0-dn-SKI">
@@ -887,7 +887,7 @@
                                                                     <imageCell key="cell" refusesFirstResponder="YES" imageScaling="proportionallyDown" image="NSFolder" id="kjv-7N-hdf"/>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVU-h0-Yn1">
-                                                                    <rect key="frame" x="25" y="0.0" width="420" height="17"/>
+                                                                    <rect key="frame" x="25" y="0.0" width="96" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="8uD-Jb-X3z">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -916,7 +916,7 @@
                                     <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Ud4-gC-46S">
-                                    <rect key="frame" x="1" y="297" width="448" height="16"/>
+                                    <rect key="frame" x="1" y="283" width="123" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="IYi-lL-UnD">
@@ -1015,22 +1015,22 @@ contract BasicToken is ERC20Basic {
             <objects>
                 <viewController id="3W5-We-f4V" customClass="OutputViewController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <scrollView key="view" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="sJa-Zx-zL9">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="75"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" id="YCK-6V-qU9">
-                            <rect key="frame" x="1" y="1" width="448" height="298"/>
+                            <rect key="frame" x="1" y="1" width="448" height="73"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="4fV-Zq-oeH">
-                                    <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="448" height="73"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="448" height="298"/>
+                                    <size key="minSize" width="448" height="73"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment content="Ready.">
                                             <attributes>
-                                                <font key="NSFont" size="14" name="Menlo-Bold"/>
+                                                <font key="NSFont" size="12" name="Menlo-Bold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
@@ -1045,7 +1045,7 @@ contract BasicToken is ERC20Basic {
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="PSJ-Hn-74z">
-                            <rect key="frame" x="433" y="1" width="16" height="298"/>
+                            <rect key="frame" x="433" y="1" width="16" height="73"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
