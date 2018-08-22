@@ -32,6 +32,8 @@
 		C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645E2128F04800867DA4 /* OutputViewController.swift */; };
 		C7E76463212936E300867DA4 /* FileBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76462212936E300867DA4 /* FileBrowserViewController.swift */; };
 		C7E76467212937F100867DA4 /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76466212937F100867DA4 /* FileItem.swift */; };
+		C7E76469212D3D0400867DA4 /* TutorialToken.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7E76468212D3D0400867DA4 /* TutorialToken.sol */; };
+		C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */; };
 		C7F0B977210DACCB005A8FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B976210DACCB005A8FE2 /* AppDelegate.swift */; };
 		C7F0B979210DACCB005A8FE2 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B978210DACCB005A8FE2 /* MasterViewController.swift */; };
 		C7F0B97B210DACCB005A8FE2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B97A210DACCB005A8FE2 /* DetailViewController.swift */; };
@@ -100,6 +102,8 @@
 		C7E7645E2128F04800867DA4 /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
 		C7E76462212936E300867DA4 /* FileBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowserViewController.swift; sourceTree = "<group>"; };
 		C7E76466212937F100867DA4 /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
+		C7E76468212D3D0400867DA4 /* TutorialToken.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = TutorialToken.sol; sourceTree = "<group>"; };
+		C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = 2_deploy_contracts.js; sourceTree = "<group>"; };
 		C7F0B973210DACCB005A8FE2 /* SCE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F0B976210DACCB005A8FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7F0B978210DACCB005A8FE2 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 				C7E764542125322700867DA4 /* TutorialToken */,
 				C7E7644D2124E0EB00867DA4 /* TruffleTemplate.sol */,
 				C7E7644F2124E10600867DA4 /* EmbarkTemplate.sol */,
+				C7E76468212D3D0400867DA4 /* TutorialToken.sol */,
+				C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */,
 			);
 			path = "Choose Template";
 			sourceTree = "<group>";
@@ -473,6 +479,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */,
 				C7E764502124E10600867DA4 /* EmbarkTemplate.sol in Resources */,
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
 				C7E764442122B0CA00867DA4 /* Templates.json in Resources */,
@@ -481,6 +488,7 @@
 				C7E7644E2124E0EB00867DA4 /* TruffleTemplate.sol in Resources */,
 				C7E76459212610DA00867DA4 /* TruffleInit.command in Resources */,
 				C7F0B9A52112945F005A8FE2 /* Assets.xcassets in Resources */,
+				C7E76469212D3D0400867DA4 /* TutorialToken.sol in Resources */,
 				C7E7644C2124E06700867DA4 /* EmbarkInit in Resources */,
 				C7F0B9A82112945F005A8FE2 /* Main.storyboard in Resources */,
 				C7E764552125322700867DA4 /* TutorialToken in Resources */,

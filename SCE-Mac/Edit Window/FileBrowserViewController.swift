@@ -38,7 +38,7 @@ class FileBrowserViewController: NSViewController {
 //        let selectFileItem = root!.children[3].children[0]
 //        let index = fileView.childIndex(forItem: selectFileItem)
 //        print(index)
-        fileView.selectRowIndexes([5], byExtendingSelection: false)
+        fileView.selectRowIndexes([6], byExtendingSelection: false)
     }
 }
 
