@@ -950,7 +950,7 @@
             <objects>
                 <viewController id="ja3-lG-MWF" sceneMemberID="viewController">
                     <customView key="view" id="HcI-xT-YNk" customClass="SyntaxTextView" customModule="SavannaKit">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                 </viewController>
