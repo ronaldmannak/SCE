@@ -51,7 +51,12 @@ class EditWindowController: NSWindowController {
     }
     
     func setEditor(url: URL) {
-        
+        do {
+            editView.text = try String(contentsOf: url)
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
+        }
     }
 
     @IBAction func runButtonClicked(_ sender: Any) {

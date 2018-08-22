@@ -8,11 +8,10 @@
 
 import Cocoa
 
+/// TODO: key bindings https://www.raywenderlich.com/1201-nsoutlineview-on-macos-tutorial
 class FileBrowserViewController: NSViewController {
     
     @IBOutlet weak var fileView: NSOutlineView!
-
-    
     private var root: FileItem?
 
     override func viewDidLoad() {
@@ -62,8 +61,7 @@ extension FileBrowserViewController: NSOutlineViewDelegate {
         let selectedIndex = outlineView.selectedRow
         guard let item = outlineView.item(atRow: selectedIndex) as? FileItem, supportedPathExtensions.contains(item.url.pathExtension) else { return }
 
-        (view.window?.windowController as! EditWindowController).editView.text = item.url.path
-        print("Solidity file selected")
+        (view.window?.windowController as! EditWindowController).setEditor(url: item.url)
     }
 }
 

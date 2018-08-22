@@ -887,9 +887,9 @@
                                                                     <imageCell key="cell" refusesFirstResponder="YES" imageScaling="proportionallyDown" image="NSFolder" id="kjv-7N-hdf"/>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVU-h0-Yn1">
-                                                                    <rect key="frame" x="25" y="0.0" width="170" height="17"/>
+                                                                    <rect key="frame" x="21" y="0.0" width="174" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="8uD-Jb-X3z">
-                                                                        <font key="font" metaFont="system"/>
+                                                                        <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -901,7 +901,7 @@
                                                                 <constraint firstAttribute="trailing" secondItem="PVU-h0-Yn1" secondAttribute="trailing" constant="2" id="Ymh-uE-hVS"/>
                                                                 <constraint firstItem="bx0-dn-SKI" firstAttribute="top" secondItem="PVU-h0-Yn1" secondAttribute="top" id="fEg-N6-Ee2"/>
                                                                 <constraint firstItem="bx0-dn-SKI" firstAttribute="centerY" secondItem="ND6-MH-3DK" secondAttribute="centerY" id="m6o-qn-rac"/>
-                                                                <constraint firstItem="PVU-h0-Yn1" firstAttribute="leading" secondItem="bx0-dn-SKI" secondAttribute="trailing" constant="7" id="nBQ-bL-pXM"/>
+                                                                <constraint firstItem="PVU-h0-Yn1" firstAttribute="leading" secondItem="bx0-dn-SKI" secondAttribute="trailing" constant="3" id="nBQ-bL-pXM"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="imageView" destination="bx0-dn-SKI" id="SOR-rD-Lcb"/>
@@ -952,66 +952,6 @@
                     <customView key="view" id="HcI-xT-YNk" customClass="SyntaxTextView" customModule="SavannaKit">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="text">
-                                <mutableString key="value">pragma solidity ^0.4.24;
-
-
-import "./ERC20Basic.sol";
-import "../../math/SafeMath.sol";
-
-
-/**
- * @title Basic token
- * @dev Basic version of StandardToken, with no allowances.
- */
-contract BasicToken is ERC20Basic {
-  using SafeMath for uint256;
-
-  mapping(address =&gt; uint256) balances;
-
-  uint256 totalSupply_;
-
-  /**
-  * @dev Total number of tokens in existence
-  */
-  function totalSupply() public view returns (uint256) {
-    return totalSupply_;
-  }
-
-  /**
-  * @dev Transfer token for a specified address
-  * @param _to The address to transfer to.
-  * @param _value The amount to be transferred.
-  */
-  function transfer(address _to, uint256 _value) public returns (bool) {
-    require(_to != address(0));
-    require(_value &lt;= balances[msg.sender]);
-
-    balances[msg.sender] = balances[msg.sender].sub(_value);
-    balances[_to] = balances[_to].add(_value);
-    emit Transfer(msg.sender, _to, _value);
-    return true;
-  }
-
-  /**
-  * @dev Gets the balance of the specified address.
-  * @param _owner The address to query the the balance of.
-  * @return An uint256 representing the amount owned by the passed address.
-  */
-  function balanceOf(address _owner) public view returns (uint256) {
-    return balances[_owner];
-  }
-
-  function test() {
-    string text = "&lt;#text#&gt;"
-    uint256 amount = &lt;#amount#&gt;
-  }
-
-}
-</mutableString>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </customView>
                 </viewController>
                 <customObject id="tql-aZ-Ozb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
