@@ -36,11 +36,13 @@ class FileItem: NSObject {
     lazy var children: [FileItem] = {
         
         let fileManager = FileManager.default
-        guard isDirectory == true, fileManager.fileExists(atPath: url.path), let files = try? fileManager.contentsOfDirectory(atPath: url.path) else { return [FileItem]() }
+        guard isDirectory == true, fileManager.fileExists(atPath: url.path), let files = try? fileManager.contentsOfDirectory(at: url, includingPropertiesForKeys: [], options: [.skipsHiddenFiles]) else {
+            return [FileItem]()
+        }
         
         var _children = [FileItem]()
         for file in files {
-            if let item = try? FileItem(url: url.appendingPathComponent(file)) {
+            if let item = try? FileItem(url: file) {
                 _children.append(item)
             }
         }
