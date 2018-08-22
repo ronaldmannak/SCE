@@ -66,7 +66,8 @@ class ScriptTask: NSObject {
     
     func captureStandardOutput() {
         
-        self.task.standardOutput = outputPipe
+        task.standardOutput = outputPipe
+//        task.standardError = outputPipe
         
         notification = NotificationCenter.default.addObserver(forName: .NSFileHandleDataAvailable, object: outputPipe.fileHandleForReading , queue: nil) {
             notification in

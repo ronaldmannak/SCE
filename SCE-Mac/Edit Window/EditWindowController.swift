@@ -10,9 +10,24 @@ import Cocoa
 
 class EditWindowController: NSWindowController {
     
+    var project: Project? = nil {
+        didSet {
+            guard let project = project else { return }
+            do {
+            try fileBrowserViewController.load(url: project.baseDirectory, projectName: project.name)
+            } catch {
+                let alert = NSAlert(error: error)
+                alert.runModal()
+            }
+        }
+    }
+    
     var consoleTextView: NSTextView {
-        
         return (self.window?.contentViewController?.childViewControllers[1] as! SplitViewController).consoleView
+    }
+    
+    var fileBrowserViewController: FileBrowserViewController {
+        return (self.window?.contentViewController! as! NSSplitViewController).childViewControllers[0] as! FileBrowserViewController
     }
 
     override func windowDidLoad() {

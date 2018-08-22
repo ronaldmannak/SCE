@@ -55,7 +55,9 @@ class PreparingViewController: NSViewController {
     
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        (segue.destinationController as! EditWindowController).setConsole(textView.string)
+        let editWindowController = (segue.destinationController as! EditWindowController)
+        editWindowController.setConsole(textView.string)
+        editWindowController.project = projectCreator.project
         self.view.window?.close()
     }
     

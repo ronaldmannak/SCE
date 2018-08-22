@@ -10,4 +10,5 @@ import Foundation
 
 enum EditorError: Error {
     case fileNotFound(String)
+    case directoryNotFound(String)
 }
