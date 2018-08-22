@@ -11,6 +11,8 @@ import SavannaKit
 
 class EditWindowController: NSWindowController {
     
+    var editorURL: URL? = nil
+    
     var project: Project? = nil {
         didSet {
             guard let project = project else { return }
@@ -32,7 +34,7 @@ class EditWindowController: NSWindowController {
         return (self.window?.contentViewController! as! NSSplitViewController).childViewControllers[0] as! FileBrowserViewController
     }
     
-    var editView: SyntaxTextView {
+    private var editView: SyntaxTextView {
         return (self.window?.contentViewController?.childViewControllers[1] as! SplitViewController).editorView
     }
 
@@ -52,7 +54,22 @@ class EditWindowController: NSWindowController {
     
     func setEditor(url: URL) {
         do {
-            editView.text = try String(contentsOf: url)
+            let text = try String(contentsOf: url)
+            saveEditorFile()
+            editView.text = text
+            editorURL = url
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
+        }
+    }
+    
+    func saveEditorFile() {
+        guard let editorURL = editorURL else {
+            return
+        }
+        do {
+            try editView.text.write(to: editorURL, atomically: true, encoding: .utf32)
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()

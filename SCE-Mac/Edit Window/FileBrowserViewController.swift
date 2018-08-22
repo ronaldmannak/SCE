@@ -61,7 +61,8 @@ extension FileBrowserViewController: NSOutlineViewDelegate {
         let selectedIndex = outlineView.selectedRow
         guard let item = outlineView.item(atRow: selectedIndex) as? FileItem, supportedPathExtensions.contains(item.url.pathExtension) else { return }
 
-        (view.window?.windowController as! EditWindowController).setEditor(url: item.url)
+        let editWindowController = (view.window?.windowController as! EditWindowController)
+        editWindowController.setEditor(url: item.url)
     }
 }
 
