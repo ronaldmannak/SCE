@@ -31,7 +31,6 @@
 		C7E7645D212675AF00867DA4 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645C212675AF00867DA4 /* Error.swift */; };
 		C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645E2128F04800867DA4 /* OutputViewController.swift */; };
 		C7E76463212936E300867DA4 /* FileBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76462212936E300867DA4 /* FileBrowserViewController.swift */; };
-		C7E76465212937AF00867DA4 /* FileBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76464212937AF00867DA4 /* FileBrowser.swift */; };
 		C7E76467212937F100867DA4 /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76466212937F100867DA4 /* FileItem.swift */; };
 		C7F0B977210DACCB005A8FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B976210DACCB005A8FE2 /* AppDelegate.swift */; };
 		C7F0B979210DACCB005A8FE2 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B978210DACCB005A8FE2 /* MasterViewController.swift */; };
@@ -100,7 +99,6 @@
 		C7E7645C212675AF00867DA4 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		C7E7645E2128F04800867DA4 /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
 		C7E76462212936E300867DA4 /* FileBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowserViewController.swift; sourceTree = "<group>"; };
-		C7E76464212937AF00867DA4 /* FileBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowser.swift; sourceTree = "<group>"; };
 		C7E76466212937F100867DA4 /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
 		C7F0B973210DACCB005A8FE2 /* SCE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F0B976210DACCB005A8FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -313,7 +311,6 @@
 				C7F0B9C32113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift */,
 				C7E7645E2128F04800867DA4 /* OutputViewController.swift */,
 				C7E76462212936E300867DA4 /* FileBrowserViewController.swift */,
-				C7E76464212937AF00867DA4 /* FileBrowser.swift */,
 				C7E76466212937F100867DA4 /* FileItem.swift */,
 				C7F0B9A62112945F005A8FE2 /* Main.storyboard */,
 			);
@@ -640,7 +637,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7E76465212937AF00867DA4 /* FileBrowser.swift in Sources */,
 				C7E7643F2122A2CF00867DA4 /* TemplateCollectionViewItem.swift in Sources */,
 				C7F0B9C22113CF7E005A8FE2 /* SplitViewController.swift in Sources */,
 				C7E76467212937F100867DA4 /* FileItem.swift in Sources */,

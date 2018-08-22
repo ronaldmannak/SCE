@@ -29,7 +29,7 @@ class FileItem: NSObject {
         
         let fileResource = try url.resourceValues(forKeys: [URLResourceKey.nameKey])
         localizedName = fileResource.localizedName ?? fileResource.name ?? projectName ?? "<UNKNOWN>"
-        icon = fileResource.customIcon
+        icon = NSWorkspace.shared.icon(forFile: url.path)
         self.isDirectory = isDirectory.boolValue
     }
     

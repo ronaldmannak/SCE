@@ -16,9 +16,8 @@ struct Project: Codable {
     let baseDirectory: URL
     
     /// E.g. ~/Projects/ProjectName
-    var workDirectory: String {
-        let url = baseDirectory.appendingPathComponent(name, isDirectory: true)
-        return url.absoluteString
+    var workDirectory: URL {
+        return baseDirectory.appendingPathComponent(name, isDirectory: true)        
     }
     
     // last open file, cursor position, etc

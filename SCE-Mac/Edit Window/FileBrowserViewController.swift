@@ -19,11 +19,11 @@ class FileBrowserViewController: NSViewController {
         // Do view setup here.
     }
     
+    /// Called from EditWindowController
     func load(url: URL, projectName: String) throws {
         root = try FileItem(url: url, projectName: projectName)
         fileView.reloadData()
     }
-    
 }
 
 extension FileBrowserViewController: NSOutlineViewDelegate {
@@ -35,6 +35,7 @@ extension FileBrowserViewController: NSOutlineViewDelegate {
         }
         view.textField?.stringValue = item.localizedName
         view.imageView?.image = item.icon
+        print(item.icon)
         
         return view
     }
@@ -45,7 +46,7 @@ extension FileBrowserViewController: NSOutlineViewDataSource {
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         
         // If root is not set, don't show anything
-        guard let root = root else { return 0 }
+        guard root != nil else { return 0 }
         
         // item is nil if requesting root
         guard let item = item as? FileItem else { return 1 }

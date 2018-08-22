@@ -14,7 +14,7 @@ class EditWindowController: NSWindowController {
         didSet {
             guard let project = project else { return }
             do {
-            try fileBrowserViewController.load(url: project.baseDirectory, projectName: project.name)
+            try fileBrowserViewController.load(url: project.workDirectory, projectName: project.name)
             } catch {
                 let alert = NSAlert(error: error)
                 alert.runModal()
