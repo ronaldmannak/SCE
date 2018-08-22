@@ -11,6 +11,7 @@ import Cocoa
 class FileBrowserViewController: NSViewController {
     
     @IBOutlet weak var fileView: NSOutlineView!
+
     
     private var root: FileItem?
 
@@ -19,10 +20,26 @@ class FileBrowserViewController: NSViewController {
         // Do view setup here.
     }
     
+    @IBAction func fileViewDoubleClick(_ sender: NSOutlineView) {
+        guard let item = sender.item(atRow: sender.clickedRow) as? FileItem, item.isDirectory == true else { return }
+        
+        if sender.isItemExpanded(item) {
+            sender.collapseItem(item)
+        } else {
+            sender.expandItem(item)
+        }
+    }
+    
     /// Called from EditWindowController
     func load(url: URL, projectName: String) throws {
         root = try FileItem(url: url, projectName: projectName)
         fileView.reloadData()
+        fileView.expandItem(root)
+        fileView.expandItem(root!.children[3]) // TODO: fix. Hardcoding expand contracts directory
+//        let selectFileItem = root!.children[3].children[0]
+//        let index = fileView.childIndex(forItem: selectFileItem)
+//        print(index)
+        fileView.selectRowIndexes([5], byExtendingSelection: false)
     }
 }
 
@@ -34,10 +51,19 @@ extension FileBrowserViewController: NSOutlineViewDelegate {
             return nil
         }
         view.textField?.stringValue = item.localizedName
-        view.imageView?.image = item.icon
-        print(item.icon)
-        
+        view.imageView?.image = item.icon        
         return view
+    }
+    
+    func outlineViewSelectionDidChange(_ notification: Notification) {
+        guard let outlineView = notification.object as? NSOutlineView else { return }
+        
+        let supportedPathExtensions = ["sol"]
+        let selectedIndex = outlineView.selectedRow
+        guard let item = outlineView.item(atRow: selectedIndex) as? FileItem, supportedPathExtensions.contains(item.url.pathExtension) else { return }
+
+        (view.window?.windowController as! EditWindowController).editView.text = item.url.path
+        print("Solidity file selected")
     }
 }
 

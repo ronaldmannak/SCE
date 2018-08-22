@@ -13,7 +13,7 @@ class FileItem: NSObject {
     let projectName: String?
     
     let localizedName: String
-    let icon: NSImage?
+    var icon: NSImage? { return NSWorkspace.shared.icon(forFile: url.path) }
     let isDirectory: Bool
 
     init(url: URL, projectName: String? = nil) throws {
@@ -29,7 +29,6 @@ class FileItem: NSObject {
         
         let fileResource = try url.resourceValues(forKeys: [URLResourceKey.nameKey])
         localizedName = fileResource.localizedName ?? fileResource.name ?? projectName ?? "<UNKNOWN>"
-        icon = NSWorkspace.shared.icon(forFile: url.path)
         self.isDirectory = isDirectory.boolValue
     }
     

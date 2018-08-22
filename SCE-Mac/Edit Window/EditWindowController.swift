@@ -7,12 +7,14 @@
 //
 
 import Cocoa
+import SavannaKit
 
 class EditWindowController: NSWindowController {
     
     var project: Project? = nil {
         didSet {
             guard let project = project else { return }
+            window?.title = project.name            
             do {
             try fileBrowserViewController.load(url: project.workDirectory, projectName: project.name)
             } catch {
@@ -29,6 +31,10 @@ class EditWindowController: NSWindowController {
     var fileBrowserViewController: FileBrowserViewController {
         return (self.window?.contentViewController! as! NSSplitViewController).childViewControllers[0] as! FileBrowserViewController
     }
+    
+    var editView: SyntaxTextView {
+        return (self.window?.contentViewController?.childViewControllers[1] as! SplitViewController).editorView
+    }
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -42,6 +48,10 @@ class EditWindowController: NSWindowController {
         
         let range = NSRange(location:consoleTextView.string.count,length:0)
         consoleTextView.scrollRangeToVisible(range)
+    }
+    
+    func setEditor(url: URL) {
+        
     }
 
     @IBAction func runButtonClicked(_ sender: Any) {
