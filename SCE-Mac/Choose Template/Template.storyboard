@@ -339,14 +339,6 @@ Gw
             </objects>
             <point key="canvasLocation" x="75" y="842"/>
         </scene>
-        <!--Preferences-->
-        <scene sceneID="bX9-l5-mU5">
-            <objects>
-                <controllerPlaceholder storyboardName="Preferences" id="Wx0-gu-5Zn" sceneMemberID="viewController"/>
-                <customObject id="eKR-MX-90d" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="466" y="138"/>
-        </scene>
         <!--Application-->
         <scene sceneID="YrG-VZ-lNw">
             <objects>
@@ -363,7 +355,7 @@ Gw
                                         <menuItem isSeparatorItem="YES" id="cbM-O9-wNO"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="Tjv-84-KfU">
                                             <connections>
-                                                <segue destination="Wx0-gu-5Zn" kind="show" id="P8g-yq-Qbj"/>
+                                                <action selector="showPreferences:" target="dgL-fk-yN1" id="IxW-g7-NBH"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="7WF-nk-HeJ"/>
