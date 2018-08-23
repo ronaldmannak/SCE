@@ -27,9 +27,6 @@ class SplitViewController: NSSplitViewController {
 //        SyntaxTextView.tintColor = Color(named: .white)
         editorView.delegate = self
         
-        // Set consoleView
-//        guard let v = splitViewItems.last!.viewController.view as? NSScrollView else { fatalError()}
-//        guard let v2 = v.documentView as? NSTextView else { fatalError() }
         consoleView = {
             let scrollView = splitViewItems.last!.viewController.view as! NSScrollView
             return scrollView.documentView as! NSTextView

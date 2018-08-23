@@ -723,19 +723,6 @@
                                         <action selector="runButtonClicked:" target="jGA-0Y-lOj" id="W18-I5-EXf"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="A688C330-2723-468B-B4AA-2121C7D4707B" label="Run" paletteLabel="Run" image="NSTouchBarPlayTemplate" id="Yue-Tj-mZa">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="38" height="19"/>
-                                    <size key="maxSize" width="38" height="19"/>
-                                    <button key="view" verticalHuggingPriority="750" id="mcp-7T-5SX">
-                                        <rect key="frame" x="0.0" y="14" width="38" height="19"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSTouchBarPlayTemplate" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xCf-Fa-lF4">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="cellTitle"/>
-                                        </buttonCell>
-                                    </button>
-                                </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="C10E7EE1-3728-4785-9769-F9E29CE684AC" label="Stop" paletteLabel="Stop" image="NSTouchBarPauseTemplate" id="gpu-zx-1eY">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="38" height="32"/>
@@ -748,11 +735,29 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                     </button>
+                                    <connections>
+                                        <action selector="pauseButtonClicked:" target="jGA-0Y-lOj" id="2oX-f0-dfd"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="C7EB22DE-BB56-42DA-85A7-9C7BF9261932" label="Web" paletteLabel="Web" image="NSMobileMe" id="mn2-dn-q0c">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="38" height="32"/>
+                                    <size key="maxSize" width="50" height="32"/>
+                                    <button key="view" verticalHuggingPriority="750" id="1hB-sM-GdX">
+                                        <rect key="frame" x="0.0" y="14" width="50" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSMobileMe" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0kc-z4-OTo">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="tYP-A1-bOR"/>
                                 <toolbarItem reference="gpu-zx-1eY"/>
+                                <toolbarItem reference="9QW-KK-5p9"/>
+                                <toolbarItem reference="mn2-dn-q0c"/>
                                 <toolbarItem reference="9QW-KK-5p9"/>
                                 <toolbarItem reference="QEL-oc-DYZ"/>
                             </defaultToolbarItems>
@@ -762,6 +767,7 @@
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="runButton" destination="tYP-A1-bOR" id="vyq-mF-hUq"/>
                         <segue destination="SSn-7J-yjq" kind="relationship" relationship="window.shadowedContentViewController" id="JQ2-eb-iIZ"/>
                     </connections>
                 </windowController>
@@ -1008,6 +1014,7 @@
     </scenes>
     <resources>
         <image name="NSFolder" width="32" height="32"/>
+        <image name="NSMobileMe" width="32" height="32"/>
         <image name="NSTouchBarPauseTemplate" width="11" height="30"/>
         <image name="NSTouchBarPlayTemplate" width="14" height="30"/>
     </resources>

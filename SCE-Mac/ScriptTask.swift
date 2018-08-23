@@ -90,3 +90,21 @@ class ScriptTask: NSObject {
         task.terminate()
     }
 }
+
+
+extension ScriptTask {
+    
+    static func run(project: Project, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
+        // TODO: Switch truffle vs Embark
+        let task = try ScriptTask(script: "TruffleRun", arguments: [project.workDirectory.path], output: output, finished: finished)
+        task.run()
+        return task
+    }
+    
+    //    static func truffleInit(path: URL, projectname: String, templatename: String, output: @escaping (String)->Void, finished: @escaping () -> Void) -> ScriptTask {
+    //        //        let task = ScriptTask(script: "TruffleInit", arguments: [""], path: path, output: output, finished: finished)
+    //        let task = ScriptTask(script: "listdir", arguments: [""], path: path, output: output, finished: finished)
+    //        task.run()
+    //        return task
+    //    }
+}

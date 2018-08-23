@@ -80,11 +80,4 @@ class ProjectCreator: Codable {
         scriptTask.run()
         return scriptTask
     }
-    
-//    static func truffleInit(path: URL, projectname: String, templatename: String, output: @escaping (String)->Void, finished: @escaping () -> Void) -> ScriptTask {
-//        //        let task = ScriptTask(script: "TruffleInit", arguments: [""], path: path, output: output, finished: finished)
-//        let task = ScriptTask(script: "listdir", arguments: [""], path: path, output: output, finished: finished)
-//        task.run()
-//        return task
-//    }
 }

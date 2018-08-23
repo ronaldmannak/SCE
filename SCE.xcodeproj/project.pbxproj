@@ -25,7 +25,6 @@
 		C7E764502124E10600867DA4 /* EmbarkTemplate.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7E7644F2124E10600867DA4 /* EmbarkTemplate.sol */; };
 		C7E764532124FA1300867DA4 /* Setup in Resources */ = {isa = PBXBuildFile; fileRef = C7E764522124FA1300867DA4 /* Setup */; };
 		C7E764552125322700867DA4 /* TutorialToken in Resources */ = {isa = PBXBuildFile; fileRef = C7E764542125322700867DA4 /* TutorialToken */; };
-		C7E764572125E8C000867DA4 /* listdir.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E764562125E8C000867DA4 /* listdir.command */; };
 		C7E76459212610DA00867DA4 /* TruffleInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76458212610DA00867DA4 /* TruffleInit.command */; };
 		C7E7645B21262D1800867DA4 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645A21262D1800867DA4 /* Project.swift */; };
 		C7E7645D212675AF00867DA4 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645C212675AF00867DA4 /* Error.swift */; };
@@ -34,6 +33,7 @@
 		C7E76467212937F100867DA4 /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76466212937F100867DA4 /* FileItem.swift */; };
 		C7E76469212D3D0400867DA4 /* TutorialToken.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7E76468212D3D0400867DA4 /* TutorialToken.sol */; };
 		C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */; };
+		C7E7646D212E28F300867DA4 /* TruffleRun.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646C212E28F200867DA4 /* TruffleRun.command */; };
 		C7F0B977210DACCB005A8FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B976210DACCB005A8FE2 /* AppDelegate.swift */; };
 		C7F0B979210DACCB005A8FE2 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B978210DACCB005A8FE2 /* MasterViewController.swift */; };
 		C7F0B97B210DACCB005A8FE2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B97A210DACCB005A8FE2 /* DetailViewController.swift */; };
@@ -95,7 +95,6 @@
 		C7E7644F2124E10600867DA4 /* EmbarkTemplate.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmbarkTemplate.sol; sourceTree = "<group>"; };
 		C7E764522124FA1300867DA4 /* Setup */ = {isa = PBXFileReference; lastKnownFileType = text; path = Setup; sourceTree = "<group>"; };
 		C7E764542125322700867DA4 /* TutorialToken */ = {isa = PBXFileReference; lastKnownFileType = text; path = TutorialToken; sourceTree = "<group>"; };
-		C7E764562125E8C000867DA4 /* listdir.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = listdir.command; sourceTree = "<group>"; };
 		C7E76458212610DA00867DA4 /* TruffleInit.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = TruffleInit.command; sourceTree = "<group>"; };
 		C7E7645A21262D1800867DA4 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		C7E7645C212675AF00867DA4 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -104,6 +103,7 @@
 		C7E76466212937F100867DA4 /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
 		C7E76468212D3D0400867DA4 /* TutorialToken.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = TutorialToken.sol; sourceTree = "<group>"; };
 		C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = 2_deploy_contracts.js; sourceTree = "<group>"; };
+		C7E7646C212E28F200867DA4 /* TruffleRun.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = TruffleRun.command; sourceTree = "<group>"; };
 		C7F0B973210DACCB005A8FE2 /* SCE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F0B976210DACCB005A8FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7F0B978210DACCB005A8FE2 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -205,8 +205,8 @@
 				C7E764412122AC2100867DA4 /* ContractTemplate.swift */,
 				C7E764432122B0CA00867DA4 /* Templates.json */,
 				C7E764452123539100867DA4 /* Template.storyboard */,
-				C7E764562125E8C000867DA4 /* listdir.command */,
 				C7E76458212610DA00867DA4 /* TruffleInit.command */,
+				C7E7646C212E28F200867DA4 /* TruffleRun.command */,
 				C7E764492124DCE100867DA4 /* TruffleInit */,
 				C7E7644B2124E06700867DA4 /* EmbarkInit */,
 				C7E764542125322700867DA4 /* TutorialToken */,
@@ -483,7 +483,6 @@
 				C7E764502124E10600867DA4 /* EmbarkTemplate.sol in Resources */,
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
 				C7E764442122B0CA00867DA4 /* Templates.json in Resources */,
-				C7E764572125E8C000867DA4 /* listdir.command in Resources */,
 				C7E764462123539100867DA4 /* Template.storyboard in Resources */,
 				C7E7644E2124E0EB00867DA4 /* TruffleTemplate.sol in Resources */,
 				C7E76459212610DA00867DA4 /* TruffleInit.command in Resources */,
@@ -491,6 +490,7 @@
 				C7E76469212D3D0400867DA4 /* TutorialToken.sol in Resources */,
 				C7E7644C2124E06700867DA4 /* EmbarkInit in Resources */,
 				C7F0B9A82112945F005A8FE2 /* Main.storyboard in Resources */,
+				C7E7646D212E28F300867DA4 /* TruffleRun.command in Resources */,
 				C7E764552125322700867DA4 /* TutorialToken in Resources */,
 				C7E764532124FA1300867DA4 /* Setup in Resources */,
 				C7E7644A2124DCE100867DA4 /* TruffleInit in Resources */,

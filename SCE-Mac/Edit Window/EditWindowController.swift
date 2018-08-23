@@ -11,6 +11,9 @@ import SavannaKit
 
 class EditWindowController: NSWindowController {
     
+    @IBOutlet weak var runButton: NSToolbarItem!
+    
+    var script: ScriptTask? = nil
     var editorURL: URL? = nil
     
     var project: Project? = nil {
@@ -46,7 +49,7 @@ class EditWindowController: NSWindowController {
     
     /// Sets console vc text. Called by PreparingViewController
     func setConsole(_ string: String) {
-        consoleTextView.string = string
+        consoleTextView.string = consoleTextView.string + "\n" + string
         
         let range = NSRange(location:consoleTextView.string.count,length:0)
         consoleTextView.scrollRangeToVisible(range)
@@ -69,7 +72,7 @@ class EditWindowController: NSWindowController {
             return
         }
         do {
-            try editView.text.write(to: editorURL, atomically: true, encoding: .utf32)
+            try editView.text.write(to: editorURL, atomically: true, encoding: .utf8)
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
@@ -77,11 +80,31 @@ class EditWindowController: NSWindowController {
     }
 
     @IBAction func runButtonClicked(_ sender: Any) {
+
+        guard let project = project else { return }
+        saveEditorFile()
+        script?.terminate()
         
-//        guard let vc = contentViewController as? SplitViewController else {
-//            exit(1)
-//        }
-//        vc.runCommand("ls")
+        (sender as! NSButton).isEnabled = false
+        do {
+            script = try ScriptTask.run(project: project, output: { output in
+                self.setConsole(output)
+            }) {
+                (sender as! NSButton).isEnabled = true
+                //            open Safari http://127.0.0.1:7545
+            }
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
+            (sender as! NSButton).isEnabled = true
+        }
+
     }
 
+    @IBAction func pauseButtonClicked(_ sender: Any) {
+        script?.terminate()
+        script = nil
+        setConsole("Cancelled.")
+        runButton.isEnabled = true
+    }
 }
