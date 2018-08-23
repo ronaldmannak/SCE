@@ -101,6 +101,13 @@ extension ScriptTask {
         return task
     }
     
+    static func webserver(project: Project, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
+        // TODO: Switch truffle vs Embark
+        let task = try ScriptTask(script: "TruffleWebserver", arguments: [project.workDirectory.path], output: output, finished: finished)
+        task.run()
+        return task
+    }
+    
     //    static func truffleInit(path: URL, projectname: String, templatename: String, output: @escaping (String)->Void, finished: @escaping () -> Void) -> ScriptTask {
     //        //        let task = ScriptTask(script: "TruffleInit", arguments: [""], path: path, output: output, finished: finished)
     //        let task = ScriptTask(script: "listdir", arguments: [""], path: path, output: output, finished: finished)

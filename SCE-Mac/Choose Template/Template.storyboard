@@ -339,6 +339,14 @@ Gw
             </objects>
             <point key="canvasLocation" x="75" y="842"/>
         </scene>
+        <!--Preferences-->
+        <scene sceneID="bX9-l5-mU5">
+            <objects>
+                <controllerPlaceholder storyboardName="Preferences" id="Wx0-gu-5Zn" sceneMemberID="viewController"/>
+                <customObject id="eKR-MX-90d" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="466" y="138"/>
+        </scene>
         <!--Application-->
         <scene sceneID="YrG-VZ-lNw">
             <objects>
@@ -353,7 +361,11 @@ Gw
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="cbM-O9-wNO"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="Tjv-84-KfU"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="Tjv-84-KfU">
+                                            <connections>
+                                                <segue destination="Wx0-gu-5Zn" kind="show" id="P8g-yq-Qbj"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="7WF-nk-HeJ"/>
                                         <menuItem title="Services" id="CGZ-6c-pku">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -721,7 +733,7 @@ Gw
                 <customObject id="dgL-fk-yN1" customClass="AppDelegate" customModule="SCE_Mac" customModuleProvider="target"/>
                 <customObject id="ebc-gs-e4u" customClass="NSFontManager"/>
             </objects>
-            <point key="canvasLocation" x="63" y="570"/>
+            <point key="canvasLocation" x="75" y="405"/>
         </scene>
     </scenes>
 </document>

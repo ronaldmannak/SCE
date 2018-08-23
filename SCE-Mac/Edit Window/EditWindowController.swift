@@ -14,6 +14,8 @@ class EditWindowController: NSWindowController {
     @IBOutlet weak var runButton: NSToolbarItem!
     
     var script: ScriptTask? = nil
+    var webserver: ScriptTask? = nil
+    
     var editorURL: URL? = nil
     
     var project: Project? = nil {
@@ -80,23 +82,22 @@ class EditWindowController: NSWindowController {
     }
 
     @IBAction func runButtonClicked(_ sender: Any) {
-
-        guard let project = project else { return }
+        
+        guard let project = project, let sender = sender as? NSButton else { return }
         saveEditorFile()
         script?.terminate()
         
-        (sender as! NSButton).isEnabled = false
+        sender.isEnabled = false
         do {
             script = try ScriptTask.run(project: project, output: { output in
                 self.setConsole(output)
             }) {
-                (sender as! NSButton).isEnabled = true
-                //            open Safari http://127.0.0.1:7545
+                sender.isEnabled = true
             }
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
-            (sender as! NSButton).isEnabled = true
+            sender.isEnabled = true
         }
 
     }
@@ -107,4 +108,27 @@ class EditWindowController: NSWindowController {
         setConsole("Cancelled.")
         runButton.isEnabled = true
     }
+    
+    @IBAction func webButtonClicked(_ sender: Any) {
+        
+        guard let project = project, let sender = sender as? NSButton else { return }
+        
+        if let webserver = webserver { webserver.terminate() }
+        
+        if sender.state == .on {
+//            sender.highlight(true)
+            do {
+                webserver = try ScriptTask.webserver(project: project, output: { output in
+                    self.setConsole(output)
+                }) {
+                    // finish
+                }
+            } catch {
+//                sender.highlight(false)
+                let alert = NSAlert(error: error)
+                alert.runModal()
+            }
+        }
+    }
+    
 }

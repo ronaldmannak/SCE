@@ -1,6 +1,0 @@
-
-
-mkdir oz-workspace
-cd oz-workspace
-truffle unbox tutorialtoken
-npm install openzeppelin-solidity
