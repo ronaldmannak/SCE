@@ -23,6 +23,7 @@
                     </connections>
                 </windowController>
                 <customObject id="59v-NU-jcs" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="8h5-15-ad2"/>
             </objects>
             <point key="canvasLocation" x="66" y="18"/>
         </scene>
@@ -66,17 +67,21 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Fy-cW-C0g">
-                                <rect key="frame" x="45" y="226" width="280" height="18"/>
+                                <rect key="frame" x="18" y="264" width="280" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Show Choose Template window on startup" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yHL-g2-w47">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <binding destination="rg4-vh-TpV" name="value" keyPath="values.ShowChooseTemplate" id="AI7-Q5-E2t"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
                 </viewController>
                 <customObject id="MlW-BO-6Al" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="rg4-vh-TpV"/>
             </objects>
             <point key="canvasLocation" x="736" y="398"/>
         </scene>
