@@ -1,0 +1,107 @@
+[
+  {
+    "category" : "Boxes",
+    "templates" : [
+      {
+        "name" : "TutorialToken",
+        "imageName" : "Box",
+        "erc" : ""
+      },
+      {
+        "name" : "",
+        "imageName" : "",
+        "erc" : ""
+      }
+    ]
+  },
+  {
+    "category" : "Token",
+    "templates" : [
+      {
+        "name" : "",
+        "imageName" : "",
+        "erc" : ""
+      }
+    ]
+  },
+  {
+    "category" : "Games",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "imageName" : "",
+        "erc" : "ERC-721"
+      }
+    ]
+  },
+  {
+    "category" : "ICO/Crowdsale",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "imageName" : "",
+        "erc" : "ERC-721"
+      }
+    ]
+  },
+  {
+    "category" : "Payment",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "imageName" : "",
+        "erc" : "ERC-721"
+      }
+    ]
+  },
+  {
+    "category" : "Ownership",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "imageName" : "",
+        "erc" : "ERC-721"
+      }
+    ]
+  },
+  {
+    "category" : "Mocks",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "imageName" : "",
+        "erc" : "ERC-721"
+      }
+    ]
+  },
+  {
+    "category" : "Lifecycle",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "imageName" : "",
+        "erc" : "ERC-721"
+      }
+    ]
+  },
+  {
+    "category" : "Access",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "imageName" : "",
+        "erc" : "ERC-721"
+      }
+    ]
+  },
+  {
+    "category" : "Examples",
+    "templates" : [
+      {
+        "name" : "Non-fungible Token",
+        "imageName" : "",
+        "erc" : "ERC-721"
+      }
+    ]
+  }
+]

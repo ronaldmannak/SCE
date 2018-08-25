@@ -16,25 +16,35 @@ class ChooseTemplateViewController: NSViewController {
     @IBOutlet weak var template: NSCollectionView!
     
     /// Project to be created
+    var categories = [ContractCategory]()
     var projectCreator: ProjectCreator? = nil
-    
-    let categories = ["    All", "    Token", "    Games", "    ICO/Crowdsale", "    Payment", "    Ownership", "    Mocks", "    Lifecycle", "    Access", "    Examples"]
-    let contracts = [
-        ["ERC-20 Basic token", "ERC-721 ", "ERC gaming"], // Token
-        ["Payment 1", "Payment 2"],
-        ["Crowdsale 1", "Crowdsale 2", "Crowdsale 3"],
-        ["Ownership 1"],
-        ["Mocks 1", "Mocks 2", "Mocks 3"],
-        ["Lifecycle 1"],
-        ["Access 1"],
-        ["Example 1"],
-    ]
+    let allRowIndex = 0 // All categories
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
+        do {
+            categories = try loadCategory(filename: "EthereumTruffle")
+            print (category)
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
+        }
+        category.reloadData()
+        
         category.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
-        configureCollectionView()
+        configureTemplateView()
+    }
+    
+    /// filename without JSON extension
+    func loadCategory(filename: String) throws -> [ContractCategory] {
+        guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
+            throw(EditorError.fileNotFound(filename))
+        }
+        let jsonData = try Data(contentsOf: url)
+        let decoder = JSONDecoder()
+        let category = try decoder.decode([ContractCategory].self, from: jsonData)
+        return category
     }
     
     @IBAction func ChooseClicked(_ sender: Any) {
@@ -93,24 +103,25 @@ class ChooseTemplateViewController: NSViewController {
 
 extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
     
-    fileprivate func configureCollectionView() {
+    fileprivate func configureTemplateView() {
         view.wantsLayer = true
         let nib = NSNib(nibNamed: NSNib.Name(rawValue: "TemplateCollectionViewItem"), bundle: nil)
         template.register(nib, forItemWithIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"))
     }
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        if category.selectedRow == 0 {
-            return categories.count - 1 // All categories, except "All"
+        if category.selectedRow == allRowIndex {
+            return categories.count // All
         } else {
-            return 1
+            return 1 // Show only selected category
         }
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        if category.selectedRow == 0 {
+        if category.selectedRow == allRowIndex {
+            return categories[section].templates?.count ?? 0
         }
-        return 2
+        return categories[category.selectedRow - 1].templates?.count ?? 0
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
@@ -123,17 +134,19 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         print(indexPaths)
     }
+    
     // header?
 }
 
 extension ChooseTemplateViewController: NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return categories.count
+        return categories.count + 1 // all categories plus "All"
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        return categories[row]
+        if row == allRowIndex { return "    All" }
+        return "    " + categories[row - 1].category
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 struct ContractPlatform: Codable {
     
@@ -31,15 +32,24 @@ struct ContractPlatform: Codable {
     let command: String         // E.g. init (%..)
 }
 
+
 struct ContractCategory: Codable {
-    let name: String
-    let templates: [ContractTemplate]
+    let category: String
+    let templates: [ContractTemplate]?
 }
 
 struct ContractTemplate: Codable {
     
-    let name:String         // E.g. "Basic Token"
-    let standard: String?   // E.g. ERC-20
-    let filename: String
+    let name: String         // E.g. "Basic Token"
+    let imageName: String
+    var image: NSImage {
+        return NSImage(named: NSImage.Name(rawValue: imageName)) ?? NSImage()
+    }
+//    let standard: String?   // E.g. ERC-20
+//    let filename: String
     // filename or name used to create the template in Zeppelin
+}
+
+extension ContractTemplate {
+    
 }

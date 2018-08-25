@@ -16,11 +16,11 @@ class PreferencesWindowController: NSWindowController, NSWindowDelegate {
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     }
     
-    func windowShouldClose(_ sender: NSWindow) -> Bool {
-        
-        // Hide the window instead of closing
-        window?.orderOut(sender)
-        return false
-    }
+//    func windowShouldClose(_ sender: NSWindow) -> Bool {
+//        
+//        // Hide the window instead of closing
+//        window?.orderOut(sender)
+//        return false
+//    }
 
 }

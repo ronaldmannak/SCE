@@ -8,7 +8,7 @@
         <!--Window Controller-->
         <scene sceneID="isR-qF-tjm">
             <objects>
-                <windowController id="Kv4-84-Of6" customClass="PreferencesWindowController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="Kv4-84-Of6" customClass="PreferencesWindowController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="eY3-ou-Bpo">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -33,7 +33,8 @@
                 <tabViewController selectedTabViewItemIndex="3" tabStyle="toolbar" id="jUD-my-mkU" userLabel="Preferences" customClass="Prefer" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" image="NSPreferencesGeneral" id="td5-Ca-Ys4"/>
-                        <tabViewItem identifier="" image="NSUser" id="MtN-da-NNS"/>
+                        <tabViewItem label="Fonts &amp; Colors" image="NSColorPanel" id="xj4-ZA-3uX"/>
+                        <tabViewItem label="Key Bindings" identifier="" image="NSComputer" id="MtN-da-NNS"/>
                         <tabViewItem label="Locations" image="NSInfo" id="wZj-lz-TD8"/>
                         <tabViewItem image="NSAdvanced" id="9OC-P3-mEv"/>
                     </tabViewItems>
@@ -47,8 +48,8 @@
                         </connections>
                     </tabView>
                     <connections>
-                        <outlet property="tabView" destination="nsW-ha-kkk" id="9T5-qf-olc"/>
                         <segue destination="MN8-Cd-yKJ" kind="relationship" relationship="tabItems" id="NXh-zd-5pl"/>
+                        <segue destination="uPL-Mh-7SV" kind="relationship" relationship="tabItems" id="RgP-Vs-0CI"/>
                         <segue destination="gzD-cT-HqX" kind="relationship" relationship="tabItems" id="TaF-uI-JZq"/>
                         <segue destination="HtK-pI-eTL" kind="relationship" relationship="tabItems" id="RBd-gM-nbC"/>
                         <segue destination="Ew9-62-UtP" kind="relationship" relationship="tabItems" id="4lp-vo-cMX"/>
@@ -74,7 +75,11 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <binding destination="rg4-vh-TpV" name="value" keyPath="values.ShowChooseTemplate" id="AI7-Q5-E2t"/>
+                                    <binding destination="rg4-vh-TpV" name="value" keyPath="values.ShowChooseTemplate" id="x3K-eh-nff">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSIsNil</string>
+                                        </dictionary>
+                                    </binding>
                                 </connections>
                             </button>
                         </subviews>
@@ -220,6 +225,19 @@
             </objects>
             <point key="canvasLocation" x="736" y="1590"/>
         </scene>
+        <!--Fonts & Colors-->
+        <scene sceneID="FPI-NQ-cQg">
+            <objects>
+                <viewController title="Fonts &amp; Colors" id="uPL-Mh-7SV" customClass="PreferencesViewController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="ay9-4s-phX">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="aw5-MK-T6j" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="736" y="2022"/>
+        </scene>
         <!--Preferences Tab View Controller-->
         <scene sceneID="WM2-RK-cQc">
             <objects>
@@ -247,7 +265,7 @@
                 </tabViewController>
                 <customObject id="r03-1v-Uif" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="736" y="1173"/>
+            <point key="canvasLocation" x="736" y="1186"/>
         </scene>
         <!--General-->
         <scene sceneID="uJx-iA-LOY">
@@ -521,8 +539,9 @@
     </scenes>
     <resources>
         <image name="NSAdvanced" width="32" height="32"/>
+        <image name="NSColorPanel" width="32" height="32"/>
+        <image name="NSComputer" width="32" height="32"/>
         <image name="NSInfo" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
-        <image name="NSUser" width="32" height="32"/>
     </resources>
 </document>
