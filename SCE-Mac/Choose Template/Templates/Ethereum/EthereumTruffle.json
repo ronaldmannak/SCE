@@ -54,7 +54,7 @@
     "templates" : [
       {
         "name" : "",
-        "imageName" : "",
+        "imageName" : "Doc",
         "standard" : ""
       }
     ]
@@ -64,8 +64,13 @@
     "templates" : [
       {
         "name" : "Non-fungible Token",
-        "imageName" : "",
+        "imageName" : "Doc",
         "standard" : "ERC-721"
+      },
+      {
+        "name" : "Crypto Item",
+        "imageName" : "Doc",
+        "standard" : "ERC-1155"
       }
     ]
   },

@@ -44,7 +44,8 @@ struct ContractTemplate: Codable {
     let standard: String         // E.g. ERC-20
     let imageName: String
     var image: NSImage {
-        return NSImage(named: NSImage.Name(rawValue: imageName)) ?? NSImage()
+        let name = imageName.isEmpty ? "Doc" : imageName
+        return NSImage(named: NSImage.Name(rawValue: name)) ?? NSImage()
     }
 //    let standard: String?   // E.g. ERC-20
 //    let filename: String

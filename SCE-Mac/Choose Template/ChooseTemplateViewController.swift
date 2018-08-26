@@ -137,9 +137,11 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
         } else {
             item = categories[category.selectedRow - 1].templates![0]
         }
-        print(item)
-        cell.imageView?.image = NSImage(named: NSImage.Name(rawValue: "Doc")) // item.image
-        cell.textField?.stringValue = item.name
+        
+        cell.imageView?.image = item.image
+        
+        print (cell.textField)
+        cell.textField?.stringValue = "TEST" //item.name
         cell.erc.stringValue = item.standard + " \(indexPath.section):\(indexPath.item)"
         return cell
 
