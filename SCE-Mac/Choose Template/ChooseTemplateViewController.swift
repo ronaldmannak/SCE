@@ -135,14 +135,14 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
         if category.selectedRow == allRowIndex {
             item = categories[indexPath.section].templates![indexPath.item]
         } else {
-            item = categories[category.selectedRow - 1].templates![0]
+            item = categories[category.selectedRow - 1].templates![indexPath.item]
         }
         
         cell.imageView?.image = item.image
         
         print (cell.textField)
-        cell.textField?.stringValue = "TEST" //item.name
-        cell.erc.stringValue = item.standard + " \(indexPath.section):\(indexPath.item)"
+        cell.textField?.stringValue = item.name
+        cell.erc.stringValue = item.standard
         return cell
 
 //        return template.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"), for: indexPath)
