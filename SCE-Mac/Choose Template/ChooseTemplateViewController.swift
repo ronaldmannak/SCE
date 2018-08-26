@@ -135,8 +135,7 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
         if category.selectedRow == allRowIndex {
             item = categories[indexPath.section].templates![indexPath.item]
         } else {
-            fatalError()
-            item = categories[0].templates![0]
+            item = categories[category.selectedRow - 1].templates![0]
         }
         print(item)
         cell.imageView?.image = NSImage(named: NSImage.Name(rawValue: "Doc")) // item.image
