@@ -29,25 +29,32 @@ struct ContractPlatform: Codable {
     let platform: Platform
     var languages: [String] { return platform.languages }
     let categories: [ContractCategory]?
-    let command: String         // E.g. init (%..)
 }
 
 
 struct ContractCategory: Codable {
     let category: String
+    let command: String         // E.g. init (%..)
     let templates: [ContractTemplate]?
 }
 
 struct ContractTemplate: Codable {
     
-    let name: String            // E.g. "Basic Token"
-    let standard: String         // E.g. ERC-20
+    /// E.g. "Basic Token"
+    let name: String
+    
+    /// E.g. "basictoken" (name used by Truffle)
+    let templateName: String
+    
+    /// E.g. ERC-20
+    let standard: String
+    
     let imageName: String
     var image: NSImage {
         let name = imageName.isEmpty ? "Doc" : imageName
         return NSImage(named: NSImage.Name(rawValue: name)) ?? NSImage()
     }
-//    let standard: String?   // E.g. ERC-20
+
 //    let filename: String
     // filename or name used to create the template in Zeppelin
 }

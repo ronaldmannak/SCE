@@ -1,49 +1,59 @@
 [
   {
     "category" : "Boxes",
+    "command" : "TruffleInit",
     "templates" : [
       {
-        "name" : "TutorialToken",
+        "name" : "Tutorial Token",
+        "templateName" : "tutorialtoken",
         "imageName" : "Box",
         "standard" : "ERC-20"
       },
       {
         "name" : "Drizzle",
+        "templateName" : "drizzle",
         "imageName" : "Box",
         "standard" : ""
       },
       {
         "name" : "React",
+        "templateName" : "react",
         "imageName" : "Box",
         "standard" : ""
       },
       {
-        "name" : "React-Auth",
+        "name" : "React Auth",
+        "templateName" : "react-auth",
         "imageName" : "Box",
         "standard" : ""
       },
       {
-        "name" : "React-Uport",
+        "name" : "React Uport",
+        "templateName" : "react-uport",
         "imageName" : "Box",
         "standard" : ""
       },
       {
-        "name" : "Pet-shop",
+        "name" : "Petshop",
+        "templateName" : "pet-shop",
         "imageName" : "Box",
         "standard" : ""
       },
       {
         "name" : "Blueprint",
+        "templateName" : "",
         "imageName" : "Box",
         "standard" : ""
       },
       {
         "name" : "Metacoin",
+        "templateName" : "",
         "imageName" : "Box",
         "standard" : "ERC-20"
       },
       {
         "name" : "Webpack",
+        "templateName" : "",
         "imageName" : "Box",
         "standard" : ""
       }
@@ -51,9 +61,11 @@
   },
   {
     "category" : "Token",
+    "command" : "",
     "templates" : [
       {
         "name" : "",
+        "templateName" : "",
         "imageName" : "Doc",
         "standard" : ""
       }
@@ -61,14 +73,17 @@
   },
   {
     "category" : "Games",
+    "command" : "",
     "templates" : [
       {
         "name" : "Non-fungible Token",
+        "templateName" : "",
         "imageName" : "Doc",
         "standard" : "ERC-721"
       },
       {
         "name" : "Crypto Item",
+        "templateName" : "",
         "imageName" : "Doc",
         "standard" : "ERC-1155"
       }
@@ -76,9 +91,11 @@
   },
   {
     "category" : "ICO/Crowdsale",
+    "command" : "",
     "templates" : [
       {
         "name" : "Non-fungible Token",
+        "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721"
       }
@@ -86,9 +103,11 @@
   },
   {
     "category" : "Payment",
+    "command" : "",
     "templates" : [
       {
         "name" : "Non-fungible Token",
+        "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721"
       }
@@ -96,9 +115,11 @@
   },
   {
     "category" : "Ownership",
+    "command" : "",
     "templates" : [
       {
         "name" : "Non-fungible Token",
+        "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721"
       }
@@ -106,9 +127,11 @@
   },
   {
     "category" : "Mocks",
+    "command" : "",
     "templates" : [
       {
         "name" : "Non-fungible Token",
+        "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721"
       }
@@ -116,9 +139,11 @@
   },
   {
     "category" : "Lifecycle",
+    "command" : "",
     "templates" : [
       {
         "name" : "Non-fungible Token",
+        "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721"
       }
@@ -126,9 +151,11 @@
   },
   {
     "category" : "Access",
+    "command" : "",
     "templates" : [
       {
         "name" : "Non-fungible Token",
+        "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721"
       }
@@ -136,9 +163,11 @@
   },
   {
     "category" : "Examples",
+    "command" : "",
     "templates" : [
       {
         "name" : "Non-fungible Token",
+        "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721"
       }

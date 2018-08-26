@@ -66,11 +66,13 @@ class ChooseTemplateViewController: NSViewController {
             let projectName = directory.lastPathComponent
             let baseDirectory = directory.deletingLastPathComponent()
             
-            guard let selectedIndex = self.template.selectionIndexes.first else { return }
-//            let selectedTemplate = itemAt(selectedIndex)
+            guard let selectedIndex = self.template.selectionIndexPaths.first else { return }
+            let selectedTemplate = self.itemAt(selectedIndex)
+            let templateName = selectedTemplate.templateName.isEmpty ? selectedTemplate.name : selectedTemplate.templateName
+            let selectedCategory = self.categories[selectedIndex.section]
             
             let project = Project(name: projectName, baseDirectory: baseDirectory)
-            self.projectCreator = ProjectCreator(templateName: "tutorialtoken", installScript: "TruffleInit", project: project)
+            self.projectCreator = ProjectCreator(templateName: templateName, installScript: selectedCategory.command, project: project)
             
             let id = NSStoryboardSegue.Identifier(rawValue: "PreparingSegue")
             self.performSegue(withIdentifier: id, sender: self)
