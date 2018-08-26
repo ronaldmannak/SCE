@@ -12,11 +12,20 @@ import Cocoa
 
 class TemplateCollectionViewItem: NSCollectionViewItem {
   
+    override var isSelected: Bool {
+        didSet {
+            super.isSelected = isSelected
+            view.layer?.backgroundColor = isSelected == true ? NSColor.lightGray.cgColor : NSColor.white.cgColor
+            print("SELECTED")
+        }
+    }
+    
     @IBOutlet weak var erc: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+//        view.layer?.backgroundColor = isSelected == true ? NSColor.lightGray.cgColor : NSColor.white.cgColor
     }
+    
     
 }

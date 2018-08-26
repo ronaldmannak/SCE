@@ -148,13 +148,12 @@ Gw
                                     <rect key="frame" x="1" y="1" width="539" height="353"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView id="BXo-12-RnO">
+                                        <collectionView selectable="YES" allowsEmptySelection="NO" id="BXo-12-RnO">
                                             <rect key="frame" x="0.0" y="0.0" width="539" height="158"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="lob-p2-vM1">
+                                            <collectionViewFlowLayout key="collectionViewLayout" id="lob-p2-vM1">
                                                 <size key="itemSize" width="150" height="150"/>
                                                 <size key="headerReferenceSize" width="100" height="4"/>
-                                                <edgeInsets key="sectionInset" left="10" right="0.0" top="0.0" bottom="0.0"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <connections>

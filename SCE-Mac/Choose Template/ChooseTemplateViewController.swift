@@ -30,10 +30,15 @@ class ChooseTemplateViewController: NSViewController {
             let alert = NSAlert(error: error)
             alert.runModal()
         }
-        category.reloadData()
         
-        category.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
         configureTemplateView()
+        category.reloadData()
+        category.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
+        template.reloadData()
+        // Without a delay, the first cell gets selected, but the background isn't highlighted
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.template.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
+        }
     }
     
     /// filename without JSON extension
@@ -50,16 +55,19 @@ class ChooseTemplateViewController: NSViewController {
     @IBAction func ChooseClicked(_ sender: Any) {
         
         let savePanel = NSSavePanel()
-
         savePanel.beginSheetModal(for: view.window!) { (result) in
 
-            guard result == .OK, let directory = savePanel.url else {  //directory.hasDirectoryPath == true else {
-                assertionFailure()
-                return
-            }
+            guard result == .OK, let directory = savePanel.url else { return }
             
+            // Temporary: do not allow overwriting existing files or directories
+            let fileManager = FileManager.default
+            guard fileManager.fileExists(atPath: directory.path) == false else { return }
+
             let projectName = directory.lastPathComponent
             let baseDirectory = directory.deletingLastPathComponent()
+            
+            guard let selectedIndex = self.template.selectionIndexes.first else { return }
+//            let selectedTemplate = itemAt(selectedIndex)
             
             let project = Project(name: projectName, baseDirectory: baseDirectory)
             self.projectCreator = ProjectCreator(templateName: "tutorialtoken", installScript: "TruffleInit", project: project)
@@ -103,6 +111,14 @@ class ChooseTemplateViewController: NSViewController {
 
 extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
     
+    fileprivate func itemAt(_ indexPath: IndexPath) -> ContractTemplate {
+        if category.selectedRow == allRowIndex {
+            return categories[indexPath.section].templates![indexPath.item]
+        } else {
+            return categories[category.selectedRow - 1].templates![indexPath.item]
+        }
+    }
+    
     fileprivate func configureTemplateView() {
         view.wantsLayer = true
         let nib = NSNib(nibNamed: NSNib.Name(rawValue: "TemplateCollectionViewItem"), bundle: nil)
@@ -130,22 +146,13 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
             assertionFailure()
             return NSCollectionViewItem()
         }
-        
-        let item: ContractTemplate
-        if category.selectedRow == allRowIndex {
-            item = categories[indexPath.section].templates![indexPath.item]
-        } else {
-            item = categories[category.selectedRow - 1].templates![indexPath.item]
-        }
+
+        let item = itemAt(indexPath)
         
         cell.imageView?.image = item.image
-        
-        print (cell.textField)
         cell.textField?.stringValue = item.name
         cell.erc.stringValue = item.standard
         return cell
-
-//        return template.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"), for: indexPath)
     }
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
@@ -184,5 +191,6 @@ extension ChooseTemplateViewController: NSTableViewDataSource {
 extension ChooseTemplateViewController: NSTableViewDelegate {
     func tableViewSelectionIsChanging(_ notification: Notification) {
         template.reloadData()
+        template.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
     }
 }

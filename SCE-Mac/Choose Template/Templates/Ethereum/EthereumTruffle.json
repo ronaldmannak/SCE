@@ -5,7 +5,7 @@
       {
         "name" : "TutorialToken",
         "imageName" : "Box",
-        "standard" : "ERC-21"
+        "standard" : "ERC-20"
       },
       {
         "name" : "Drizzle",
@@ -14,37 +14,37 @@
       },
       {
         "name" : "React",
-        "imageName" : "",
+        "imageName" : "Box",
         "standard" : ""
       },
       {
         "name" : "React-Auth",
-        "imageName" : "",
+        "imageName" : "Box",
         "standard" : ""
       },
       {
         "name" : "React-Uport",
-        "imageName" : "",
+        "imageName" : "Box",
         "standard" : ""
       },
       {
         "name" : "Pet-shop",
-        "imageName" : "",
+        "imageName" : "Box",
         "standard" : ""
       },
       {
         "name" : "Blueprint",
-        "imageName" : "",
+        "imageName" : "Box",
         "standard" : ""
       },
       {
         "name" : "Metacoin",
-        "imageName" : "",
-        "standard" : ""
+        "imageName" : "Box",
+        "standard" : "ERC-20"
       },
       {
         "name" : "Webpack",
-        "imageName" : "",
+        "imageName" : "Box",
         "standard" : ""
       }
     ]
