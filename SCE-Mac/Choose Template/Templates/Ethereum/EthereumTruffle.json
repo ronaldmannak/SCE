@@ -5,12 +5,47 @@
       {
         "name" : "TutorialToken",
         "imageName" : "Box",
-        "erc" : ""
+        "standard" : "ERC-21"
       },
       {
-        "name" : "",
+        "name" : "Drizzle",
+        "imageName" : "Box",
+        "standard" : ""
+      },
+      {
+        "name" : "React",
         "imageName" : "",
-        "erc" : ""
+        "standard" : ""
+      },
+      {
+        "name" : "React-Auth",
+        "imageName" : "",
+        "standard" : ""
+      },
+      {
+        "name" : "React-Uport",
+        "imageName" : "",
+        "standard" : ""
+      },
+      {
+        "name" : "Pet-shop",
+        "imageName" : "",
+        "standard" : ""
+      },
+      {
+        "name" : "Blueprint",
+        "imageName" : "",
+        "standard" : ""
+      },
+      {
+        "name" : "Metacoin",
+        "imageName" : "",
+        "standard" : ""
+      },
+      {
+        "name" : "Webpack",
+        "imageName" : "",
+        "standard" : ""
       }
     ]
   },
@@ -20,7 +55,7 @@
       {
         "name" : "",
         "imageName" : "",
-        "erc" : ""
+        "standard" : ""
       }
     ]
   },
@@ -30,7 +65,7 @@
       {
         "name" : "Non-fungible Token",
         "imageName" : "",
-        "erc" : "ERC-721"
+        "standard" : "ERC-721"
       }
     ]
   },
@@ -40,7 +75,7 @@
       {
         "name" : "Non-fungible Token",
         "imageName" : "",
-        "erc" : "ERC-721"
+        "standard" : "ERC-721"
       }
     ]
   },
@@ -50,7 +85,7 @@
       {
         "name" : "Non-fungible Token",
         "imageName" : "",
-        "erc" : "ERC-721"
+        "standard" : "ERC-721"
       }
     ]
   },
@@ -60,7 +95,7 @@
       {
         "name" : "Non-fungible Token",
         "imageName" : "",
-        "erc" : "ERC-721"
+        "standard" : "ERC-721"
       }
     ]
   },
@@ -70,7 +105,7 @@
       {
         "name" : "Non-fungible Token",
         "imageName" : "",
-        "erc" : "ERC-721"
+        "standard" : "ERC-721"
       }
     ]
   },
@@ -80,7 +115,7 @@
       {
         "name" : "Non-fungible Token",
         "imageName" : "",
-        "erc" : "ERC-721"
+        "standard" : "ERC-721"
       }
     ]
   },
@@ -90,7 +125,7 @@
       {
         "name" : "Non-fungible Token",
         "imageName" : "",
-        "erc" : "ERC-721"
+        "standard" : "ERC-721"
       }
     ]
   },
@@ -100,7 +135,7 @@
       {
         "name" : "Non-fungible Token",
         "imageName" : "",
-        "erc" : "ERC-721"
+        "standard" : "ERC-721"
       }
     ]
   }

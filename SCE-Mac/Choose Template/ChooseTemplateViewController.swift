@@ -125,17 +125,47 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-//        if category.selectedRow == 0 {
-//        }
+        
+        guard let cell = template.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"), for: indexPath) as? TemplateCollectionViewItem else {
+            assertionFailure()
+            return NSCollectionViewItem()
+        }
+        
+        let item: ContractTemplate
+        if category.selectedRow == allRowIndex {
+            item = categories[indexPath.section].templates![indexPath.item]
+        } else {
+            fatalError()
+            item = categories[0].templates![0]
+        }
+        print(item)
+        cell.imageView?.image = NSImage(named: NSImage.Name(rawValue: "Doc")) // item.image
+        cell.textField?.stringValue = item.name
+        cell.erc.stringValue = item.standard + " \(indexPath.section):\(indexPath.item)"
+        return cell
 
-        return template.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"), for: indexPath)
+//        return template.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"), for: indexPath)
     }
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         print(indexPaths)
     }
     
-    // header?
+//    func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
+//        guard let header = template.makeSupplementaryView(ofKind: .sectionHeader, withIdentifier: NSUserInterfaceItemIdentifier("TemplateSectionHeader"), for: indexPath) as? TemplateSectionHeaderView else {
+//            assertionFailure()
+//            return NSCollectionView()
+//        }
+//        header.categoryNameTextField.stringValue = "TEST Header"
+//        return header
+//    }
+}
+
+extension ChooseTemplateViewController : NSCollectionViewDelegateFlowLayout {
+    
+//    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
+//        return category.selectedRow == allRowIndex ? NSSize.zero : NSSize(width: 1000, height: 40)
+//    }
 }
 
 extension ChooseTemplateViewController: NSTableViewDataSource {

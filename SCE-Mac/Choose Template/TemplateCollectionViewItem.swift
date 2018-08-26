@@ -13,7 +13,6 @@ import Cocoa
 class TemplateCollectionViewItem: NSCollectionViewItem {
   
     @IBOutlet weak var erc: NSTextField!
-    @IBOutlet weak var contractName: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()

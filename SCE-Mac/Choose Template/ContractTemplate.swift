@@ -40,7 +40,8 @@ struct ContractCategory: Codable {
 
 struct ContractTemplate: Codable {
     
-    let name: String         // E.g. "Basic Token"
+    let name: String            // E.g. "Basic Token"
+    let standard: String         // E.g. ERC-20
     let imageName: String
     var image: NSImage {
         return NSImage(named: NSImage.Name(rawValue: imageName)) ?? NSImage()
