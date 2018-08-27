@@ -17,63 +17,72 @@
             "filename" : "2_deploy_contracts.js",
             "destination" : "migrations"
           }
-        ]
+        ],
+        "openFile" : "contracts/TutorialToken.sol"
       },
       {
         "name" : "Drizzle",
         "templateName" : "drizzle",
         "imageName" : "Box",
         "standard" : "",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       },
       {
         "name" : "React",
         "templateName" : "react",
         "imageName" : "Box",
         "standard" : "",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       },
       {
         "name" : "React Auth",
         "templateName" : "react-auth",
         "imageName" : "Box",
         "standard" : "",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       },
       {
         "name" : "React Uport",
         "templateName" : "react-uport",
         "imageName" : "Box",
         "standard" : "",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       },
       {
         "name" : "Petshop",
         "templateName" : "pet-shop",
         "imageName" : "Box",
         "standard" : "",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       },
       {
         "name" : "Blueprint",
         "templateName" : "",
         "imageName" : "Box",
         "standard" : "",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       },
       {
         "name" : "Metacoin",
         "templateName" : "",
         "imageName" : "Box",
         "standard" : "ERC-20",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       },
       {
         "name" : "Webpack",
         "templateName" : "",
         "imageName" : "Box",
         "standard" : "",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       }
     ]
   },
@@ -86,7 +95,8 @@
         "templateName" : "",
         "imageName" : "Doc",
         "standard" : "",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       }
     ]
   },
@@ -99,14 +109,16 @@
         "templateName" : "",
         "imageName" : "Doc",
         "standard" : "ERC-721",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       },
       {
         "name" : "Crypto Item",
         "templateName" : "",
         "imageName" : "Doc",
         "standard" : "ERC-1155",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       }
     ]
   },
@@ -119,7 +131,8 @@
         "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       }
     ]
   },
@@ -132,7 +145,8 @@
         "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       }
     ]
   },
@@ -145,7 +159,8 @@
         "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       }
     ]
   },
@@ -158,7 +173,8 @@
         "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       }
     ]
   },
@@ -171,7 +187,8 @@
         "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       }
     ]
   },
@@ -184,7 +201,8 @@
         "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       }
     ]
   },
@@ -197,7 +215,8 @@
         "templateName" : "",
         "imageName" : "",
         "standard" : "ERC-721",
-        "copyFiles" : []
+        "copyFiles" : [],
+        "openFile" : ""
       }
     ]
   }

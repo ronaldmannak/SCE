@@ -52,6 +52,9 @@ struct ContractTemplate: Codable {
     /// Files to copy during instalation
     let copyFiles: [CopyFile]
     
+    /// File to open in editor by default. E.g. ["contracts", "TutorialToken.sol"]
+    let openFile: String?
+    
     let imageName: String
     var image: NSImage {
         let name = imageName.isEmpty ? "Doc" : imageName

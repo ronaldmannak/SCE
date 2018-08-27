@@ -20,7 +20,7 @@ struct Project: Codable {
         return baseDirectory.appendingPathComponent(name, isDirectory: true)        
     }
     
-    // last open file, cursor position, etc
+    var lastOpenFile: String?
 }
 
 class ProjectCreator: Codable {

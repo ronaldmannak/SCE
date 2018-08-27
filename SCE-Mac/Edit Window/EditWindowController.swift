@@ -23,7 +23,8 @@ class EditWindowController: NSWindowController {
             guard let project = project else { return }
             window?.title = project.name            
             do {
-            try fileBrowserViewController.load(url: project.workDirectory, projectName: project.name)
+                print(project.lastOpenFile)
+                try fileBrowserViewController.load(url: project.workDirectory, projectName: project.name, openFile: project.lastOpenFile)
             } catch {
                 let alert = NSAlert(error: error)
                 alert.runModal()

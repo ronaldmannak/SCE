@@ -70,7 +70,7 @@ class ChooseTemplateViewController: NSViewController {
             let templateName = selectedTemplate.templateName.isEmpty ? selectedTemplate.name : selectedTemplate.templateName
             let selectedCategory = self.categories[selectedIndex.section]
             
-            let project = Project(name: projectName, baseDirectory: baseDirectory)
+            let project = Project(name: projectName, baseDirectory: baseDirectory, lastOpenFile: selectedTemplate.openFile)
             self.projectCreator = ProjectCreator(templateName: templateName, installScript: selectedCategory.command, project: project, copyFiles: selectedTemplate.copyFiles)
             
             let id = NSStoryboardSegue.Identifier(rawValue: "PreparingSegue")

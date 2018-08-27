@@ -30,15 +30,23 @@ class FileBrowserViewController: NSViewController {
     }
     
     /// Called from EditWindowController
-    func load(url: URL, projectName: String) throws {
+    func load(url: URL, projectName: String, openFile: String? = nil) throws {
         root = try FileItem(url: url, projectName: projectName)
         fileView.reloadData()
-        fileView.expandItem(root)
-        fileView.expandItem(root!.children[3]) // TODO: fix. Hardcoding expand contracts directory
-//        let selectFileItem = root!.children[3].children[0]
-//        let index = fileView.childIndex(forItem: selectFileItem)
-//        print(index)
-        fileView.selectRowIndexes([6], byExtendingSelection: false)
+        
+        // Open last open file from project (or default file in a new project)
+        fileView.expandItem(root) // Always expand root
+        guard let openFile = openFile as NSString?, var root = self.root else { return }
+        let components = openFile.pathComponents
+        for component in components {
+            for item in root.children {
+                if component == item.localizedName {
+                    fileView.expandItem(item)
+                    fileView.selectRowIndexes([fileView.row(forItem: item)], byExtendingSelection: false)
+                    root = item
+                }
+            }
+        }
     }
 }
 
