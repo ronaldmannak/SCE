@@ -31,7 +31,6 @@ class PreparingViewController: NSViewController {
                     self.progressIndicator.increment(by: 1)
                     self.counter = self.counter + 1
                 }) {
-//                    print(self.counter)
                     self.progressIndicator.stopAnimation(self)
                     let id = NSStoryboardSegue.Identifier(rawValue: "EditWindow")
                     self.performSegue(withIdentifier: id, sender: self)
@@ -52,8 +51,7 @@ class PreparingViewController: NSViewController {
         projectCreator.scriptTask.terminate()
         view.window?.close()
     }
-    
-    
+
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         let editWindowController = (segue.destinationController as! EditWindowController)
         editWindowController.setConsole(textView.string)

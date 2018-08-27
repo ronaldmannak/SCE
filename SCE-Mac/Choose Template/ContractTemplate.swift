@@ -49,16 +49,12 @@ struct ContractTemplate: Codable {
     /// E.g. ERC-20
     let standard: String
     
+    /// Files to copy during instalation
+    let copyFiles: [CopyFile]
+    
     let imageName: String
     var image: NSImage {
         let name = imageName.isEmpty ? "Doc" : imageName
         return NSImage(named: NSImage.Name(rawValue: name)) ?? NSImage()
     }
-
-//    let filename: String
-    // filename or name used to create the template in Zeppelin
-}
-
-extension ContractTemplate {
-    
 }

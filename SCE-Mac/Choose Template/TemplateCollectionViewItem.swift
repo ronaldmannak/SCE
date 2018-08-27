@@ -16,7 +16,6 @@ class TemplateCollectionViewItem: NSCollectionViewItem {
         didSet {
             super.isSelected = isSelected
             view.layer?.backgroundColor = isSelected == true ? NSColor.lightGray.cgColor : NSColor.white.cgColor
-            print("SELECTED")
         }
     }
     

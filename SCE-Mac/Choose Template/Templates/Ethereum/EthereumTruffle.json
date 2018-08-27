@@ -7,55 +7,73 @@
         "name" : "Tutorial Token",
         "templateName" : "tutorialtoken",
         "imageName" : "Box",
-        "standard" : "ERC-20"
+        "standard" : "ERC-20",
+        "copyFiles" : [
+          {
+            "filename" : "TutorialToken.sol",
+            "destination" : "contracts"
+          },
+          {
+            "filename" : "2_deploy_contracts.js",
+            "destination" : "migrations"
+          }
+        ]
       },
       {
         "name" : "Drizzle",
         "templateName" : "drizzle",
         "imageName" : "Box",
-        "standard" : ""
+        "standard" : "",
+        "copyFiles" : []
       },
       {
         "name" : "React",
         "templateName" : "react",
         "imageName" : "Box",
-        "standard" : ""
+        "standard" : "",
+        "copyFiles" : []
       },
       {
         "name" : "React Auth",
         "templateName" : "react-auth",
         "imageName" : "Box",
-        "standard" : ""
+        "standard" : "",
+        "copyFiles" : []
       },
       {
         "name" : "React Uport",
         "templateName" : "react-uport",
         "imageName" : "Box",
-        "standard" : ""
+        "standard" : "",
+        "copyFiles" : []
       },
       {
         "name" : "Petshop",
         "templateName" : "pet-shop",
         "imageName" : "Box",
-        "standard" : ""
+        "standard" : "",
+        "copyFiles" : []
       },
       {
         "name" : "Blueprint",
         "templateName" : "",
         "imageName" : "Box",
-        "standard" : ""
+        "standard" : "",
+        "copyFiles" : []
       },
       {
         "name" : "Metacoin",
         "templateName" : "",
         "imageName" : "Box",
-        "standard" : "ERC-20"
+        "standard" : "ERC-20",
+        "copyFiles" : []
       },
       {
         "name" : "Webpack",
         "templateName" : "",
         "imageName" : "Box",
-        "standard" : ""
+        "standard" : "",
+        "copyFiles" : []
       }
     ]
   },
@@ -67,7 +85,8 @@
         "name" : "",
         "templateName" : "",
         "imageName" : "Doc",
-        "standard" : ""
+        "standard" : "",
+        "copyFiles" : []
       }
     ]
   },
@@ -79,13 +98,15 @@
         "name" : "Non-fungible Token",
         "templateName" : "",
         "imageName" : "Doc",
-        "standard" : "ERC-721"
+        "standard" : "ERC-721",
+        "copyFiles" : []
       },
       {
         "name" : "Crypto Item",
         "templateName" : "",
         "imageName" : "Doc",
-        "standard" : "ERC-1155"
+        "standard" : "ERC-1155",
+        "copyFiles" : []
       }
     ]
   },
@@ -97,7 +118,8 @@
         "name" : "Non-fungible Token",
         "templateName" : "",
         "imageName" : "",
-        "standard" : "ERC-721"
+        "standard" : "ERC-721",
+        "copyFiles" : []
       }
     ]
   },
@@ -109,7 +131,8 @@
         "name" : "Non-fungible Token",
         "templateName" : "",
         "imageName" : "",
-        "standard" : "ERC-721"
+        "standard" : "ERC-721",
+        "copyFiles" : []
       }
     ]
   },
@@ -121,7 +144,8 @@
         "name" : "Non-fungible Token",
         "templateName" : "",
         "imageName" : "",
-        "standard" : "ERC-721"
+        "standard" : "ERC-721",
+        "copyFiles" : []
       }
     ]
   },
@@ -133,7 +157,8 @@
         "name" : "Non-fungible Token",
         "templateName" : "",
         "imageName" : "",
-        "standard" : "ERC-721"
+        "standard" : "ERC-721",
+        "copyFiles" : []
       }
     ]
   },
@@ -145,7 +170,8 @@
         "name" : "Non-fungible Token",
         "templateName" : "",
         "imageName" : "",
-        "standard" : "ERC-721"
+        "standard" : "ERC-721",
+        "copyFiles" : []
       }
     ]
   },
@@ -157,7 +183,8 @@
         "name" : "Non-fungible Token",
         "templateName" : "",
         "imageName" : "",
-        "standard" : "ERC-721"
+        "standard" : "ERC-721",
+        "copyFiles" : []
       }
     ]
   },
@@ -169,7 +196,8 @@
         "name" : "Non-fungible Token",
         "templateName" : "",
         "imageName" : "",
-        "standard" : "ERC-721"
+        "standard" : "ERC-721",
+        "copyFiles" : []
       }
     ]
   }

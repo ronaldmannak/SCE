@@ -25,7 +25,6 @@ class ChooseTemplateViewController: NSViewController {
         
         do {
             categories = try loadCategory(filename: "EthereumTruffle")
-            print (category)
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
@@ -72,7 +71,7 @@ class ChooseTemplateViewController: NSViewController {
             let selectedCategory = self.categories[selectedIndex.section]
             
             let project = Project(name: projectName, baseDirectory: baseDirectory)
-            self.projectCreator = ProjectCreator(templateName: templateName, installScript: selectedCategory.command, project: project)
+            self.projectCreator = ProjectCreator(templateName: templateName, installScript: selectedCategory.command, project: project, copyFiles: selectedTemplate.copyFiles)
             
             let id = NSStoryboardSegue.Identifier(rawValue: "PreparingSegue")
             self.performSegue(withIdentifier: id, sender: self)
@@ -157,9 +156,9 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
         return cell
     }
     
-    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        print(indexPaths)
-    }
+//    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+//     
+//    }
     
 //    func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
 //        guard let header = template.makeSupplementaryView(ofKind: .sectionHeader, withIdentifier: NSUserInterfaceItemIdentifier("TemplateSectionHeader"), for: indexPath) as? TemplateSectionHeaderView else {

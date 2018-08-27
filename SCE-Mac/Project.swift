@@ -24,12 +24,11 @@ struct Project: Codable {
 }
 
 class ProjectCreator: Codable {
+    
     let templateName: String
     let installScript: String
     let project: Project
-    let copyFiles: [String: URL]
-    
-    // TODO: truffle vs Embark
+    let copyFiles: [CopyFile]?
     
     var scriptTask: ScriptTask!
     
@@ -40,44 +39,44 @@ class ProjectCreator: Codable {
         case copyFiles
     }
     
-    // install additional files [source, destination]
-    // default open first file
-    
-    init(templateName: String, installScript: String, project: Project) {
+    init(templateName: String, installScript: String, project: Project, copyFiles: [CopyFile]? = nil) {
         self.templateName = templateName
         self.installScript = installScript
         self.project = project
-        self.copyFiles = [
-            "TutorialToken.sol": project.workDirectory.appendingPathComponent("contracts"),
-            "2_deploy_contracts.js": project.workDirectory.appendingPathComponent("migrations"),
-        ]
-
+        self.copyFiles = copyFiles
     }
     
     func create(output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
         
+        // Closure copying custom files from bundle to project directory
         let f: () -> Void = {
+            defer { finished() }
             let fileManager = FileManager.default
-            let keys = Array(self.copyFiles.keys)
-            for key in keys {
-                if let url = Bundle.main.url(forResource: key, withExtension: nil), let destination = self.copyFiles[key] {
-                    do {
-                    try fileManager.copyItem(at: url, to: destination.appendingPathComponent(key))
-                    } catch {
-                        print("****** \(error.localizedDescription) *****")
-                        print("From: \(url)")
-                        print("To: \(self.copyFiles[key]!)")
-                        assertionFailure()
-                    }
-                } else {
+            guard let copyFiles = self.copyFiles else { return }
+            for file in copyFiles {
+                guard let source = Bundle.main.url(forResource: file.filename, withExtension: nil) else {
+                    assertionFailure() // Source file does not exist in bundle
+                    continue
+                }
+                let destination = self.project.workDirectory.appendingPathComponent(file.destination).appendingPathComponent(file.filename)
+                do {
+                    try fileManager.copyItem(at: source, to: destination)
+                } catch {
+                    print("****** \(error.localizedDescription) *****")
+                    print("From: \(source.path)")
+                    print("To: \(destination.path)")
                     assertionFailure()
                 }
             }
-            finished()
         }
         
         scriptTask = try ScriptTask(script: "TruffleInit", arguments: [project.baseDirectory.absoluteURL.path, project.name, templateName], output: output, finished: f)
         scriptTask.run()
         return scriptTask
     }
+}
+
+struct CopyFile: Codable {
+    let filename: String
+    let destination: String
 }
