@@ -744,7 +744,7 @@
                                     <size key="minSize" width="38" height="32"/>
                                     <size key="maxSize" width="38" height="32"/>
                                     <button key="view" verticalHuggingPriority="750" id="1hB-sM-GdX">
-                                        <rect key="frame" x="0.0" y="14" width="50" height="32"/>
+                                        <rect key="frame" x="0.0" y="14" width="38" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSMobileMe" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0kc-z4-OTo">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
@@ -755,10 +755,27 @@
                                         <action selector="webButtonClicked:" target="jGA-0Y-lOj" id="BVs-s8-btg"/>
                                     </connections>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="18F7B5CF-A697-443A-AE44-75DE3674457B" label="Lint" paletteLabel="Lint" image="NSMenuOnStateTemplate" id="rRd-A3-uJt" userLabel="Lint">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="38" height="32"/>
+                                    <size key="maxSize" width="38" height="32"/>
+                                    <button key="view" verticalHuggingPriority="750" id="v8s-TI-fMx">
+                                        <rect key="frame" x="0.0" y="14" width="38" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSMenuOnStateTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hCx-c3-ylC">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="lintButtonClicked:" target="jGA-0Y-lOj" id="Xem-Yo-g88"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="tYP-A1-bOR"/>
                                 <toolbarItem reference="gpu-zx-1eY"/>
+                                <toolbarItem reference="rRd-A3-uJt"/>
                                 <toolbarItem reference="mn2-dn-q0c"/>
                                 <toolbarItem reference="9QW-KK-5p9"/>
                                 <toolbarItem reference="QEL-oc-DYZ"/>
@@ -884,18 +901,18 @@
                                                             </connections>
                                                         </tableCellView>
                                                         <tableCellView identifier="FileCell" id="ND6-MH-3DK" userLabel="File">
-                                                            <rect key="frame" x="1" y="20" width="195" height="16"/>
+                                                            <rect key="frame" x="1" y="20" width="195" height="15"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <imageView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bx0-dn-SKI">
-                                                                    <rect key="frame" x="3" y="-1" width="17" height="17"/>
+                                                                    <rect key="frame" x="3" y="-2" width="17" height="17"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="17" id="yTe-B7-6OJ"/>
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" imageScaling="proportionallyDown" image="NSFolder" id="kjv-7N-hdf"/>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PVU-h0-Yn1">
-                                                                    <rect key="frame" x="21" y="-1" width="174" height="17"/>
+                                                                    <rect key="frame" x="21" y="-2" width="174" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="8uD-Jb-X3z">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1016,6 +1033,7 @@
     </scenes>
     <resources>
         <image name="NSFolder" width="32" height="32"/>
+        <image name="NSMenuOnStateTemplate" width="12" height="12"/>
         <image name="NSMobileMe" width="32" height="32"/>
         <image name="NSTouchBarPauseTemplate" width="11" height="30"/>
         <image name="NSTouchBarPlayTemplate" width="14" height="30"/>

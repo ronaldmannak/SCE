@@ -14,6 +14,7 @@
 		C70B96FE21320EA600B0E4C8 /* EmbarkInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */; };
 		C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */; };
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
+		C70B97052135148A00B0E4C8 /* SoliumTruffle.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B97042135148A00B0E4C8 /* SoliumTruffle.command */; };
 		C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7303B63212E75E70007E708 /* Preferences.storyboard */; };
 		C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */; };
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
@@ -89,6 +90,7 @@
 		C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmbarkInit.command; sourceTree = "<group>"; };
 		C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateSectionHeaderView.xib; sourceTree = "<group>"; };
 		C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSectionHeaderView.swift; sourceTree = "<group>"; };
+		C70B97042135148A00B0E4C8 /* SoliumTruffle.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SoliumTruffle.command; sourceTree = "<group>"; };
 		C7303B63212E75E70007E708 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C70B97032135145F00B0E4C8 /* Solium */ = {
+			isa = PBXGroup;
+			children = (
+				C70B97042135148A00B0E4C8 /* SoliumTruffle.command */,
+			);
+			path = Solium;
+			sourceTree = "<group>";
+		};
 		C7303B62212E75C70007E708 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +239,7 @@
 			children = (
 				C7A8FDC82130F496005E20AC /* EthereumTruffle.json */,
 				C7A8FDC1212F207B005E20AC /* OpenZeppelin */,
+				C70B97032135145F00B0E4C8 /* Solium */,
 				C7A8FDC0212F2067005E20AC /* Embark */,
 				C7A8FDBF212F2060005E20AC /* Truffle */,
 			);
@@ -546,6 +557,7 @@
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
 				C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */,
 				C7E764462123539100867DA4 /* Template.storyboard in Resources */,
+				C70B97052135148A00B0E4C8 /* SoliumTruffle.command in Resources */,
 				C70B96FE21320EA600B0E4C8 /* EmbarkInit.command in Resources */,
 				C7E76459212610DA00867DA4 /* TruffleInit.command in Resources */,
 				C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */,

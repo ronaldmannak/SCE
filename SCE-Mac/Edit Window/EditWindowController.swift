@@ -94,6 +94,7 @@ class EditWindowController: NSWindowController {
                 self.setConsole(output)
             }) {
                 sender.isEnabled = true
+                self.script = nil
             }
         } catch {
             let alert = NSAlert(error: error)
@@ -108,6 +109,24 @@ class EditWindowController: NSWindowController {
         script = nil
         setConsole("Cancelled.")
         runButton.isEnabled = true
+    }
+    
+    @IBAction func lintButtonClicked(_ sender: Any) {
+        
+        guard let project = project else { return }
+        script?.terminate()
+        saveEditorFile()
+        
+        do {
+            script = try ScriptTask.lint(project: project, output: { output in
+                self.setConsole(output)
+            }, finished: {
+                // do nothing
+            })
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()            
+        }
     }
     
     @IBAction func webButtonClicked(_ sender: Any) {

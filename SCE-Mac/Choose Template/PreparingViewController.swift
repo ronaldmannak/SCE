@@ -19,7 +19,7 @@ class PreparingViewController: NSViewController {
     var projectCreator: ProjectCreator! {
         didSet {
             progressIndicator.startAnimation(self)
-            progressIndicator.maxValue = 6
+            progressIndicator.maxValue = 8
             do {
                 _ = try projectCreator.create(output: { output in
                     // Output in text view

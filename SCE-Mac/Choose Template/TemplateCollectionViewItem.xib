@@ -27,7 +27,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mxe-GC-CEe" userLabel="textField">
-                    <rect key="frame" x="18" y="20" width="114" height="17"/>
+                    <rect key="frame" x="-2" y="20" width="154" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Title" id="9fY-w1-o0v">
                         <font key="font" metaFont="system"/>

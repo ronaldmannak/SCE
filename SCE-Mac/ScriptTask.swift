@@ -73,7 +73,7 @@ class ScriptTask: NSObject {
             notification in
             
             let output = self.outputPipe.fileHandleForReading.availableData
-            let outputString = String(data: output, encoding: String.Encoding.utf8) ?? ""
+            guard let outputString = String(data: output, encoding: String.Encoding.utf8) else { return }
             
             DispatchQueue.main.async(execute: {
                 print(outputString)
@@ -104,6 +104,12 @@ extension ScriptTask {
     static func webserver(project: Project, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
         // TODO: Switch truffle vs Embark
         let task = try ScriptTask(script: "TruffleWebserver", arguments: [project.workDirectory.path], output: output, finished: finished)
+        task.run()
+        return task
+    }
+    
+    static func lint(project: Project, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
+        let task = try ScriptTask(script: "SoliumTruffle", arguments: [project.workDirectory.path], output: output, finished: finished)
         task.run()
         return task
     }

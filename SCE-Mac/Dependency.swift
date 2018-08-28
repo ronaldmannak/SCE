@@ -11,3 +11,8 @@ import Foundation
 
 // npm ganache truffle
 // Ethlint
+
+// Solium:
+
+//npm install -g solium
+//solium -V
