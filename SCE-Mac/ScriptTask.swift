@@ -73,7 +73,7 @@ class ScriptTask: NSObject {
             notification in
             
             let output = self.outputPipe.fileHandleForReading.availableData
-            guard let outputString = String(data: output, encoding: String.Encoding.utf8) else { return }
+            guard let outputString = String(data: output, encoding: String.Encoding.utf8), !outputString.isEmpty else { return }
             
             DispatchQueue.main.async(execute: {
                 print(outputString)
