@@ -46,8 +46,7 @@ class EditWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
-    
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+//        window?.appearance = NSAppearance(named: .vibrantDark)
     }
     
     /// Sets console vc text. Called by PreparingViewController

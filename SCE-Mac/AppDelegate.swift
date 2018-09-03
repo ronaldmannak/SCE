@@ -20,7 +20,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             showChooseTemplate(self)
         }
         
-        
         // Close
 //        NSApplication.shared.windows.last!.close()
         
