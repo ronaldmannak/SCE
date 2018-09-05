@@ -14,7 +14,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //    var preferencesController: PreferencesWindowController? = nil
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        
+        do {
+            let setup = try EthereumFileSetup()
+        } catch {
+            print(error)
+        }
+        
         
         if true == true { // TODO: Read UserDefaults for show Choose Template
             showChooseTemplate(self)
