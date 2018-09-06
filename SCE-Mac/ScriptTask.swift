@@ -64,10 +64,11 @@ class ScriptTask: NSObject {
         }
     }
     
+    // TODO: add enum whether output it stdOut, stdErr or entered command, so console can color code the output
     func captureStandardOutput() {
         
         task.standardOutput = outputPipe
-//        task.standardError = outputPipe
+        task.standardError = outputPipe
         
         notification = NotificationCenter.default.addObserver(forName: .NSFileHandleDataAvailable, object: outputPipe.fileHandleForReading , queue: nil) {
             notification in
@@ -76,7 +77,7 @@ class ScriptTask: NSObject {
             guard let outputString = String(data: output, encoding: String.Encoding.utf8), !outputString.isEmpty else { return }
             
             DispatchQueue.main.async(execute: {
-                print(outputString)
+//                print(outputString)
                 assert(self.output != nil)
                 self.output?(outputString)
             })

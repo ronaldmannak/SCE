@@ -55,7 +55,7 @@
 				<key>customLocation</key>
 				<string></string>
 				<key>defaultLocation</key>
-				<string></string>
+				<string>/usr/local/bin</string>
 				<key>minimumVersion</key>
 				<string></string>
 				<key>versionCommand</key>
@@ -106,6 +106,26 @@
 				<string>npm install -g solium</string>
 				<key>upgradeCommand</key>
 				<string>npm update --save solium</string>
+				<key>comment</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Ganache.app</string>
+				<key>customLocation</key>
+				<string></string>
+				<key>defaultLocation</key>
+				<string>/Applications</string>
+				<key>minimumVersion</key>
+				<string></string>
+				<key>versionCommand</key>
+				<string></string>
+				<key>versionRegex</key>
+				<string></string>
+				<key>installLink</key>
+				<string>https://truffleframework.com/ganache</string>
+				<key>upgradeCommand</key>
+				<string></string>
 				<key>comment</key>
 				<string></string>
 			</dict>

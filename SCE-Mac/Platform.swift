@@ -29,7 +29,7 @@ enum Platform: String, Codable, CustomStringConvertible {
             return "Ethereum Classic"
         default:
             // Capitalize first letter
-            return self.rawValue.prefix(1).capitalized + self.rawValue.dropFirst()
+            return self.rawValue.capitalizedFirstChar()
         }
     }
 }

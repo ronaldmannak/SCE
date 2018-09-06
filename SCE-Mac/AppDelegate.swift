@@ -18,13 +18,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         do {
             let setup = try DependencySetup()
             try setup.setup(.ethereum, overwrite: true)
-            if let items = try setup.load(.ethereum) {
-                print(items)
+            if let platform = try setup.load(.ethereum) {
+                for dependency in platform.dependencies {
+                    print("\(dependency.description) is installed: \(dependency.isInstalled)")
+                    try dependency.suggestLocation{ location in
+                        print("suggested location: \(location)")
+                    }                    
+                    try dependency.fileVersion() { version in
+                        print("\(dependency.description): \(version)")
+                    }
+                }
             }
+            
         } catch {
             print(error)
         }
-        
         
         if true == true { // TODO: Read UserDefaults for show Choose Template
             showChooseTemplate(self)

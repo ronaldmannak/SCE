@@ -16,14 +16,10 @@ class DependencySetup {
     private let fileManager = FileManager.default
     private static let reverseDNSName = "com.composite.composite"
     
-    func needsSetupUI() -> Bool {
-        return true
-    }
     
-    
-    /// <#Description#>
+    /// Sets folder and file variables.
     ///
-    /// - Throws:   Forwards FileManager error
+    /// - Throws:   Forwards FileManager error if Application Support directory is not found
     init() throws {
         
         // Set path to app's Application Support directory
@@ -71,6 +67,10 @@ class DependencySetup {
     }
     
     
+    /// Loads all depencies for all platforms from Dependencies.plist
+    ///
+    /// - Returns:  Array of DependencyPlatforms
+    /// - Throws:   Codable error
     func loadPlatforms() throws -> [DependencyPlatform] {
         let data = try Data(contentsOf: dependenciesFile)
         let decoder = PropertyListDecoder()
@@ -78,15 +78,24 @@ class DependencySetup {
     }
     
     
+    /// Loads all dependenies for a single platform
+    ///
+    /// - Parameter platform: the platform, e.g. .ethereum
+    /// - Returns:  The DependencyPlatform or nil
+    /// - Throws:   Codable error
     func load(_ platform: Platform? = nil) throws -> DependencyPlatform? {
         let platforms = try loadPlatforms()
         return platforms.filter{ (item) -> Bool in return item.platform == platform }.first
     }
     
+    func bashPath() throws -> String {
+        return ""
+    }
+    
     
     /// Called by init when the application support directory is not found
     /// setupNewInstall will create a new app support directory and copy all relevant files
-    /// - Throws:   forwards FileManager error or FileNotFound if the Dependencies.plist file
+    /// - Throws:   Forwards FileManager error or FileNotFound if the Dependencies.plist file
     ///             wasn't found in the bundle
     private func setupNewInstall() throws {
         try fileManager.createDirectory(at: folder, withIntermediateDirectories: true, attributes: nil)
