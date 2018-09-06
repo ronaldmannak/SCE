@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>platform</key>
+		<string>ethereum</string>
+		<key>installed</key>
+		<false/>
+		<key>dependencies</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>brew</string>
+				<key>customLocation</key>
+				<string></string>
+				<key>defaultLocation</key>
+				<string>/usr/local/bin/</string>
+				<key>minimumVersion</key>
+				<string></string>
+				<key>versionCommand</key>
+				<string>brew -v</string>
+				<key>versionRegex</key>
+				<string></string>
+				<key>installCommand</key>
+				<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
+				<key>upgradeCommand</key>
+				<string></string>
+				<key>comment</key>
+				<string>Brew is needed for installing npm</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>node</string>
+				<key>customLocation</key>
+				<string></string>
+				<key>defaultLocation</key>
+				<string>/usr/local/bin</string>
+				<key>minimumVersion</key>
+				<string></string>
+				<key>versionCommand</key>
+				<string>node -v</string>
+				<key>versionRegex</key>
+				<string></string>
+				<key>installCommand</key>
+				<string>brew install node</string>
+				<key>upgradeCommand</key>
+				<string>brew upgrade node</string>
+				<key>comment</key>
+				<string>node and npm are required by Truffle</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>npm</string>
+				<key>customLocation</key>
+				<string></string>
+				<key>defaultLocation</key>
+				<string></string>
+				<key>minimumVersion</key>
+				<string></string>
+				<key>versionCommand</key>
+				<string>npm -v</string>
+				<key>versionRegex</key>
+				<string></string>
+				<key>installCommand</key>
+				<string>brew install node</string>
+				<key>upgradeCommand</key>
+				<string></string>
+				<key>comment</key>
+				<string>npm should be installed by node</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>truffle</string>
+				<key>customLocation</key>
+				<string></string>
+				<key>defaultLocation</key>
+				<string>/usr/local/bin/</string>
+				<key>minimumVersion</key>
+				<string></string>
+				<key>versionCommand</key>
+				<string>truffle version</string>
+				<key>versionRegex</key>
+				<string></string>
+				<key>installCommand</key>
+				<string>npm install -g truffle</string>
+				<key>upgradeCommand</key>
+				<string>npm update --save truffle</string>
+				<key>comment</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>solium</string>
+				<key>customLocation</key>
+				<string></string>
+				<key>defaultLocation</key>
+				<string>/usr/local/bin/</string>
+				<key>minimumVersion</key>
+				<string></string>
+				<key>versionCommand</key>
+				<string>solium -V</string>
+				<key>versionRegex</key>
+				<string></string>
+				<key>installCommand</key>
+				<string>npm install -g solium</string>
+				<key>upgradeCommand</key>
+				<string>npm update --save solium</string>
+				<key>comment</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>

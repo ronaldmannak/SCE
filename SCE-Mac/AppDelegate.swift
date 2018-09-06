@@ -16,7 +16,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         do {
-            let setup = try EthereumFileSetup()
+            let setup = try DependencySetup()
+            try setup.setup(.ethereum, overwrite: true)
+            if let items = try setup.load(.ethereum) {
+                print(items)
+            }
         } catch {
             print(error)
         }
