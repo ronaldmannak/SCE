@@ -32,7 +32,7 @@ class PreparingViewController: NSViewController {
                     self.counter = self.counter + 1
                 }) {
                     self.progressIndicator.stopAnimation(self)
-                    let id = NSStoryboardSegue.Identifier(rawValue: "EditWindow")
+                    let id = NSStoryboardSegue.Identifier(rawValue: "EditWindowController")
                     self.performSegue(withIdentifier: id, sender: self)
                 }
             } catch {

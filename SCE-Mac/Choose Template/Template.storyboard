@@ -302,7 +302,7 @@ Gw
                         <outlet property="cancelButton" destination="Jtj-Ik-Pir" id="dDi-74-1YN"/>
                         <outlet property="progressIndicator" destination="5j4-eS-iJ8" id="JI4-bC-CUJ"/>
                         <outlet property="textView" destination="86x-4c-iaj" id="937-lW-2wT"/>
-                        <segue destination="6Qx-Ye-9Xf" kind="show" identifier="EditWindow" id="VvL-GZ-wem"/>
+                        <segue destination="6Qx-Ye-9Xf" kind="show" identifier="EditWindowController" id="VvL-GZ-wem"/>
                     </connections>
                 </viewController>
                 <customObject id="K9W-9v-9Hf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

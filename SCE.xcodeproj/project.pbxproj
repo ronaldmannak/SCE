@@ -29,6 +29,8 @@
 		C7DDD753214100D200674942 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD752214100D200674942 /* String.swift */; };
 		C7DDD755214102B900674942 /* General.command in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD754214102B900674942 /* General.command */; };
 		C7DDD757214113CB00674942 /* Which.command in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD756214113CB00674942 /* Which.command */; };
+		C7DDD75A2141E02800674942 /* InstallWizard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD7592141E02800674942 /* InstallWizard.storyboard */; };
+		C7DDD75C2141EA7500674942 /* InstallWizardWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD75B2141EA7500674942 /* InstallWizardWindow.swift */; };
 		C7E76437211EC16300867DA4 /* EditWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76436211EC16300867DA4 /* EditWindowController.swift */; };
 		C7E7643A21214D4600867DA4 /* ChooseTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7643921214D4600867DA4 /* ChooseTemplateViewController.swift */; };
 		C7E7643F2122A2CF00867DA4 /* TemplateCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7643D2122A2CF00867DA4 /* TemplateCollectionViewItem.swift */; };
@@ -113,6 +115,8 @@
 		C7DDD752214100D200674942 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		C7DDD754214102B900674942 /* General.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = General.command; sourceTree = "<group>"; };
 		C7DDD756214113CB00674942 /* Which.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = Which.command; sourceTree = "<group>"; };
+		C7DDD7592141E02800674942 /* InstallWizard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InstallWizard.storyboard; sourceTree = "<group>"; };
+		C7DDD75B2141EA7500674942 /* InstallWizardWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallWizardWindow.swift; sourceTree = "<group>"; };
 		C7E76436211EC16300867DA4 /* EditWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWindowController.swift; sourceTree = "<group>"; };
 		C7E7643921214D4600867DA4 /* ChooseTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTemplateViewController.swift; sourceTree = "<group>"; };
 		C7E7643D2122A2CF00867DA4 /* TemplateCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCollectionViewItem.swift; sourceTree = "<group>"; };
@@ -296,6 +300,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C7DDD7582141DFCD00674942 /* InstallWizard */ = {
+			isa = PBXGroup;
+			children = (
+				C7DDD7592141E02800674942 /* InstallWizard.storyboard */,
+				C7DDD75B2141EA7500674942 /* InstallWizardWindow.swift */,
+			);
+			path = InstallWizard;
+			sourceTree = "<group>";
+		};
 		C7E7643821214D1700867DA4 /* Choose Template */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +392,7 @@
 			children = (
 				C7DDD748214062D500674942 /* SCE-Mac.entitlements */,
 				C7303B62212E75C70007E708 /* Preferences */,
+				C7DDD7582141DFCD00674942 /* InstallWizard */,
 				C7E764512124FA0200867DA4 /* Setup */,
 				C7E7643821214D1700867DA4 /* Choose Template */,
 				C7F0B9C02113CF53005A8FE2 /* Edit Window */,
@@ -587,6 +601,7 @@
 				C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */,
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
 				C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */,
+				C7DDD75A2141E02800674942 /* InstallWizard.storyboard in Resources */,
 				C7E764462123539100867DA4 /* Template.storyboard in Resources */,
 				C70B97052135148A00B0E4C8 /* SoliumTruffle.command in Resources */,
 				C70B96FE21320EA600B0E4C8 /* EmbarkInit.command in Resources */,
@@ -762,6 +777,7 @@
 				C7DDD7502140B68C00674942 /* Platform.swift in Sources */,
 				C7E7645D212675AF00867DA4 /* Error.swift in Sources */,
 				C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */,
+				C7DDD75C2141EA7500674942 /* InstallWizardWindow.swift in Sources */,
 				C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */,
 				C7F0B99F2112945D005A8FE2 /* AppDelegate.swift in Sources */,
 				C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */,
