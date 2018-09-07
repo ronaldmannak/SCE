@@ -44,17 +44,18 @@ class Document: NSDocument {
         // You can also choose to override fileWrapperOfType:error:, writeToURL:ofType:error:, or writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
 //        throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
         
-        
-        
-        // Save document open in editor
-        
         // Save platform, tool (truffle, etc)
         
         // Save window restore state
         
-        guard let controller = windowControllers.first as? EditWindowController, let project = controller.project else {
+        
+        
+        guard let editWindowController = editWindowController, let project = editWindowController.project else {
+            assertionFailure()
             return Data()
         }
+        
+        editWindowController.saveEditorFile()
         
         let encoder = PropertyListEncoder()
         encoder.outputFormat = .xml
