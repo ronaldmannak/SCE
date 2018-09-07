@@ -32,8 +32,21 @@ class PreparingViewController: NSViewController {
                     self.counter = self.counter + 1
                 }) {
                     self.progressIndicator.stopAnimation(self)
-                    let id = NSStoryboardSegue.Identifier(rawValue: "EditWindowController")
-                    self.performSegue(withIdentifier: id, sender: self)
+//                    let id = NSStoryboardSegue.Identifier(rawValue: "EditWindowController")
+//                    self.performSegue(withIdentifier: id, sender: self)
+                    
+                    let documentController = NSDocumentController.shared
+                    documentController.openDocument(withContentsOf: self.projectCreator.project.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
+//                        documentController.conto
+//
+//                        editWindowController.setConsole(textView.string)
+//                        editWindowController.project = projectCreator.project
+                        self.view.window?.close()
+                    }
+
+                    
+//                    let document = NSDocumentController.shared.newDocument(self) as! Document
+//                    document.project = self.projectCreator.project
                 }
             } catch {
                 self.progressIndicator.stopAnimation(self)
@@ -54,9 +67,9 @@ class PreparingViewController: NSViewController {
 
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         let editWindowController = (segue.destinationController as! EditWindowController)
-        editWindowController.setConsole(textView.string)
-        editWindowController.project = projectCreator.project
-        self.view.window?.close()
+//        editWindowController.setConsole(textView.string)
+//        editWindowController.project = projectCreator.project
+//        self.view.window?.close()
     }
     
 }
