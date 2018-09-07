@@ -11,6 +11,15 @@ import Cocoa
 class Document: NSDocument {
         
     var project: Project?
+    
+    var editWindowController: EditWindowController? {
+        for window in windowControllers {
+            if let window = window as? EditWindowController, let doc = window.document as? Document, doc == self {
+                return window
+            }
+        }
+        return nil
+    }
 
     override init() {
         super.init()

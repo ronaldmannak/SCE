@@ -302,20 +302,11 @@ Gw
                         <outlet property="cancelButton" destination="Jtj-Ik-Pir" id="dDi-74-1YN"/>
                         <outlet property="progressIndicator" destination="5j4-eS-iJ8" id="JI4-bC-CUJ"/>
                         <outlet property="textView" destination="86x-4c-iaj" id="937-lW-2wT"/>
-                        <segue destination="6Qx-Ye-9Xf" kind="show" identifier="EditWindowController" id="VvL-GZ-wem"/>
                     </connections>
                 </viewController>
                 <customObject id="K9W-9v-9Hf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1671" y="1512"/>
-        </scene>
-        <!--Edit-->
-        <scene sceneID="1c5-ON-ZIi">
-            <objects>
-                <controllerPlaceholder storyboardName="Edit" id="6Qx-Ye-9Xf" sceneMemberID="viewController"/>
-                <customObject id="cNf-N8-Mdt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2017" y="1824"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="nbh-Xb-Ukt">
