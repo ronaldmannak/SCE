@@ -340,13 +340,13 @@
 		C7E764512124FA0200867DA4 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
+				C7DDD74421403A6E00674942 /* DependencySetup.swift */,
+				C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */,
+				C7DDD7492140A65700674942 /* Dependency.swift */,
 				C7E764522124FA1300867DA4 /* Setup */,
 				C7DDD74B2140AB6D00674942 /* Dependencies.plist */,
-				C7DDD7492140A65700674942 /* Dependency.swift */,
 				C7DDD754214102B900674942 /* General.command */,
 				C7DDD756214113CB00674942 /* Which.command */,
-				C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */,
-				C7DDD74421403A6E00674942 /* DependencySetup.swift */,
 			);
 			path = Setup;
 			sourceTree = "<group>";

@@ -49,38 +49,103 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         
-        let title: String
-        let image: NSImage?
-        if let platform = item as? DependencyPlatform {
-            
-            if let tableColumn = tableColumn, tableColumn.identifier == NSUserInterfaceItemIdentifier(rawValue: "DependencyColumn") {
-                title = platform.platform.description
-                image = nil
-            } else if platform.dependencies.count == 0 {
-                title = "Coming soon"
-                image = nil
-            } else {
-                title = "Install \(platform.platform.description)"
-                image = nil
-            }
-        } else if let dependency = item as? Dependency {
-            
-            if let tableColumn = tableColumn, tableColumn.identifier == NSUserInterfaceItemIdentifier(rawValue: "DependencyColumn") {
-                title = dependency.url.path
-                image = nil
-            } else {
-                title = "    Install \(dependency.name)"
-                image = nil
-            }
-        } else {
-            assertionFailure()
-            return nil
-        }
+        guard let identifier = tableColumn?.identifier.rawValue else { return nil }
+        
         guard let view: NSTableCellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "NameCell"), owner: self) as? NSTableCellView else {
             return nil
         }
-        view.textField?.stringValue = title
-        view.imageView?.image = image
+        
+        switch identifier {
+        case "DependencyColumn":
+            
+            if let item = item as? DependencyPlatform {
+                
+                view.textField?.stringValue = item.platform.description
+                view.imageView?.image = nil
+                
+            } else if let item = item as? Dependency {
+                
+                view.textField?.stringValue = item.name
+                view.imageView?.image = nil
+            }
+            
+        case "VersionColumn":
+            
+            if let _ = item as? DependencyPlatform {
+                
+                view.textField?.stringValue = ""
+                view.imageView?.image = nil
+                
+            } else if let _ = item as? Dependency {
+                
+                view.textField?.stringValue = "Reading"
+                view.imageView?.image = nil
+            }
+            
+        case "PathColumn":
+            
+            if let _ = item as? DependencyPlatform {
+                
+                view.textField?.stringValue = ""
+                view.imageView?.image = nil
+                
+            } else if let item = item as? Dependency {
+                
+                view.textField?.stringValue = "Reading"
+                view.imageView?.image = nil
+            }
+        
+        case "ActionColumn":
+            
+            if let item = item as? DependencyPlatform {
+                
+                view.textField?.stringValue = "Install \(item.platform.description)"
+                view.imageView?.image = nil
+                
+            } else if let item = item as? Dependency {
+                
+                view.textField?.stringValue = "Install \(item.name)"
+                view.imageView?.image = nil
+            }
+            
+        default:
+            print("Unknown column id: \(identifier)")
+            assertionFailure()
+        }
+        
+//
+//        let title: String
+//        let image: NSImage?
+//        if let platform = item as? DependencyPlatform {
+//
+//            if let tableColumn = tableColumn, tableColumn.identifier == NSUserInterfaceItemIdentifier(rawValue: "DependencyColumn") {
+//                title = platform.platform.description
+//                image = nil
+//            } else if platform.dependencies.count == 0 {
+//                title = "Coming soon"
+//                image = nil
+//            } else {
+//                title = "Install \(platform.platform.description)"
+//                image = nil
+//            }
+//        } else if let dependency = item as? Dependency {
+//
+//            if let tableColumn = tableColumn, tableColumn.identifier == NSUserInterfaceItemIdentifier(rawValue: "DependencyColumn") {
+//                title = dependency.url.path
+//                image = nil
+//            } else {
+//                title = "    Install \(dependency.name)"
+//                image = nil
+//            }
+//        } else {
+//            assertionFailure()
+//            return nil
+//        }
+//        guard let view: NSTableCellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "NameCell"), owner: self) as? NSTableCellView else {
+//            return nil
+//        }
+//        view.textField?.stringValue = title
+//        view.imageView?.image = image
         return view
     }
 
