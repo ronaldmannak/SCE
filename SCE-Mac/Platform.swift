@@ -10,7 +10,7 @@ import Foundation
 
 enum Platform: String, Codable, CustomStringConvertible {
     
-    case ethereum, ethereumclassic, bitcoin, cosmos
+    case ethereum, ethereumclassic, bitcoin, cosmos, stellar
     
     var languages: [String] {
         switch self {
@@ -20,6 +20,8 @@ enum Platform: String, Codable, CustomStringConvertible {
             return ["Bitcoin Script"]
         case .cosmos:
             return ["Michelson"]
+        case .stellar:
+            return ["JavaScript", "Java", "Go"]
         }
     }
     
@@ -27,6 +29,8 @@ enum Platform: String, Codable, CustomStringConvertible {
         switch self {
         case .ethereumclassic:
             return "Ethereum Classic"
+        case .cosmos:
+            return "Tendermint Cosmos"
         default:
             // Capitalize first letter
             return self.rawValue.capitalizedFirstChar()

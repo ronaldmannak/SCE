@@ -15,27 +15,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        var setup: DependencySetup!
         var shouldDisplayInstallWizard = false
         do {
-            let setup = try DependencySetup()
-            shouldDisplayInstallWizard = try setup.setup(.ethereum, overwrite: true)
-//            if let platform = try setup.load(.ethereum) {
-//                for dependency in platform.dependencies {
-//                    print("\(dependency.description) is installed: \(dependency.isInstalled)")
-//                    try dependency.suggestLocation{ location in
-//                        print("suggested location: \(location)")
-//                    }
-//                    try dependency.fileVersion() { version in
-//                        print("\(dependency.description): \(version)")
-//                    }
-//                }
-//            }            
+            setup = try DependencySetup()
+            shouldDisplayInstallWizard = try setup.setup(.ethereum, overwrite: true)         
         } catch {
-            print(error)
+            let alert = NSAlert(error: error)
+            alert.runModal()
         }
   
         if shouldDisplayInstallWizard == true {
-            showInstallWizard(self)
+            showInstallWizard(setup: setup)
         } else {
             showChooseTemplate(self)
         }
@@ -58,10 +49,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        }
 //    }
     
-    func showInstallWizard(_ sender: Any) {
+    func showInstallWizard(setup: DependencySetup) {
         let installWizardStoryboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "InstallWizard"), bundle: nil)
         let installWizard = installWizardStoryboard.instantiateInitialController() as? NSWindowController
-        installWizard?.showWindow(sender)
+        let installContainer = installWizard?.contentViewController as? InstallContainerViewController
+        installContainer?.dependencies = setup
+        installWizard?.showWindow(self)
     }
     
     @IBAction func showChooseTemplate(_ sender: Any) {

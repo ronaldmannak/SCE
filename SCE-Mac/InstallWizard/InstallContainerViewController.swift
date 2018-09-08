@@ -12,6 +12,11 @@ class InstallContainerViewController: NSViewController {
 
     weak var install: InstallBlockchainViewController!
     weak var complete: InstallCompleteViewController!
+    var dependencies: DependencySetup! {
+        didSet {
+            install.dependencies = dependencies // Forward to installViewController, which will load the dependencies
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,22 +35,4 @@ class InstallContainerViewController: NSViewController {
         }
         view.addSubview(complete.view)
     }
-    
-    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        guard let orgin = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "selectBlockchain")) as? NSViewController else {
-//            assertionFailure()
-//            return
-//        }
-//        
-//        view.addSubview(orgin.view)
-//    }
-//    
-//    func showChild(_ viewcontroller: NSViewController) {
-//        removeChildViewController(at: 0)
-//        insertChildViewController(orgin, at: 0)
-//        view.view
-//    }
 }

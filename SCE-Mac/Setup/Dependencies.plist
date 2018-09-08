@@ -28,6 +28,8 @@
 				<string></string>
 				<key>comment</key>
 				<string>Brew is needed for installing npm</string>
+				<key>required</key>
+				<false/>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -130,6 +132,22 @@
 				<string></string>
 			</dict>
 		</array>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>cosmos</string>
+		<key>installed</key>
+		<false/>
+		<key>dependencies</key>
+		<array/>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>stellar</string>
+		<key>installed</key>
+		<false/>
+		<key>dependencies</key>
+		<array/>
 	</dict>
 </array>
 </plist>
