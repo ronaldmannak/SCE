@@ -22,36 +22,17 @@ class InstallBlockchainViewController: NSViewController {
     
     var dependencies: DependencySetup! {
         didSet {
-            
             do {
                 platforms = try dependencies.loadPlatforms()
             } catch {
                 let alert = NSAlert(error: error)
                 alert.runModal()
             }
-            
-            //            let datasource: NSOutlineViewDataSource = {
-            //
-            //            }
-            
-            
-            //            if let platform = try setup.load(.ethereum) {
-            //                for dependency in platform.dependencies {
-            //                    print("\(dependency.description) is installed: \(dependency.isInstalled)")
-            //                    try dependency.suggestLocation{ location in
-            //                        print("suggested location: \(location)")
-            //                    }
-            //                    try dependency.fileVersion() { version in
-            //                        print("\(dependency.description): \(version)")
-            //                    }
-            //                }
-            //            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     @IBAction func install(_ sender: Any) {
@@ -68,9 +49,6 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         
-//        if item == nil { return nil }
-        
-        print("item: \(item)")
         let title: String
         let image: NSImage?
         if let platform = item as? DependencyPlatform {
@@ -82,10 +60,8 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
             
             // condition nstablecolumn (button cell)
         } else {
+            assertionFailure()
             return nil
-//            title = ""
-//            image = nil
-//            fatalError()
         }
         guard let view: NSTableCellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "NameCell"), owner: self) as? NSTableCellView else {
             return nil
@@ -108,36 +84,19 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
 }
 
 extension InstallBlockchainViewController: NSOutlineViewDataSource {
+    
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-
-        print("=====")
-        print(item)
-        if let item = item {
-            return 0
+        if let item = item as? DependencyPlatform {
+            return item.dependencies.count
         } else {
             // item is nil, root
-            print("number of children: \(platforms.count)")
             return platforms.count
         }
-//        // If root is not set, don't show anything
-//        guard root != nil else { return 0 }
-//
-//        // item is nil if requesting root
-//        guard let item = item as? FileItem else { return 1 }
-//
-//        return item.children.count
-
     }
 
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        
-        if let item = item as? Platform { return true }
+        if let _ = item as? DependencyPlatform { return true }
         return false
-//        guard let item = item as? FileItem else {
-//            assertionFailure()
-//            return false
-//        }
-//        return item.isDirectory
     }
 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
@@ -149,7 +108,7 @@ extension InstallBlockchainViewController: NSOutlineViewDataSource {
             return platforms[index]
         } else {
             assertionFailure()
-            return ""            
+            return ""
         }
     }
 }
