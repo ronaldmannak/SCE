@@ -15,46 +15,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        var shouldDisplayInstallWizard = false
         do {
             let setup = try DependencySetup()
-            try setup.setup(.ethereum, overwrite: true)
-            if let platform = try setup.load(.ethereum) {
-                for dependency in platform.dependencies {
-                    print("\(dependency.description) is installed: \(dependency.isInstalled)")
-                    try dependency.suggestLocation{ location in
-                        print("suggested location: \(location)")
-                    }                    
-                    try dependency.fileVersion() { version in
-                        print("\(dependency.description): \(version)")
-                    }
-                }
-            }
-            
+            shouldDisplayInstallWizard = try setup.setup(.ethereum, overwrite: true)
+//            if let platform = try setup.load(.ethereum) {
+//                for dependency in platform.dependencies {
+//                    print("\(dependency.description) is installed: \(dependency.isInstalled)")
+//                    try dependency.suggestLocation{ location in
+//                        print("suggested location: \(location)")
+//                    }
+//                    try dependency.fileVersion() { version in
+//                        print("\(dependency.description): \(version)")
+//                    }
+//                }
+//            }            
         } catch {
             print(error)
         }
-        
-        if true == true { // TODO: Read UserDefaults for show Choose Template
+  
+        if shouldDisplayInstallWizard == true {
+            showInstallWizard(self)
+        } else {
             showChooseTemplate(self)
         }
-        
-        // Close
-//        NSApplication.shared.windows.last!.close()
-        
-        // Set menu
-        
-        // Set first window
-        
-        
-//        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        var exampleViewController: ExampleViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ExampleController") as! ExampleViewController
-//        
-//        self.window?.rootViewController = exampleViewController
-//        
-//        self.window?.makeKeyAndVisible()
-//        
-//        return true
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -73,6 +57,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //            preferencesController.showWindow(sender)
 //        }
 //    }
+    
+    func showInstallWizard(_ sender: Any) {
+        let installWizardStoryboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "InstallWizard"), bundle: nil)
+        let installWizard = installWizardStoryboard.instantiateInitialController() as? NSWindowController
+        installWizard?.showWindow(sender)
+    }
     
     @IBAction func showChooseTemplate(_ sender: Any) {
         let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Template"), bundle: nil)

@@ -14,7 +14,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <toolbar key="toolbar" implicitIdentifier="719E2E60-8F3D-48BB-9027-070BF074E24D" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="lhk-QH-kAL">
+                        <toolbar key="toolbar" implicitIdentifier="719E2E60-8F3D-48BB-9027-070BF074E24D" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="lhk-QH-kAL">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Bqt-lg-4QR"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="9QW-KK-5p9"/>
@@ -32,7 +32,7 @@
                                         </searchFieldCell>
                                     </searchField>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="D7747E2F-83A6-4341-B30F-008802951873" label="" paletteLabel="Run" image="NSTouchBarPlayTemplate" id="tYP-A1-bOR">
+                                <toolbarItem implicitItemIdentifier="D7747E2F-83A6-4341-B30F-008802951873" label="Run" paletteLabel="Run" image="NSTouchBarPlayTemplate" id="tYP-A1-bOR">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="38" height="32"/>
                                     <size key="maxSize" width="38" height="32"/>
@@ -104,6 +104,7 @@
                                 <toolbarItem reference="mn2-dn-q0c"/>
                                 <toolbarItem reference="9QW-KK-5p9"/>
                                 <toolbarItem reference="QEL-oc-DYZ"/>
+                                <toolbarItem reference="tYP-A1-bOR"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>

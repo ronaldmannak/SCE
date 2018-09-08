@@ -16,6 +16,10 @@
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
 		C70B97052135148A00B0E4C8 /* SoliumTruffle.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B97042135148A00B0E4C8 /* SoliumTruffle.command */; };
 		C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7303B63212E75E70007E708 /* Preferences.storyboard */; };
+		C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */; };
+		C76FC31E21439B2700DB2C62 /* CrossfadeSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31D21439B2700DB2C62 /* CrossfadeSegue.swift */; };
+		C76FC32021439FAC00DB2C62 /* InstallBlockchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */; };
+		C76FC3232143A6BF00DB2C62 /* InstallCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3212143A6BF00DB2C62 /* InstallCompleteViewController.swift */; };
 		C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */; };
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
@@ -101,6 +105,10 @@
 		C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSectionHeaderView.swift; sourceTree = "<group>"; };
 		C70B97042135148A00B0E4C8 /* SoliumTruffle.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SoliumTruffle.command; sourceTree = "<group>"; };
 		C7303B63212E75E70007E708 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallContainerViewController.swift; sourceTree = "<group>"; };
+		C76FC31D21439B2700DB2C62 /* CrossfadeSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossfadeSegue.swift; sourceTree = "<group>"; };
+		C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallBlockchainViewController.swift; sourceTree = "<group>"; };
+		C76FC3212143A6BF00DB2C62 /* InstallCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallCompleteViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
@@ -304,7 +312,11 @@
 			isa = PBXGroup;
 			children = (
 				C7DDD7592141E02800674942 /* InstallWizard.storyboard */,
+				C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */,
+				C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */,
+				C76FC3212143A6BF00DB2C62 /* InstallCompleteViewController.swift */,
 				C7DDD75B2141EA7500674942 /* InstallWizardWindow.swift */,
+				C76FC31D21439B2700DB2C62 /* CrossfadeSegue.swift */,
 			);
 			path = InstallWizard;
 			sourceTree = "<group>";
@@ -776,6 +788,7 @@
 				C7DDD74E2140AFDC00674942 /* DependencyPlatform.swift in Sources */,
 				C7DDD7502140B68C00674942 /* Platform.swift in Sources */,
 				C7E7645D212675AF00867DA4 /* Error.swift in Sources */,
+				C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */,
 				C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */,
 				C7DDD75C2141EA7500674942 /* InstallWizardWindow.swift in Sources */,
 				C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */,
@@ -790,11 +803,14 @@
 				C7DDD753214100D200674942 /* String.swift in Sources */,
 				C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */,
 				C7E76463212936E300867DA4 /* FileBrowserViewController.swift in Sources */,
+				C76FC31E21439B2700DB2C62 /* CrossfadeSegue.swift in Sources */,
 				C7DDD74A2140A65700674942 /* Dependency.swift in Sources */,
+				C76FC32021439FAC00DB2C62 /* InstallBlockchainViewController.swift in Sources */,
 				C7E76448212358A900867DA4 /* PreparingViewController.swift in Sources */,
 				C7F0B9C42113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift in Sources */,
 				C7E76437211EC16300867DA4 /* EditWindowController.swift in Sources */,
 				C7E7645B21262D1800867DA4 /* Project.swift in Sources */,
+				C76FC3232143A6BF00DB2C62 /* InstallCompleteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

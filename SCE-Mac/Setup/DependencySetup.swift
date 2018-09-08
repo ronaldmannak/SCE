@@ -38,7 +38,9 @@ class DependencySetup {
     /// - Throws:   Forwards FileManager error, or fileNotFound in case a file doesn't exist in the bundle
     ///             or directoryNotFound if no Application Support directory was found
     ///             or Codable error
-    func setup(_ platform: Platform, overwrite: Bool = false) throws { //}-> [DependencyPlatform] {
+    func setup(_ platform: Platform, overwrite: Bool = false) throws -> Bool {
+        
+        var isNewInstall = false
         
         // Check if Application Support directory exists.
         // If not, create it.
@@ -47,8 +49,10 @@ class DependencySetup {
         if appDirectoryExists == true && isDirectory.boolValue == false {
             try fileManager.removeItem(at: folder)
             try setupNewInstall()
+            isNewInstall = true
         } else if appDirectoryExists == false {
             try setupNewInstall()
+            isNewInstall = true
         }
         
         // Check if Dependencies.plist exists in Application Support directory.
@@ -62,8 +66,11 @@ class DependencySetup {
         if overwrite == true {
             try fileManager.removeItem(at: dependenciesFile)
             try copyFile(filename)
+            isNewInstall = true
         }
-        #endif   
+        #endif
+        
+        return isNewInstall
     }
     
     
