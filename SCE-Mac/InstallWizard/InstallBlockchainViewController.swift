@@ -35,7 +35,7 @@ class InstallBlockchainViewController: NSViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func install(_ sender: Any) {
+    @IBAction func done(_ sender: Any) {
         container.showComplete()
     }
     

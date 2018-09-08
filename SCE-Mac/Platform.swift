@@ -10,7 +10,7 @@ import Foundation
 
 enum Platform: String, Codable, CustomStringConvertible {
     
-    case ethereum, ethereumclassic, bitcoin, cosmos, stellar
+    case ethereum, ethereumclassic, bitcoin, cosmos, stellar, nebulas, qtum
     
     var languages: [String] {
         switch self {
@@ -22,6 +22,10 @@ enum Platform: String, Codable, CustomStringConvertible {
             return ["Michelson"]
         case .stellar:
             return ["JavaScript", "Java", "Go"]
+        case .nebulas:
+            return ["JavaScript"]
+        case .qtum:
+            return ["Solidity"]
         }
     }
     

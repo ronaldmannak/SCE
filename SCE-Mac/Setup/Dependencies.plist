@@ -149,5 +149,21 @@
 		<key>dependencies</key>
 		<array/>
 	</dict>
+	<dict>
+		<key>platform</key>
+		<string>qtum</string>
+		<key>installed</key>
+		<false/>
+		<key>dependencies</key>
+		<array/>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>nebulas</string>
+		<key>installed</key>
+		<false/>
+		<key>dependencies</key>
+		<array/>
+	</dict>
 </array>
 </plist>
