@@ -52,13 +52,26 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
         let title: String
         let image: NSImage?
         if let platform = item as? DependencyPlatform {
-            title = platform.platform.description
-            image = nil
-        } else if let dependency = item as? Dependency {
-            title = dependency.url.path
-            image = nil
             
-            // condition nstablecolumn (button cell)
+            if let tableColumn = tableColumn, tableColumn.identifier == NSUserInterfaceItemIdentifier(rawValue: "DependencyColumn") {
+                title = platform.platform.description
+                image = nil
+            } else if platform.dependencies.count == 0 {
+                title = "Coming soon"
+                image = nil
+            } else {
+                title = "Install \(platform.platform.description)"
+                image = nil
+            }
+        } else if let dependency = item as? Dependency {
+            
+            if let tableColumn = tableColumn, tableColumn.identifier == NSUserInterfaceItemIdentifier(rawValue: "DependencyColumn") {
+                title = dependency.url.path
+                image = nil
+            } else {
+                title = "    Install \(dependency.name)"
+                image = nil
+            }
         } else {
             assertionFailure()
             return nil

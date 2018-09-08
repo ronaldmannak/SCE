@@ -96,7 +96,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="" editable="NO" width="243.5" minWidth="40" maxWidth="1000" id="vh9-DM-Ne5">
+                                                <tableColumn identifier="DependencyColumn" editable="NO" width="243.5" minWidth="40" maxWidth="1000" id="vh9-DM-Ne5">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Dependency">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
