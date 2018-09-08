@@ -11,11 +11,22 @@ import Cocoa
 class InstallCompleteViewController: NSViewController {
 
     weak var container: InstallContainerViewController!
-    
     @IBOutlet weak var hopefulLabel: NSTextField!
+    @IBOutlet weak var wrongLabel: NSTextField!
+    
+    var consoleContent: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
+        hopefulLabel.isHidden = true
+        wrongLabel.isHidden = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.hopefulLabel.isHidden = false
+        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            self.wrongLabel.isHidden = false
+//        }
     }
     
     @IBAction func done(_ sender: Any) {

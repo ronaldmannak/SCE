@@ -11,12 +11,12 @@ import Cocoa
 class InstallBlockchainViewController: NSViewController {
     
     weak var container: InstallContainerViewController!
-
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet var console: NSTextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        
     }
     
     
