@@ -241,7 +241,7 @@
         <!--Preferences Tab View Controller-->
         <scene sceneID="WM2-RK-cQc">
             <objects>
-                <tabViewController selectedTabViewItemIndex="1" id="HtK-pI-eTL" customClass="PreferencesTabViewController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" id="HtK-pI-eTL" customClass="PreferencesTabViewController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem id="4iE-ku-FNM"/>
                         <tabViewItem identifier="" id="d0W-iZ-abM"/>
@@ -284,6 +284,14 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIc-j5-YVJ">
+                                <rect key="frame" x="278" y="13" width="158" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Open Install Wizard" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e7t-7M-WCl">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                 </viewController>

@@ -13,5 +13,9 @@ struct DependencyPlatform: Codable {
     let platform: Platform
     let installed: Bool
     let dependencies: [Dependency]
+    
+    func viewModel() -> DependencyViewModel {
+        return DependencyViewModel(self)
+    }
 }
 

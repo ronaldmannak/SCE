@@ -50,20 +50,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="750" height="474"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="md7-DL-fgK">
-                                <rect key="frame" x="131" y="420" width="188" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="CompositeLogo" id="0ag-dN-nKc"/>
-                            </imageView>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Dp-P5-70k">
                                 <rect key="frame" x="20" y="183" width="710" height="232"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="fIv-Uh-Vle">
-                                    <rect key="frame" x="1" y="23" width="708" height="208"/>
+                                    <rect key="frame" x="1" y="0.0" width="708" height="231"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="yGz-3G-C73" viewBased="YES" indentationPerLevel="16" outlineTableColumn="vh9-DM-Ne5" id="igj-mF-5Zp">
-                                            <rect key="frame" x="0.0" y="0.0" width="708" height="208"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="744" height="208"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -102,7 +97,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn identifier="VersionColumn" width="66" minWidth="10" maxWidth="3.4028234663852886e+38" id="Yd9-3J-wKw">
+                                                <tableColumn identifier="VersionColumn" width="170" minWidth="10" maxWidth="3.4028234663852886e+38" id="Yd9-3J-wKw">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Version">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -116,11 +111,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="VwG-wV-2ZD">
-                                                            <rect key="frame" x="164" y="1" width="66" height="17"/>
+                                                            <rect key="frame" x="164" y="1" width="170" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gak-Jd-SZn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="66" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="bTH-Rt-Yp7">
                                                                         <font key="font" metaFont="system"/>
@@ -149,7 +144,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="hIM-Os-FkF">
-                                                            <rect key="frame" x="233" y="1" width="202" height="17"/>
+                                                            <rect key="frame" x="337" y="1" width="202" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpE-aL-Pbu">
@@ -182,7 +177,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="ebr-gp-6SF">
-                                                            <rect key="frame" x="438" y="1" width="200" height="17"/>
+                                                            <rect key="frame" x="542" y="1" width="200" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="piD-YL-PaM">
@@ -209,16 +204,16 @@
                                         </outlineView>
                                     </subviews>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="81x-C1-oIs">
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="81x-C1-oIs">
                                     <rect key="frame" x="1" y="215" width="708" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="VSw-oH-37G">
-                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <rect key="frame" x="-15" y="23" width="16" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="yGz-3G-C73">
-                                    <rect key="frame" x="0.0" y="0.0" width="708" height="23"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="744" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
@@ -274,6 +269,11 @@ Gw
                                     <action selector="cancel:" target="kfv-ZF-Ptq" id="adm-O5-nj9"/>
                                 </connections>
                             </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="md7-DL-fgK">
+                                <rect key="frame" x="281" y="420" width="188" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="CompositeLogo" id="0ag-dN-nKc"/>
+                            </imageView>
                         </subviews>
                     </view>
                     <connections>

@@ -95,6 +95,10 @@ class DependencySetup {
         return platforms.filter{ (item) -> Bool in return item.platform == platform }.first
     }
     
+    func loadViewModels() throws -> [DependencyViewModel] {
+        return try loadPlatforms().map { $0.viewModel() }
+    }
+    
     func bashPath() throws -> String {
         return ""
     }

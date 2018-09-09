@@ -42,6 +42,11 @@ struct Dependency: Codable {
     /// Just for reminding what
     let comment: String?
     
+    /// Some tools are not required. E.g. Brew is not always needed, as some tools
+    /// can be installed without Brew. If all tools are installed, but not Brew, Composite
+    /// will ignore any tool that has required set to false
+    let required: Bool
+    
 }
 
 extension Dependency {

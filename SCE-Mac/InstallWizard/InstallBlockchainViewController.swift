@@ -14,7 +14,7 @@ class InstallBlockchainViewController: NSViewController {
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet var console: NSTextView!
     
-    var platforms = [DependencyPlatform]() {
+    var platforms = [DependencyViewModel]() {
         didSet {
             outlineView.reloadData()
         }
@@ -23,7 +23,7 @@ class InstallBlockchainViewController: NSViewController {
     var dependencies: DependencySetup! {
         didSet {
             do {
-                platforms = try dependencies.loadPlatforms()
+                platforms = try dependencies.loadViewModels()
             } catch {
                 let alert = NSAlert(error: error)
                 alert.runModal()
@@ -55,98 +55,71 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
             return nil
         }
         
+        guard let item = item as? DependencyViewModel else { return nil }
+        
         switch identifier {
         case "DependencyColumn":
             
-            if let item = item as? DependencyPlatform {
-                
-                view.textField?.stringValue = item.platform.description
-                view.imageView?.image = nil
-                
-            } else if let item = item as? Dependency {
-                
-                view.textField?.stringValue = item.name
-                view.imageView?.image = nil
+            view.textField?.stringValue = item.name
+            
+            let image: NSImage
+            switch item.state {
+            case .unknown:
+                image = NSImage() // Question mark
+            case .uptodate:
+                image = NSImage() // Green
+            case .outdated:
+                image = NSImage() // Orange warning
+            case .notInstalled:
+                image = NSImage() // Red cross
             }
             
         case "VersionColumn":
             
-            if let _ = item as? DependencyPlatform {
-                
-                view.textField?.stringValue = ""
-                view.imageView?.image = nil
-                
-            } else if let _ = item as? Dependency {
-                
-                view.textField?.stringValue = "Reading"
-                view.imageView?.image = nil
+            view.textField?.stringValue = ""
+            if let version = item.version {
+                view.textField?.stringValue = version
+            } else {
+                do {
+                    try item.fetchVersion { _ in outlineView.reloadData() }
+                } catch {
+                    print(error)
+                    assertionFailure()
+                }
             }
             
         case "PathColumn":
             
-            if let _ = item as? DependencyPlatform {
-                
-                view.textField?.stringValue = ""
-                view.imageView?.image = nil
-                
-            } else if let item = item as? Dependency {
-                
-                view.textField?.stringValue = "Reading"
-                view.imageView?.image = nil
-            }
+            view.textField?.stringValue = item.path
+            view.imageView?.image = nil
         
         case "ActionColumn":
             
-            if let item = item as? DependencyPlatform {
-                
-                view.textField?.stringValue = "Install \(item.platform.description)"
-                view.imageView?.image = nil
-                
-            } else if let item = item as? Dependency {
-                
-                view.textField?.stringValue = "Install \(item.name)"
-                view.imageView?.image = nil
+            view.imageView?.image = nil
+            print(item.name)
+            // If empty platform,
+            if item.dependency == nil && item.children.isEmpty {
+                view.textField?.stringValue = "Coming soon"
+            } else {
+                switch item.state {
+                case .unknown:
+                    view.textField?.stringValue = "Install \(item.name)"
+                case .uptodate:
+                    view.textField?.stringValue = ""
+                case .outdated:
+                    view.textField?.stringValue = "Update \(item.name)"
+                case .notInstalled:
+                    view.textField?.stringValue = "Install \(item.name)"
+                }
             }
             
         default:
+            
             print("Unknown column id: \(identifier)")
             assertionFailure()
         }
-        
-//
-//        let title: String
-//        let image: NSImage?
-//        if let platform = item as? DependencyPlatform {
-//
-//            if let tableColumn = tableColumn, tableColumn.identifier == NSUserInterfaceItemIdentifier(rawValue: "DependencyColumn") {
-//                title = platform.platform.description
-//                image = nil
-//            } else if platform.dependencies.count == 0 {
-//                title = "Coming soon"
-//                image = nil
-//            } else {
-//                title = "Install \(platform.platform.description)"
-//                image = nil
-//            }
-//        } else if let dependency = item as? Dependency {
-//
-//            if let tableColumn = tableColumn, tableColumn.identifier == NSUserInterfaceItemIdentifier(rawValue: "DependencyColumn") {
-//                title = dependency.url.path
-//                image = nil
-//            } else {
-//                title = "    Install \(dependency.name)"
-//                image = nil
-//            }
-//        } else {
-//            assertionFailure()
-//            return nil
-//        }
-//        guard let view: NSTableCellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "NameCell"), owner: self) as? NSTableCellView else {
-//            return nil
-//        }
-//        view.textField?.stringValue = title
-//        view.imageView?.image = image
         return view
+        
     }
 
     func outlineViewSelectionDidChange(_ notification: Notification) {
@@ -164,29 +137,31 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
 extension InstallBlockchainViewController: NSOutlineViewDataSource {
     
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        if let item = item as? DependencyPlatform {
-            return item.dependencies.count
-        } else {
-            // item is nil, root
+        
+        if item == nil {
+            // Root
             return platforms.count
         }
+        
+        return (item as? DependencyViewModel)?.children.count ?? 0
     }
 
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        if let _ = item as? DependencyPlatform { return true }
-        return false
+        
+        guard let item = item as? DependencyViewModel else { return false }
+        
+        return !item.children.isEmpty
     }
 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         
-        if let item = item as? DependencyPlatform {
-            return item.dependencies[index]
-        } else if item == nil {
+        if item == nil {
             // Root
             return platforms[index]
-        } else {
-            assertionFailure()
-            return ""
         }
+        
+        guard let item = item as? DependencyViewModel else { return "" }
+        
+        return item.children[index]
     }
 }

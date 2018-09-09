@@ -50,6 +50,8 @@
 				<string>brew upgrade node</string>
 				<key>comment</key>
 				<string>node and npm are required by Truffle</string>
+				<key>required</key>
+				<false/>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -70,6 +72,8 @@
 				<string></string>
 				<key>comment</key>
 				<string>npm should be installed by node</string>
+				<key>required</key>
+				<false/>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -90,6 +94,8 @@
 				<string>npm update --save truffle</string>
 				<key>comment</key>
 				<string></string>
+				<key>required</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -110,6 +116,8 @@
 				<string>npm update --save solium</string>
 				<key>comment</key>
 				<string></string>
+				<key>required</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -121,7 +129,7 @@
 				<key>minimumVersion</key>
 				<string></string>
 				<key>versionCommand</key>
-				<string></string>
+				<string>defaults read /Applications/Ganache.app/Contents/Info CFBundleShortVersionString</string>
 				<key>versionRegex</key>
 				<string></string>
 				<key>installLink</key>
@@ -130,6 +138,8 @@
 				<string></string>
 				<key>comment</key>
 				<string></string>
+				<key>required</key>
+				<true/>
 			</dict>
 		</array>
 	</dict>
