@@ -36,7 +36,7 @@ class DependencyViewModel {
     init(_ dependency: Dependency) {
         
         self.dependency = dependency
-        name = dependency.name
+        name = dependency.name.replacingOccurrences(of: ".app", with: "").capitalizedFirstChar()
         path = dependency.url.path
         isInstalled = dependency.isInstalled
         required = dependency.required

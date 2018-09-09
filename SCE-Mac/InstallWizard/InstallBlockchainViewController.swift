@@ -53,10 +53,10 @@ class InstallBlockchainViewController: NSViewController {
         switch item.state {
         case .outdated:
             // Update
-            print("Installed")
+            print("Update")
         case .notInstalled:
             // Install
-            print("Not installed")
+            print("Install")
         default:
             // This should not happen
             assertionFailure()
@@ -122,26 +122,46 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
         
         case "ActionColumn":
             
+            // If item is an empty platform, show "coming soon" label
             if item.dependency == nil && item.children.isEmpty {
-                // This is an empty platform, show "comming soon" label
                 view.imageView?.image = nil
                 view.textField?.stringValue = "Coming soon"
                 return view
             }
             
+            // Fetch the view with two buttons
             guard let buttonView: NSTableCellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ActionCell"), owner: self) as? NSTableCellView else {
                 return nil
             }
             
+            let button1: NSButton = buttonView.subviews.filter { $0.identifier!.rawValue == "Button1" }.first! as! NSButton
+            let button2: NSButton = buttonView.subviews.filter { $0.identifier!.rawValue == "Button2" }.first! as! NSButton
+            
             switch item.state {
-            case .unknown:
-                view.textField?.stringValue = "Install \(item.name)"
+            case .unknown, .notInstalled:
+                
+                button1.isHidden = false
+                button2.isHidden = false
+                
+                button1.title = "Install \(item.name)"
+                button2.title = "Locate"
+                
+                // Hide Locate button if item is platform
+                if item.dependency == nil {
+                    button2.isHidden = true
+                }
+
             case .uptodate:
-                view.textField?.stringValue = ""
+                
+                button1.isHidden = true
+                button2.isHidden = true
+                
             case .outdated:
-                view.textField?.stringValue = "Update \(item.name)"
-            case .notInstalled:
-                view.textField?.stringValue = "Install \(item.name)"
+                
+                button1.isHidden = false
+                button2.isHidden = true
+                
+                button1.title = "Update \(item.name)"
             }
 
             return buttonView
@@ -155,16 +175,8 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
         
     }
 
-    func outlineViewSelectionDidChange(_ notification: Notification) {
-        print("row: \(outlineView.selectedRow)")
-//        guard let outlineView = notification.object as? NSOutlineView else { return }
-//
-//        let supportedPathExtensions = ["sol"]
-//        let selectedIndex = outlineView.selectedRow
-//        guard let item = outlineView.item(atRow: selectedIndex) as? FileItem, supportedPathExtensions.contains(item.url.pathExtension) else { return }
-//
-//        let editWindowController = (view.window?.windowController as! EditWindowController)
-//        editWindowController.setEditor(url: item.url)
+    func selectionShouldChange(in outlineView: NSOutlineView) -> Bool {
+        return false
     }
 }
 
