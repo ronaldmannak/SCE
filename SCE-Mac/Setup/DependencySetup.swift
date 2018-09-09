@@ -13,9 +13,7 @@ class DependencySetup {
     private let filename = "Dependencies.plist"
     private let folder: URL!
     private let dependenciesFile: URL!
-    private let fileManager = FileManager.default
-    private static let reverseDNSName = "com.composite.composite"
-    
+    private let fileManager = FileManager.default    
     
     /// Sets folder and file variables.
     ///
@@ -26,7 +24,7 @@ class DependencySetup {
         guard let support = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first else {
             throw EditorError.directoryNotFound("Application Support")
         }
-        folder = support.appendingPathComponent(DependencySetup.reverseDNSName)
+        folder = support.appendingPathComponent(Bundle.main.bundleIdentifier!)
         dependenciesFile = folder.appendingPathComponent(filename)
     }
     

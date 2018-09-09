@@ -96,8 +96,8 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
         case "ActionColumn":
             
             view.imageView?.image = nil
-            print(item.name)
-            // If empty platform,
+
+            // If empty platform, show coming soon
             if item.dependency == nil && item.children.isEmpty {
                 view.textField?.stringValue = "Coming soon"
             } else {
