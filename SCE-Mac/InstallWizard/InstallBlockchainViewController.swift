@@ -43,6 +43,33 @@ class InstallBlockchainViewController: NSViewController {
         // Stop NSTask
         view.window?.close()
     }
+    @IBAction func button1(_ sender: Any) {
+        // NSButton is a subclass of NSView
+        guard let sender = sender as? NSView else { return }
+        let row = outlineView.row(for: sender)
+        guard let item = outlineView.item(atRow: row) as? DependencyViewModel else { return }
+        print (item.name)
+        
+        switch item.state {
+        case .outdated:
+            // Update
+            print("Installed")
+        case .notInstalled:
+            // Install
+            print("Not installed")
+        default:
+            // This should not happen
+            assertionFailure()
+        }
+    }
+    
+    @IBAction func button2(_ sender: Any) {
+        print(sender)
+        let openPanel = NSOpenPanel()
+        openPanel.beginSheetModal(for: self.view.window!) { (response) in
+            // TODO
+        }
+    }
 }
 
 extension InstallBlockchainViewController: NSOutlineViewDelegate {
@@ -95,23 +122,29 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
         
         case "ActionColumn":
             
-            view.imageView?.image = nil
-
-            // If empty platform, show coming soon
             if item.dependency == nil && item.children.isEmpty {
+                // This is an empty platform, show "comming soon" label
+                view.imageView?.image = nil
                 view.textField?.stringValue = "Coming soon"
-            } else {
-                switch item.state {
-                case .unknown:
-                    view.textField?.stringValue = "Install \(item.name)"
-                case .uptodate:
-                    view.textField?.stringValue = ""
-                case .outdated:
-                    view.textField?.stringValue = "Update \(item.name)"
-                case .notInstalled:
-                    view.textField?.stringValue = "Install \(item.name)"
-                }
+                return view
             }
+            
+            guard let buttonView: NSTableCellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ActionCell"), owner: self) as? NSTableCellView else {
+                return nil
+            }
+            
+            switch item.state {
+            case .unknown:
+                view.textField?.stringValue = "Install \(item.name)"
+            case .uptodate:
+                view.textField?.stringValue = ""
+            case .outdated:
+                view.textField?.stringValue = "Update \(item.name)"
+            case .notInstalled:
+                view.textField?.stringValue = "Install \(item.name)"
+            }
+
+            return buttonView
             
         default:
             
@@ -123,6 +156,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
     }
 
     func outlineViewSelectionDidChange(_ notification: Notification) {
+        print("row: \(outlineView.selectedRow)")
 //        guard let outlineView = notification.object as? NSOutlineView else { return }
 //
 //        let supportedPathExtensions = ["sol"]
