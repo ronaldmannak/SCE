@@ -117,8 +117,15 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
             
         case "PathColumn":
             
-            view.textField?.stringValue = item.path
             view.imageView?.image = nil
+            if item.state == .notInstalled && !item.path.isEmpty {
+                // Show not installed if item isn't installed and isn't a platform
+                view.textField?.stringValue = "(Not installed)"
+                view.textField?.textColor = .red
+            } else {
+                view.textField?.stringValue = item.path
+                view.textField?.textColor = .black
+            }
         
         case "ActionColumn":
             
