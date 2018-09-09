@@ -21,6 +21,7 @@
 		C76FC32021439FAC00DB2C62 /* InstallBlockchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */; };
 		C76FC3232143A6BF00DB2C62 /* InstallCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3212143A6BF00DB2C62 /* InstallCompleteViewController.swift */; };
 		C76FC326214495E100DB2C62 /* DependencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC325214495E100DB2C62 /* DependencyViewModel.swift */; };
+		C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */; };
 		C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */; };
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
@@ -110,6 +111,7 @@
 		C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallBlockchainViewController.swift; sourceTree = "<group>"; };
 		C76FC3212143A6BF00DB2C62 /* InstallCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallCompleteViewController.swift; sourceTree = "<group>"; };
 		C76FC325214495E100DB2C62 /* DependencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyViewModel.swift; sourceTree = "<group>"; };
+		C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesLocationsGeneralViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */,
 				C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */,
 				C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */,
+				C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -787,6 +790,7 @@
 				C7F0B9C62113EA39005A8FE2 /* ScriptTask.swift in Sources */,
 				C7DDD74E2140AFDC00674942 /* DependencyPlatform.swift in Sources */,
 				C7DDD7502140B68C00674942 /* Platform.swift in Sources */,
+				C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */,
 				C7E7645D212675AF00867DA4 /* Error.swift in Sources */,
 				C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */,
 				C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */,
