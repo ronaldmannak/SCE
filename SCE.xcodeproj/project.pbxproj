@@ -156,7 +156,7 @@
 		C7F0B989210DACCF005A8FE2 /* SCETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SCETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F0B98D210DACCF005A8FE2 /* SCETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCETests.swift; sourceTree = "<group>"; };
 		C7F0B98F210DACCF005A8FE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C7F0B99C2112945C005A8FE2 /* SCE-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SCE-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7F0B99C2112945C005A8FE2 /* Composite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Composite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F0B99E2112945D005A8FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7F0B9A22112945D005A8FE2 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		C7F0B9A42112945F005A8FE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -373,7 +373,7 @@
 			children = (
 				C7F0B973210DACCB005A8FE2 /* SCE.app */,
 				C7F0B989210DACCF005A8FE2 /* SCETests.xctest */,
-				C7F0B99C2112945C005A8FE2 /* SCE-Mac.app */,
+				C7F0B99C2112945C005A8FE2 /* Composite.app */,
 				C7F0B9AF2112945F005A8FE2 /* SCE-MacTests.xctest */,
 			);
 			name = Products;
@@ -498,9 +498,9 @@
 			productReference = C7F0B989210DACCF005A8FE2 /* SCETests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C7F0B99B2112945C005A8FE2 /* SCE-Mac */ = {
+		C7F0B99B2112945C005A8FE2 /* Composite */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C7F0B9B62112945F005A8FE2 /* Build configuration list for PBXNativeTarget "SCE-Mac" */;
+			buildConfigurationList = C7F0B9B62112945F005A8FE2 /* Build configuration list for PBXNativeTarget "Composite" */;
 			buildPhases = (
 				957588822D883CDCEFC461CF /* [CP] Check Pods Manifest.lock */,
 				C7F0B9982112945C005A8FE2 /* Sources */,
@@ -512,9 +512,9 @@
 			);
 			dependencies = (
 			);
-			name = "SCE-Mac";
+			name = Composite;
 			productName = "SCE-Mac";
-			productReference = C7F0B99C2112945C005A8FE2 /* SCE-Mac.app */;
+			productReference = C7F0B99C2112945C005A8FE2 /* Composite.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C7F0B9AE2112945F005A8FE2 /* SCE-MacTests */ = {
@@ -585,7 +585,7 @@
 			targets = (
 				C7F0B972210DACCB005A8FE2 /* SCE */,
 				C7F0B988210DACCF005A8FE2 /* SCETests */,
-				C7F0B99B2112945C005A8FE2 /* SCE-Mac */,
+				C7F0B99B2112945C005A8FE2 /* Composite */,
 				C7F0B9AE2112945F005A8FE2 /* SCE-MacTests */,
 			);
 		};
@@ -836,7 +836,7 @@
 		};
 		C7F0B9B12112945F005A8FE2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C7F0B99B2112945C005A8FE2 /* SCE-Mac */;
+			target = C7F0B99B2112945C005A8FE2 /* Composite */;
 			targetProxy = C7F0B9B02112945F005A8FE2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1197,7 +1197,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C7F0B9B62112945F005A8FE2 /* Build configuration list for PBXNativeTarget "SCE-Mac" */ = {
+		C7F0B9B62112945F005A8FE2 /* Build configuration list for PBXNativeTarget "Composite" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C7F0B9B72112945F005A8FE2 /* Debug */,
