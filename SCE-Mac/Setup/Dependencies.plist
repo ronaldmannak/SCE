@@ -69,7 +69,7 @@
 				<key>installCommand</key>
 				<string>brew install node</string>
 				<key>upgradeCommand</key>
-				<string></string>
+				<string>npm update</string>
 				<key>comment</key>
 				<string>npm should be installed by node</string>
 				<key>required</key>
@@ -99,7 +99,7 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>solium2</string>
+				<string>solium</string>
 				<key>customLocation</key>
 				<string></string>
 				<key>defaultLocation</key>
@@ -121,7 +121,7 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>Ganache2.app</string>
+				<string>Ganache.app</string>
 				<key>customLocation</key>
 				<string></string>
 				<key>defaultLocation</key>

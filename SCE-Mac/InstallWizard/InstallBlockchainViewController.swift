@@ -42,6 +42,8 @@ class InstallBlockchainViewController: NSViewController {
     @IBAction func cancel(_ sender: Any) {
         // Stop NSTask
         view.window?.close()
+        guard let delegate = NSApplication.shared.delegate as? AppDelegate else { return }
+        delegate.showChooseTemplate(self)
     }
     
     @IBAction func button1(_ sender: Any) {
