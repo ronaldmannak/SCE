@@ -11,7 +11,7 @@ import Foundation
 class DependencyViewModel {
 
     enum State {
-        case unknown, uptodate, outdated, notInstalled
+        case unknown, uptodate, outdated, notInstalled, installing
     }
     
     let dependency: Dependency?
@@ -19,9 +19,13 @@ class DependencyViewModel {
     let name: String
     let path: String
     private let isInstalled: Bool
+    var isInstalling: Bool = false
     let required: Bool
     
-    var state: State {        
+    var state: State {
+        if isInstalling == true {
+            return .installing            
+        }
         if isInstalled == false {
             return .notInstalled
         }

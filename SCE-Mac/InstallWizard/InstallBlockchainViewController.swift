@@ -14,8 +14,6 @@ class InstallBlockchainViewController: NSViewController {
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet var console: NSTextView!
     
-    var taskIsRunning = false
-    
     var platforms = [DependencyViewModel]() {
         didSet {
             outlineView.reloadData()
@@ -48,56 +46,23 @@ class InstallBlockchainViewController: NSViewController {
     
     @IBAction func button1(_ sender: Any) {
         
-        // Temp
-        guard taskIsRunning == false else { return }
-        
         // NSButton is a subclass of NSView
         guard let sender = sender as? NSView else { return }
         let row = outlineView.row(for: sender)
         guard let item = outlineView.item(atRow: row) as? DependencyViewModel else { return }
-        print (item.name)
         
         switch item.state {
-        case .outdated:
-            // Update
-            taskIsRunning = true
-            do {
-                try item.dependency?.update(output: { (output) in
-                    
-                    let previousOutput = self.console.string
-                    let nextOutput = previousOutput + "\n" + output
-                    self.console.string = nextOutput
-                    let range = NSRange(location:nextOutput.count,length:0)
-                    self.console.scrollRangeToVisible(range)
-                    print(nextOutput)
-                }, finished: {
-                    self.taskIsRunning = false
-                })
-            } catch {
-                let alert = NSAlert(error: error)
-                alert.runModal()
-            }
-            
-        case .notInstalled:
-            // Install
-            taskIsRunning = true
-            do {
-                try item.dependency?.install(output: { (output) in
-            
-                    let previousOutput = self.console.string
-                    let nextOutput = previousOutput + "\n" + output
-                    self.console.string = nextOutput
-                    let range = NSRange(location:nextOutput.count,length:0)
-                    self.console.scrollRangeToVisible(range)
-            
-                }, finished: {
-                    self.taskIsRunning = false
-                })
-            } catch {
-                let alert = NSAlert(error: error)
-                alert.runModal()
-            }
 
+        case .notInstalled, .outdated:
+            
+            let isPlatform = item.dependency == nil
+            if isPlatform {
+                for child in item.children {
+                    addTask(item: child)
+                }
+            } else {
+                addTask(item: item)
+            }
         default:
             // This should not happen
             return
@@ -105,11 +70,61 @@ class InstallBlockchainViewController: NSViewController {
     }
     
     @IBAction func button2(_ sender: Any) {
-        print(sender)
         let openPanel = NSOpenPanel()
         openPanel.beginSheetModal(for: self.view.window!) { (response) in
             // TODO
         }
+    }
+}
+
+// Queue functions
+extension InstallBlockchainViewController {
+    
+    
+    /// Add task to ScriptTask queue
+    ///
+    /// - Parameter item: <#item description#>
+    func addTask(item: DependencyViewModel) {
+        
+        let showOutputInConsole: (String) -> Void = { output in
+            let previousOutput = self.console.string
+            let nextOutput = previousOutput + "\n" + output
+            self.console.string = nextOutput
+            let range = NSRange(location:nextOutput.count,length:0)
+            self.console.scrollRangeToVisible(range)
+        }
+        
+        let finish: () -> Void = {
+            item.isInstalling = false
+            self.outlineView.reloadData()
+        }
+        
+        do {
+            let task: ScriptTask?
+            switch item.state {
+            case .outdated:
+                
+                task = try item.dependency?.update(output: { (output) in
+                    showOutputInConsole(output)
+                }, finished: finish)
+                
+            case .notInstalled:
+                
+                task = try item.dependency?.install(output: { (output) in
+                    showOutputInConsole(output)
+                }, finished: finish)
+                
+            default:
+                return
+            }
+            task?.run()
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
+        }
+        item.isInstalling = true
+        outlineView.reloadData()
+
     }
 }
 
@@ -140,7 +155,10 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 image = NSImage() // Orange warning
             case .notInstalled:
                 image = NSImage() // Red cross
+            case .installing:
+                image = NSImage()
             }
+            view.imageView?.image = image
             
         case "VersionColumn":
             
@@ -159,19 +177,20 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
         case "PathColumn":
             
             view.imageView?.image = nil
-            if item.state == .notInstalled && !item.path.isEmpty {
+            if item.state == .notInstalled && !item.path.isEmpty || item.state == .installing {
                 // Show not installed if item isn't installed and isn't a platform
-                view.textField?.stringValue = "(Not installed)"
-                view.textField?.textColor = .red
+                view.textField?.stringValue = "" //(Not installed)"
+//                view.textField?.textColor = .red
             } else {
                 view.textField?.stringValue = item.path
-                view.textField?.textColor = .black
+//                view.textField?.textColor = .black
             }
         
         case "ActionColumn":
             
             // If item is an empty platform, show "coming soon" label
-            if item.dependency == nil && item.children.isEmpty {
+            let isEmptyPlatform = item.dependency == nil && item.children.isEmpty
+            guard !isEmptyPlatform else  {
                 view.imageView?.image = nil
                 view.textField?.stringValue = "Coming soon"
                 return view
@@ -190,6 +209,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 
                 button1.isHidden = false
                 button2.isHidden = false
+                button1.isEnabled = true
                 
                 button1.title = "Install \(item.name)"
                 button2.title = "Locate"
@@ -203,13 +223,23 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 
                 button1.isHidden = true
                 button2.isHidden = true
+                button1.isEnabled = true
                 
             case .outdated:
                 
                 button1.isHidden = false
                 button2.isHidden = true
+                button1.isEnabled = true
                 
                 button1.title = "Update \(item.name)"
+                
+            case .installing:
+
+                button1.isHidden = false
+                button2.isHidden = true
+                button1.isEnabled = false
+                
+                button1.title = "Installing..."
             }
 
             return buttonView

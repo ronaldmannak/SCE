@@ -14,6 +14,8 @@ import Foundation
  */
 class ScriptTask: NSObject {
     
+    static var queue = DispatchQueue(label: "ScriptTaskQueue", qos: .background) //, attributes: <#T##DispatchQueue.Attributes#>, autoreleaseFrequency: <#T##DispatchQueue.AutoreleaseFrequency#>, target: <#T##DispatchQueue?#>)
+    
     var task = Process()
     let outputPipe = Pipe()
     
@@ -44,8 +46,8 @@ class ScriptTask: NSObject {
     
     func run() {
         
-        let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
-        taskQueue.async {
+//        let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
+        ScriptTask.queue.async {
             
             self.task.launchPath = self.launchpath
             self.task.arguments = self.arguments

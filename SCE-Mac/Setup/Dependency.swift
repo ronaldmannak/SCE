@@ -131,7 +131,6 @@ extension Dependency {
             }) {
                 finished()
             }
-            task.run()
             return task
         }
         return nil
@@ -145,7 +144,6 @@ extension Dependency {
             }) {
                 finished()
             }
-            task.run()
             return task
         }
         return nil
