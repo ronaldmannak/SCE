@@ -122,7 +122,8 @@ extension Dependency {
     
     func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
         if let link = installLink, let url = URL(string: link) {
-            NSWorkspace.shared.open(url)
+            finished()
+            NSWorkspace.shared.open(url)            
         }
         
         if let installCommand = installCommand {
@@ -133,6 +134,8 @@ extension Dependency {
             }
             return task
         }
+        
+        // TODO: if neither link or installCommand is set, finished() is never called
         return nil
     }
     

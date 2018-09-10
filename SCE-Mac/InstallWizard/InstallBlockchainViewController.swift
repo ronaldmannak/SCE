@@ -104,12 +104,14 @@ extension InstallBlockchainViewController {
             switch item.state {
             case .outdated:
                 
+                item.isInstalling = true
                 task = try item.dependency?.update(output: { (output) in
                     showOutputInConsole(output)
                 }, finished: finish)
                 
             case .notInstalled:
                 
+                item.isInstalling = true
                 task = try item.dependency?.install(output: { (output) in
                     showOutputInConsole(output)
                 }, finished: finish)
@@ -122,9 +124,8 @@ extension InstallBlockchainViewController {
             let alert = NSAlert(error: error)
             alert.runModal()
         }
-        item.isInstalling = true
+        
         outlineView.reloadData()
-
     }
 }
 
