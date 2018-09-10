@@ -14,6 +14,8 @@ class InstallBlockchainViewController: NSViewController {
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet var console: NSTextView!
     
+    var taskIsRunning = false
+    
     var platforms = [DependencyViewModel]() {
         didSet {
             outlineView.reloadData()
@@ -45,6 +47,10 @@ class InstallBlockchainViewController: NSViewController {
     }
     
     @IBAction func button1(_ sender: Any) {
+        
+        // Temp
+        guard taskIsRunning == false else { return }
+        
         // NSButton is a subclass of NSView
         guard let sender = sender as? NSView else { return }
         let row = outlineView.row(for: sender)
@@ -54,19 +60,47 @@ class InstallBlockchainViewController: NSViewController {
         switch item.state {
         case .outdated:
             // Update
-            print("Update")
-        case .notInstalled:
-            // Install
-            print("Install")
+            taskIsRunning = true
             do {
-//                try item.dependency?.install()
+                try item.dependency?.update(output: { (output) in
+                    
+                    let previousOutput = self.console.string
+                    let nextOutput = previousOutput + "\n" + output
+                    self.console.string = nextOutput
+                    let range = NSRange(location:nextOutput.count,length:0)
+                    self.console.scrollRangeToVisible(range)
+                    print(nextOutput)
+                }, finished: {
+                    self.taskIsRunning = false
+                })
             } catch {
                 let alert = NSAlert(error: error)
                 alert.runModal()
             }
+            
+        case .notInstalled:
+            // Install
+            taskIsRunning = true
+            do {
+                try item.dependency?.install(output: { (output) in
+            
+                    let previousOutput = self.console.string
+                    let nextOutput = previousOutput + "\n" + output
+                    self.console.string = nextOutput
+                    let range = NSRange(location:nextOutput.count,length:0)
+                    self.console.scrollRangeToVisible(range)
+            
+                }, finished: {
+                    self.taskIsRunning = false
+                })
+            } catch {
+                let alert = NSAlert(error: error)
+                alert.runModal()
+            }
+
         default:
             // This should not happen
-            assertionFailure()
+            return
         }
     }
     

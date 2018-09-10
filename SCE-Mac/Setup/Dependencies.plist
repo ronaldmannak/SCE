@@ -25,7 +25,7 @@
 				<key>installCommand</key>
 				<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
 				<key>upgradeCommand</key>
-				<string></string>
+				<string>brew update</string>
 				<key>comment</key>
 				<string>Brew is needed for installing npm</string>
 				<key>required</key>
