@@ -43,6 +43,7 @@ class InstallBlockchainViewController: NSViewController {
         // Stop NSTask
         view.window?.close()
     }
+    
     @IBAction func button1(_ sender: Any) {
         // NSButton is a subclass of NSView
         guard let sender = sender as? NSView else { return }
@@ -57,6 +58,12 @@ class InstallBlockchainViewController: NSViewController {
         case .notInstalled:
             // Install
             print("Install")
+            do {
+//                try item.dependency?.install()
+            } catch {
+                let alert = NSAlert(error: error)
+                alert.runModal()
+            }
         default:
             // This should not happen
             assertionFailure()

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 
 /// Dependency is an application Composite depends on, e.g. truffle
@@ -117,6 +118,37 @@ extension Dependency {
             print(output)
         }) {}
         task.run()
+    }
+    
+    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
+        if let link = installLink, let url = URL(string: link) {
+            NSWorkspace.shared.open(url)
+        }
+        
+        if let installCommand = installCommand {
+            let task = try ScriptTask(script: "General", arguments: [installCommand], output: { console in
+                output(console)
+            }) {
+                finished()
+            }
+            task.run()
+            return task
+        }
+        return nil
+    }
+    
+    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
+        
+        if let updateCommand = upgradeCommand {
+            let task = try ScriptTask(script: "General", arguments: [updateCommand], output: { console in
+                output(console)
+            }) {
+                finished()
+            }
+            task.run()
+            return task
+        }
+        return nil
     }
     
 }

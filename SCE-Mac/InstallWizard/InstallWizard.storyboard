@@ -262,7 +262,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="button1:" target="kfv-ZF-Ptq" id="RrI-yj-N6C"/>
+                                    <action selector="done:" target="kfv-ZF-Ptq" id="OmD-Ma-h2q"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="425-d8-U3K">
@@ -276,7 +276,7 @@ Gw
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="button1:" target="kfv-ZF-Ptq" id="adm-O5-nj9"/>
+                                    <action selector="cancel:" target="kfv-ZF-Ptq" id="99K-eg-doA"/>
                                 </connections>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="md7-DL-fgK">
