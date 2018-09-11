@@ -95,7 +95,8 @@ extension Dependency {
             version("")
             return
         }
-        let task = try ScriptTask(script: "General", arguments: [versionCommand], output: { output in
+        let homePath = FileManager.default.homeDirectoryForCurrentUser.path
+        let task = try ScriptTask(script: "General", arguments: [versionCommand, homePath], output: { output in
             
             // TODO: Apply regex
             version(output)
@@ -127,7 +128,8 @@ extension Dependency {
         }
         
         if let installCommand = installCommand {
-            let task = try ScriptTask(script: "General", arguments: [installCommand], output: { console in
+            let homePath = FileManager.default.homeDirectoryForCurrentUser.path
+            let task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in
                 output(console)
             }) {
                 finished()
@@ -142,7 +144,8 @@ extension Dependency {
     func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
         
         if let updateCommand = upgradeCommand {
-            let task = try ScriptTask(script: "General", arguments: [updateCommand], output: { console in
+            let homePath = FileManager.default.homeDirectoryForCurrentUser.path
+            let task = try ScriptTask(script: "General", arguments: [updateCommand, homePath], output: { console in
                 output(console)
             }) {
                 finished()

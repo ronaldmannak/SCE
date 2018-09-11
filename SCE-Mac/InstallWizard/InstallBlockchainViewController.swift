@@ -89,6 +89,7 @@ extension InstallBlockchainViewController {
     func addTask(item: DependencyViewModel) {
         
         let showOutputInConsole: (String) -> Void = { output in
+            print(output)
             let previousOutput = self.console.string
             let nextOutput = previousOutput + "\n" + output
             self.console.string = nextOutput
@@ -114,9 +115,7 @@ extension InstallBlockchainViewController {
             case .notInstalled:
                 
                 item.isInstalling = true
-                task = try item.dependency?.install(output: { (output) in
-                    showOutputInConsole(output)
-                }, finished: finish)
+                task = try item.dependency?.install(output: showOutputInConsole, finished: finish)
                 
             default:
                 return
@@ -146,22 +145,29 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
         switch identifier {
         case "DependencyColumn":
             
-            view.textField?.stringValue = item.name
-            
             let image: NSImage
+            let emoji: String
             switch item.state {
             case .unknown:
                 image = NSImage() // Question mark
+                emoji = "❓"
             case .uptodate:
                 image = NSImage() // Green
+                emoji = "✅"
             case .outdated:
                 image = NSImage() // Orange warning
+                emoji = "✅"
+//                emoji = "⚠️" // disabled until we can compare versions
             case .notInstalled:
                 image = NSImage() // Red cross
+                emoji = "❌"
             case .installing:
                 image = NSImage()
+                emoji = "🕗"
             }
             view.imageView?.image = image
+
+            view.textField?.stringValue = emoji + " " + item.name
             
         case "VersionColumn":
             
