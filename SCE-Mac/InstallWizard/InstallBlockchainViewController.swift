@@ -100,6 +100,7 @@ extension InstallBlockchainViewController {
         let finish: () -> Void = {
             item.isInstalling = false
             self.outlineView.reloadData()
+            // TODO: do we need to reload dependencies to update state and version numbers?
         }
         
         do {
@@ -156,8 +157,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 emoji = "✅"
             case .outdated:
                 image = NSImage() // Orange warning
-                emoji = "✅"
-//                emoji = "⚠️" // disabled until we can compare versions
+                emoji = "⚠️"
             case .notInstalled:
                 image = NSImage() // Red cross
                 emoji = "❌"

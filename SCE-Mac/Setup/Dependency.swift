@@ -88,8 +88,10 @@ extension Dependency {
     ///
     /// - Parameter version: Closure returning the version number
     /// - Throws: ScriptTask error
+//    mutating func fileVersion(version:@escaping (String) -> ()) throws {
     func fileVersion(version:@escaping (String) -> ()) throws {
-//    func fileVersion(version:@escaping (String, Bool) -> ()) throws {
+        
+        // If this dependency doesn't have a version query command, return empty string
         guard let versionCommand = versionCommand else {
             version("")
             return
@@ -109,12 +111,13 @@ extension Dependency {
             let versions = regex.matches(in: output, options: [], range: NSRange(location: 0, length: output.count)).map {
                 String(output[Range($0.range, in: output)!])
             }
+            
             guard versions.isEmpty == false else { return }
+            
             let string = versions.reduce("", { (result, string) -> String in
                 result.isEmpty ? string : result + " " + string
             })
             
-//            self.versionNumber = string
             version(string)
         }) {}
         task.run()
@@ -138,6 +141,7 @@ extension Dependency {
     }
     
     func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
+        
         if let link = installLink, let url = URL(string: link) {
             finished()
             NSWorkspace.shared.open(url)            
@@ -158,6 +162,11 @@ extension Dependency {
     }
     
     func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
+        
+        if let link = installLink, let url = URL(string: link) {
+            finished()
+            NSWorkspace.shared.open(url)
+        }
         
         if let updateCommand = upgradeCommand {
             let homePath = FileManager.default.homeDirectoryForCurrentUser.path

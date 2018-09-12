@@ -21,24 +21,24 @@ class DependencyViewModel {
     private let isInstalled: Bool
     var isInstalling: Bool = false
     let required: Bool
-    var versionNumber: String?
+
     var minimumVersion: String?
+    var version: String? = nil
     
     var state: State {
         if isInstalling == true {
             return .installing            
         } else if isInstalled == false {
             return .notInstalled
+        } else if let minimumVersion = minimumVersion, let version = version, version >= minimumVersion {
+            return .uptodate
+        } else if let minimumVersion = minimumVersion, let version = version, version < minimumVersion {
+            return .outdated
+        } else {
+            return .unknown
         }
-//        } else if let versionNumber
-        
-        
-        
-        // TODO: check version
-        return .outdated
-//        return .unknown
     }
-    var version: String? = nil
+    
     
     var children: [DependencyViewModel]
     

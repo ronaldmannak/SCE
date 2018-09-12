@@ -15,7 +15,7 @@ extension String {
     }
 }
 
-// Source: https://github.com/DragonCherry/VersionCompare/blob/master/VersionCompare/Classes/String%2BVersion.swift
+// Source: https://github.com/DragonCherry/VersionCompare
 extension String {
     
     /// Inner comparison utility to handle same versions with different length. (Ex: "1.0.0" & "1.0")
