@@ -153,28 +153,8 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
         switch identifier {
         case "DependencyColumn":
             
-            let image: NSImage
-            let emoji: String
-            switch item.state {
-            case .unknown:
-                image = NSImage() // Question mark
-                emoji = "❓"
-            case .uptodate:
-                image = NSImage() // Green
-                emoji = "✅"
-            case .outdated:
-                image = NSImage() // Orange warning
-                emoji = "⚠️"
-            case .notInstalled:
-                image = NSImage() // Red cross
-                emoji = "❌"
-            case .installing:
-                image = NSImage()
-                emoji = "🕗"
-            }
-            view.imageView?.image = image
-
-            view.textField?.stringValue = emoji + " " + item.name
+            view.imageView?.image = item.image
+            view.textField?.stringValue = item.displayName
             
         case "VersionColumn":
             
@@ -183,7 +163,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 view.textField?.stringValue = version
             } else {
                 do {
-                    try item.fetchVersion { _ in outlineView.reloadData() }
+                    try item.fetchVersion { _ in outlineView.reloadItem(item) }
                 } catch {
                     print(error)
                     assertionFailure()
@@ -227,7 +207,11 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 button2.isHidden = false
                 button1.isEnabled = true
                 
-                button1.title = "Install \(item.name)"
+                if item.dependency == nil {
+                    button1.title = "Install toolchain"
+                } else {
+                    button1.title = "Install \(item.name)"
+                }
                 button2.title = "Locate"
                 
                 // Hide Locate button if item is platform
@@ -246,9 +230,12 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 button1.isHidden = false
                 button2.isHidden = true
                 button1.isEnabled = true
-                
-                button1.title = "Update \(item.name)"
-                
+                            
+                if item.dependency == nil {
+                    button1.title = "Update toolchain"
+                } else {
+                    button1.title = "Update \(item.name)"
+                }
             case .installing:
 
                 button1.isHidden = false

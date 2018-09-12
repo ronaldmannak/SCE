@@ -169,6 +169,14 @@
 	</dict>
 	<dict>
 		<key>platform</key>
+		<string>dispatch</string>
+		<key>installed</key>
+		<false/>
+		<key>dependencies</key>
+		<array/>
+	</dict>
+	<dict>
+		<key>platform</key>
 		<string>nebulas</string>
 		<key>installed</key>
 		<false/>

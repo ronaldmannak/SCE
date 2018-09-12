@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 class DependencyViewModel {
 
@@ -21,6 +22,35 @@ class DependencyViewModel {
     
     var minimumVersion: String?
     var version: String? = nil
+    
+    var displayName: String {
+        
+        let emoji: String
+        
+        switch state {
+        case .unknown: emoji = "❓"
+        case .uptodate: emoji = "✅"
+        case .outdated: emoji = "⚠️"
+        case .notInstalled: emoji = "❌"
+        case .installing: emoji = "🕗"
+        }
+        
+        return emoji + " " + name
+    }
+    
+    var image: NSImage {
+        
+        let image: NSImage
+        
+        switch state {
+        case .unknown: image = NSImage()
+        case .uptodate: image = NSImage()
+        case .outdated: image = NSImage()
+        case .notInstalled: image = NSImage()
+        case .installing: image = NSImage()
+        }
+        return image
+    }
     
     // Temp vars for state
     var isInstalling: Bool = false // this is called by InstallBlockchainViewController. should be fixed
