@@ -91,6 +91,7 @@ extension Dependency {
     /// - Parameter version: Closure returning the version number
     /// - Throws: ScriptTask error
     func fileVersion(version:@escaping (String) -> ()) throws {
+//    func fileVersion(version:@escaping (String, Bool) -> ()) throws {
         guard let versionCommand = versionCommand else {
             version("")
             return
@@ -98,8 +99,26 @@ extension Dependency {
         let homePath = FileManager.default.homeDirectoryForCurrentUser.path
         let task = try ScriptTask(script: "General", arguments: [versionCommand, homePath], output: { output in
             
-            // TODO: Apply regex
-            version(output)
+            // Filter 1.0.1-rc1 type version number
+            // Some apps return multiple lines, and this closure will be called multiple times.
+            // Therefore, if no match if found, the output closure will not be called, since the
+            // version number could be in the previous or next line.
+            guard let regex = try? NSRegularExpression(pattern: "(\\d+)\\.(\\d+)\\.(\\d+)\\-?(\\w+)?", options: .caseInsensitive) else {
+                version(output) // If somehow the regex fails, return the whole string
+                return
+            }
+
+            let versions = regex.matches(in: output, options: [], range: NSRange(location: 0, length: output.count)).map {
+                String(output[Range($0.range, in: output)!])
+            }
+            guard versions.isEmpty == false else { return }
+            let string = versions.reduce("", { (result, string) -> String in
+                result.isEmpty ? string : result + " " + string
+            })
+            
+            // TODO: Compare versions
+            
+            version(string)
         }) {}
         task.run()
     }
