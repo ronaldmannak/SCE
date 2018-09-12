@@ -21,14 +21,19 @@ class DependencyViewModel {
     private let isInstalled: Bool
     var isInstalling: Bool = false
     let required: Bool
+    var versionNumber: String?
+    var minimumVersion: String?
     
     var state: State {
         if isInstalling == true {
             return .installing            
-        }
-        if isInstalled == false {
+        } else if isInstalled == false {
             return .notInstalled
         }
+//        } else if let versionNumber
+        
+        
+        
         // TODO: check version
         return .outdated
 //        return .unknown
@@ -44,6 +49,7 @@ class DependencyViewModel {
         path = dependency.url.path
         isInstalled = dependency.isInstalled
         required = dependency.required
+        minimumVersion = dependency.minimumVersion
         
         children = [DependencyViewModel]()
     }

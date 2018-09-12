@@ -27,10 +27,7 @@ struct Dependency: Codable {
     
     /// Command to display version
     let versionCommand: String?
-    
-    /// Regex parsing of version obtained with versionCommand
-    let versionRegex: String?
-    
+        
     /// Command to install depedency
     let installCommand: String?
     
@@ -48,6 +45,7 @@ struct Dependency: Codable {
     /// will ignore any tool that has required set to false
     let required: Bool
     
+    fileprivate (set) var versionNumber: String?
 }
 
 extension Dependency {
@@ -116,8 +114,7 @@ extension Dependency {
                 result.isEmpty ? string : result + " " + string
             })
             
-            // TODO: Compare versions
-            
+//            self.versionNumber = string
             version(string)
         }) {}
         task.run()

@@ -17,7 +17,7 @@
 				<key>defaultLocation</key>
 				<string>/usr/local/bin/</string>
 				<key>minimumVersion</key>
-				<string></string>
+				<string>1.7.4</string>
 				<key>versionCommand</key>
 				<string>brew -v</string>
 				<key>versionRegex</key>
@@ -39,7 +39,7 @@
 				<key>defaultLocation</key>
 				<string>/usr/local/bin</string>
 				<key>minimumVersion</key>
-				<string></string>
+				<string>8.11.1</string>
 				<key>versionCommand</key>
 				<string>node -v</string>
 				<key>versionRegex</key>
@@ -61,7 +61,7 @@
 				<key>defaultLocation</key>
 				<string>/usr/local/bin</string>
 				<key>minimumVersion</key>
-				<string></string>
+				<string>6.2.0</string>
 				<key>versionCommand</key>
 				<string>npm -v</string>
 				<key>versionRegex</key>
@@ -83,7 +83,7 @@
 				<key>defaultLocation</key>
 				<string>/usr/local/bin/</string>
 				<key>minimumVersion</key>
-				<string></string>
+				<string>4.1.13</string>
 				<key>versionCommand</key>
 				<string>truffle version</string>
 				<key>versionRegex</key>
@@ -105,7 +105,7 @@
 				<key>defaultLocation</key>
 				<string>/usr/local/bin/</string>
 				<key>minimumVersion</key>
-				<string></string>
+				<string>1.1.8</string>
 				<key>versionCommand</key>
 				<string>solium -V</string>
 				<key>versionRegex</key>
@@ -127,7 +127,7 @@
 				<key>defaultLocation</key>
 				<string>/Applications</string>
 				<key>minimumVersion</key>
-				<string></string>
+				<string>1.2.1</string>
 				<key>versionCommand</key>
 				<string>defaults read /Applications/Ganache.app/Contents/Info CFBundleShortVersionString</string>
 				<key>versionRegex</key>
