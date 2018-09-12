@@ -18,27 +18,67 @@ class DependencyViewModel {
     
     let name: String
     let path: String
-    private let isInstalled: Bool
-    var isInstalling: Bool = false
-    let required: Bool
-
+    
     var minimumVersion: String?
     var version: String? = nil
     
+    // Temp vars for state
+    var isInstalling: Bool = false // this is called by InstallBlockchainViewController. should be fixed
+    private let required: Bool
     var state: State {
+        
+        // TODO: why don't we simply subclass dependencyViewModel into platform and child?
+        
+        // Handle platforms first
+        if self.dependency == nil {
+            
+            // If platform is an empty placeholder
+            if children.isEmpty { return .installing }
+            
+            // Platform installing
+            if children.filter({ $0.state == .installing }).isEmpty == false {
+                return .installing
+            }
+            
+            // All required dependencies are up to date
+            if children.filter({ $0.state == .uptodate && $0.required == true }).count == children.filter({ $0.required == true }).count {
+                return .uptodate
+            }
+            
+            // Not all required dependencies are installed
+            if children.filter({ $0.state == .notInstalled && $0.required == true }).isEmpty == false {
+                return .notInstalled
+            }
+            
+            // Not all required dependencies are up to date
+            if children.filter({ $0.state == .outdated && $0.required == true }).isEmpty == false {
+                return .outdated
+            }
+            
+            return .unknown
+        }
+        
+        // Handle dependencies next
+        
+        // Installing
         if isInstalling == true {
             return .installing            
-        } else if isInstalled == false {
+        }
+        
+        // Not installed
+        if dependency!.isInstalled == false {
             return .notInstalled
-        } else if let minimumVersion = minimumVersion, let version = version, version >= minimumVersion {
+        }
+        
+        // upToDate / isOutdated
+        if let minimumVersion = minimumVersion, let version = version, version >= minimumVersion {
             return .uptodate
         } else if let minimumVersion = minimumVersion, let version = version, version < minimumVersion {
             return .outdated
-        } else {
-            return .unknown
         }
+        
+        return .unknown
     }
-    
     
     var children: [DependencyViewModel]
     
@@ -47,7 +87,6 @@ class DependencyViewModel {
         self.dependency = dependency
         name = dependency.name.replacingOccurrences(of: ".app", with: "").capitalizedFirstChar()
         path = dependency.url.path
-        isInstalled = dependency.isInstalled
         required = dependency.required
         minimumVersion = dependency.minimumVersion
         
@@ -61,15 +100,13 @@ class DependencyViewModel {
         path = ""
         children = platform.dependencies.map{ DependencyViewModel($0) }
         required = false
-    
-        isInstalled = (children.filter{ $0.isInstalled == false && $0.required == true }.isEmpty)
     }
     
     func fetchVersion(completion: @escaping (String) -> ()) throws {
         
-        guard isInstalled == true else { return }
+        guard let dependency = dependency, dependency.isInstalled == true else { return }
         
-        try dependency?.fileVersion {
+        try dependency.fileVersion {
             self.version = $0
             completion($0)
         }

@@ -99,8 +99,14 @@ extension InstallBlockchainViewController {
         
         let finish: () -> Void = {
             item.isInstalling = false
-            self.outlineView.reloadData()
-            // TODO: do we need to reload dependencies to update state and version numbers?
+            self.outlineView.reloadItem(item)
+//            self.outlineView.reloadData()
+//            do {
+//                self.platforms = try self.dependencies.loadViewModels()
+//            } catch {
+//                let alert = NSAlert(error: error)
+//                alert.runModal()
+//            }
         }
         
         do {
@@ -126,8 +132,9 @@ extension InstallBlockchainViewController {
             let alert = NSAlert(error: error)
             alert.runModal()
         }
-        
-        outlineView.reloadData()
+        // Reload in case installing icon must be shown
+        outlineView.reloadItem(item)
+//        self.outlineView.reloadData()
     }
 }
 

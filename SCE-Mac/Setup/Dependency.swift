@@ -80,7 +80,7 @@ extension Dependency {
     
     /// True if file exists at customLocation or defaultLocation
     var isInstalled: Bool {
-//        print("checking path \(url.path)")
+        print(FileManager.default.fileExists(atPath: url.path))
         return FileManager.default.fileExists(atPath: url.path)
     }
     
@@ -112,13 +112,18 @@ extension Dependency {
                 String(output[Range($0.range, in: output)!])
             }
             
-            guard versions.isEmpty == false else { return }
+            // Truffle replies with multiple version on multiple lines we and
+            // might get the wrong version here in edge cases.
+            guard let versionString = versions.first else { return }
+            version(versionString)
             
-            let string = versions.reduce("", { (result, string) -> String in
-                result.isEmpty ? string : result + " " + string
-            })
-            
-            version(string)
+//            guard versions.isEmpty == false else { return }
+//
+//            let string = versions.reduce("", { (result, string) -> String in
+//                result.isEmpty ? string : result + " " + string
+//            })
+//
+//            version(string)
         }) {}
         task.run()
     }
