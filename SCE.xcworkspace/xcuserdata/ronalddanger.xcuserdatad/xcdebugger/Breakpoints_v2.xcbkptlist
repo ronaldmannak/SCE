@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SCE-Mac/InstallWizard/InstallBlockchainViewController.swift"
-            timestampString = "558507703.857465"
+            timestampString = "558507983.501413"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "outlineView(_:viewFor:item:)"
             landmarkType = "7">
          </BreakpointContent>

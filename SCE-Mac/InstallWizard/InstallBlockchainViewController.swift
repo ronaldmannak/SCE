@@ -62,6 +62,14 @@ class InstallBlockchainViewController: NSViewController {
         let row = outlineView.row(for: sender)
         guard let item = outlineView.item(atRow: row) as? DependencyViewModel else { return }
         
+        if item.dependency == nil {
+            // If platform, update all components
+            for component in item.children {
+                addTask(item: component)
+            }
+            return
+        }
+        
         switch item.state {
 
         case .notInstalled, .outdated:
@@ -117,7 +125,10 @@ extension InstallBlockchainViewController {
         do {
             let task: ScriptTask?
             switch item.state {
-            case .outdated:
+            case .outdated, .uptodate:
+                
+                // up to date means component has equal or higher version than
+                // listed in the plist file. There could be a newer version available
                 
                 item.isInstalling = true
                 task = try item.dependency?.update(output: { (output) in
