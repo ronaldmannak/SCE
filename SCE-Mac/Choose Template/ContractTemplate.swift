@@ -9,23 +9,7 @@
 import Foundation
 import Cocoa
 
-struct ContractPlatform: Codable {
-    
-    enum Platform: String, Codable {
-        case Ethereum, Bitcoin, Cosmos
-        
-        var languages: [String] {
-            switch self {
-            case .Ethereum:
-                return ["Solidity"]
-            case .Bitcoin:
-                return ["Bitcoin Script"]
-            case .Cosmos:
-                return ["Michelson"]
-            }
-        }
-    }
-    
+struct ContractPlatform: Codable {    
     let platform: Platform
     var languages: [String] { return platform.languages }
     let categories: [ContractCategory]?

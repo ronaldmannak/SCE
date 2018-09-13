@@ -14,29 +14,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //    var preferencesController: PreferencesWindowController? = nil
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
         
-        if true == true { // TODO: Read UserDefaults for show Choose Template
+        var setup: DependencySetup!
+        var shouldDisplayInstallWizard = false
+        do {
+            setup = try DependencySetup()
+            shouldDisplayInstallWizard = try setup.setup(.ethereum, overwrite: true)         
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
+        }
+  
+        if shouldDisplayInstallWizard == true {
+            showInstallWizard(setup: setup)
+        } else {
             showChooseTemplate(self)
         }
-        
-        // Close
-//        NSApplication.shared.windows.last!.close()
-        
-        // Set menu
-        
-        // Set first window
-        
-        
-//        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        var exampleViewController: ExampleViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ExampleController") as! ExampleViewController
-//        
-//        self.window?.rootViewController = exampleViewController
-//        
-//        self.window?.makeKeyAndVisible()
-//        
-//        return true
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -55,6 +48,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //            preferencesController.showWindow(sender)
 //        }
 //    }
+    
+    func showInstallWizard(setup: DependencySetup) {
+        let installWizardStoryboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "InstallWizard"), bundle: nil)
+        let installWizard = installWizardStoryboard.instantiateInitialController() as? NSWindowController
+        let installContainer = installWizard?.contentViewController as? InstallContainerViewController
+        installContainer?.dependencies = setup
+        installWizard?.showWindow(self)
+    }
     
     @IBAction func showChooseTemplate(_ sender: Any) {
         let storyboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "Template"), bundle: nil)

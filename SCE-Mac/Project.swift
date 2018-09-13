@@ -10,7 +10,13 @@ import Foundation
 
 struct Project: Codable {
     
+    /// Name of the project, e.g. ProjectName
     let name: String
+    
+    /// URL of the .comp project file E.g. ~/Projects/ProjectName/ProjectName.comp
+    var projectFileURL: URL {
+        return workDirectory.appendingPathComponent("\(name).comp")
+    }
     
     /// Parent directory of the project, e.g. ~/Projects (not ~/Projects/ProjectName)
     let baseDirectory: URL
@@ -21,6 +27,11 @@ struct Project: Codable {
     }
     
     var lastOpenFile: String?
+
+    
+//    let platform: Platform
+//    let tool: ?? e.g. Truffle
+//    let restoreState ??
 }
 
 class ProjectCreator: Codable {
@@ -46,6 +57,14 @@ class ProjectCreator: Codable {
         self.copyFiles = copyFiles
     }
     
+    
+    /// Creates a new project on disk
+    ///
+    /// - Parameters:
+    ///   - output: <#output description#>
+    ///   - finished: <#finished description#>
+    /// - Returns: <#return value description#>
+    /// - Throws: <#throws value description#>
     func create(output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
         
         // Closure copying custom files from bundle to project directory
@@ -67,6 +86,17 @@ class ProjectCreator: Codable {
                     print("To: \(destination.path)")
                     assertionFailure()
                 }
+            }
+            
+            // Save initial project file to disk, so PreparingViewController can open it
+            let encoder = PropertyListEncoder()
+            encoder.outputFormat = .xml
+            do {
+                let data = try encoder.encode(self.project)
+                fileManager.createFile(atPath: self.project.projectFileURL.path, contents: data, attributes: nil)
+            } catch {
+                print(error)
+                assertionFailure()
             }
         }
         
