@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#echo '$ '${1}
+echo '$ '$1
 
 # Second argument found, set $HOME path
 # required by brew
@@ -11,4 +11,6 @@ then
 fi
 
 ${1}
+
+echo 'Ready.'
 

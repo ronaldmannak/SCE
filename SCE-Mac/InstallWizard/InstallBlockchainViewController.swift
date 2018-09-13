@@ -100,7 +100,6 @@ extension InstallBlockchainViewController {
     func addTask(item: DependencyViewModel) {
         
         let showOutputInConsole: (String) -> Void = { output in
-            print(output)
             let previousOutput = self.console.string
             let nextOutput = previousOutput + "\n" + output
             self.console.string = nextOutput
@@ -131,9 +130,12 @@ extension InstallBlockchainViewController {
                 task = try item.dependency?.install(output: showOutputInConsole, finished: finish)
                 
             default:
+                
                 return
             }
+            
             task?.run()
+            
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
