@@ -104,14 +104,29 @@
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
-            condition = "item.name == &quot;Ethereum&quot;"
             continueAfterRunningActions = "No"
-            filePath = "SCE-Mac/InstallWizard/InstallBlockchainViewController.swift"
-            timestampString = "558501883.095126"
+            filePath = "SCE-Mac/Setup/Dependency.swift"
+            timestampString = "558507410.828128"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "install(output:finished:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SCE-Mac/InstallWizard/InstallBlockchainViewController.swift"
+            timestampString = "558507410.828225"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "outlineView(_:viewFor:item:)"
             landmarkType = "7">
          </BreakpointContent>

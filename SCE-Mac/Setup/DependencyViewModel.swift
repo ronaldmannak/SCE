@@ -81,7 +81,7 @@ class DependencyViewModel {
                 return .uptodate
             }
             
-            print(children.filter({ $0.state == .notInstalled && $0.required == true }))
+//            print(children.filter({ $0.state == .notInstalled && $0.required == true }))
             // Not all required dependencies are installed
             if children.filter({ $0.state == .notInstalled && $0.required == true }).isEmpty == false {
                 return .notInstalled

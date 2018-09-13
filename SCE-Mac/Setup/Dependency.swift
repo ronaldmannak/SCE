@@ -80,7 +80,7 @@ extension Dependency {
     
     /// True if file exists at customLocation or defaultLocation
     var isInstalled: Bool {
-        print(FileManager.default.fileExists(atPath: url.path))
+//        print(FileManager.default.fileExists(atPath: url.path))
         return FileManager.default.fileExists(atPath: url.path)
     }
     

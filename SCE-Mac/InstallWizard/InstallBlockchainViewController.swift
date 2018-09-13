@@ -75,7 +75,9 @@ class InstallBlockchainViewController: NSViewController {
                 addTask(item: item)
             }
         default:
-            // This should not happen
+            // This happens in edge case demo where Ganache is renamed while
+            // running the app.
+            try? item.fetchVersion { _ in self.outlineView.reloadData() }
             return
         }
     }
@@ -107,8 +109,10 @@ extension InstallBlockchainViewController {
         }
         
         let finish: () -> Void = {
-            item.isInstalling = false
-            self.outlineView.reloadItem(item)
+            try? item.fetchVersion { _ in
+                item.isInstalling = false
+                self.outlineView.reloadData()
+            }
         }
         
         do {
@@ -136,7 +140,6 @@ extension InstallBlockchainViewController {
         }
         // Reload in case installing icon must be shown
         outlineView.reloadItem(item)
-//        self.outlineView.reloadData()
     }
 }
 
