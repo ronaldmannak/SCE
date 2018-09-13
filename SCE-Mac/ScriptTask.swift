@@ -14,6 +14,8 @@ import Foundation
  */
 class ScriptTask: NSObject {
     
+    static var queue = DispatchQueue(label: "ScriptTaskQueue", qos: .background) //, attributes: <#T##DispatchQueue.Attributes#>, autoreleaseFrequency: <#T##DispatchQueue.AutoreleaseFrequency#>, target: <#T##DispatchQueue?#>)
+    
     var task = Process()
     let outputPipe = Pipe()
     
@@ -44,8 +46,8 @@ class ScriptTask: NSObject {
     
     func run() {
         
-        let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
-        taskQueue.async {
+//        let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
+        ScriptTask.queue.async {
             
             self.task.launchPath = self.launchpath
             self.task.arguments = self.arguments
@@ -64,10 +66,11 @@ class ScriptTask: NSObject {
         }
     }
     
+    // TODO: add enum whether output it stdOut, stdErr or entered command, so console can color code the output
     func captureStandardOutput() {
         
         task.standardOutput = outputPipe
-//        task.standardError = outputPipe
+        task.standardError = outputPipe
         
         notification = NotificationCenter.default.addObserver(forName: .NSFileHandleDataAvailable, object: outputPipe.fileHandleForReading , queue: nil) {
             notification in
@@ -76,7 +79,7 @@ class ScriptTask: NSObject {
             guard let outputString = String(data: output, encoding: String.Encoding.utf8), !outputString.isEmpty else { return }
             
             DispatchQueue.main.async(execute: {
-                print(outputString)
+//                print(outputString)
                 assert(self.output != nil)
                 self.output?(outputString)
             })

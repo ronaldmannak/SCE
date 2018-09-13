@@ -23,7 +23,7 @@ class EditWindowController: NSWindowController {
             guard let project = project else { return }
             window?.title = project.name            
             do {
-                print(project.lastOpenFile)
+//                print(project.lastOpenFile)
                 try fileBrowserViewController.load(url: project.workDirectory, projectName: project.name, openFile: project.lastOpenFile)
             } catch {
                 let alert = NSAlert(error: error)
@@ -74,6 +74,13 @@ class EditWindowController: NSWindowController {
             return
         }
         do {
+//            Occasional bug: projects get duplicated as subdirectories of an open project.
+//            wrong url
+//            ▿ file:///Users/ronalddanger/Development/Temp/Untitled89652768/Untitled2346789/contracts/TutorialToken.sol
+//
+//            untitled 89 is the right one.
+//            this file is saved in the 2768 directory. the full project is actually saved there
+//            print("******===== \(editorURL.path)")
             try editView.text.write(to: editorURL, atomically: true, encoding: .utf8)
         } catch {
             let alert = NSAlert(error: error)
