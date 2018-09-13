@@ -24,6 +24,15 @@ class InstallBlockchainViewController: NSViewController {
         didSet {
             do {
                 platforms = try dependencies.loadViewModels()
+                for platform in platforms {
+                    for tool in platform.children {
+                        try tool.fetchVersion{ _ in
+                            self.outlineView.reloadItem(tool)
+                            self.outlineView.reloadItem(platform)
+                        }
+                    }
+                }
+                outlineView.expandItem(nil, expandChildren: true)
             } catch {
                 let alert = NSAlert(error: error)
                 alert.runModal()
@@ -100,13 +109,6 @@ extension InstallBlockchainViewController {
         let finish: () -> Void = {
             item.isInstalling = false
             self.outlineView.reloadItem(item)
-//            self.outlineView.reloadData()
-//            do {
-//                self.platforms = try self.dependencies.loadViewModels()
-//            } catch {
-//                let alert = NSAlert(error: error)
-//                alert.runModal()
-//            }
         }
         
         do {
@@ -158,17 +160,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
             
         case "VersionColumn":
             
-            view.textField?.stringValue = ""
-            if let version = item.version {
-                view.textField?.stringValue = version
-            } else {
-                do {
-                    try item.fetchVersion { _ in outlineView.reloadItem(item) }
-                } catch {
-                    print(error)
-                    assertionFailure()
-                }
-            }
+            view.textField?.stringValue = item.version ?? ""
             
         case "PathColumn":
             
@@ -224,6 +216,11 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 button1.isHidden = true
                 button2.isHidden = true
                 button1.isEnabled = true
+                
+                if item.dependency == nil {
+                    button1.title = "Update toolchain"
+                    button1.isHidden = false
+                }
                 
             case .outdated:
                 

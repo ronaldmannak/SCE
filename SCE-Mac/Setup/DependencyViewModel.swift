@@ -28,10 +28,16 @@ class DependencyViewModel {
         let emoji: String
         
         switch state {
-        case .unknown: emoji = "❓"
+        case .unknown:
+            if dependency == nil {
+                emoji = "" }
+            else {
+                emoji = "❓"
+            }
         case .uptodate: emoji = "✅"
         case .outdated: emoji = "⚠️"
-        case .notInstalled: emoji = "❌"
+        case .notInstalled:
+            emoji = "❌"
         case .installing: emoji = "🕗"
         }
         
@@ -75,6 +81,7 @@ class DependencyViewModel {
                 return .uptodate
             }
             
+            print(children.filter({ $0.state == .notInstalled && $0.required == true }))
             // Not all required dependencies are installed
             if children.filter({ $0.state == .notInstalled && $0.required == true }).isEmpty == false {
                 return .notInstalled
