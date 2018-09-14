@@ -59,14 +59,14 @@ class DependencyViewModel {
     }
     
     // Temp vars for state
-    var isInstalling: Bool = false // this is called by InstallBlockchainViewController. should be fixed
+//    var isInstalling: Bool = false // this is called by InstallBlockchainViewController. should be fixed
     private let required: Bool
     var state: State {
         
         // TODO: why don't we simply subclass dependencyViewModel into platform and child?
         
         // Handle platforms first
-        if self.dependency == nil {
+        guard let dependency = dependency else {
             
             // If platform is an empty placeholder
             if children.isEmpty { return .installing }
@@ -98,12 +98,12 @@ class DependencyViewModel {
         // Handle dependencies next
         
         // Installing
-        if isInstalling == true {
+        if dependency.task != nil {
             return .installing            
         }
         
         // Not installed
-        if dependency!.isInstalled == false {
+        if dependency.isInstalled == false {
             return .notInstalled
         }
         

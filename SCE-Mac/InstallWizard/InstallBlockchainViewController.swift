@@ -140,7 +140,6 @@ extension InstallBlockchainViewController {
             
             do {
                 try item.fetchVersion { _ in
-                    item.isInstalling = false
                     self.outlineView.reloadData()
                     self.inProgress = self.inProgress - 1
                 }
@@ -157,7 +156,6 @@ extension InstallBlockchainViewController {
                 // up to date means component has equal or higher version than
                 // listed in the plist file. There could be a newer version available
                 
-                item.isInstalling = true
                 inProgress = inProgress + 1
                 task = try item.dependency?.update(output: { (output) in
                     showOutputInConsole(output)
@@ -165,7 +163,6 @@ extension InstallBlockchainViewController {
                 
             case .notInstalled:
                 
-                item.isInstalling = true
                 inProgress = inProgress + 1
                 task = try item.dependency?.install(output: showOutputInConsole, finished: finish)
                 
