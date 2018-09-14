@@ -55,28 +55,6 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>npm</string>
-				<key>customLocation</key>
-				<string></string>
-				<key>defaultLocation</key>
-				<string>/usr/local/bin</string>
-				<key>minimumVersion</key>
-				<string>6.2.0</string>
-				<key>versionCommand</key>
-				<string>npm -v</string>
-				<key>versionRegex</key>
-				<string></string>
-				<key>installCommand</key>
-				<string>brew install node</string>
-				<key>upgradeCommand</key>
-				<string>npm update</string>
-				<key>comment</key>
-				<string>npm should be installed by node</string>
-				<key>required</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>name</key>
 				<string>truffle</string>
 				<key>customLocation</key>
 				<string></string>

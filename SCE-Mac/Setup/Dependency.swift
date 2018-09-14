@@ -80,7 +80,6 @@ extension Dependency {
     
     /// True if file exists at customLocation or defaultLocation
     var isInstalled: Bool {
-//        print(FileManager.default.fileExists(atPath: url.path))
         return FileManager.default.fileExists(atPath: url.path)
     }
     
@@ -88,7 +87,6 @@ extension Dependency {
     ///
     /// - Parameter version: Closure returning the version number
     /// - Throws: ScriptTask error
-//    mutating func fileVersion(version:@escaping (String) -> ()) throws {
     func fileVersion(version:@escaping (String) -> ()) throws {
         
         // If this dependency doesn't have a version query command, return empty string
@@ -97,7 +95,11 @@ extension Dependency {
             return
         }
         let homePath = FileManager.default.homeDirectoryForCurrentUser.path
+        var lines = 1
         let task = try ScriptTask(script: "General", arguments: [versionCommand, homePath], output: { output in
+            
+            // Assumes that the correct version number is always returned on the first line
+            if lines > 1 { return }
             
             // Filter 1.0.1-rc1 type version number
             // Some apps return multiple lines, and this closure will be called multiple times.
@@ -112,21 +114,11 @@ extension Dependency {
                 String(output[Range($0.range, in: output)!])
             }
             
-            // Truffle replies with multiple version on multiple lines we and
-            // might get the wrong version here in edge cases.
-            guard let versionString = versions.first else {
-                version("")
-                return                
-            }
+            // Some dependencies return multiple lines for their version information
+            // Ignore lines where no version is found
+            guard let versionString = versions.first else { return }
             version(versionString)
-            
-//            guard versions.isEmpty == false else { return }
-//
-//            let string = versions.reduce("", { (result, string) -> String in
-//                result.isEmpty ? string : result + " " + string
-//            })
-//
-//            version(string)
+            lines = lines + 1
         }) {}
         task.run()
     }
