@@ -39,7 +39,7 @@
 				<key>defaultLocation</key>
 				<string>/usr/local/bin</string>
 				<key>minimumVersion</key>
-				<string>8.11.1</string>
+				<string>10.10.0</string>
 				<key>versionCommand</key>
 				<string>node -v</string>
 				<key>versionRegex</key>
