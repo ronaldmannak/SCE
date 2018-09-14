@@ -207,11 +207,6 @@ extension Dependency {
     
     func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
         
-        if let link = installLink, let url = URL(string: link) {
-            finished()
-            NSWorkspace.shared.open(url)
-        }
-        
         if let updateCommand = upgradeCommand {
             let homePath = FileManager.default.homeDirectoryForCurrentUser.path
             let task = try ScriptTask(script: "General", arguments: [updateCommand, homePath], output: { console in

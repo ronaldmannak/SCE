@@ -80,7 +80,7 @@ class InstallBlockchainViewController: NSViewController {
             // If platform, update all components
             
             // Unless brew is not installed, then just show the "install brew alert
-            if let brew = item.children.first, brew.name == "Brew" {
+            if let brew = item.children.first, brew.name == "Brew", brew.state == .notInstalled {
                 addTask(item: brew)
                 return
             }
