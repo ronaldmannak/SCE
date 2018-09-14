@@ -80,7 +80,6 @@ extension Dependency {
     
     /// True if file exists at customLocation or defaultLocation
     var isInstalled: Bool {
-//        print(FileManager.default.fileExists(atPath: url.path))
         return FileManager.default.fileExists(atPath: url.path)
     }
     
@@ -88,7 +87,6 @@ extension Dependency {
     ///
     /// - Parameter version: Closure returning the version number
     /// - Throws: ScriptTask error
-//    mutating func fileVersion(version:@escaping (String) -> ()) throws {
     func fileVersion(version:@escaping (String) -> ()) throws {
         
         // If this dependency doesn't have a version query command, return empty string
@@ -97,7 +95,11 @@ extension Dependency {
             return
         }
         let homePath = FileManager.default.homeDirectoryForCurrentUser.path
+        var lines = 1
         let task = try ScriptTask(script: "General", arguments: [versionCommand, homePath], output: { output in
+            
+            // Assumes that the correct version number is always returned on the first line
+            if lines > 1 { return }
             
             // Filter 1.0.1-rc1 type version number
             // Some apps return multiple lines, and this closure will be called multiple times.
@@ -112,18 +114,11 @@ extension Dependency {
                 String(output[Range($0.range, in: output)!])
             }
             
-            // Truffle replies with multiple version on multiple lines we and
-            // might get the wrong version here in edge cases.
+            // Some dependencies return multiple lines for their version information
+            // Ignore lines where no version is found
             guard let versionString = versions.first else { return }
             version(versionString)
-            
-//            guard versions.isEmpty == false else { return }
-//
-//            let string = versions.reduce("", { (result, string) -> String in
-//                result.isEmpty ? string : result + " " + string
-//            })
-//
-//            version(string)
+            lines = lines + 1
         }) {}
         task.run()
     }
@@ -152,6 +147,22 @@ extension Dependency {
             NSWorkspace.shared.open(url)            
         }
         
+        // Hardcoded edgecase for brew.
+        // The brew installer needs to run as admin.
+        // Running an NSTask
+        if name == "brew" {
+            try installBrew(output: output, finished: finished)
+            return nil
+////            let installCommand = "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
+//            let homePath = FileManager.default.homeDirectoryForCurrentUser.path
+//            let task = try ScriptTask(script: "BrewInstall", arguments: [homePath], output: { console in
+//                output(console)
+//            }) {
+//                finished()
+//            }
+//            return task
+        }
+        
         if let installCommand = installCommand {
             let homePath = FileManager.default.homeDirectoryForCurrentUser.path
             let task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in
@@ -164,6 +175,34 @@ extension Dependency {
         
         // TODO: if neither link or installCommand is set, finished() is never called
         return nil
+    }
+    
+    
+    /// <#Description#>
+    ///
+    // See:
+    /// https://developer.apple.com/library/archive/documentation/Security/Conceptual/SecureCodingGuide/Articles/AccessControl.html
+    /// https://www.reddit.com/r/macprogramming/comments/3wuvmz/how_to_createrun_an_nstask_in_swift_with_sudo/
+    /// https://www.cocoawithlove.com/2009/05/invoking-other-processes-in-cocoa.html
+    /// AppleScript: http://nonsenseinbasic.blogspot.com/2013/03/mac-os-x-programming-running-nstask.html
+    /// - Parameters:
+    ///   - output: <#output description#>
+    ///   - finished: <#finished description#>
+    /// - Throws: <#throws value description#>
+    func installBrew(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws  {
+        
+        let message = "Please install brew manually by copying the following text in MacOS terminal"
+        let command = "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
+        
+        output(message)
+        output(command)
+        
+        let alert = NSAlert()
+        alert.messageText = message
+        alert.informativeText = command
+        alert.runModal()
+        
+        finished()
     }
     
     func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
