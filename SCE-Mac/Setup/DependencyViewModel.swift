@@ -141,7 +141,10 @@ class DependencyViewModel {
     
     func fetchVersion(completion: @escaping (String) -> ()) throws {
         
-        guard let dependency = dependency, dependency.isInstalled == true else { return }
+        guard let dependency = dependency, dependency.isInstalled == true else {
+            completion("")
+            return            
+        }
         
         try dependency.fileVersion {
             self.version = $0

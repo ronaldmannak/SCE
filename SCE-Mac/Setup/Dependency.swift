@@ -114,7 +114,10 @@ extension Dependency {
             
             // Truffle replies with multiple version on multiple lines we and
             // might get the wrong version here in edge cases.
-            guard let versionString = versions.first else { return }
+            guard let versionString = versions.first else {
+                version("")
+                return                
+            }
             version(versionString)
             
 //            guard versions.isEmpty == false else { return }
@@ -152,18 +155,20 @@ extension Dependency {
             NSWorkspace.shared.open(url)            
         }
         
+        // Hardcoded edgecase for brew.
+        // The brew installer needs to run as admin.
+        // Running an NSTask
         if name == "brew" {
-            
-            output("===============BREW BREW BREW=============")
-            
-            let installCommand = "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
-            let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-            let task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in
-                output(console)
-            }) {
-                finished()
-            }
-            return task
+            try installBrew(output: output, finished: finished)
+            return nil
+////            let installCommand = "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
+//            let homePath = FileManager.default.homeDirectoryForCurrentUser.path
+//            let task = try ScriptTask(script: "BrewInstall", arguments: [homePath], output: { console in
+//                output(console)
+//            }) {
+//                finished()
+//            }
+//            return task
         }
         
         if let installCommand = installCommand {
@@ -178,6 +183,34 @@ extension Dependency {
         
         // TODO: if neither link or installCommand is set, finished() is never called
         return nil
+    }
+    
+    
+    /// <#Description#>
+    ///
+    // See:
+    /// https://developer.apple.com/library/archive/documentation/Security/Conceptual/SecureCodingGuide/Articles/AccessControl.html
+    /// https://www.reddit.com/r/macprogramming/comments/3wuvmz/how_to_createrun_an_nstask_in_swift_with_sudo/
+    /// https://www.cocoawithlove.com/2009/05/invoking-other-processes-in-cocoa.html
+    /// AppleScript: http://nonsenseinbasic.blogspot.com/2013/03/mac-os-x-programming-running-nstask.html
+    /// - Parameters:
+    ///   - output: <#output description#>
+    ///   - finished: <#finished description#>
+    /// - Throws: <#throws value description#>
+    func installBrew(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws  {
+        
+        let message = "Please install brew manually by copying the following text in MacOS terminal"
+        let command = "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
+        
+        output(message)
+        output(command)
+        
+        let alert = NSAlert()
+        alert.messageText = message
+        alert.informativeText = command
+        alert.runModal()
+        
+        finished()
     }
     
     func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {

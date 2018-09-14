@@ -78,6 +78,13 @@ class InstallBlockchainViewController: NSViewController {
         
         if item.dependency == nil {
             // If platform, update all components
+            
+            // Unless brew is not installed, then just show the "install brew alert
+            if let brew = item.children.first, brew.name == "Brew" {
+                addTask(item: brew)
+                return
+            }
+            
             for component in item.children {
                 addTask(item: component)
             }
@@ -110,13 +117,6 @@ class InstallBlockchainViewController: NSViewController {
             // TODO
         }
     }
-    
-    @IBAction func brewButton(_ sender: Any) {
-        
-        
-        
-//        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    }
 }
 
 // Queue functions
@@ -140,8 +140,8 @@ extension InstallBlockchainViewController {
             
             do {
                 try item.fetchVersion { _ in
-                item.isInstalling = false
-                self.outlineView.reloadData()
+                    item.isInstalling = false
+                    self.outlineView.reloadData()
                     self.inProgress = self.inProgress - 1
                 }
             } catch {
