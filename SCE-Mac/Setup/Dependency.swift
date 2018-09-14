@@ -152,6 +152,20 @@ extension Dependency {
             NSWorkspace.shared.open(url)            
         }
         
+        if name == "brew" {
+            
+            output("===============BREW BREW BREW=============")
+            
+            let installCommand = "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
+            let homePath = FileManager.default.homeDirectoryForCurrentUser.path
+            let task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in
+                output(console)
+            }) {
+                finished()
+            }
+            return task
+        }
+        
         if let installCommand = installCommand {
             let homePath = FileManager.default.homeDirectoryForCurrentUser.path
             let task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in

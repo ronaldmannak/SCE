@@ -110,6 +110,13 @@ class InstallBlockchainViewController: NSViewController {
             // TODO
         }
     }
+    
+    @IBAction func brewButton(_ sender: Any) {
+        
+        
+        
+//        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    }
 }
 
 // Queue functions
