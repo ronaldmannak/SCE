@@ -11,7 +11,7 @@ import Cocoa
 
 
 /// Dependency is an application Composite depends on, e.g. truffle
-struct Dependency: Codable {
+class Dependency: Codable {
     
     /// Filename
     let name: String
@@ -45,7 +45,30 @@ struct Dependency: Codable {
     /// will ignore any tool that has required set to false
     let required: Bool
     
+    /// Used by DependencyViewModel to assert install state
+    /// If task is not nil, the view model assumes .installing state
+    private (set) var task: ScriptTask? = nil
+    
     fileprivate (set) var versionNumber: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case name, customLocation, defaultLocation, minimumVersion, versionCommand, installCommand, installLink, upgradeCommand, comment, required
+    }
+    
+    ///
+    init(name: String, customLocation: String?, defaultLocation: String, minimumVersion: String?, versionCommand: String?, installCommand: String?, installLink: String?, upgradeCommand: String?, comment: String, required: Bool, versionNumber: String?) {
+        self.name = name
+        self.customLocation = customLocation
+        self.defaultLocation = defaultLocation
+        self.minimumVersion = minimumVersion
+        self.versionCommand = versionCommand
+        self.installCommand = installCommand
+        self.installLink = installLink
+        self.upgradeCommand = upgradeCommand
+        self.comment = comment
+        self.required = required
+        self.versionNumber = versionNumber
+    }
 }
 
 extension Dependency {
@@ -164,10 +187,12 @@ extension Dependency {
         }
         
         if let installCommand = installCommand {
+            
             let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-            let task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in
+            task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in
                 output(console)
             }) {
+                self.task = nil
                 finished()
             }
             return task
@@ -208,10 +233,12 @@ extension Dependency {
     func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
         
         if let updateCommand = upgradeCommand {
+            
             let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-            let task = try ScriptTask(script: "General", arguments: [updateCommand, homePath], output: { console in
+            task = try ScriptTask(script: "General", arguments: [updateCommand, homePath], output: { console in
                 output(console)
             }) {
+                self.task = nil
                 finished()
             }
             return task
