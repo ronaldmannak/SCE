@@ -71,6 +71,8 @@
 		C7F0B9C22113CF7E005A8FE2 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C12113CF7E005A8FE2 /* SplitViewController.swift */; };
 		C7F0B9C42113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C32113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift */; };
 		C7F0B9C62113EA39005A8FE2 /* ScriptTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C52113EA39005A8FE2 /* ScriptTask.swift */; };
+		F8F7FB4D214B4E58001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
+		F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +174,7 @@
 		C7F0B9C52113EA39005A8FE2 /* ScriptTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptTask.swift; sourceTree = "<group>"; };
 		D54B663B8628E464C0601987 /* Pods-SCE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCE.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCE/Pods-SCE.release.xcconfig"; sourceTree = "<group>"; };
 		F1EDF41DDA83A1CD67607617 /* Pods-SCETests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCETests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCETests/Pods-SCETests.debug.xcconfig"; sourceTree = "<group>"; };
+		F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = BrewInstall.command; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +352,7 @@
 				C7E764522124FA1300867DA4 /* Setup */,
 				C7DDD74B2140AB6D00674942 /* Dependencies.plist */,
 				C7DDD754214102B900674942 /* General.command */,
+				F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */,
 				C7DDD756214113CB00674942 /* Which.command */,
 			);
 			path = Setup;
@@ -551,6 +555,7 @@
 				TargetAttributes = {
 					C7F0B972210DACCB005A8FE2 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					C7F0B988210DACCF005A8FE2 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -558,6 +563,7 @@
 					};
 					C7F0B99B2112945C005A8FE2 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -599,6 +605,7 @@
 				C7F0B983210DACCF005A8FE2 /* LaunchScreen.storyboard in Resources */,
 				C7F0B980210DACCF005A8FE2 /* Assets.xcassets in Resources */,
 				C7F0B97E210DACCB005A8FE2 /* Main.storyboard in Resources */,
+				F8F7FB4D214B4E58001A6F49 /* BrewInstall.command in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,6 +620,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */,
 				C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */,
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
 				C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */,
@@ -996,6 +1004,7 @@
 			baseConfigurationReference = 1733C8FEF8A42DFEA995AC5E /* Pods-SCE.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QS2K96ZEMY;
 				INFOPLIST_FILE = SCE/Info.plist;
@@ -1005,6 +1014,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.apuzzleaday.SCE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1015,6 +1026,7 @@
 			baseConfigurationReference = D54B663B8628E464C0601987 /* Pods-SCE.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QS2K96ZEMY;
 				INFOPLIST_FILE = SCE/Info.plist;
@@ -1024,6 +1036,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = co.apuzzleaday.SCE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1078,6 +1091,7 @@
 			baseConfigurationReference = A57AC0A470301A863C8CA09A /* Pods-SCE-Mac.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1091,6 +1105,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.composite.composite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -1100,6 +1116,7 @@
 			baseConfigurationReference = 294898E9D046C12D6CD260F5 /* Pods-SCE-Mac.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1113,6 +1130,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = app.composite.composite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

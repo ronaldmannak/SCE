@@ -13,6 +13,20 @@ class InstallBlockchainViewController: NSViewController {
     weak var container: InstallContainerViewController!
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet var console: NSTextView!
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    
+    var inProgress: Int = 0 {
+        didSet {
+            if inProgress < 0 { inProgress = 0 }
+            if inProgress == 0 {
+                progressIndicator.stopAnimation(self)
+                progressIndicator.isHidden = true
+            } else {
+                progressIndicator.startAnimation(self)
+                progressIndicator.isHidden = false
+            }
+        }
+    }
     
     var platforms = [DependencyViewModel]() {
         didSet {
@@ -64,6 +78,13 @@ class InstallBlockchainViewController: NSViewController {
         
         if item.dependency == nil {
             // If platform, update all components
+            
+            // Unless brew is not installed, then just show the "install brew alert
+            if let brew = item.children.first, brew.name == "Brew", brew.state == .notInstalled {
+                addTask(item: brew)
+                return
+            }
+            
             for component in item.children {
                 addTask(item: component)
             }
@@ -116,9 +137,15 @@ extension InstallBlockchainViewController {
         }
         
         let finish: () -> Void = {
-            try? item.fetchVersion { _ in
-                item.isInstalling = false
-                self.outlineView.reloadData()
+            
+            do {
+                try item.fetchVersion { _ in
+                    item.isInstalling = false
+                    self.outlineView.reloadData()
+                    self.inProgress = self.inProgress - 1
+                }
+            } catch {
+                self.inProgress = self.inProgress - 1
             }
         }
         
@@ -131,6 +158,7 @@ extension InstallBlockchainViewController {
                 // listed in the plist file. There could be a newer version available
                 
                 item.isInstalling = true
+                inProgress = inProgress + 1
                 task = try item.dependency?.update(output: { (output) in
                     showOutputInConsole(output)
                 }, finished: finish)
@@ -138,6 +166,7 @@ extension InstallBlockchainViewController {
             case .notInstalled:
                 
                 item.isInstalling = true
+                inProgress = inProgress + 1
                 task = try item.dependency?.install(output: showOutputInConsole, finished: finish)
                 
             default:
@@ -150,6 +179,7 @@ extension InstallBlockchainViewController {
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
+            inProgress = inProgress - 1
         }
         // Reload in case installing icon must be shown
         outlineView.reloadItem(item)
