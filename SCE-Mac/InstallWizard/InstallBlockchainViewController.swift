@@ -17,14 +17,11 @@ class InstallBlockchainViewController: NSViewController {
     
     var inProgress: Int = 0 {
         didSet {
-            print("=== inProgress:\(inProgress)")
             if inProgress < 0 { inProgress = 0 }
             if inProgress == 0 {
-                print("=== inProgress: stopping animation")
                 progressIndicator.stopAnimation(self)
                 progressIndicator.isHidden = true
             } else {
-                print("=== inProgress: starting animation")
                 progressIndicator.startAnimation(self)
                 progressIndicator.isHidden = false
             }
@@ -132,7 +129,6 @@ extension InstallBlockchainViewController {
     func addTask(item: DependencyViewModel) {
         
         let showOutputInConsole: (String) -> Void = { output in
-            print(output)
             let previousOutput = self.console.string
             let nextOutput = previousOutput + "\n" + output
             self.console.string = nextOutput
@@ -142,7 +138,6 @@ extension InstallBlockchainViewController {
         
         let finish: () -> Void = {
             
-            print("=== addTask: \(item.name) finished ===")
             do {
                 try item.fetchVersion { _ in
                     self.outlineView.reloadData()
@@ -161,8 +156,6 @@ extension InstallBlockchainViewController {
                 // up to date means component has equal or higher version than
                 // listed in the plist file. There could be a newer version available
                 
-                print("=== addTask: \(item.name) updating ===")
-                
                 inProgress = inProgress + 1
                 task = try item.dependency?.update(output: { (output) in
                     showOutputInConsole(output)
@@ -170,21 +163,17 @@ extension InstallBlockchainViewController {
                 
             case .notInstalled:
                 
-                print("=== addTask: \(item.name) not installed ===")
-                
                 inProgress = inProgress + 1
                 task = try item.dependency?.install(output: showOutputInConsole, finished: finish)
                 
             default:
                 
-                print("=== addTask: \(item.name) default return ===")
                 return
             }
             
             task?.run()
             
         } catch {
-            print("=== addTask: \(item.name) catch \(error.localizedDescription) ===")
             let alert = NSAlert(error: error)
             alert.runModal()
             inProgress = inProgress - 1
