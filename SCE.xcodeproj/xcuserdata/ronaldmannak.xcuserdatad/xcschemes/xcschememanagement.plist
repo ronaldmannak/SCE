@@ -7,12 +7,12 @@
 		<key>Composite.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>1</integer>
 		</dict>
 		<key>SCE.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 </dict>
