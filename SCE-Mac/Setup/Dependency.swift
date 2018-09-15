@@ -176,18 +176,10 @@ extension Dependency {
         if name == "brew" {
             try installBrew(output: output, finished: finished)
             return nil
-////            let installCommand = "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
-//            let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-//            let task = try ScriptTask(script: "BrewInstall", arguments: [homePath], output: { console in
-//                output(console)
-//            }) {
-//                finished()
-//            }
-//            return task
         }
         
         if let installCommand = installCommand {
-            print("==== Dependency Install \(name) ====")
+            
             let homePath = FileManager.default.homeDirectoryForCurrentUser.path
             task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in
                 output(console)
@@ -232,8 +224,8 @@ extension Dependency {
     
     func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
         
-        if let updateCommand = upgradeCommand {
-            print("==== Dependency update \(name) ====")
+        if let updateCommand = upgradeCommand, updateCommand.isEmpty == false {
+            
             let homePath = FileManager.default.homeDirectoryForCurrentUser.path
             task = try ScriptTask(script: "General", arguments: [updateCommand, homePath], output: { console in
                 output(console)

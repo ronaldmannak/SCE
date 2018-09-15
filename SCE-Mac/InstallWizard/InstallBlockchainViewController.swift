@@ -116,7 +116,7 @@ extension InstallBlockchainViewController {
     func addTask(item: DependencyViewModel) {
         
         let showOutputInConsole: (String) -> Void = { output in
-            print(output)
+
             let previousOutput = self.console.string
             let nextOutput = previousOutput + "\n" + output
             self.console.string = nextOutput
@@ -126,7 +126,6 @@ extension InstallBlockchainViewController {
         
         let finish: () -> Void = {
             
-            print("=== addTask: \(item.name) finished ===")
             do {
                 try item.fetchVersion { _ in
                     self.outlineView.reloadData()
@@ -145,28 +144,23 @@ extension InstallBlockchainViewController {
                 // up to date means component has equal or higher version than
                 // listed in the plist file. There could be a newer version available
                 
-                print("=== addTask: \(item.name) updating ===")
-                
                 task = try item.dependency?.update(output: { (output) in
                     showOutputInConsole(output)
                 }, finished: finish)
                 
             case .notInstalled:
                 
-                print("=== addTask: \(item.name) not installed ===")
-                
                 task = try item.dependency?.install(output: showOutputInConsole, finished: finish)
                 
             default:
                 
-                print("=== addTask: \(item.name) default return ===")
                 return
             }
             
             task?.run()
             
         } catch {
-            print("=== addTask: \(item.name) catch \(error.localizedDescription) ===")
+            
             let alert = NSAlert(error: error)
             alert.runModal()
             updateProgressIndicator()
@@ -177,27 +171,13 @@ extension InstallBlockchainViewController {
     }
     
     func updateProgressIndicator() {
-//        var isUpdating = false
-//        for platform in platforms {
-//            if platform.state == .installing {
-//                print("=== updateProgressIndicator: platform \(platform.name) is installing")
-//                isUpdating = true
-//                for child in platform.children {
-//                    if child.state == .installing {
-//                        print("=== updateProgressIndicator: dependency \(child.name) is installing")
-//                    }
-//                }
-//            }
-//        }
-        
+
         let isUpdating = !platforms.filter { $0.state == .installing }.isEmpty
         
         if isUpdating == true {
-            print("=== updateProgressIndicator: starting animation")
             progressIndicator.startAnimation(self)
             progressIndicator.isHidden = false
         } else {
-            print("=== updateProgressIndicator: stopping animation")
             progressIndicator.stopAnimation(self)
             progressIndicator.isHidden = true
         }
