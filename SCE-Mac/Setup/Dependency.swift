@@ -187,7 +187,7 @@ extension Dependency {
         }
         
         if let installCommand = installCommand {
-            
+            print("==== Dependency Install \(name) ====")
             let homePath = FileManager.default.homeDirectoryForCurrentUser.path
             task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in
                 output(console)
@@ -233,7 +233,7 @@ extension Dependency {
     func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
         
         if let updateCommand = upgradeCommand {
-            
+            print("==== Dependency update \(name) ====")
             let homePath = FileManager.default.homeDirectoryForCurrentUser.path
             task = try ScriptTask(script: "General", arguments: [updateCommand, homePath], output: { console in
                 output(console)

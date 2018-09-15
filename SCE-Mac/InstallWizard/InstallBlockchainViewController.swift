@@ -15,19 +15,6 @@ class InstallBlockchainViewController: NSViewController {
     @IBOutlet var console: NSTextView!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     
-    var inProgress: Int = 0 {
-        didSet {
-            if inProgress < 0 { inProgress = 0 }
-            if inProgress == 0 {
-                progressIndicator.stopAnimation(self)
-                progressIndicator.isHidden = true
-            } else {
-                progressIndicator.startAnimation(self)
-                progressIndicator.isHidden = false
-            }
-        }
-    }
-    
     var platforms = [DependencyViewModel]() {
         didSet {
             outlineView.reloadData()
@@ -129,6 +116,7 @@ extension InstallBlockchainViewController {
     func addTask(item: DependencyViewModel) {
         
         let showOutputInConsole: (String) -> Void = { output in
+            print(output)
             let previousOutput = self.console.string
             let nextOutput = previousOutput + "\n" + output
             self.console.string = nextOutput
@@ -138,13 +126,14 @@ extension InstallBlockchainViewController {
         
         let finish: () -> Void = {
             
+            print("=== addTask: \(item.name) finished ===")
             do {
                 try item.fetchVersion { _ in
                     self.outlineView.reloadData()
-                    self.inProgress = self.inProgress - 1
+                    self.updateProgressIndicator()
                 }
             } catch {
-                self.inProgress = self.inProgress - 1
+                self.updateProgressIndicator()
             }
         }
         
@@ -156,30 +145,63 @@ extension InstallBlockchainViewController {
                 // up to date means component has equal or higher version than
                 // listed in the plist file. There could be a newer version available
                 
-                inProgress = inProgress + 1
+                print("=== addTask: \(item.name) updating ===")
+                
                 task = try item.dependency?.update(output: { (output) in
                     showOutputInConsole(output)
                 }, finished: finish)
                 
             case .notInstalled:
                 
-                inProgress = inProgress + 1
+                print("=== addTask: \(item.name) not installed ===")
+                
                 task = try item.dependency?.install(output: showOutputInConsole, finished: finish)
                 
             default:
                 
+                print("=== addTask: \(item.name) default return ===")
                 return
             }
             
             task?.run()
             
         } catch {
+            print("=== addTask: \(item.name) catch \(error.localizedDescription) ===")
             let alert = NSAlert(error: error)
             alert.runModal()
-            inProgress = inProgress - 1
+            updateProgressIndicator()
         }
         // Reload in case installing icon must be shown
         outlineView.reloadItem(item)
+        updateProgressIndicator()
+    }
+    
+    func updateProgressIndicator() {
+//        var isUpdating = false
+//        for platform in platforms {
+//            if platform.state == .installing {
+//                print("=== updateProgressIndicator: platform \(platform.name) is installing")
+//                isUpdating = true
+//                for child in platform.children {
+//                    if child.state == .installing {
+//                        print("=== updateProgressIndicator: dependency \(child.name) is installing")
+//                    }
+//                }
+//            }
+//        }
+        
+        let isUpdating = !platforms.filter { $0.state == .installing }.isEmpty
+        
+        if isUpdating == true {
+            print("=== updateProgressIndicator: starting animation")
+            progressIndicator.startAnimation(self)
+            progressIndicator.isHidden = false
+        } else {
+            print("=== updateProgressIndicator: stopping animation")
+            progressIndicator.stopAnimation(self)
+            progressIndicator.isHidden = true
+        }
+        
     }
 }
 
@@ -236,6 +258,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
             let button2: NSButton = buttonView.subviews.filter { $0.identifier!.rawValue == "Button2" }.first! as! NSButton
             
             switch item.state {
+
             case .unknown, .notInstalled:
                 
                 button1.isHidden = false
@@ -276,6 +299,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 } else {
                     button1.title = "Update \(item.name)"
                 }
+                
             case .installing:
 
                 button1.isHidden = false
@@ -283,8 +307,14 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 button1.isEnabled = false
                 
                 button1.title = "Installing..."
+            
+            case .comingSoon:
+                
+                button1.isHidden = true
+                button2.isHidden = true
+                button1.isEnabled = true
+                
             }
-
             return buttonView
             
         default:
