@@ -11,6 +11,8 @@
 		297FB7EDAA27A965DFA16022 /* Pods_SCETests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54A43741EBE055AC47EB4EA9 /* Pods_SCETests.framework */; };
 		6F1A3BDD2371DB2730951110 /* Pods_SCE_MacTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4FA972095B5D6274482826 /* Pods_SCE_MacTests.framework */; };
 		7B3ECACB527BFD91BBF584F0 /* Pods_SCE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76DAF4D440B83CBE32C049B1 /* Pods_SCE.framework */; };
+		C70509D3214D97A8003DDA2B /* Framework.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509D2214D97A8003DDA2B /* Framework.swift */; };
+		C70509D4214D97A8003DDA2B /* Framework.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509D2214D97A8003DDA2B /* Framework.swift */; };
 		C70B96FE21320EA600B0E4C8 /* EmbarkInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */; };
 		C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */; };
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
@@ -103,6 +105,7 @@
 		76DAF4D440B83CBE32C049B1 /* Pods_SCE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57AC0A470301A863C8CA09A /* Pods-SCE-Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCE-Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCE-Mac/Pods-SCE-Mac.debug.xcconfig"; sourceTree = "<group>"; };
 		BB9A6A475886FA02C9611640 /* Pods_SCE_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCE_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C70509D2214D97A8003DDA2B /* Framework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Framework.swift; sourceTree = "<group>"; };
 		C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmbarkInit.command; sourceTree = "<group>"; };
 		C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateSectionHeaderView.xib; sourceTree = "<group>"; };
 		C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -423,6 +426,7 @@
 				C7F0B9C52113EA39005A8FE2 /* ScriptTask.swift */,
 				C7E7645C212675AF00867DA4 /* Error.swift */,
 				C7DDD74F2140B68C00674942 /* Platform.swift */,
+				C70509D2214D97A8003DDA2B /* Framework.swift */,
 				C7A8FDBA212E9EBB005E20AC /* Main.storyboard */,
 				C7F0B9A42112945F005A8FE2 /* Assets.xcassets */,
 				C7F0B9A92112945F005A8FE2 /* Info.plist */,
@@ -777,6 +781,7 @@
 			files = (
 				C7F0B97B210DACCB005A8FE2 /* DetailViewController.swift in Sources */,
 				C7F0B979210DACCB005A8FE2 /* MasterViewController.swift in Sources */,
+				C70509D3214D97A8003DDA2B /* Framework.swift in Sources */,
 				C7F0B977210DACCB005A8FE2 /* AppDelegate.swift in Sources */,
 				C7F0B9BE2112C3CA005A8FE2 /* SolidityLexer.swift in Sources */,
 			);
@@ -805,6 +810,7 @@
 				C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */,
 				C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */,
 				C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */,
+				C70509D4214D97A8003DDA2B /* Framework.swift in Sources */,
 				C7F0B99F2112945D005A8FE2 /* AppDelegate.swift in Sources */,
 				C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */,
 				C7F0B9A32112945D005A8FE2 /* Document.swift in Sources */,

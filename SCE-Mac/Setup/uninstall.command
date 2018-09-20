@@ -5,4 +5,5 @@
 
 npm -g uninstall solium
 npm -g uninstall truffle
+npm -g uninstall etherlime
 brew uninstall node

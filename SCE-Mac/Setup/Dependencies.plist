@@ -7,6 +7,211 @@
 		<string>ethereum</string>
 		<key>installed</key>
 		<false/>
+		<key>frameworks</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Etherlime</string>
+				<key>dependencies</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>brew</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>1.7.4</string>
+						<key>versionCommand</key>
+						<string>brew -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
+						<key>upgradeCommand</key>
+						<string>brew update</string>
+						<key>comment</key>
+						<string>Brew is needed for installing npm</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>node</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin</string>
+						<key>minimumVersion</key>
+						<string>10.10.0</string>
+						<key>versionCommand</key>
+						<string>node -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>brew install node</string>
+						<key>upgradeCommand</key>
+						<string>brew upgrade node</string>
+						<key>comment</key>
+						<string>node and npm are required by Truffle</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>etherlime</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>4.1.13</string>
+						<key>versionCommand</key>
+						<string>etherlime version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm i -g etherlime</string>
+						<key>upgradeCommand</key>
+						<string>npm update --save etherlime</string>
+						<key>comment</key>
+						<string></string>
+						<key>required</key>
+						<true/>
+					</dict>
+				</array>
+				<key>description</key>
+				<string>Etherlime is an ethereum development and deployment framework based on ethers.js.</string>
+				<key>projectURL</key>
+				<string>https://github.com/LimeChain/etherlime</string>
+				<key>documentationURL</key>
+				<string>https://etherlime.readthedocs.io/en/latest/</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Truffle</string>
+				<key>dependencies</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>brew</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>1.7.4</string>
+						<key>versionCommand</key>
+						<string>brew -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
+						<key>upgradeCommand</key>
+						<string>brew update</string>
+						<key>comment</key>
+						<string>Brew is needed for installing npm</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>node</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin</string>
+						<key>minimumVersion</key>
+						<string>10.10.0</string>
+						<key>versionCommand</key>
+						<string>node -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>brew install node</string>
+						<key>upgradeCommand</key>
+						<string>brew upgrade node</string>
+						<key>comment</key>
+						<string>node and npm are required by Truffle</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>truffle</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>4.1.13</string>
+						<key>versionCommand</key>
+						<string>truffle version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm install -g truffle</string>
+						<key>upgradeCommand</key>
+						<string>npm update --save truffle</string>
+						<key>comment</key>
+						<string></string>
+						<key>required</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>solium</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>1.1.8</string>
+						<key>versionCommand</key>
+						<string>solium -V</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm install -g solium</string>
+						<key>upgradeCommand</key>
+						<string>npm update --save solium</string>
+						<key>comment</key>
+						<string></string>
+						<key>required</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>Ganache.app</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/Applications</string>
+						<key>minimumVersion</key>
+						<string>1.2.1</string>
+						<key>versionCommand</key>
+						<string>defaults read /Applications/Ganache.app/Contents/Info CFBundleShortVersionString</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installLink</key>
+						<string>https://truffleframework.com/ganache</string>
+						<key>upgradeCommand</key>
+						<string></string>
+						<key>comment</key>
+						<string></string>
+						<key>required</key>
+						<true/>
+					</dict>
+				</array>
+				<key>description</key>
+				<string>A world class development environment, testing framework and asset pipeline for blockchains using the Ethereum Virtual Machine (EVM), aiming to make life as a developer easier.</string>
+				<key>projectURL</key>
+				<string>https://truffleframework.com/truffle</string>
+				<key>documentationURL</key>
+				<string>https://truffleframework.com/docs/truffle/overview</string>
+			</dict>
+		</array>
 		<key>dependencies</key>
 		<array>
 			<dict>

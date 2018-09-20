@@ -132,6 +132,7 @@ extension InstallBlockchainViewController {
                     self.updateProgressIndicator()
                 }
             } catch {
+                self.outlineView.reloadData()
                 self.updateProgressIndicator()
             }
         }
