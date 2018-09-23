@@ -25,6 +25,9 @@ class Dependency: Codable {
     /// Minimum version
     let minimumVersion: String?
     
+    /// Version of this dependency is forwarded to the framework
+    let isPlatformVersion: Bool
+    
     /// Command to display version
     let versionCommand: String?
         
@@ -35,7 +38,7 @@ class Dependency: Codable {
     let installLink: String?
     
     /// Command to upgrade dependency to latest version
-    let upgradeCommand: String?
+    let updateCommand: String?
     
     /// Just for reminding what
     let comment: String?
@@ -52,19 +55,20 @@ class Dependency: Codable {
     fileprivate (set) var versionNumber: String?
     
     private enum CodingKeys: String, CodingKey {
-        case name, customLocation, defaultLocation, minimumVersion, versionCommand, installCommand, installLink, upgradeCommand, comment, required
+        case name, customLocation, defaultLocation, minimumVersion, isPlatformVersion, versionCommand, installCommand, installLink, updateCommand, comment, required
     }
     
     ///
-    init(name: String, customLocation: String?, defaultLocation: String, minimumVersion: String?, versionCommand: String?, installCommand: String?, installLink: String?, upgradeCommand: String?, comment: String, required: Bool, versionNumber: String?) {
+    init(name: String, customLocation: String?, defaultLocation: String, minimumVersion: String?, isPlatformVersion: Bool, versionCommand: String?, installCommand: String?, installLink: String?, updateCommand: String?, comment: String, required: Bool, versionNumber: String?) {
         self.name = name
         self.customLocation = customLocation
         self.defaultLocation = defaultLocation
         self.minimumVersion = minimumVersion
+        self.isPlatformVersion = isPlatformVersion
         self.versionCommand = versionCommand
         self.installCommand = installCommand
         self.installLink = installLink
-        self.upgradeCommand = upgradeCommand
+        self.updateCommand = updateCommand
         self.comment = comment
         self.required = required
         self.versionNumber = versionNumber
@@ -146,9 +150,9 @@ extension Dependency {
         task.run()
     }
     
-    var versionMatch: Bool {
-        return true
-    }
+//    var versionMatch: Bool {
+//        return true
+//    }
     
     
     /// TODO: this doesn't work. No output. $PATH issue?
@@ -206,7 +210,7 @@ extension Dependency {
     ///   - output: <#output description#>
     ///   - finished: <#finished description#>
     /// - Throws: <#throws value description#>
-    func installBrew(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws  {
+    private func installBrew(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws  {
         
         let message = "Please install brew manually by copying the following text in MacOS terminal"
         let command = "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
@@ -224,18 +228,18 @@ extension Dependency {
     
     func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
         
-        if let updateCommand = upgradeCommand, updateCommand.isEmpty == false {
-            
-            let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-            task = try ScriptTask(script: "General", arguments: [updateCommand, homePath], output: { console in
-                output(console)
-            }) {
-                self.task = nil
-                finished()
-            }
-            return task
+        guard isInstalled == true, let updateCommand = updateCommand, updateCommand.isEmpty == false else {
+            return nil
         }
-        return nil
+        
+        let homePath = FileManager.default.homeDirectoryForCurrentUser.path
+        task = try ScriptTask(script: "General", arguments: [updateCommand, homePath], output: { console in
+            output(console)
+        }) {
+            self.task = nil
+            finished()
+        }
+        return task
     }
     
 }

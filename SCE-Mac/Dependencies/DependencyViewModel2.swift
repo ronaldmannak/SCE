@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class DependencyViewModel {
+class DependencyViewModel2 {
 
     enum State {
         case unknown, uptodate, outdated, notInstalled, installing, comingSoon
@@ -135,7 +135,16 @@ class DependencyViewModel {
         dependency = nil
         name = platform.platform.description
         path = ""
-        children = platform.dependencies.map{ DependencyViewModel($0) }
+//        children = platform.dependencies.map{ DependencyViewModel($0) }
+        children = platform.frameworks.map{ DependencyViewModel($0) }
+        required = false
+    }
+    
+    init(_ framework: DependencyFramework) {
+        self.dependency = nil
+        name = framework.name
+        path = ""
+        children = framework.dependencies.map{ DependencyViewModel($0) }
         required = false
     }
     

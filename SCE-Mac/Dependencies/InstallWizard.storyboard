@@ -191,7 +191,7 @@
                                                                         <action selector="button1:" target="kfv-ZF-Ptq" id="UnL-JJ-yW8"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button identifier="Button2" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRD-pJ-UoM">
+                                                                <button identifier="Button2" hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRD-pJ-UoM">
                                                                     <rect key="frame" x="120" y="-1" width="59" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                     <buttonCell key="cell" type="inline" title="Locate" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="m9N-Mg-xXV">
@@ -291,6 +291,14 @@
                                 <rect key="frame" x="20" y="20" width="16" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eg1-MU-QdW">
+                                <rect key="frame" x="542" y="22" width="122" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show on startup" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="HfD-NY-qnY">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                     <connections>

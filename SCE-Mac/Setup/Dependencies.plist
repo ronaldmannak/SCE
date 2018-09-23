@@ -5,8 +5,6 @@
 	<dict>
 		<key>platform</key>
 		<string>ethereum</string>
-		<key>installed</key>
-		<false/>
 		<key>frameworks</key>
 		<array>
 			<dict>
@@ -23,13 +21,15 @@
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
 						<string>1.7.4</string>
+						<key>isPlatformVersion</key>
+						<false/>
 						<key>versionCommand</key>
 						<string>brew -v</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
 						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
-						<key>upgradeCommand</key>
+						<key>updateCommand</key>
 						<string>brew update</string>
 						<key>comment</key>
 						<string>Brew is needed for installing npm</string>
@@ -45,13 +45,15 @@
 						<string>/usr/local/bin</string>
 						<key>minimumVersion</key>
 						<string>10.10.0</string>
+						<key>isPlatformVersion</key>
+						<false/>
 						<key>versionCommand</key>
 						<string>node -v</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
 						<string>brew install node</string>
-						<key>upgradeCommand</key>
+						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>comment</key>
 						<string>node and npm are required by Truffle</string>
@@ -67,13 +69,15 @@
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
 						<string>4.1.13</string>
+						<key>isPlatformVersion</key>
+						<true/>
 						<key>versionCommand</key>
 						<string>etherlime version</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
 						<string>npm i -g etherlime</string>
-						<key>upgradeCommand</key>
+						<key>updateCommand</key>
 						<string>npm update --save etherlime</string>
 						<key>comment</key>
 						<string></string>
@@ -83,10 +87,12 @@
 				</array>
 				<key>description</key>
 				<string>Etherlime is an ethereum development and deployment framework based on ethers.js.</string>
-				<key>projectURL</key>
+				<key>projectUrl</key>
 				<string>https://github.com/LimeChain/etherlime</string>
-				<key>documentationURL</key>
+				<key>documentationUrl</key>
 				<string>https://etherlime.readthedocs.io/en/latest/</string>
+				<key>defaultFramework</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -102,13 +108,15 @@
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
 						<string>1.7.4</string>
+						<key>isPlatformVersion</key>
+						<false/>
 						<key>versionCommand</key>
 						<string>brew -v</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
 						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
-						<key>upgradeCommand</key>
+						<key>updateCommand</key>
 						<string>brew update</string>
 						<key>comment</key>
 						<string>Brew is needed for installing npm</string>
@@ -124,13 +132,15 @@
 						<string>/usr/local/bin</string>
 						<key>minimumVersion</key>
 						<string>10.10.0</string>
+						<key>isPlatformVersion</key>
+						<false/>
 						<key>versionCommand</key>
 						<string>node -v</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
 						<string>brew install node</string>
-						<key>upgradeCommand</key>
+						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>comment</key>
 						<string>node and npm are required by Truffle</string>
@@ -146,13 +156,15 @@
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
 						<string>4.1.13</string>
+						<key>isPlatformVersion</key>
+						<true/>
 						<key>versionCommand</key>
 						<string>truffle version</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
 						<string>npm install -g truffle</string>
-						<key>upgradeCommand</key>
+						<key>updateCommand</key>
 						<string>npm update --save truffle</string>
 						<key>comment</key>
 						<string></string>
@@ -168,13 +180,15 @@
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
 						<string>1.1.8</string>
+						<key>isPlatformVersion</key>
+						<false/>
 						<key>versionCommand</key>
 						<string>solium -V</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
 						<string>npm install -g solium</string>
-						<key>upgradeCommand</key>
+						<key>updateCommand</key>
 						<string>npm update --save solium</string>
 						<key>comment</key>
 						<string></string>
@@ -190,13 +204,15 @@
 						<string>/Applications</string>
 						<key>minimumVersion</key>
 						<string>1.2.1</string>
+						<key>isPlatformVersion</key>
+						<false/>
 						<key>versionCommand</key>
 						<string>defaults read /Applications/Ganache.app/Contents/Info CFBundleShortVersionString</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installLink</key>
 						<string>https://truffleframework.com/ganache</string>
-						<key>upgradeCommand</key>
+						<key>updateCommand</key>
 						<string></string>
 						<key>comment</key>
 						<string></string>
@@ -206,13 +222,15 @@
 				</array>
 				<key>description</key>
 				<string>A world class development environment, testing framework and asset pipeline for blockchains using the Ethereum Virtual Machine (EVM), aiming to make life as a developer easier.</string>
-				<key>projectURL</key>
+				<key>projectUrl</key>
 				<string>https://truffleframework.com/truffle</string>
-				<key>documentationURL</key>
+				<key>documentationUrl</key>
 				<string>https://truffleframework.com/docs/truffle/overview</string>
+				<key>defaultFramework</key>
+				<false/>
 			</dict>
 		</array>
-		<key>dependencies</key>
+		<key>dependencies-2</key>
 		<array>
 			<dict>
 				<key>name</key>
@@ -329,40 +347,40 @@
 	<dict>
 		<key>platform</key>
 		<string>cosmos</string>
-		<key>installed</key>
-		<false/>
+		<key>frameworks</key>
+		<array/>
 		<key>dependencies</key>
 		<array/>
 	</dict>
 	<dict>
 		<key>platform</key>
 		<string>stellar</string>
-		<key>installed</key>
-		<false/>
+		<key>frameworks</key>
+		<array/>
 		<key>dependencies</key>
 		<array/>
 	</dict>
 	<dict>
 		<key>platform</key>
 		<string>qtum</string>
-		<key>installed</key>
-		<false/>
+		<key>frameworks</key>
+		<array/>
 		<key>dependencies</key>
 		<array/>
 	</dict>
 	<dict>
 		<key>platform</key>
 		<string>dispatch</string>
-		<key>installed</key>
-		<false/>
+		<key>frameworks</key>
+		<array/>
 		<key>dependencies</key>
 		<array/>
 	</dict>
 	<dict>
 		<key>platform</key>
 		<string>nebulas</string>
-		<key>installed</key>
-		<false/>
+		<key>frameworks</key>
+		<array/>
 		<key>dependencies</key>
 		<array/>
 	</dict>

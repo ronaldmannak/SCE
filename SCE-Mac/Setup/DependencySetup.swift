@@ -93,13 +93,13 @@ class DependencySetup {
         return platforms.filter{ (item) -> Bool in return item.platform == platform }.first
     }
     
-    func loadViewModels() throws -> [DependencyViewModel] {
-        return try loadPlatforms().map { $0.viewModel() }
+    func loadViewModels() throws -> [DependencyPlatformViewModel] {
+        return try loadPlatforms().map { DependencyPlatformViewModel($0) }
     }
     
-    func bashPath() throws -> String {
-        return ""
-    }
+//    func bashPath() throws -> String {
+//        return ""
+//    }
     
     
     /// Called by init when the application support directory is not found
