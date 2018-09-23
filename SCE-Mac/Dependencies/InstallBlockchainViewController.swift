@@ -127,6 +127,7 @@ class InstallBlockchainViewController: NSViewController {
             for task in tasks {
                 task.run()
             }
+            self.outlineView.reloadData() // to show "installing"
             
         } catch {
             catchClosure(error)
@@ -349,7 +350,6 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
         }
                 
         return view
-        
     }
 
     func selectionShouldChange(in outlineView: NSOutlineView) -> Bool {
