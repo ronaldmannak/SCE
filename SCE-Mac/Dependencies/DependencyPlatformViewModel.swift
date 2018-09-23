@@ -82,12 +82,12 @@ class DependencyPlatformViewModel: DependencyViewModelProtocol {
         
     }
     
-    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask]? {
+    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
         
         return try platform.install(output: output, finished: finished)
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask]? {
+    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
         
         return try platform.update(output: output, finished: finished)
     }

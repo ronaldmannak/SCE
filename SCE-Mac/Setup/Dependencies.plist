@@ -68,11 +68,11 @@
 						<key>defaultLocation</key>
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
-						<string>4.1.13</string>
+						<string>0.9.5</string>
 						<key>isPlatformVersion</key>
 						<true/>
 						<key>versionCommand</key>
-						<string>etherlime version</string>
+						<string>etherlime --version</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>

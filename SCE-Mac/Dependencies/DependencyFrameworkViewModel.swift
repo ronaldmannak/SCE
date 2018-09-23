@@ -68,12 +68,12 @@ class DependencyFrameworkViewModel: DependencyViewModelProtocol {
         dependencies = framework.dependencies.map { DependencyViewModel($0) }
     }
 
-    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask]? {
+    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
         
         return try framework.install(output: output, finished: finished)
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask]? {
+    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
         
         return try framework.update(output: output, finished: finished)
     }

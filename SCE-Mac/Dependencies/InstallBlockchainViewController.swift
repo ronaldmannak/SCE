@@ -67,103 +67,12 @@ class InstallBlockchainViewController: NSViewController {
     @IBAction func button1(_ sender: Any) {
         
         // NSButton is a subclass of NSView
-//        guard let sender = sender as? NSView else { return }
-//        let row = outlineView.row(for: sender)
-//
-//        guard let item = outlineView.item(atRow: row) as? DependencyViewModelProtocol else { return }
-//
-//        do {
-//            let tasks: ScriptTask
-//            switch item.state {
-//            case .notInstalled:
-//                tasks = item.install(output: { output in
-//                    <#code#>
-//                }, finished: {
-//                    <#code#>
-//                })
-//            default:
-//                tasks = item.update(output: { output in
-//                    <#code#>
-//                }, finished: {
-//                    <#code#>
-//                })
-//            }
-//
-//        } catch {
-//            let alert = NSAlert(error: error)
-//            alert.runModal()
-//            updateProgressIndicator()
-//        }
+        guard let sender = sender as? NSView else { return }
+        let row = outlineView.row(for: sender)
+
+        guard let item = outlineView.item(atRow: row) as? DependencyViewModelProtocol else { return }
         
-//
-//
-//            // if brew is not installed, just show the "install brew" alert
-//            if let brew = item.dependencies.first, brew.name == "Brew", brew.state == .notInstalled {
-//                addTask(item: brew)
-//                return
-//            }
-//
-//            for component in item.dependencies {
-//                addTask(item: component)
-//            }
-//
-//        } else if let item = outlineView.item(atRow: row) as? DependencyPlatformViewModel {
-//
-//
-//            // If platform, update all components
-//            // Unless brew is not installed, then just show the "install brew" alert
-//            if let brew = item.frameworks.first, brew.name == "Brew", brew.state == .notInstalled {
-//                addTask(item: brew)
-//                return
-//            }
-//
-//            for component in item.children {
-//                addTask(item: component)
-//            }
-//
-//        }
-//
-//
-//
-//            DependencyViewModelProtocol
-//
-//
-//
-//            else { return }
-//
-//        if item.dependency == nil {
-//            // If platform, update all components
-//
-//            // Unless brew is not installed, then just show the "install brew alert
-//            if let brew = item.children.first, brew.name == "Brew", brew.state == .notInstalled {
-//                addTask(item: brew)
-//                return
-//            }
-//
-//            for component in item.children {
-//                addTask(item: component)
-//            }
-//            return
-//        }
-//
-//        switch item.state {
-//
-//        case .notInstalled, .outdated:
-//
-//            let isPlatform = item.dependency == nil
-//            if isPlatform {
-//                for child in item.children {
-//                    addTask(item: child)
-//                }
-//            } else {
-//                addTask(item: item)
-//            }
-//        default:
-//            // This happens in edge case demo where Ganache is renamed while
-//            // running the app.
-//            try? item.fetchVersion { _ in self.outlineView.reloadData() }
-//            return
-//        }
+        run(item)
     }
     
 //    @IBAction func button2(_ sender: Any) {
@@ -172,72 +81,61 @@ class InstallBlockchainViewController: NSViewController {
 //            // TODO
 //        }
 //    }
+    
+    func run(_ item: DependencyViewModelProtocol) {
+        
+        let catchClosure: (Error) -> Void = { error in
+        
+            self.outlineView.reloadData()
+            self.updateProgressIndicator()
+            let alert = NSAlert(error: error)
+            alert.runModal()
+        }
+        
+        let showOutputInConsole: (String) -> Void = { output in
+
+            let previousOutput = self.console.string
+            let nextOutput = previousOutput + "\n" + output
+            self.console.string = nextOutput
+            let range = NSRange(location:nextOutput.count,length:0)
+            self.console.scrollRangeToVisible(range)
+        }
+
+        let finish: () -> Void = {
+
+            do {
+                try item.updateVersion { _ in
+                    self.outlineView.reloadData()
+                    self.updateProgressIndicator()
+                }
+            } catch {
+                catchClosure(error)
+            }
+        }
+        
+        do {
+            
+            let tasks: [ScriptTask]
+            
+            switch item.state {
+            case .notInstalled:
+                tasks = try item.install(output: showOutputInConsole, finished: finish)
+            default:
+                tasks = try item.update(output: showOutputInConsole, finished: finish)
+            }
+            
+            for task in tasks {
+                task.run()
+            }
+            
+        } catch {
+            catchClosure(error)
+        }
+    }
 }
 
 // Queue functions
 extension InstallBlockchainViewController {
-    
-    
-    /// Add task to ScriptTask queue
-    ///
-    /// - Parameter item: <#item description#>
-//    func addTask(item: DependencyViewModelProtocol) {
-//        
-//        let showOutputInConsole: (String) -> Void = { output in
-//
-//            let previousOutput = self.console.string
-//            let nextOutput = previousOutput + "\n" + output
-//            self.console.string = nextOutput
-//            let range = NSRange(location:nextOutput.count,length:0)
-//            self.console.scrollRangeToVisible(range)
-//        }
-//        
-//        let finish: () -> Void = {
-//            
-//            do {
-//                try item.fetchVersion { _ in
-//                    self.outlineView.reloadData()
-//                    self.updateProgressIndicator()
-//                }
-//            } catch {
-//                self.outlineView.reloadData()
-//                self.updateProgressIndicator()
-//            }
-//        }
-//        
-//        do {
-//            let task: ScriptTask?
-//            switch item.state {
-//            case .outdated, .uptodate:
-//                
-//                // up to date means component has equal or higher version than
-//                // listed in the plist file. There could be a newer version available
-//                
-//                task = try item.dependency?.update(output: { (output) in
-//                    showOutputInConsole(output)
-//                }, finished: finish)
-//                
-//            case .notInstalled:
-//                
-//                task = try item.dependency?.install(output: showOutputInConsole, finished: finish)
-//                
-//            default:
-//                
-//                return
-//            }
-//            
-//            task?.run()
-//            
-//        } catch {
-//            
-//            let alert = NSAlert(error: error)
-//            alert.runModal()
-//            updateProgressIndicator()
-//        }
-//        // Reload in case installing icon must be shown
-//        outlineView.reloadItem(item)
-//        updateProgressIndicator()
-//    }
     
     func updateProgressIndicator() {
 
@@ -294,13 +192,13 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 
                 switch item.state {
                     
-                case .unknown, .notInstalled:
+                case .notInstalled:
                     
                     button1.isHidden = false
                     button1.isEnabled = true
                     button1.title = "Install toolchain"
                     
-                case .uptodate, .outdated:
+                case .uptodate, .outdated, .unknown:
                     
                     button1.isHidden = false
                     button1.isEnabled = true
@@ -353,18 +251,13 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 
                 switch item.state {
                     
-                case .unknown, .notInstalled:
+                case .notInstalled:
                     
                     button1.isHidden = false
                     button1.isEnabled = true
                     button1.title = "Install \(item.name)"
                     
-                case .uptodate:
-                    
-                    button1.isHidden = true
-                    button1.isEnabled = true
-                    
-                case .outdated:
+                case .outdated, .unknown, .uptodate:
                     
                     button1.isHidden = false
                     button1.isEnabled = true
@@ -417,7 +310,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 
                 switch item.state {
                     
-                case .unknown, .notInstalled:
+                case .notInstalled:
                     
                     button1.isHidden = false
                     button1.isEnabled = true
@@ -428,7 +321,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                     button1.isHidden = true
                     button1.isEnabled = true
                     
-                case .outdated:
+                case .outdated, .unknown:
                     
                     button1.isHidden = false
                     button1.isEnabled = true

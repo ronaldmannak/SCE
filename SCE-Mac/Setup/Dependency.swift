@@ -169,6 +169,8 @@ extension Dependency {
     
     func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
         
+        guard isInstalled == false else { return nil }
+        
         if let link = installLink, let url = URL(string: link) {
             finished()
             NSWorkspace.shared.open(url)            
