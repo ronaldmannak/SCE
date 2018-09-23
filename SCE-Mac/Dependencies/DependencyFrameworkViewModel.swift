@@ -24,22 +24,6 @@ class DependencyFrameworkViewModel: DependencyViewModelProtocol {
     
     private (set) var required: Bool = false
     
-    func updateVersion(completion: @escaping (String) -> ()) throws {
-        
-        guard let mainDependency = dependencies.filter({ $0.isPlatformVersion == true }).first else {
-            return
-        }
-        guard let version = mainDependency.version else {
-            try mainDependency.updateVersion {
-                self.version = $0
-                completion($0)
-            }
-            return
-        }
-        self.version = version
-        completion(version)
-    }
-    
     var displayName: String { return state.display(name: framework.name) }
     
     var isDefaultFramework: Bool {
@@ -94,21 +78,19 @@ class DependencyFrameworkViewModel: DependencyViewModelProtocol {
         return try framework.update(output: output, finished: finished)
     }
     
-//    func install() {
-//
-//        // if brew is not installed, just show the "install brew" alert
-//        if let brew = dependencies.first, brew.name == "Brew", brew.state == .notInstalled {
-//            addTask(item: brew)
-//            return
-//        }
-//
-//        for component in dependencies {
-//            addTask(item: component)
-//        }
-//    }
-//
-
-
-    
-    
+    func updateVersion(completion: @escaping (String) -> ()) throws {
+        
+        guard let mainDependency = dependencies.filter({ $0.isPlatformVersion == true }).first else {
+            return
+        }
+        guard let version = mainDependency.version else {
+            try mainDependency.updateVersion {
+                self.version = $0
+                completion($0)
+            }
+            return
+        }
+        self.version = version
+        completion(version)
+    }
 }

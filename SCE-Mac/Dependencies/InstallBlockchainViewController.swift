@@ -26,12 +26,26 @@ class InstallBlockchainViewController: NSViewController {
             do {
                 platforms = try dependencies.loadViewModels()
                 for platform in platforms {
-                    guard let children = platform.children else { continue }
-                    for tool in children {
-                        try tool.updateVersion{ _ in
-                            self.outlineView.reloadItem(tool)
-                            self.outlineView.reloadItem(platform)
+//                    print("fetching version for \(platform.name)")
+                    
+                    guard let frameworks = platform.children else { continue }
+                    for framework in frameworks {
+                        
+                        guard let tools = framework.children else { continue }
+                        for tool in tools {
+                            
+                            try tool.updateVersion{ _ in
+                                self.outlineView.reloadItem(platform)
+                                self.outlineView.reloadItem(framework)
+                                self.outlineView.reloadItem(tool)
+                            }
                         }
+//
+//                        print("fetching version for \(tool.name)")
+//                        try tool.updateVersion{ _ in
+////                            self.outlineView.reloadItem(tool)
+//                            self.outlineView.reloadItem(platform)
+//                        }
                     }
                 }
                 outlineView.expandItem(nil, expandChildren: true)

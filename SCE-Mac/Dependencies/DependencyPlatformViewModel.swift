@@ -31,7 +31,19 @@ class DependencyPlatformViewModel: DependencyViewModelProtocol {
     
     private (set) var required: Bool = false
     
-    func updateVersion(completion: @escaping (String) -> ()) throws { }
+    func updateVersion(completion: @escaping (String) -> ()) throws {
+        guard let primaryFramework = frameworks.filter({ $0.isDefaultFramework == true }).first else {
+            return
+        }
+        guard let version = primaryFramework.version else {
+            try primaryFramework.updateVersion {
+                self.version = $0
+                completion($0)
+            }
+            return
+        }
+        completion(version)
+    }
     
     var state: DependencyState {
         
