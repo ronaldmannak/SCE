@@ -26,7 +26,6 @@ class InstallBlockchainViewController: NSViewController {
             do {
                 platforms = try dependencies.loadViewModels()
                 for platform in platforms {
-//                    print("fetching version for \(platform.name)")
                     
                     guard let frameworks = platform.children else { continue }
                     for framework in frameworks {
@@ -40,12 +39,6 @@ class InstallBlockchainViewController: NSViewController {
                                 self.outlineView.reloadItem(tool)
                             }
                         }
-//
-//                        print("fetching version for \(tool.name)")
-//                        try tool.updateVersion{ _ in
-////                            self.outlineView.reloadItem(tool)
-//                            self.outlineView.reloadItem(platform)
-//                        }
                     }
                 }
                 outlineView.expandItem(nil, expandChildren: true)
@@ -286,7 +279,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
             case "ActionColumn":
                 
                 // If item is an empty platform, show "coming soon" label
-                guard item.frameworks.isEmpty else {
+                guard !item.frameworks.isEmpty else {
                     view.imageView?.image = nil
                     view.textField?.stringValue = "Coming soon"
                     return view
@@ -309,7 +302,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                     
                 case .uptodate, .outdated:
                     
-                    button1.isHidden = true
+                    button1.isHidden = false
                     button1.isEnabled = true
                     button1.title = "Update toolchain"
                     
