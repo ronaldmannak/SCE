@@ -16,13 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         if UserDefaults.standard.bool(forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue) == false {
-            do {
-                let setup = try DependencySetup()
-                showInstallWizard(setup: setup)
-            } catch {
-                let alert = NSAlert(error: error)
-                alert.runModal()
-            }
+            showInstallWizard(setup: DependencySetup())            
         } else {
             showChooseTemplate(self)
         }
