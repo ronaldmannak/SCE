@@ -18,6 +18,8 @@ struct Project: Codable {
         return workDirectory.appendingPathComponent("\(name).comp")
     }
     
+//    let interface: PlatformInterfaceProtocol
+    
     /// Parent directory of the project, e.g. ~/Projects (not ~/Projects/ProjectName)
     let baseDirectory: URL
     
@@ -27,11 +29,7 @@ struct Project: Codable {
     }
     
     var lastOpenFile: String?
-
     
-//    let platform: Platform
-//    let tool: ?? e.g. Truffle
-//    let restoreState ??
 }
 
 class ProjectCreator: Codable {

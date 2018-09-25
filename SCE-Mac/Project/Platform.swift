@@ -31,15 +31,35 @@ enum Platform: String, Codable, CustomStringConvertible {
         }
     }
     
+    /// Returns the description nicely formatted with capitalized first character
     var description: String {
         switch self {
         case .ethereumclassic:
             return "Ethereum Classic"
-        case .cosmos:
-            return "Cosmos"
         default:
             // Capitalize first letter
             return self.rawValue.capitalizedFirstChar()
         }
     }
+    
+    var frameworks: [PlatformInterfaceProtocol.Type] {        
+        switch self {
+        case .ethereum:
+            return [EtherlimeInterface.self, TruffleInterface.self]
+        default:
+            return []
+        }
+    }
+    
+    func interface(for framework: String) -> PlatformInterfaceProtocol? {
+        switch framework {
+        case "etherlime":
+            return EtherlimeInterface(self)
+        case "truffle":
+            return TruffleInterface(self)
+        default:
+            return nil
+        }
+    }
+    
 }
