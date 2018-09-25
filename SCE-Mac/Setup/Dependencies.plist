@@ -5,6 +5,10 @@
 	<dict>
 		<key>platform</key>
 		<string>ethereum</string>
+		<key>projectUrl</key>
+		<string>https://www.ethereum.org</string>
+		<key>documentationUrl</key>
+		<string>http://www.ethdocs.org/en/latest/</string>
 		<key>frameworks</key>
 		<array>
 			<dict>
@@ -347,6 +351,10 @@
 	<dict>
 		<key>platform</key>
 		<string>cosmos</string>
+		<key>projectUrl</key>
+		<string>https://cosmos.network</string>
+		<key>documentationUrl</key>
+		<string>https://cosmos.network/docs/</string>
 		<key>frameworks</key>
 		<array/>
 		<key>dependencies</key>
@@ -355,6 +363,10 @@
 	<dict>
 		<key>platform</key>
 		<string>stellar</string>
+		<key>projectUrl</key>
+		<string>https://www.stellar.org/</string>
+		<key>documentationUrl</key>
+		<string>https://www.stellar.org/developers/guides/walkthroughs/stellar-smart-contracts.html</string>
 		<key>frameworks</key>
 		<array/>
 		<key>dependencies</key>
@@ -363,6 +375,10 @@
 	<dict>
 		<key>platform</key>
 		<string>qtum</string>
+		<key>projectUrl</key>
+		<string>https://www.ethereum.org</string>
+		<key>documentationUrl</key>
+		<string>http://www.ethdocs.org/en/latest/</string>
 		<key>frameworks</key>
 		<array/>
 		<key>dependencies</key>
@@ -371,6 +387,10 @@
 	<dict>
 		<key>platform</key>
 		<string>dispatch</string>
+		<key>projectUrl</key>
+		<string>https://dispatchlabs.io</string>
+		<key>documentationUrl</key>
+		<string>https://dispatchlabs.io</string>
 		<key>frameworks</key>
 		<array/>
 		<key>dependencies</key>
@@ -379,6 +399,10 @@
 	<dict>
 		<key>platform</key>
 		<string>nebulas</string>
+		<key>projectUrl</key>
+		<string>https://nebulas.io</string>
+		<key>documentationUrl</key>
+		<string>https://github.com/nebulasio/wiki/wiki</string>
 		<key>frameworks</key>
 		<array/>
 		<key>dependencies</key>

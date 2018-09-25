@@ -12,6 +12,12 @@ struct DependencyPlatform: Codable {
     
     let platform: Platform
     
+    // URL path to more info, usually project site. E.g. https://ethereum.org
+    let projectUrl: String
+    
+    // URL path to documenation, e.g. http://www.ethdocs.org/en/latest/
+    let documentationUrl: String
+    
     var name: String {
         return platform.description
     }

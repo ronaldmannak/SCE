@@ -36,7 +36,7 @@ enum Platform: String, Codable, CustomStringConvertible {
         case .ethereumclassic:
             return "Ethereum Classic"
         case .cosmos:
-            return "Tendermint Cosmos"
+            return "Cosmos"
         default:
             // Capitalize first letter
             return self.rawValue.capitalizedFirstChar()
