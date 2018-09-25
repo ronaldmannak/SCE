@@ -33,6 +33,12 @@
 		C70509F92159D307003DDA2B /* EtherlimeRun.command in Resources */ = {isa = PBXBuildFile; fileRef = C70509F72159D307003DDA2B /* EtherlimeRun.command */; };
 		C70509FA2159D4D7003DDA2B /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD74F2140B68C00674942 /* Platform.swift */; };
 		C70509FB2159E1EE003DDA2B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645A21262D1800867DA4 /* Project.swift */; };
+		C70509FD215A1289003DDA2B /* SupportFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509FC215A1289003DDA2B /* SupportFiles.swift */; };
+		C70509FE215A1289003DDA2B /* SupportFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509FC215A1289003DDA2B /* SupportFiles.swift */; };
+		C7050A00215A1538003DDA2B /* EthereumTruffle.json in Resources */ = {isa = PBXBuildFile; fileRef = C70509FF215A1538003DDA2B /* EthereumTruffle.json */; };
+		C7050A01215A1538003DDA2B /* EthereumTruffle.json in Resources */ = {isa = PBXBuildFile; fileRef = C70509FF215A1538003DDA2B /* EthereumTruffle.json */; };
+		C7050A03215A174E003DDA2B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A02215A174E003DDA2B /* UserDefaults.swift */; };
+		C7050A04215A174E003DDA2B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A02215A174E003DDA2B /* UserDefaults.swift */; };
 		C70B96FE21320EA600B0E4C8 /* EmbarkInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */; };
 		C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */; };
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
@@ -46,7 +52,6 @@
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
 		C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A8FDBA212E9EBB005E20AC /* Main.storyboard */; };
-		C7A8FDC92130F496005E20AC /* EthereumTruffle.json in Resources */ = {isa = PBXBuildFile; fileRef = C7A8FDC82130F496005E20AC /* EthereumTruffle.json */; };
 		C7DDD74521403A6E00674942 /* DependencySetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD74421403A6E00674942 /* DependencySetup.swift */; };
 		C7DDD74A2140A65700674942 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD7492140A65700674942 /* Dependency.swift */; };
 		C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD74B2140AB6D00674942 /* Dependencies.plist */; };
@@ -134,6 +139,9 @@
 		C70509F121561357003DDA2B /* DepedencyViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepedencyViewModelProtocol.swift; sourceTree = "<group>"; };
 		C70509F42159D28C003DDA2B /* EtherlimeInit.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = EtherlimeInit.command; sourceTree = "<group>"; };
 		C70509F72159D307003DDA2B /* EtherlimeRun.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = EtherlimeRun.command; sourceTree = "<group>"; };
+		C70509FC215A1289003DDA2B /* SupportFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportFiles.swift; sourceTree = "<group>"; };
+		C70509FF215A1538003DDA2B /* EthereumTruffle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = EthereumTruffle.json; path = "SCE-Mac/Frameworks/Etherlime/EthereumTruffle.json"; sourceTree = SOURCE_ROOT; };
+		C7050A02215A174E003DDA2B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmbarkInit.command; sourceTree = "<group>"; };
 		C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateSectionHeaderView.xib; sourceTree = "<group>"; };
 		C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -148,7 +156,6 @@
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
 		C7A8FDBB212E9EBB005E20AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C7A8FDC82130F496005E20AC /* EthereumTruffle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = EthereumTruffle.json; path = "SCE-Mac/Choose Template/Templates/Ethereum/EthereumTruffle.json"; sourceTree = SOURCE_ROOT; };
 		C7DDD74421403A6E00674942 /* DependencySetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencySetup.swift; sourceTree = "<group>"; };
 		C7DDD748214062D500674942 /* SCE-Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SCE-Mac.entitlements"; sourceTree = "<group>"; };
 		C7DDD7492140A65700674942 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
@@ -319,7 +326,6 @@
 			children = (
 				C70509F42159D28C003DDA2B /* EtherlimeInit.command */,
 				C70509F72159D307003DDA2B /* EtherlimeRun.command */,
-				C7A8FDC82130F496005E20AC /* EthereumTruffle.json */,
 			);
 			path = Etherlime;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 				C7E7646C212E28F200867DA4 /* TruffleRun.command */,
 				C7E76470212E59F000867DA4 /* TruffleWebserver.command */,
 				C7E76468212D3D0400867DA4 /* TutorialToken.sol */,
+				C70509FF215A1538003DDA2B /* EthereumTruffle.json */,
 				C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */,
 			);
 			path = Truffle;
@@ -471,6 +478,8 @@
 				C7F0B9A22112945D005A8FE2 /* Document.swift */,
 				C7F0B9C52113EA39005A8FE2 /* ScriptTask.swift */,
 				C7E7645C212675AF00867DA4 /* Error.swift */,
+				C70509FC215A1289003DDA2B /* SupportFiles.swift */,
+				C7050A02215A174E003DDA2B /* UserDefaults.swift */,
 				C7A8FDBA212E9EBB005E20AC /* Main.storyboard */,
 				C7F0B9A42112945F005A8FE2 /* Assets.xcassets */,
 				C7F0B9A92112945F005A8FE2 /* Info.plist */,
@@ -655,6 +664,7 @@
 				C7F0B983210DACCF005A8FE2 /* LaunchScreen.storyboard in Resources */,
 				C7F0B980210DACCF005A8FE2 /* Assets.xcassets in Resources */,
 				C7F0B97E210DACCB005A8FE2 /* Main.storyboard in Resources */,
+				C7050A00215A1538003DDA2B /* EthereumTruffle.json in Resources */,
 				F8F7FB4D214B4E58001A6F49 /* BrewInstall.command in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -686,9 +696,9 @@
 				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
 				C7F0B9A82112945F005A8FE2 /* Edit.storyboard in Resources */,
 				C7E7646D212E28F300867DA4 /* TruffleRun.command in Resources */,
-				C7A8FDC92130F496005E20AC /* EthereumTruffle.json in Resources */,
 				C7DDD755214102B900674942 /* General.command in Resources */,
 				C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */,
+				C7050A01215A1538003DDA2B /* EthereumTruffle.json in Resources */,
 				C7DDD757214113CB00674942 /* Which.command in Resources */,
 				C7E76471212E59F100867DA4 /* TruffleWebserver.command in Resources */,
 				C7E764532124FA1300867DA4 /* Setup in Resources */,
@@ -830,6 +840,7 @@
 				C7F0B97B210DACCB005A8FE2 /* DetailViewController.swift in Sources */,
 				C70509DA21541CAA003DDA2B /* EtherlimeInterface.swift in Sources */,
 				C70509ED2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift in Sources */,
+				C7050A03215A174E003DDA2B /* UserDefaults.swift in Sources */,
 				C70509DD21541CBA003DDA2B /* TruffleInterface.swift in Sources */,
 				C7F0B979210DACCB005A8FE2 /* MasterViewController.swift in Sources */,
 				C70509F221561357003DDA2B /* DepedencyViewModelProtocol.swift in Sources */,
@@ -838,6 +849,7 @@
 				C7F0B977210DACCB005A8FE2 /* AppDelegate.swift in Sources */,
 				C70509E92155B486003DDA2B /* DependencyState.swift in Sources */,
 				C70509E62155B47B003DDA2B /* DependencyViewModel.swift in Sources */,
+				C70509FD215A1289003DDA2B /* SupportFiles.swift in Sources */,
 				C70509D721541C8C003DDA2B /* PlatformInterfaceProtocol.swift in Sources */,
 				C7F0B9BE2112C3CA005A8FE2 /* SolidityLexer.swift in Sources */,
 			);
@@ -878,6 +890,7 @@
 				C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */,
 				C7F0B9BF2112C3CA005A8FE2 /* SolidityLexer.swift in Sources */,
 				C70509F02155C9D6003DDA2B /* DependencyPlatformViewModel.swift in Sources */,
+				C70509FE215A1289003DDA2B /* SupportFiles.swift in Sources */,
 				C70509E72155B47B003DDA2B /* DependencyViewModel.swift in Sources */,
 				C7E7643A21214D4600867DA4 /* ChooseTemplateViewController.swift in Sources */,
 				C7DDD753214100D200674942 /* String.swift in Sources */,
@@ -890,6 +903,7 @@
 				C70509EA2155B486003DDA2B /* DependencyState.swift in Sources */,
 				C7E76448212358A900867DA4 /* PreparingViewController.swift in Sources */,
 				C7F0B9C42113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift in Sources */,
+				C7050A04215A174E003DDA2B /* UserDefaults.swift in Sources */,
 				C7E76437211EC16300867DA4 /* EditWindowController.swift in Sources */,
 				C7E7645B21262D1800867DA4 /* Project.swift in Sources */,
 				C76FC3232143A6BF00DB2C62 /* InstallCompleteViewController.swift in Sources */,

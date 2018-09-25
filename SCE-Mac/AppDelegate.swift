@@ -15,18 +15,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        var setup: DependencySetup!
-        var shouldDisplayInstallWizard = false
-        do {
-            setup = try DependencySetup()
-            shouldDisplayInstallWizard = try setup.setup(.ethereum, overwrite: true)         
-        } catch {
-            let alert = NSAlert(error: error)
-            alert.runModal()
-        }
-  
-        if shouldDisplayInstallWizard == true {
-            showInstallWizard(setup: setup)
+        if UserDefaults.standard.bool(forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue) == false {
+            do {
+                let setup = try DependencySetup()
+                showInstallWizard(setup: setup)
+            } catch {
+                let alert = NSAlert(error: error)
+                alert.runModal()
+            }
         } else {
             showChooseTemplate(self)
         }

@@ -14,6 +14,7 @@ class InstallBlockchainViewController: NSViewController {
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet var console: NSTextView!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    @IBOutlet weak var showOnStartupButton: NSButton!
     
     var platforms = [DependencyViewModelProtocol]() {
         didSet {
@@ -51,6 +52,7 @@ class InstallBlockchainViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showOnStartupButton.state = UserDefaults.standard.bool(forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue) == false ? .on : .off
     }
     
     @IBAction func done(_ sender: Any) {
@@ -75,7 +77,12 @@ class InstallBlockchainViewController: NSViewController {
         run(item)
     }
     
-//    @IBAction func button2(_ sender: Any) {
+    @IBAction func showOnStartup(_ sender: Any) {
+        guard let sender = sender as? NSButton else { return }
+        UserDefaults.standard.set(sender.state == .off, forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue)            
+    }
+    
+    //    @IBAction func button2(_ sender: Any) {
 //        let openPanel = NSOpenPanel()
 //        openPanel.beginSheetModal(for: self.view.window!) { (response) in
 //            // TODO

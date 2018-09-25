@@ -298,6 +298,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="showOnStartup:" target="kfv-ZF-Ptq" id="fNx-KP-h0O"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
@@ -305,6 +308,7 @@
                         <outlet property="console" destination="WoV-YO-3yv" id="hpq-Wn-TLF"/>
                         <outlet property="outlineView" destination="igj-mF-5Zp" id="r76-B2-hwM"/>
                         <outlet property="progressIndicator" destination="Q5D-KM-MPd" id="TZp-md-eCS"/>
+                        <outlet property="showOnStartupButton" destination="Eg1-MU-QdW" id="RrS-oM-mYh"/>
                     </connections>
                 </viewController>
                 <customObject id="jMZ-s2-mIm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
