@@ -52,7 +52,6 @@
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
 		C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */; };
 		C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7A8FDBA212E9EBB005E20AC /* Main.storyboard */; };
-		C7DDD74521403A6E00674942 /* DependencySetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD74421403A6E00674942 /* DependencySetup.swift */; };
 		C7DDD74A2140A65700674942 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD7492140A65700674942 /* Dependency.swift */; };
 		C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD74B2140AB6D00674942 /* Dependencies.plist */; };
 		C7DDD74E2140AFDC00674942 /* DependencyPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */; };
@@ -156,7 +155,6 @@
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C7A8FDB6212E8769005E20AC /* PreferencesTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTabViewController.swift; sourceTree = "<group>"; };
 		C7A8FDBB212E9EBB005E20AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C7DDD74421403A6E00674942 /* DependencySetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencySetup.swift; sourceTree = "<group>"; };
 		C7DDD748214062D500674942 /* SCE-Mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SCE-Mac.entitlements"; sourceTree = "<group>"; };
 		C7DDD7492140A65700674942 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		C7DDD74B2140AB6D00674942 /* Dependencies.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dependencies.plist; sourceTree = "<group>"; };
@@ -401,7 +399,6 @@
 		C7E764512124FA0200867DA4 /* Setup */ = {
 			isa = PBXGroup;
 			children = (
-				C7DDD74421403A6E00674942 /* DependencySetup.swift */,
 				C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */,
 				C70509D2214D97A8003DDA2B /* DependencyFramework.swift */,
 				C7DDD7492140A65700674942 /* Dependency.swift */,
@@ -886,7 +883,6 @@
 				C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */,
 				C7F0B9A32112945D005A8FE2 /* Document.swift in Sources */,
 				C7E764422122AC2100867DA4 /* ContractTemplate.swift in Sources */,
-				C7DDD74521403A6E00674942 /* DependencySetup.swift in Sources */,
 				C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */,
 				C7F0B9BF2112C3CA005A8FE2 /* SolidityLexer.swift in Sources */,
 				C70509F02155C9D6003DDA2B /* DependencyPlatformViewModel.swift in Sources */,

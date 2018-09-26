@@ -37,5 +37,41 @@ struct DependencyPlatform: Codable {
   
         return try frameworks.compactMap({ try $0.update(output: output, finished: finished) }).flatMap{ $0 }
     }
+    
+    /// Loads all depencies for all platforms from Dependencies.plist
+    ///
+    /// - Returns:  Array of DependencyPlatforms
+    /// - Throws:   Codable error
+    static func loadPlatforms() throws -> [DependencyPlatform] {
+        
+        let dependenciesFile = Bundle.main.url(forResource: "Dependencies.plist", withExtension: nil)!
+        let data = try Data(contentsOf: dependenciesFile)
+        let decoder = PropertyListDecoder()
+        return try decoder.decode([DependencyPlatform].self, from: data)
+    }
+    
+    
+    /// Loads all dependenies for a single platform
+    ///
+    /// - Parameter platform: the platform, e.g. .ethereum
+    /// - Returns:  The DependencyPlatform or nil
+    /// - Throws:   Codable error
+    static func load(_ platform: Platform? = nil) throws -> DependencyPlatform? {
+        
+        let platforms = try loadPlatforms()
+        return platforms.filter{ (item) -> Bool in return item.platform == platform }.first
+    }
+    
+    static func loadIncluded() throws -> [DependencyPlatform] {
+        
+        let platforms = try loadPlatforms()
+        return platforms.filter{ (item) -> Bool in return item.frameworks.count > 0 }
+    }
+    
+    static func loadViewModels() throws -> [DependencyPlatformViewModel] {
+        
+        return try loadPlatforms().map { DependencyPlatformViewModel($0) }
+    }
+    
 }
 

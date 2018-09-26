@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         if UserDefaults.standard.bool(forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue) == false {
-            showInstallWizard(setup: DependencySetup())            
+            showInstallWizard()
         } else {
             showChooseTemplate(self)
         }
@@ -39,11 +39,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        }
 //    }
     
-    func showInstallWizard(setup: DependencySetup) {
+    func showInstallWizard() {
         let installWizardStoryboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "InstallWizard"), bundle: nil)
         let installWizard = installWizardStoryboard.instantiateInitialController() as? NSWindowController
-        let installContainer = installWizard?.contentViewController as? InstallContainerViewController
-        installContainer?.dependencies = setup
         installWizard?.showWindow(self)
     }
     

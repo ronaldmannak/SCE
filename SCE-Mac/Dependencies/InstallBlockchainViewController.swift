@@ -16,43 +16,73 @@ class InstallBlockchainViewController: NSViewController {
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var showOnStartupButton: NSButton!
     
-    var platforms = [DependencyViewModelProtocol]() {
-        didSet {
-            outlineView.reloadData()
-        }
-    }
-    
-    var dependencies: DependencySetup! {
-        didSet {
-            do {
-                platforms = try dependencies.loadViewModels()
-                for platform in platforms {
-                    
-                    guard let frameworks = platform.children else { continue }
-                    for framework in frameworks {
-                        
-                        guard let tools = framework.children else { continue }
-                        for tool in tools {
-                            
-                            try tool.updateVersion{ _ in
-                                self.outlineView.reloadItem(platform)
-                                self.outlineView.reloadItem(framework)
-                                self.outlineView.reloadItem(tool)
-                            }
-                        }
-                    }
-                }
-                outlineView.expandItem(nil, expandChildren: true)
-            } catch {
-                let alert = NSAlert(error: error)
-                alert.runModal()
-            }
-        }
-    }
+    private var platforms =  [DependencyViewModelProtocol]()
+//    var platforms = [DependencyViewModelProtocol]() {
+//        didSet {
+//
+//            outlineView.reloadData()
+//
+//            // Fetch version numbers
+//            do {
+//                for platform in platforms {
+//
+//                    guard let frameworks = platform.children else { continue }
+//                    for framework in frameworks {
+//
+//                        guard let tools = framework.children else { continue }
+//                        for tool in tools {
+//
+//                            try tool.updateVersion{ _ in
+//                                self.outlineView.reloadItem(framework)
+//                                self.outlineView.reloadItem(tool)
+//                            }
+//                        }
+//                    }
+//                }
+//                outlineView.expandItem(nil, expandChildren: true)
+//            } catch {
+//                let alert = NSAlert(error: error)
+//                alert.runModal()
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadPlatforms()
         showOnStartupButton.state = UserDefaults.standard.bool(forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue) == false ? .on : .off
+    }
+    
+    func loadPlatforms() {
+        
+        do {
+            // Load dependencies from disk
+            platforms = try DependencyPlatform.loadViewModels()
+            outlineView.reloadData()
+            
+            // Fetch version numbers
+            for platform in platforms {
+                
+                guard let frameworks = platform.children else { continue }
+                for framework in frameworks {
+                    
+                    guard let tools = framework.children else { continue }
+                    for tool in tools {
+                        
+                        try tool.updateVersion{ _ in
+                            self.outlineView.reloadItem(framework)
+                            self.outlineView.reloadItem(tool)
+                        }
+                    }
+                }
+            }
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
+        }
+        
+        // expand all items
+        outlineView.expandItem(nil, expandChildren: true)
     }
     
     @IBAction func done(_ sender: Any) {
