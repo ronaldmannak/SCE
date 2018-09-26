@@ -17,8 +17,6 @@ class DependencyPlatformViewModel: DependencyViewModelProtocol {
     
     var displayName: String { return name }
     
-//    private (set) var isSelected: Bool = true // TODO: select yet if
-    
     let frameworks: [DependencyFrameworkViewModel]
     
     var children: [DependencyViewModelProtocol]? { return frameworks }

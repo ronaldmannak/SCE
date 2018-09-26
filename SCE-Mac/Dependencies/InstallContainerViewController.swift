@@ -12,11 +12,6 @@ class InstallContainerViewController: NSViewController {
 
     weak var install: InstallBlockchainViewController!
     weak var complete: InstallCompleteViewController!
-//    var dependencies: [DependencyPlatform]! {
-//        didSet {
-//            install.dependencies = dependencies // Forward to installViewController, which will load the dependencies
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

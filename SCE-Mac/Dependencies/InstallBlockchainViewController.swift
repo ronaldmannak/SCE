@@ -17,35 +17,6 @@ class InstallBlockchainViewController: NSViewController {
     @IBOutlet weak var showOnStartupButton: NSButton!
     
     private var platforms =  [DependencyViewModelProtocol]()
-//    var platforms = [DependencyViewModelProtocol]() {
-//        didSet {
-//
-//            outlineView.reloadData()
-//
-//            // Fetch version numbers
-//            do {
-//                for platform in platforms {
-//
-//                    guard let frameworks = platform.children else { continue }
-//                    for framework in frameworks {
-//
-//                        guard let tools = framework.children else { continue }
-//                        for tool in tools {
-//
-//                            try tool.updateVersion{ _ in
-//                                self.outlineView.reloadItem(framework)
-//                                self.outlineView.reloadItem(tool)
-//                            }
-//                        }
-//                    }
-//                }
-//                outlineView.expandItem(nil, expandChildren: true)
-//            } catch {
-//                let alert = NSAlert(error: error)
-//                alert.runModal()
-//            }
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

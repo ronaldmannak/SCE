@@ -67,7 +67,6 @@
 		C7E764422122AC2100867DA4 /* ContractTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E764412122AC2100867DA4 /* ContractTemplate.swift */; };
 		C7E764462123539100867DA4 /* Template.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7E764452123539100867DA4 /* Template.storyboard */; };
 		C7E76448212358A900867DA4 /* PreparingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76447212358A900867DA4 /* PreparingViewController.swift */; };
-		C7E764532124FA1300867DA4 /* Setup in Resources */ = {isa = PBXBuildFile; fileRef = C7E764522124FA1300867DA4 /* Setup */; };
 		C7E76459212610DA00867DA4 /* TruffleInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76458212610DA00867DA4 /* TruffleInit.command */; };
 		C7E7645B21262D1800867DA4 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645A21262D1800867DA4 /* Project.swift */; };
 		C7E7645D212675AF00867DA4 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645C212675AF00867DA4 /* Error.swift */; };
@@ -149,7 +148,6 @@
 		C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallContainerViewController.swift; sourceTree = "<group>"; };
 		C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallBlockchainViewController.swift; sourceTree = "<group>"; };
 		C76FC3212143A6BF00DB2C62 /* InstallCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallCompleteViewController.swift; sourceTree = "<group>"; };
-		C76FC325214495E100DB2C62 /* DependencyViewModel2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyViewModel2.swift; sourceTree = "<group>"; };
 		C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesLocationsGeneralViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 		C7E764412122AC2100867DA4 /* ContractTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractTemplate.swift; sourceTree = "<group>"; };
 		C7E764452123539100867DA4 /* Template.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Template.storyboard; sourceTree = "<group>"; };
 		C7E76447212358A900867DA4 /* PreparingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreparingViewController.swift; sourceTree = "<group>"; };
-		C7E764522124FA1300867DA4 /* Setup */ = {isa = PBXFileReference; lastKnownFileType = text; path = Setup; sourceTree = "<group>"; };
 		C7E76458212610DA00867DA4 /* TruffleInit.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = TruffleInit.command; sourceTree = "<group>"; };
 		C7E7645A21262D1800867DA4 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		C7E7645C212675AF00867DA4 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -364,23 +361,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		C7DDD7582141DFCD00674942 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				C7DDD7592141E02800674942 /* InstallWizard.storyboard */,
-				C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */,
-				C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */,
-				C76FC3212143A6BF00DB2C62 /* InstallCompleteViewController.swift */,
-				C76FC325214495E100DB2C62 /* DependencyViewModel2.swift */,
-				C70509F121561357003DDA2B /* DepedencyViewModelProtocol.swift */,
-				C70509E82155B486003DDA2B /* DependencyState.swift */,
-				C70509EC2155C9D6003DDA2B /* DependencyPlatformViewModel.swift */,
-				C70509EB2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift */,
-				C70509E52155B47B003DDA2B /* DependencyViewModel.swift */,
-			);
-			path = Dependencies;
-			sourceTree = "<group>";
-		};
 		C7E7643821214D1700867DA4 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,20 +376,28 @@
 			path = Templates;
 			sourceTree = "<group>";
 		};
-		C7E764512124FA0200867DA4 /* Setup */ = {
+		C7E764512124FA0200867DA4 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				C7DDD7592141E02800674942 /* InstallWizard.storyboard */,
+				C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */,
+				C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */,
+				C76FC3212143A6BF00DB2C62 /* InstallCompleteViewController.swift */,
 				C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */,
 				C70509D2214D97A8003DDA2B /* DependencyFramework.swift */,
 				C7DDD7492140A65700674942 /* Dependency.swift */,
-				C7E764522124FA1300867DA4 /* Setup */,
+				C70509F121561357003DDA2B /* DepedencyViewModelProtocol.swift */,
+				C70509E82155B486003DDA2B /* DependencyState.swift */,
+				C70509EC2155C9D6003DDA2B /* DependencyPlatformViewModel.swift */,
+				C70509EB2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift */,
+				C70509E52155B47B003DDA2B /* DependencyViewModel.swift */,
 				C7DDD74B2140AB6D00674942 /* Dependencies.plist */,
 				C7DDD754214102B900674942 /* General.command */,
 				F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */,
 				C7DDD756214113CB00674942 /* Which.command */,
 				F81936C3214C6F2F00C3222B /* uninstall.command */,
 			);
-			path = Setup;
+			path = Dependencies;
 			sourceTree = "<group>";
 		};
 		C7F0B96A210DACCB005A8FE2 = {
@@ -465,8 +453,7 @@
 			children = (
 				C7DDD748214062D500674942 /* SCE-Mac.entitlements */,
 				C7303B62212E75C70007E708 /* Preferences */,
-				C7DDD7582141DFCD00674942 /* Dependencies */,
-				C7E764512124FA0200867DA4 /* Setup */,
+				C7E764512124FA0200867DA4 /* Dependencies */,
 				C70509D521541C6F003DDA2B /* Project */,
 				C7A8FDBD212F2030005E20AC /* Frameworks */,
 				C7E7643821214D1700867DA4 /* Templates */,
@@ -698,7 +685,6 @@
 				C7050A01215A1538003DDA2B /* EthereumTruffle.json in Resources */,
 				C7DDD757214113CB00674942 /* Which.command in Resources */,
 				C7E76471212E59F100867DA4 /* TruffleWebserver.command in Resources */,
-				C7E764532124FA1300867DA4 /* Setup in Resources */,
 				C70509F92159D307003DDA2B /* EtherlimeRun.command in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
