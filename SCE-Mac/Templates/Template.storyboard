@@ -189,11 +189,11 @@ Gw
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="category" destination="lUG-MY-0Xd" id="yi8-Hw-8ew"/>
+                        <outlet property="categoryTableView" destination="lUG-MY-0Xd" id="yi8-Hw-8ew"/>
                         <outlet property="frameworkPopup" destination="hAL-Wj-B9m" id="xXl-Gp-luO"/>
                         <outlet property="languagePopup" destination="CWd-tz-E4L" id="Uiq-fJ-4lo"/>
                         <outlet property="platformPopup" destination="1Hq-2Z-Fok" id="pw5-im-Nxr"/>
-                        <outlet property="template" destination="BXo-12-RnO" id="bOz-9B-Ube"/>
+                        <outlet property="templateCollectionView" destination="BXo-12-RnO" id="bOz-9B-Ube"/>
                         <segue destination="aiD-bt-la6" kind="show" identifier="PreparingSegue" id="Gt1-ra-VF6"/>
                     </connections>
                 </viewController>

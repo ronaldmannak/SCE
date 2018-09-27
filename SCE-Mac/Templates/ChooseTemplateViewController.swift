@@ -13,35 +13,31 @@ class ChooseTemplateViewController: NSViewController {
     @IBOutlet weak var platformPopup: NSPopUpButton!
     @IBOutlet weak var frameworkPopup: NSPopUpButton!
     @IBOutlet weak var languagePopup: NSPopUpButton!
-    @IBOutlet weak var category: NSTableView!
-    @IBOutlet weak var template: NSCollectionView!
+    @IBOutlet weak var categoryTableView: NSTableView!
+    @IBOutlet weak var templateCollectionView: NSCollectionView!
 
     weak var container: TemplateContainerViewController!
     
     private var platforms:  [DependencyViewModelProtocol]!
-    var categories = [ContractCategory]()
+    var categories = [TemplateCategory]() {
+        didSet {
+//            categoryTableView.reloadData()
+//            templateCollectionView.reloadData()
+            categoryTableView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
+        }
+    }
     var projectCreator: ProjectCreator? = nil
     let allRowIndex = 0 // All categories
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadPlatforms()
-        
-        do {
-            categories = try loadCategory(filename: "EthereumTruffle")
-        } catch {
-            let alert = NSAlert(error: error)
-            alert.runModal()
-        }
-        
         configureTemplateView()
-        category.reloadData()
-        category.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
-        template.reloadData()
+        loadPlatforms()
+
         // Without a delay, the first cell gets selected, but the background isn't highlighted
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.template.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
+            self.templateCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
         }
     }
     
@@ -51,6 +47,9 @@ class ChooseTemplateViewController: NSViewController {
         // Load dependencies from disk
         do {
             self.platforms = try DependencyPlatform.loadViewModels()
+            if let framework = self.platforms.first?.children?.first as? DependencyFrameworkViewModel {
+                categories = try loadTemplates(framework: framework.name)
+            }
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
@@ -69,14 +68,27 @@ class ChooseTemplateViewController: NSViewController {
         }
     }
     
+    func setTemplates(){
+        
+        guard let framework = platforms[platformPopup.indexOfSelectedItem].children?[frameworkPopup.indexOfSelectedItem] as? DependencyFrameworkViewModel else { return }
+        
+        // Load templates
+        do {
+            categories = try loadTemplates(framework: framework.name)
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
+        }
+    }
+    
     /// filename without JSON extension
-    func loadCategory(filename: String) throws -> [ContractCategory] {
-        guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
-            throw(EditorError.fileNotFound(filename))
+    func loadTemplates(framework: String) throws -> [TemplateCategory] {
+        guard let url = Bundle.main.url(forResource: "Templates-\(framework)", withExtension: "plist") else {
+            throw(EditorError.fileNotFound(framework))
         }
         let jsonData = try Data(contentsOf: url)
-        let decoder = JSONDecoder()
-        let category = try decoder.decode([ContractCategory].self, from: jsonData)
+        let decoder = PropertyListDecoder()
+        let category = try decoder.decode([TemplateCategory].self, from: jsonData)
         return category
     }
     
@@ -90,12 +102,17 @@ class ChooseTemplateViewController: NSViewController {
     
     @IBAction func platformClicked(_ sender: Any) {
         
+        // Fetch selected Platform
         let selected = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
         
+        // Populate Framework popups
         self.frameworkPopup.removeAllItems()
         for framework in selected.frameworks {
             self.frameworkPopup.addItem(withTitle: framework.name)
         }
+        
+        // Load new templates
+        setTemplates()
     }
     
     @IBAction func frameworkClicked(_ sender: Any) {
@@ -104,6 +121,7 @@ class ChooseTemplateViewController: NSViewController {
     
     @IBAction func languageClicked(_ sender: Any) {
         
+        setTemplates()
     }
 
     /// Set up PreparingViewController
@@ -121,48 +139,51 @@ class ChooseTemplateViewController: NSViewController {
 
 extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
     
-    fileprivate func itemAt(_ indexPath: IndexPath) -> ContractTemplate {
-        if category.selectedRow == allRowIndex {
-            return categories[indexPath.section].templates![indexPath.item]
-        } else {
-            return categories[category.selectedRow - 1].templates![indexPath.item]
-        }
-    }
+//    fileprivate func itemAt(_ indexPath: IndexPath) -> Template {
+//        if categoryTableView.selectedRow == allRowIndex {
+//            return categories[indexPath.section].templates![indexPath.item]
+//        } else {
+//            return categories[categoryTableView.selectedRow - 1].templates![indexPath.item]
+//        }
+//    }
     
     fileprivate func configureTemplateView() {
         view.wantsLayer = true
         let nib = NSNib(nibNamed: NSNib.Name(rawValue: "TemplateCollectionViewItem"), bundle: nil)
-        template.register(nib, forItemWithIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"))
+        templateCollectionView.register(nib, forItemWithIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"))
     }
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        if category.selectedRow == allRowIndex {
-            return categories.count // All
-        } else {
-            return 1 // Show only selected category
-        }
+        return 0
+//        if categoryTableView.selectedRow == allRowIndex {
+//            return categories.count // All
+//        } else {
+//            return 1 // Show only selected category
+//        }
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        if category.selectedRow == allRowIndex {
-            return categories[section].templates?.count ?? 0
-        }
-        return categories[category.selectedRow - 1].templates?.count ?? 0
+        return 0
+//        if categoryTableView.selectedRow == allRowIndex {
+//            return categories[section].templates?.count ?? 0
+//        }
+//        return categories[categoryTableView.selectedRow - 1].templates?.count ?? 0
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         
-        guard let cell = template.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"), for: indexPath) as? TemplateCollectionViewItem else {
-            assertionFailure()
-            return NSCollectionViewItem()
-        }
-
-        let item = itemAt(indexPath)
-        
-        cell.imageView?.image = item.image
-        cell.textField?.stringValue = item.name
-        cell.erc.stringValue = item.standard
-        return cell
+        return NSCollectionViewItem()
+//        guard let cell = templateCollectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"), for: indexPath) as? TemplateCollectionViewItem else {
+//            assertionFailure()
+//            return NSCollectionViewItem()
+//        }
+//
+//        let item = itemAt(indexPath)
+//
+//        cell.imageView?.image = item.image
+//        cell.textField?.stringValue = item.name
+//        cell.erc.stringValue = item.standard
+//        return cell
     }
     
 //    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
@@ -189,7 +210,8 @@ extension ChooseTemplateViewController : NSCollectionViewDelegateFlowLayout {
 extension ChooseTemplateViewController: NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return categories.count + 1 // all categories plus "All"
+        return 0
+//        return categories.count + 1 // all categories plus "All"
     }
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
@@ -200,7 +222,7 @@ extension ChooseTemplateViewController: NSTableViewDataSource {
 
 extension ChooseTemplateViewController: NSTableViewDelegate {
     func tableViewSelectionIsChanging(_ notification: Notification) {
-        template.reloadData()
-        template.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
+        templateCollectionView.reloadData()
+        templateCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
     }
 }

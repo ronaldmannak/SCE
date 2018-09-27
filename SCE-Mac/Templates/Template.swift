@@ -1,5 +1,5 @@
 //
-//  ContractTemplate.swift
+//  Template.swift
 //  SCE-Mac
 //
 //  Created by Ronald "Danger" Mannak on 8/13/18.
@@ -9,20 +9,13 @@
 import Foundation
 import Cocoa
 
-struct ContractPlatform: Codable {    
-    let platform: Platform
-    var languages: [String] { return platform.languages }
-    let categories: [ContractCategory]?
-}
-
-
-struct ContractCategory: Codable {
+struct TemplateCategory: Codable {
     let category: String
     let command: String         // E.g. init (%..)
-    let templates: [ContractTemplate]?
+//    let templates: [Template]?
 }
 
-struct ContractTemplate: Codable {
+struct Template: Codable {
     
     /// E.g. "Basic Token"
     let name: String

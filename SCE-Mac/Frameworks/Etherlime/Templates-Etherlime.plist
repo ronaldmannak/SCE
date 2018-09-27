@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>category</key>
+		<string>Tokens</string>
+		<key>command</key>
+		<string>test</string>
+		<key>templates</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Empty Project</string>
+				<key>templateName</key>
+				<string>emptyproject</string>
+				<key>imageName</key>
+				<string>box</string>
+				<key>standard</key>
+				<string></string>
+				<key>openFile</key>
+				<string></string>
+				<key>copyFiles</key>
+				<array>
+					<dict>
+						<key>filename</key>
+						<string></string>
+						<key>destination</key>
+						<string></string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Token</string>
+				<key>templateName</key>
+				<string>token</string>
+				<key>imageName</key>
+				<string></string>
+				<key>standard</key>
+				<string>ERC-20</string>
+				<key>openFile</key>
+				<string></string>
+				<key>copyFiles</key>
+				<array>
+					<dict>
+						<key>filename</key>
+						<string></string>
+						<key>destination</key>
+						<string></string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Non-fungible Token</string>
+				<key>templateName</key>
+				<string>nonfungibletoken</string>
+				<key>imageName</key>
+				<string></string>
+				<key>standard</key>
+				<string>ERC-721</string>
+				<key>openFile</key>
+				<string></string>
+				<key>copyFiles</key>
+				<array>
+					<dict>
+						<key>filename</key>
+						<string></string>
+						<key>destination</key>
+						<string></string>
+					</dict>
+				</array>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>
