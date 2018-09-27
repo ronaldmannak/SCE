@@ -8,7 +8,7 @@
         <!--Choose a Template-->
         <scene sceneID="gMr-YG-d2q">
             <objects>
-                <viewController title="Choose a Template" storyboardIdentifier="ChooseTemplate" id="mxs-pt-zAo" customClass="ChooseTemplateViewController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Choose a Template" storyboardIdentifier="ChooseTemplate" id="mxs-pt-zAo" customClass="ChooseTemplateViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="quD-Ja-dRD">
                         <rect key="frame" x="0.0" y="0.0" width="697" height="416"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -205,7 +205,69 @@ Gw
                 </viewController>
                 <customObject id="EoG-Ib-E2H" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="890.5" y="884"/>
+            <point key="canvasLocation" x="1842" y="835"/>
+        </scene>
+        <!--Template Options View Controller-->
+        <scene sceneID="d4p-fG-nlc">
+            <objects>
+                <viewController storyboardIdentifier="Options" id="waD-DB-Pyt" customClass="TemplateOptionsViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="LwM-2g-bY6">
+                        <rect key="frame" x="0.0" y="0.0" width="697" height="416"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ucx-E6-Cc9">
+                                <rect key="frame" x="330" y="199" width="45" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="2nd vc" id="P2r-O1-Gxh">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qzv-By-FNk">
+                                <rect key="frame" x="607" y="13" width="72" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cdy-9I-cam">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="done:" target="waD-DB-Pyt" id="vbr-PS-KIh"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PIa-C5-d2M">
+                                <rect key="frame" x="14" y="13" width="70" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Back" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lG0-Qy-3uw">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="back:" target="waD-DB-Pyt" id="Q83-Jm-wAW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="7K5-Kb-ZNk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2750" y="835"/>
+        </scene>
+        <!--Template Container View Controller-->
+        <scene sceneID="5f2-40-IAv">
+            <objects>
+                <viewController id="YcG-Vq-hRC" customClass="TemplateContainerViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
+                    <containerView key="view" id="hsX-5A-pYd">
+                        <rect key="frame" x="0.0" y="0.0" width="697" height="416"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <segue destination="mxs-pt-zAo" kind="embed" id="rS8-x6-qk4"/>
+                        </connections>
+                    </containerView>
+                </viewController>
+                <customObject id="rUd-zy-j3B" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="868" y="835"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="Zvs-Ds-wLj">
@@ -231,7 +293,7 @@ Gw
         <!--Creating Template-->
         <scene sceneID="oPn-9l-uYc">
             <objects>
-                <viewController title="Creating Template" id="M4e-WR-LdV" customClass="PreparingViewController" customModule="SCE_Mac" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Creating Template" id="M4e-WR-LdV" customClass="PreparingViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="ABZ-cb-tOG">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -313,7 +375,7 @@ Gw
             <objects>
                 <windowController showSeguePresentationStyle="single" id="MRU-aS-e6X" sceneMemberID="viewController">
                     <window key="window" title="Choose a Template" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="fId-dl-dz7">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
@@ -323,7 +385,7 @@ Gw
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="mxs-pt-zAo" kind="relationship" relationship="window.shadowedContentViewController" id="CoF-28-6B7"/>
+                        <segue destination="YcG-Vq-hRC" kind="relationship" relationship="window.shadowedContentViewController" id="8IS-S7-mU9"/>
                     </connections>
                 </windowController>
                 <customObject id="pKh-fK-BoQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -713,7 +775,7 @@ Gw
                     </menu>
                 </application>
                 <customObject id="EO0-pS-6qj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="dgL-fk-yN1" customClass="AppDelegate" customModule="SCE_Mac" customModuleProvider="target"/>
+                <customObject id="dgL-fk-yN1" customClass="AppDelegate" customModule="Composite" customModuleProvider="target"/>
                 <customObject id="ebc-gs-e4u" customClass="NSFontManager"/>
             </objects>
             <point key="canvasLocation" x="75" y="405"/>

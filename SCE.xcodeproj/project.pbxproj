@@ -39,6 +39,10 @@
 		C7050A01215A1538003DDA2B /* EthereumTruffle.json in Resources */ = {isa = PBXBuildFile; fileRef = C70509FF215A1538003DDA2B /* EthereumTruffle.json */; };
 		C7050A03215A174E003DDA2B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A02215A174E003DDA2B /* UserDefaults.swift */; };
 		C7050A04215A174E003DDA2B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A02215A174E003DDA2B /* UserDefaults.swift */; };
+		C7050A06215C510B003DDA2B /* TemplateContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A05215C510B003DDA2B /* TemplateContainerViewController.swift */; };
+		C7050A07215C510B003DDA2B /* TemplateContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A05215C510B003DDA2B /* TemplateContainerViewController.swift */; };
+		C7050A09215C5129003DDA2B /* TemplateOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A08215C5129003DDA2B /* TemplateOptionsViewController.swift */; };
+		C7050A0A215C5129003DDA2B /* TemplateOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A08215C5129003DDA2B /* TemplateOptionsViewController.swift */; };
 		C70B96FE21320EA600B0E4C8 /* EmbarkInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */; };
 		C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */; };
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
@@ -140,6 +144,8 @@
 		C70509FC215A1289003DDA2B /* SupportFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportFiles.swift; sourceTree = "<group>"; };
 		C70509FF215A1538003DDA2B /* EthereumTruffle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = EthereumTruffle.json; path = "SCE-Mac/Frameworks/Etherlime/EthereumTruffle.json"; sourceTree = SOURCE_ROOT; };
 		C7050A02215A174E003DDA2B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		C7050A05215C510B003DDA2B /* TemplateContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateContainerViewController.swift; sourceTree = "<group>"; };
+		C7050A08215C5129003DDA2B /* TemplateOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateOptionsViewController.swift; sourceTree = "<group>"; };
 		C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmbarkInit.command; sourceTree = "<group>"; };
 		C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateSectionHeaderView.xib; sourceTree = "<group>"; };
 		C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -364,7 +370,9 @@
 		C7E7643821214D1700867DA4 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
+				C7050A05215C510B003DDA2B /* TemplateContainerViewController.swift */,
 				C7E7643921214D4600867DA4 /* ChooseTemplateViewController.swift */,
+				C7050A08215C5129003DDA2B /* TemplateOptionsViewController.swift */,
 				C7E76447212358A900867DA4 /* PreparingViewController.swift */,
 				C7E7643D2122A2CF00867DA4 /* TemplateCollectionViewItem.swift */,
 				C7E7643E2122A2CF00867DA4 /* TemplateCollectionViewItem.xib */,
@@ -822,6 +830,7 @@
 				C70509EF2155C9D6003DDA2B /* DependencyPlatformViewModel.swift in Sources */,
 				C7F0B97B210DACCB005A8FE2 /* DetailViewController.swift in Sources */,
 				C70509DA21541CAA003DDA2B /* EtherlimeInterface.swift in Sources */,
+				C7050A06215C510B003DDA2B /* TemplateContainerViewController.swift in Sources */,
 				C70509ED2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift in Sources */,
 				C7050A03215A174E003DDA2B /* UserDefaults.swift in Sources */,
 				C70509DD21541CBA003DDA2B /* TruffleInterface.swift in Sources */,
@@ -832,6 +841,7 @@
 				C7F0B977210DACCB005A8FE2 /* AppDelegate.swift in Sources */,
 				C70509E92155B486003DDA2B /* DependencyState.swift in Sources */,
 				C70509E62155B47B003DDA2B /* DependencyViewModel.swift in Sources */,
+				C7050A09215C5129003DDA2B /* TemplateOptionsViewController.swift in Sources */,
 				C70509FD215A1289003DDA2B /* SupportFiles.swift in Sources */,
 				C70509D721541C8C003DDA2B /* PlatformInterfaceProtocol.swift in Sources */,
 				C7F0B9BE2112C3CA005A8FE2 /* SolidityLexer.swift in Sources */,
@@ -864,6 +874,7 @@
 				C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */,
 				C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */,
 				C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */,
+				C7050A07215C510B003DDA2B /* TemplateContainerViewController.swift in Sources */,
 				C70509D4214D97A8003DDA2B /* DependencyFramework.swift in Sources */,
 				C7F0B99F2112945D005A8FE2 /* AppDelegate.swift in Sources */,
 				C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */,
@@ -872,6 +883,7 @@
 				C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */,
 				C7F0B9BF2112C3CA005A8FE2 /* SolidityLexer.swift in Sources */,
 				C70509F02155C9D6003DDA2B /* DependencyPlatformViewModel.swift in Sources */,
+				C7050A0A215C5129003DDA2B /* TemplateOptionsViewController.swift in Sources */,
 				C70509FE215A1289003DDA2B /* SupportFiles.swift in Sources */,
 				C70509E72155B47B003DDA2B /* DependencyViewModel.swift in Sources */,
 				C7E7643A21214D4600867DA4 /* ChooseTemplateViewController.swift in Sources */,
