@@ -44,8 +44,6 @@ Gw
                                     <menu key="menu" id="I6U-5U-Z1V">
                                         <items>
                                             <menuItem title="Ethereum" state="on" id="51I-WM-cXD"/>
-                                            <menuItem title="Bitcoin" id="QIH-a5-qz1"/>
-                                            <menuItem title="Cosmos" id="HyD-4S-q2W"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
@@ -63,21 +61,17 @@ Gw
                             </textField>
                             <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAL-Wj-B9m">
                                 <rect key="frame" x="195" y="17" width="135" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="Solidity" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="YP4-jq-wZe" id="Zyk-Gk-XbJ">
+                                <popUpButtonCell key="cell" type="push" title="Etherlime" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="YP4-jq-wZe" id="Zyk-Gk-XbJ" userLabel="Framework">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="4Xz-eP-dRh">
                                         <items>
-                                            <menuItem title="Solidity" state="on" id="YP4-jq-wZe"/>
-                                            <menuItem title="Bamboo" id="NGN-da-Y3B"/>
-                                            <menuItem title="Vyper" id="cCK-qk-1Vg"/>
-                                            <menuItem title="Bitcoin Script" id="MQa-lG-XBG"/>
-                                            <menuItem title="Michelson" id="7L0-1K-igV"/>
+                                            <menuItem title="Etherlime" state="on" id="YP4-jq-wZe"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
                                 <connections>
-                                    <action selector="languageClicked:" target="mxs-pt-zAo" id="ky0-W2-0cr"/>
+                                    <action selector="frameworkClicked:" target="mxs-pt-zAo" id="JJt-eE-Jyc"/>
                                 </connections>
                             </popUpButton>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuR-XZ-eDv">
@@ -126,15 +120,14 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CWd-tz-E4L">
+                            <popUpButton hidden="YES" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CWd-tz-E4L">
                                 <rect key="frame" x="333" y="17" width="135" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="Truffle" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ltA-Do-brL" id="zgR-Oh-7al">
+                                <popUpButtonCell key="cell" type="push" title="Solidity" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="e17-XR-f5b" id="zgR-Oh-7al">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="YYp-zl-g0z">
                                         <items>
-                                            <menuItem title="Embark" id="e17-XR-f5b"/>
-                                            <menuItem title="Truffle" state="on" id="ltA-Do-brL"/>
+                                            <menuItem title="Solidity" id="e17-XR-f5b"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
@@ -197,8 +190,9 @@ Gw
                     </view>
                     <connections>
                         <outlet property="category" destination="lUG-MY-0Xd" id="yi8-Hw-8ew"/>
-                        <outlet property="language" destination="hAL-Wj-B9m" id="xXl-Gp-luO"/>
-                        <outlet property="platform" destination="1Hq-2Z-Fok" id="pw5-im-Nxr"/>
+                        <outlet property="frameworkPopup" destination="hAL-Wj-B9m" id="xXl-Gp-luO"/>
+                        <outlet property="languagePopup" destination="CWd-tz-E4L" id="Uiq-fJ-4lo"/>
+                        <outlet property="platformPopup" destination="1Hq-2Z-Fok" id="pw5-im-Nxr"/>
                         <outlet property="template" destination="BXo-12-RnO" id="bOz-9B-Ube"/>
                         <segue destination="aiD-bt-la6" kind="show" identifier="PreparingSegue" id="Gt1-ra-VF6"/>
                     </connections>

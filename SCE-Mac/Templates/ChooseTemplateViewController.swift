@@ -10,20 +10,23 @@ import Cocoa
 
 class ChooseTemplateViewController: NSViewController {
 
-    @IBOutlet weak var platform: NSPopUpButton!
-    @IBOutlet weak var language: NSPopUpButton!
+    @IBOutlet weak var platformPopup: NSPopUpButton!
+    @IBOutlet weak var frameworkPopup: NSPopUpButton!
+    @IBOutlet weak var languagePopup: NSPopUpButton!
     @IBOutlet weak var category: NSTableView!
     @IBOutlet weak var template: NSCollectionView!
 
     weak var container: TemplateContainerViewController!
     
-    /// Project to be created
+    private var platforms:  [DependencyViewModelProtocol]!
     var categories = [ContractCategory]()
     var projectCreator: ProjectCreator? = nil
     let allRowIndex = 0 // All categories
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadPlatforms()
         
         do {
             categories = try loadCategory(filename: "EthereumTruffle")
@@ -42,6 +45,30 @@ class ChooseTemplateViewController: NSViewController {
         }
     }
     
+    
+    func loadPlatforms() {
+        
+        // Load dependencies from disk
+        do {
+            self.platforms = try DependencyPlatform.loadViewModels()
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
+        }
+        
+        platformPopup.removeAllItems()
+        frameworkPopup.removeAllItems()
+        
+        let platforms = self.platforms as! [DependencyPlatformViewModel]
+        for platform in platforms {
+            self.platformPopup.addItem(withTitle: platform.name)
+//            self.platform.item(withTitle: platform.name)?.isEnabled = !platform.frameworks.isEmpty
+            for framework in platform.frameworks {
+                self.frameworkPopup.addItem(withTitle: framework.name)
+            }
+        }
+    }
+    
     /// filename without JSON extension
     func loadCategory(filename: String) throws -> [ContractCategory] {
         guard let url = Bundle.main.url(forResource: filename, withExtension: "json") else {
@@ -54,32 +81,7 @@ class ChooseTemplateViewController: NSViewController {
     }
     
     @IBAction func ChooseClicked(_ sender: Any) {
-        
         container.showOptions()
-        
-//        let savePanel = NSSavePanel()
-//        savePanel.beginSheetModal(for: view.window!) { (result) in
-//
-//            guard result == .OK, let directory = savePanel.url else { return }
-//
-//            // Temporary: do not allow overwriting existing files or directories
-//            let fileManager = FileManager.default
-//            guard fileManager.fileExists(atPath: directory.path) == false else { return }
-//
-//            let projectName = directory.lastPathComponent
-//            let baseDirectory = directory.deletingLastPathComponent()
-//
-//            guard let selectedIndex = self.template.selectionIndexPaths.first else { return }
-//            let selectedTemplate = self.itemAt(selectedIndex)
-//            let templateName = selectedTemplate.templateName.isEmpty ? selectedTemplate.name : selectedTemplate.templateName
-//            let selectedCategory = self.categories[selectedIndex.section]
-//
-//            let project = Project(name: projectName, baseDirectory: baseDirectory, lastOpenFile: selectedTemplate.openFile)
-//            self.projectCreator = ProjectCreator(templateName: templateName, installScript: selectedCategory.command, project: project, copyFiles: selectedTemplate.copyFiles)
-//
-//            let id = NSStoryboardSegue.Identifier(rawValue: "PreparingSegue")
-//            self.performSegue(withIdentifier: id, sender: self)
-//        }
     }
     
     @IBAction func cancelClicked(_ sender: Any) {
@@ -87,19 +89,21 @@ class ChooseTemplateViewController: NSViewController {
     }
     
     @IBAction func platformClicked(_ sender: Any) {
-        switch (sender as! NSPopUpButton).selectedItem!.title {
-        case "Ethereum":
-            language.selectItem(at: 0)
-        case "Bitcoin":
-            language.selectItem(at: 1)
-        case "Cosmos":
-            language.selectItem(at: 2)
-        default:
-            fatalError()
+        
+        let selected = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
+        
+        self.frameworkPopup.removeAllItems()
+        for framework in selected.frameworks {
+            self.frameworkPopup.addItem(withTitle: framework.name)
         }
     }
     
+    @IBAction func frameworkClicked(_ sender: Any) {
+        // Load templates of this framework
+    }
+    
     @IBAction func languageClicked(_ sender: Any) {
+        
     }
 
     /// Set up PreparingViewController
