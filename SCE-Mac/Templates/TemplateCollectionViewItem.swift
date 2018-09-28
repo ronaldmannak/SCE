@@ -11,7 +11,11 @@ import Cocoa
 // See https://www.youtube.com/watch?v=26yik3rnPiQ
 
 class TemplateCollectionViewItem: NSCollectionViewItem {
-  
+    
+    @IBOutlet weak var erc: NSTextField!
+    @IBOutlet weak var descriptionTextField: NSTextField!
+    @IBOutlet weak var moreInfoButton: NSButton!
+    
     override var isSelected: Bool {
         didSet {
             super.isSelected = isSelected
@@ -19,12 +23,10 @@ class TemplateCollectionViewItem: NSCollectionViewItem {
         }
     }
     
-    @IBOutlet weak var erc: NSTextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.layer?.backgroundColor = isSelected == true ? NSColor.lightGray.cgColor : NSColor.white.cgColor
+        view.wantsLayer = true
+        view.layer?.backgroundColor = isSelected == true ? NSColor.lightGray.cgColor : NSColor.white.cgColor
     }
-    
-    
+
 }

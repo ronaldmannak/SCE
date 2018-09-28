@@ -24,6 +24,7 @@ class ChooseTemplateViewController: NSViewController {
             categoryTableView.reloadData()
             templateCollectionView.reloadData()
             categoryTableView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
+            templateCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
         }
     }
     var projectCreator: ProjectCreator? = nil
@@ -35,11 +36,6 @@ class ChooseTemplateViewController: NSViewController {
         configureTemplateView()
         loadPlatforms()
         setTemplates()
-
-        // Without a delay, the first cell gets selected, but the background isn't highlighted
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.templateCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
-        }
     }
     
     
@@ -70,6 +66,7 @@ class ChooseTemplateViewController: NSViewController {
         }
     }
     
+    
     func setTemplates() {
         
         guard let framework = platforms[platformPopup.indexOfSelectedItem].children?[frameworkPopup.indexOfSelectedItem] as? DependencyFrameworkViewModel else { return }
@@ -83,6 +80,7 @@ class ChooseTemplateViewController: NSViewController {
         }
     }
     
+    
     /// filename without JSON extension
     func loadTemplates(framework: String) throws -> [TemplateCategory] {
         guard let url = Bundle.main.url(forResource: "Templates-\(framework)", withExtension: "plist") else {
@@ -94,13 +92,16 @@ class ChooseTemplateViewController: NSViewController {
         return category
     }
     
+    
     @IBAction func ChooseClicked(_ sender: Any) {
         container.showOptions()
     }
     
+    
     @IBAction func cancelClicked(_ sender: Any) {
         self.view.window!.close()
     }
+    
     
     @IBAction func emptyProjectClicked(_ sender: Any) {
         let savePanel = NSSavePanel()
@@ -171,6 +172,8 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
     
     fileprivate func configureTemplateView() {
         view.wantsLayer = true
+        // Not able to use the view item in the storyboard
+//        templateCollectionView.register(ChooseTemplateViewController.self, forItemWithIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"))
         let nib = NSNib(nibNamed: NSNib.Name(rawValue: "TemplateCollectionViewItem"), bundle: nil)
         templateCollectionView.register(nib, forItemWithIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"))
     }
@@ -204,6 +207,10 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
         cell.imageView?.image = item.image
         cell.textField?.stringValue = item.name
         cell.erc.stringValue = item.standard
+        // TODO: fix
+        // descriptionTextField and moreInfoButton are both nil, while erc isn't
+//        cell.descriptionTextField.stringValue = item.description ?? ""
+//        cell.moreInfoButton.isHidden = true
         return cell
     }
     
