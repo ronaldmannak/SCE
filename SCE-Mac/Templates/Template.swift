@@ -23,6 +23,12 @@ struct Template: Codable {
     /// E.g. "basictoken" (name used by Truffle)
     let templateName: String
     
+    /// Verbose description of the template
+    let description: String?
+    
+    /// Path to more info
+    let moreInfoUrl: String
+    
     /// E.g. ERC-20
     let standard: String
     

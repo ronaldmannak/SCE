@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>New item</key>
+<array>
 	<dict>
 		<key>category</key>
 		<string>Boxes</string>
@@ -12,68 +11,36 @@
 		<array>
 			<dict>
 				<key>name</key>
-				<string>Empty Project</string>
+				<string>Tutorial Token</string>
 				<key>templateName</key>
-				<string>emptyproject</string>
+				<string>tutorialtoken</string>
 				<key>imageName</key>
-				<string>box</string>
+				<string>Box</string>
 				<key>standard</key>
 				<string></string>
+				<key>description</key>
+				<string>ERC-20 is a technical standard used for smart contracts on the Ethereum blockchain for implementing tokens</string>
+				<key>moreInfoUrl</key>
+				<string>https://github.com/ethereum/eips/issues/20</string>
 				<key>openFile</key>
-				<string></string>
+				<string>contracts/TutorialToken.sol</string>
 				<key>copyFiles</key>
 				<array>
 					<dict>
 						<key>filename</key>
-						<string></string>
+						<string>TutorialToken.sol</string>
 						<key>destination</key>
-						<string></string>
+						<string>contracts</string>
 					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>Token</string>
-				<key>templateName</key>
-				<string>token</string>
-				<key>imageName</key>
-				<string></string>
-				<key>standard</key>
-				<string>ERC-20</string>
-				<key>openFile</key>
-				<string></string>
-				<key>copyFiles</key>
-				<array>
 					<dict>
 						<key>filename</key>
-						<string></string>
+						<string>2_deploy_contracts.js</string>
 						<key>destination</key>
-						<string></string>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>Non-fungible Token</string>
-				<key>templateName</key>
-				<string>nonfungibletoken</string>
-				<key>imageName</key>
-				<string></string>
-				<key>standard</key>
-				<string>ERC-721</string>
-				<key>openFile</key>
-				<string></string>
-				<key>copyFiles</key>
-				<array>
-					<dict>
-						<key>filename</key>
-						<string></string>
-						<key>destination</key>
-						<string></string>
+						<string>migrations</string>
 					</dict>
 				</array>
 			</dict>
 		</array>
 	</dict>
-</dict>
+</array>
 </plist>

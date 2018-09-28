@@ -83,12 +83,12 @@ class InstallBlockchainViewController: NSViewController {
         UserDefaults.standard.set(sender.state == .off, forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue)            
     }
     
-    //    @IBAction func button2(_ sender: Any) {
+    @IBAction func button2(_ sender: Any) {
 //        let openPanel = NSOpenPanel()
 //        openPanel.beginSheetModal(for: self.view.window!) { (response) in
 //            // TODO
 //        }
-//    }
+    }
     
     func run(_ item: DependencyViewModelProtocol) {
         

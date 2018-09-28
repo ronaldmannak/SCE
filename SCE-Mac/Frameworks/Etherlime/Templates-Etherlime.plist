@@ -11,34 +11,17 @@
 		<array>
 			<dict>
 				<key>name</key>
-				<string>Empty Project</string>
-				<key>templateName</key>
-				<string>emptyproject</string>
-				<key>imageName</key>
-				<string>box</string>
-				<key>standard</key>
-				<string></string>
-				<key>openFile</key>
-				<string></string>
-				<key>copyFiles</key>
-				<array>
-					<dict>
-						<key>filename</key>
-						<string></string>
-						<key>destination</key>
-						<string></string>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>Token</string>
+				<string>ERC-20 Token</string>
 				<key>templateName</key>
 				<string>token</string>
 				<key>imageName</key>
 				<string></string>
 				<key>standard</key>
 				<string>ERC-20</string>
+				<key>description</key>
+				<string>ERC-20 is a technical standard used for smart contracts on the Ethereum blockchain for implementing tokens</string>
+				<key>moreInfoUrl</key>
+				<string>https://github.com/ethereum/eips/issues/20</string>
 				<key>openFile</key>
 				<string></string>
 				<key>copyFiles</key>
@@ -60,6 +43,35 @@
 				<string></string>
 				<key>standard</key>
 				<string>ERC-721</string>
+				<key>description</key>
+				<string>A non-fungible token (NFT) is a special type of cryptographic token which represents something unique; non-fungible tokens are thus not interchangeable. This is in contrast to cryptocurrencies like Bitcoin, and many network or utility tokens that are fungible in nature. Non-fungible tokens are used to create verifiable digital scarcity. NFTs are used in several specific applications that require unique digital items like crypto-collectibles and crypto-gaming. Popular blockchain games like CryptoKitties make use of non-fungible tokens on the Ethereum blockchain. NFTs are used to represent in-game assets, which are in control of the user instead of the game developer. NFTs also find potential use in digital art, by helping prove authenticity and ownership.</string>
+				<key>moreInfoUrl</key>
+				<string>https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md</string>
+				<key>openFile</key>
+				<string></string>
+				<key>copyFiles</key>
+				<array>
+					<dict>
+						<key>filename</key>
+						<string></string>
+						<key>destination</key>
+						<string></string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Crypto Item Token</string>
+				<key>templateName</key>
+				<string>cryptoitem</string>
+				<key>imageName</key>
+				<string></string>
+				<key>standard</key>
+				<string>ERC-1155</string>
+				<key>description</key>
+				<string>This standard outlines a smart contract interface where one can represent any number of Fungible and Non-Fungible assets in a single contract. Existing standards such as ERC-20 require deployment of separate contracts per token. The ERC-721 standard&apos;s Token ID is a single non-fungible index and the group of these non-fungibles is deployed as a single contract with settings for the entire collection. Instead, the ERC-1155 Crypto Item Standard allows for each Item ID to represent a new configurable token type, which may have its own totalSupply value and other such attributes.</string>
+				<key>moreInfoUrl</key>
+				<string>https://github.com/ethereum/eips/issues/1155</string>
 				<key>openFile</key>
 				<string></string>
 				<key>copyFiles</key>
