@@ -390,61 +390,6 @@ Gw
             </objects>
             <point key="canvasLocation" x="1671" y="1512"/>
         </scene>
-        <!--Template Collection View Item-->
-        <scene sceneID="Uev-g1-mdA">
-            <objects>
-                <collectionViewItem storyboardIdentifier="TemplateCollectionViewItem" id="wIC-C9-Nua" customClass="TemplateCollectionViewItem" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="RuQ-vi-KKJ">
-                        <rect key="frame" x="0.0" y="0.0" width="275" height="150"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I2J-GM-QbJ">
-                                <rect key="frame" x="65" y="113" width="37" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Wcr-Ns-xKc">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Epu-WO-hV8">
-                                <rect key="frame" x="8" y="46" width="92" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Multiline Label" id="LXV-KV-Alv">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vvN-US-cZP">
-                                <rect key="frame" x="142" y="91" width="37" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="1Gp-pd-QVl">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zcr-qG-QHt">
-                                <rect key="frame" x="189" y="19" width="66" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="inline" title="More Info" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="ppG-PA-VjC">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="smallSystemBold"/>
-                                </buttonCell>
-                            </button>
-                        </subviews>
-                    </view>
-                    <connections>
-                        <outlet property="descriptionTextField" destination="Epu-WO-hV8" id="Fsk-0X-S84"/>
-                        <outlet property="erc" destination="vvN-US-cZP" id="uDt-U9-YYG"/>
-                        <outlet property="moreInfoButton" destination="zcr-qG-QHt" id="oWe-Kf-MKy"/>
-                    </connections>
-                </collectionViewItem>
-                <customObject id="wph-I4-YCz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1543" y="444"/>
-        </scene>
         <!--Window Controller-->
         <scene sceneID="nbh-Xb-Ukt">
             <objects>

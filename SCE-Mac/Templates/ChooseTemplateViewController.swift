@@ -104,15 +104,17 @@ class ChooseTemplateViewController: NSViewController {
     
     @IBAction func viewItemMoreInfoClicked(_ sender: Any) {
         print("click")
-        guard let sender = sender as? NSView, let itemView = sender.nextResponder as? TemplateCollectionViewItem else { return }
-        print("stil here")
-        let row = templateCollectionView.indexPath(for: itemView)
-        print(row)
-//            outlineView.row(for: sender)
-        
-//        guard let item = outlineView.item(atRow: row) as? DependencyViewModelProtocol else { return }
-        
-//        run(item)
+        guard let sender = sender as? NSView,
+            let itemView = sender.nextResponder?.nextResponder as? TemplateCollectionViewItem,
+            let indexPath = templateCollectionView.indexPath(for: itemView)
+            else { return }
+
+        let item = itemAt(indexPath)
+        guard let url = URL(string: item.moreInfoUrl) else { return }        
+        NSWorkspace.shared.open(url)
+        // Nice to have: select cell so user have confirmation which "more info" button they clicked
+//        templateCollectionView.deselectAll(self)
+//        templateCollectionView.selectItems(at: [indexPath], scrollPosition: .top)
     }
     
     @IBAction func emptyProjectClicked(_ sender: Any) {
@@ -184,8 +186,6 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
     
     fileprivate func configureTemplateView() {
         view.wantsLayer = true
-        // Not able to use the view item in the storyboard
-//        templateCollectionView.register(ChooseTemplateViewController.self, forItemWithIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"))
         let nib = NSNib(nibNamed: NSNib.Name(rawValue: "TemplateCollectionViewItem"), bundle: nil)
         templateCollectionView.register(nib, forItemWithIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"))
     }

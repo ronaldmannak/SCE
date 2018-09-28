@@ -21,7 +21,7 @@
 				<key>description</key>
 				<string>ERC-20 is a technical standard used for smart contracts on the Ethereum blockchain for implementing tokens</string>
 				<key>moreInfoUrl</key>
-				<string>https://github.com/ethereum/eips/issues/20</string>
+				<string>https://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin</string>
 				<key>openFile</key>
 				<string>contracts/TutorialToken.sol</string>
 				<key>copyFiles</key>
