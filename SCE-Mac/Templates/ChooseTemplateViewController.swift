@@ -36,9 +36,9 @@ class ChooseTemplateViewController: NSViewController {
         loadPlatforms()
 
         // Without a delay, the first cell gets selected, but the background isn't highlighted
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.templateCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//            self.templateCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
+//        }
     }
     
     
@@ -61,7 +61,7 @@ class ChooseTemplateViewController: NSViewController {
         let platforms = self.platforms as! [DependencyPlatformViewModel]
         for platform in platforms {
             self.platformPopup.addItem(withTitle: platform.name)
-//            self.platform.item(withTitle: platform.name)?.isEnabled = !platform.frameworks.isEmpty
+            self.platformPopup.item(withTitle: platform.name)?.isEnabled = !platform.frameworks.isEmpty
             for framework in platform.frameworks {
                 self.frameworkPopup.addItem(withTitle: framework.name)
             }
@@ -139,13 +139,13 @@ class ChooseTemplateViewController: NSViewController {
 
 extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
     
-//    fileprivate func itemAt(_ indexPath: IndexPath) -> Template {
-//        if categoryTableView.selectedRow == allRowIndex {
-//            return categories[indexPath.section].templates![indexPath.item]
-//        } else {
-//            return categories[categoryTableView.selectedRow - 1].templates![indexPath.item]
-//        }
-//    }
+    fileprivate func itemAt(_ indexPath: IndexPath) -> Template {
+        if categoryTableView.selectedRow == allRowIndex {
+            return categories[indexPath.section].templates![indexPath.item]
+        } else {
+            return categories[categoryTableView.selectedRow - 1].templates![indexPath.item]
+        }
+    }
     
     fileprivate func configureTemplateView() {
         view.wantsLayer = true
@@ -155,35 +155,34 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         return 0
-//        if categoryTableView.selectedRow == allRowIndex {
-//            return categories.count // All
-//        } else {
-//            return 1 // Show only selected category
-//        }
+        if categoryTableView.selectedRow == allRowIndex {
+            return categories.count // All
+        } else {
+            return 1 // Show only selected category
+        }
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         return 0
-//        if categoryTableView.selectedRow == allRowIndex {
-//            return categories[section].templates?.count ?? 0
-//        }
-//        return categories[categoryTableView.selectedRow - 1].templates?.count ?? 0
+        if categoryTableView.selectedRow == allRowIndex {
+            return categories[section].templates?.count ?? 0
+        }
+        return categories[categoryTableView.selectedRow - 1].templates?.count ?? 0
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        
-        return NSCollectionViewItem()
-//        guard let cell = templateCollectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"), for: indexPath) as? TemplateCollectionViewItem else {
-//            assertionFailure()
-//            return NSCollectionViewItem()
-//        }
-//
-//        let item = itemAt(indexPath)
-//
-//        cell.imageView?.image = item.image
-//        cell.textField?.stringValue = item.name
-//        cell.erc.stringValue = item.standard
-//        return cell
+
+        guard let cell = templateCollectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"), for: indexPath) as? TemplateCollectionViewItem else {
+            assertionFailure()
+            return NSCollectionViewItem()
+        }
+
+        let item = itemAt(indexPath)
+
+        cell.imageView?.image = item.image
+        cell.textField?.stringValue = item.name
+        cell.erc.stringValue = item.standard
+        return cell
     }
     
 //    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {

@@ -38,10 +38,10 @@ Gw
                             </button>
                             <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Hq-2Z-Fok">
                                 <rect key="frame" x="82" y="17" width="110" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="Ethereum" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="51I-WM-cXD" id="vrc-zo-6mZ">
+                                <popUpButtonCell key="cell" type="push" title="Ethereum" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="51I-WM-cXD" id="vrc-zo-6mZ">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="I6U-5U-Z1V">
+                                    <menu key="menu" autoenablesItems="NO" id="I6U-5U-Z1V">
                                         <items>
                                             <menuItem title="Ethereum" state="on" id="51I-WM-cXD"/>
                                         </items>
@@ -61,10 +61,10 @@ Gw
                             </textField>
                             <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAL-Wj-B9m">
                                 <rect key="frame" x="195" y="17" width="135" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="Etherlime" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="YP4-jq-wZe" id="Zyk-Gk-XbJ" userLabel="Framework">
+                                <popUpButtonCell key="cell" type="push" title="Etherlime" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="YP4-jq-wZe" id="Zyk-Gk-XbJ" userLabel="Framework">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="4Xz-eP-dRh">
+                                    <menu key="menu" autoenablesItems="NO" id="4Xz-eP-dRh">
                                         <items>
                                             <menuItem title="Etherlime" state="on" id="YP4-jq-wZe"/>
                                         </items>

@@ -12,7 +12,7 @@ import Cocoa
 struct TemplateCategory: Codable {
     let category: String
     let command: String         // E.g. init (%..)
-//    let templates: [Template]?
+    let templates: [Template]?
 }
 
 struct Template: Codable {
