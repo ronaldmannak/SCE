@@ -47,6 +47,8 @@
 		C7050A0D215C6D70003DDA2B /* Templates-Etherlime.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7050A0B215C6D70003DDA2B /* Templates-Etherlime.plist */; };
 		C7050A0F215C7047003DDA2B /* Templates-Truffle.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7050A0E215C7047003DDA2B /* Templates-Truffle.plist */; };
 		C7050A10215C7047003DDA2B /* Templates-Truffle.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7050A0E215C7047003DDA2B /* Templates-Truffle.plist */; };
+		C7050A12215ECF0C003DDA2B /* ProjectDirectoryCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A11215ECF0C003DDA2B /* ProjectDirectoryCreator.swift */; };
+		C7050A13215ECF0C003DDA2B /* ProjectDirectoryCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A11215ECF0C003DDA2B /* ProjectDirectoryCreator.swift */; };
 		C70B96FE21320EA600B0E4C8 /* EmbarkInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */; };
 		C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */; };
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
@@ -152,6 +154,7 @@
 		C7050A08215C5129003DDA2B /* TemplateOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateOptionsViewController.swift; sourceTree = "<group>"; };
 		C7050A0B215C6D70003DDA2B /* Templates-Etherlime.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Etherlime.plist"; sourceTree = "<group>"; };
 		C7050A0E215C7047003DDA2B /* Templates-Truffle.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Truffle.plist"; sourceTree = "<group>"; };
+		C7050A11215ECF0C003DDA2B /* ProjectDirectoryCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDirectoryCreator.swift; sourceTree = "<group>"; };
 		C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmbarkInit.command; sourceTree = "<group>"; };
 		C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateSectionHeaderView.xib; sourceTree = "<group>"; };
 		C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -288,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				C7E7645A21262D1800867DA4 /* Project.swift */,
+				C7050A11215ECF0C003DDA2B /* ProjectDirectoryCreator.swift */,
 				C7DDD74F2140B68C00674942 /* Platform.swift */,
 				C70509D621541C8C003DDA2B /* PlatformInterfaceProtocol.swift */,
 				C70509D921541CAA003DDA2B /* EtherlimeInterface.swift */,
@@ -840,6 +844,7 @@
 			files = (
 				C70509FA2159D4D7003DDA2B /* Platform.swift in Sources */,
 				C70509EF2155C9D6003DDA2B /* DependencyPlatformViewModel.swift in Sources */,
+				C7050A12215ECF0C003DDA2B /* ProjectDirectoryCreator.swift in Sources */,
 				C7F0B97B210DACCB005A8FE2 /* DetailViewController.swift in Sources */,
 				C70509DA21541CAA003DDA2B /* EtherlimeInterface.swift in Sources */,
 				C7050A06215C510B003DDA2B /* TemplateContainerViewController.swift in Sources */,
@@ -902,6 +907,7 @@
 				C7DDD753214100D200674942 /* String.swift in Sources */,
 				C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */,
 				C7E76463212936E300867DA4 /* FileBrowserViewController.swift in Sources */,
+				C7050A13215ECF0C003DDA2B /* ProjectDirectoryCreator.swift in Sources */,
 				C7DDD74A2140A65700674942 /* Dependency.swift in Sources */,
 				C70509DE21541CBA003DDA2B /* TruffleInterface.swift in Sources */,
 				C76FC32021439FAC00DB2C62 /* InstallBlockchainViewController.swift in Sources */,

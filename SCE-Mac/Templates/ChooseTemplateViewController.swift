@@ -27,7 +27,7 @@ class ChooseTemplateViewController: NSViewController {
             templateCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
         }
     }
-    var projectCreator: ProjectCreator? = nil
+    var projectDirectoryCreator: ProjectDirectoryCreator? = nil
     let allRowIndex = 0 // All categories
     
     override func viewDidLoad() {
@@ -102,6 +102,7 @@ class ChooseTemplateViewController: NSViewController {
         self.view.window!.close()
     }
     
+    
     @IBAction func viewItemMoreInfoClicked(_ sender: Any) {
         print("click")
         guard let sender = sender as? NSView,
@@ -117,6 +118,7 @@ class ChooseTemplateViewController: NSViewController {
 //        templateCollectionView.selectItems(at: [indexPath], scrollPosition: .top)
     }
     
+    
     @IBAction func emptyProjectClicked(_ sender: Any) {
         let savePanel = NSSavePanel()
         savePanel.beginSheetModal(for: view.window!) { (result) in
@@ -130,6 +132,8 @@ class ChooseTemplateViewController: NSViewController {
                         let projectName = directory.lastPathComponent
                         let baseDirectory = directory.deletingLastPathComponent()
             
+            
+            
 //                        let project = Project(name: projectName, baseDirectory: baseDirectory, lastOpenFile: selectedTemplate.openFile)
 //                        self.projectCreator = ProjectCreator(templateName: templateName, installScript: selectedCategory.command, project: project, copyFiles: selectedTemplate.copyFiles)
             
@@ -137,6 +141,7 @@ class ChooseTemplateViewController: NSViewController {
                         self.performSegue(withIdentifier: id, sender: self)
         }
     }
+    
     
     @IBAction func platformClicked(_ sender: Any) {
         
@@ -158,21 +163,24 @@ class ChooseTemplateViewController: NSViewController {
         setTemplates()
     }
     
+    
     @IBAction func languageClicked(_ sender: Any) {
         setTemplates()        
     }
 
+    
     /// Set up PreparingViewController
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
-        assert(projectCreator != nil)
+        assert(projectDirectoryCreator != nil)
         
         let preparingViewController = ((segue.destinationController as! NSWindowController).contentViewController! as! PreparingViewController)
-        preparingViewController.projectCreator = projectCreator
+        preparingViewController.projectDirectoryCreator = projectDirectoryCreator
         self.view.window!.close()
     }
 }
+
 
 extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
     
@@ -184,11 +192,13 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
         }
     }
     
+    
     fileprivate func configureTemplateView() {
         view.wantsLayer = true
         let nib = NSNib(nibNamed: NSNib.Name(rawValue: "TemplateCollectionViewItem"), bundle: nil)
         templateCollectionView.register(nib, forItemWithIdentifier: NSUserInterfaceItemIdentifier("TemplateCollectionViewItem"))
     }
+    
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         
@@ -199,6 +209,7 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
         }
     }
     
+    
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if categoryTableView.selectedRow == allRowIndex {
@@ -206,6 +217,7 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
         }
         return categories[categoryTableView.selectedRow - 1].templates?.count ?? 0
     }
+    
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
 
@@ -251,6 +263,7 @@ extension ChooseTemplateViewController: NSTableViewDataSource {
         return categories.count + 1 // all categories plus "All"
     }
     
+    
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         if row == allRowIndex { return "    All" }
         return "    " + categories[row - 1].category
@@ -258,6 +271,7 @@ extension ChooseTemplateViewController: NSTableViewDataSource {
 }
 
 extension ChooseTemplateViewController: NSTableViewDelegate {
+    
     func tableViewSelectionIsChanging(_ notification: Notification) {
         templateCollectionView.reloadData()
         templateCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)

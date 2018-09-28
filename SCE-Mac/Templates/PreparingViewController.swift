@@ -16,12 +16,12 @@ class PreparingViewController: NSViewController {
     @IBOutlet weak var cancelButton: NSButton!
     var counter: Int = 0
 
-    var projectCreator: ProjectCreator! {
+    var projectDirectoryCreator: ProjectDirectoryCreator! {
         didSet {
             progressIndicator.startAnimation(self)
             progressIndicator.maxValue = 8
             do {
-                _ = try projectCreator.create(output: { output in
+                _ = try projectDirectoryCreator.create(output: { output in
                     // Output in text view
                     let previousOutput = self.textView.string
                     let nextOutput = previousOutput + "\n" + output
@@ -33,7 +33,7 @@ class PreparingViewController: NSViewController {
                 }) {
                     self.progressIndicator.stopAnimation(self)
                     let documentController = NSDocumentController.shared
-                    documentController.openDocument(withContentsOf: self.projectCreator.project.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
+                    documentController.openDocument(withContentsOf: self.projectDirectoryCreator.project.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
 
                         if let document = document as? Document, let editWindowController = document.editWindowController {
                             editWindowController.setConsole(self.textView.string)
@@ -54,7 +54,7 @@ class PreparingViewController: NSViewController {
     }
     
     @IBAction func cancelClicked(_ sender: Any) {
-        projectCreator.scriptTask.terminate()
+        projectDirectoryCreator.scriptTask.terminate()
         view.window?.close()
     }    
 }
