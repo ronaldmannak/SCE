@@ -102,6 +102,27 @@ class ChooseTemplateViewController: NSViewController {
         self.view.window!.close()
     }
     
+    @IBAction func emptyProjectClicked(_ sender: Any) {
+        let savePanel = NSSavePanel()
+        savePanel.beginSheetModal(for: view.window!) { (result) in
+            
+                        guard result == .OK, let directory = savePanel.url else { return }
+            
+                        // Temporary: do not allow overwriting existing files or directories
+                        let fileManager = FileManager.default
+                        guard fileManager.fileExists(atPath: directory.path) == false else { return }
+            
+                        let projectName = directory.lastPathComponent
+                        let baseDirectory = directory.deletingLastPathComponent()
+            
+//                        let project = Project(name: projectName, baseDirectory: baseDirectory, lastOpenFile: selectedTemplate.openFile)
+//                        self.projectCreator = ProjectCreator(templateName: templateName, installScript: selectedCategory.command, project: project, copyFiles: selectedTemplate.copyFiles)
+            
+                        let id = NSStoryboardSegue.Identifier(rawValue: "PreparingSegue")
+                        self.performSegue(withIdentifier: id, sender: self)
+        }
+    }
+    
     @IBAction func platformClicked(_ sender: Any) {
         
         // Fetch selected Platform
@@ -129,13 +150,12 @@ class ChooseTemplateViewController: NSViewController {
     /// Set up PreparingViewController
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         
+        super.prepare(for: segue, sender: sender)
+        assert(projectCreator != nil)
         
-//        super.prepare(for: segue, sender: sender)
-//        assert(projectCreator != nil)
-//        
-//        let preparingViewController = ((segue.destinationController as! NSWindowController).contentViewController! as! PreparingViewController)
-//        preparingViewController.projectCreator = projectCreator
-//        self.view.window!.close()
+        let preparingViewController = ((segue.destinationController as! NSWindowController).contentViewController! as! PreparingViewController)
+        preparingViewController.projectCreator = projectCreator
+        self.view.window!.close()
     }
 }
 

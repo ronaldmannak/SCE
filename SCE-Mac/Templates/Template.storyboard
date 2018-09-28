@@ -36,8 +36,25 @@ Gw
                                     <action selector="cancelClicked:" target="mxs-pt-zAo" id="UR6-k1-7w0"/>
                                 </connections>
                             </button>
-                            <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Hq-2Z-Fok">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXL-Vr-yrj">
+                                <rect key="frame" x="389" y="13" width="125" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Empty Project" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hrC-NM-94F">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="emptyProjectClicked:" target="mxs-pt-zAo" id="7U4-jh-yje"/>
+                                </connections>
+                            </button>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Hq-2Z-Fok">
                                 <rect key="frame" x="82" y="17" width="110" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="105" id="FB9-XK-4Lb"/>
+                                </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Ethereum" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="51I-WM-cXD" id="vrc-zo-6mZ">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -59,8 +76,11 @@ Gw
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAL-Wj-B9m">
-                                <rect key="frame" x="195" y="17" width="135" height="26"/>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hAL-Wj-B9m">
+                                <rect key="frame" x="195" y="17" width="113" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="raM-Nk-29h"/>
+                                </constraints>
                                 <popUpButtonCell key="cell" type="push" title="Etherlime" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="YP4-jq-wZe" id="Zyk-Gk-XbJ" userLabel="Framework">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -120,21 +140,6 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <popUpButton hidden="YES" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CWd-tz-E4L">
-                                <rect key="frame" x="333" y="17" width="135" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="Solidity" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="e17-XR-f5b" id="zgR-Oh-7al">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="YYp-zl-g0z">
-                                        <items>
-                                            <menuItem title="Solidity" id="e17-XR-f5b"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                                <connections>
-                                    <action selector="languageClicked:" target="mxs-pt-zAo" id="qtH-lt-eqV"/>
-                                </connections>
-                            </popUpButton>
                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSA-Sj-rAh">
                                 <rect key="frame" x="156" y="61" width="541" height="355"/>
                                 <clipView key="contentView" drawsBackground="NO" id="kxi-QU-Q3R">
@@ -165,20 +170,24 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXL-Vr-yrj">
-                                <rect key="frame" x="389" y="13" width="125" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Empty Project" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hrC-NM-94F">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                                </buttonCell>
+                            <popUpButton hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CWd-tz-E4L">
+                                <rect key="frame" x="311" y="17" width="82" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="GNh-FP-Rdq"/>
+                                </constraints>
+                                <popUpButtonCell key="cell" type="push" title="Solidity" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="e17-XR-f5b" id="zgR-Oh-7al">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="YYp-zl-g0z">
+                                        <items>
+                                            <menuItem title="Solidity" id="e17-XR-f5b"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
                                 <connections>
-                                    <action selector="cancelClicked:" target="mxs-pt-zAo" id="ZbD-pD-aAI"/>
+                                    <action selector="languageClicked:" target="mxs-pt-zAo" id="qtH-lt-eqV"/>
                                 </connections>
-                            </button>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="cuR-XZ-eDv" firstAttribute="leading" secondItem="quD-Ja-dRD" secondAttribute="leading" id="1PV-gQ-6Yf"/>
@@ -213,7 +222,7 @@ Gw
                 </viewController>
                 <customObject id="EoG-Ib-E2H" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1842" y="835"/>
+            <point key="canvasLocation" x="1841.5" y="835"/>
         </scene>
         <!--Template Options View Controller-->
         <scene sceneID="d4p-fG-nlc">
@@ -353,8 +362,11 @@ Gw
                                     <action selector="cancelClicked:" target="M4e-WR-LdV" id="dEX-hz-xfg"/>
                                 </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" ambiguous="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="5j4-eS-iJ8">
+                            <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="5j4-eS-iJ8">
                                 <rect key="frame" x="20" y="10" width="100" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="j4v-YB-Nnj"/>
+                                </constraints>
                             </progressIndicator>
                         </subviews>
                         <constraints>
@@ -385,9 +397,9 @@ Gw
                     <window key="window" title="Choose a Template" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="fId-dl-dz7">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="697" height="416"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-                        <value key="minSize" type="size" width="480" height="270"/>
+                        <value key="minSize" type="size" width="697" height="416"/>
                         <connections>
                             <outlet property="delegate" destination="MRU-aS-e6X" id="c5A-8t-o6m"/>
                         </connections>

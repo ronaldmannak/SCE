@@ -34,7 +34,7 @@ struct Project: Codable {
 
 class ProjectCreator: Codable {
     
-    let templateName: String
+    let templateName: String?
     let installScript: String
     let project: Project
     let copyFiles: [CopyFile]?
@@ -48,7 +48,7 @@ class ProjectCreator: Codable {
         case copyFiles
     }
     
-    init(templateName: String, installScript: String, project: Project, copyFiles: [CopyFile]? = nil) {
+    init(templateName: String?, installScript: String, project: Project, copyFiles: [CopyFile]? = nil) {
         self.templateName = templateName
         self.installScript = installScript
         self.project = project
@@ -97,8 +97,9 @@ class ProjectCreator: Codable {
                 assertionFailure()
             }
         }
-        
-        scriptTask = try ScriptTask(script: "TruffleInit", arguments: [project.baseDirectory.absoluteURL.path, project.name, templateName], output: output, finished: f)
+        if let templateName = templateName {
+            scriptTask = try ScriptTask(script: "TruffleInit", arguments: [project.baseDirectory.absoluteURL.path, project.name, templateName], output: output, finished: f)
+        }
         scriptTask.run()
         return scriptTask
     }
