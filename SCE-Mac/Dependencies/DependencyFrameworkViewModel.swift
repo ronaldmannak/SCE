@@ -10,7 +10,7 @@ import Foundation
 
 class DependencyFrameworkViewModel: DependencyViewModelProtocol {
 
-    private let framework: DependencyFramework
+    let framework: DependencyFramework
     
     private var task: ScriptTask? = nil
     

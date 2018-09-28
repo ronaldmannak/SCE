@@ -91,6 +91,8 @@
 				</array>
 				<key>description</key>
 				<string>Etherlime is an ethereum development and deployment framework based on ethers.js.</string>
+				<key>initScript</key>
+				<string>truffleInit</string>
 				<key>projectUrl</key>
 				<string>https://github.com/LimeChain/etherlime</string>
 				<key>documentationUrl</key>
@@ -226,6 +228,8 @@
 				</array>
 				<key>description</key>
 				<string>A world class development environment, testing framework and asset pipeline for blockchains using the Ethereum Virtual Machine (EVM), aiming to make life as a developer easier.</string>
+				<key>initScript</key>
+				<string>TruffleInit</string>
 				<key>projectUrl</key>
 				<string>https://truffleframework.com/truffle</string>
 				<key>documentationUrl</key>

@@ -21,6 +21,9 @@ struct DependencyFramework: Codable {
     /// Text to display to user explaining what the framework is
     let description: String
     
+    /// Script in app bundle to be called to initiate a new project
+    let initScript: String
+    
     /// Framework project Github url
     let projectUrl: String
     
@@ -42,4 +45,22 @@ struct DependencyFramework: Codable {
     func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
         return try dependencies.compactMap { try $0.update(output: output, finished: finished) }        
     }
+    
+//    func initProject(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
+//
+//
+//
+//        return nil
+////        if let installCommand = installCommand {
+////
+////            let homePath = FileManager.default.homeDirectoryForCurrentUser.path
+////            task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in
+////                output(console)
+////            }) {
+////                self.task = nil
+////                finished()
+////            }
+////            return task
+////        }
+//    }
 }

@@ -23,6 +23,9 @@ struct Project: Codable {
     /// Parent directory of the project, e.g. ~/Projects (not ~/Projects/ProjectName)
     let baseDirectory: URL
     
+    ///
+    let framework: DependencyFramework
+    
     /// E.g. ~/Projects/ProjectName
     var workDirectory: URL {
         return baseDirectory.appendingPathComponent(name, isDirectory: true)        

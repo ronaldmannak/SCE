@@ -19,8 +19,11 @@ struct CopyFile: Codable {
 class ProjectDirectoryCreator { //: Codable {
     
     let templateName: String?
+    
     let installScript: String
+    
     let project: Project
+    
     let copyFiles: [CopyFile]?
     
     var scriptTask: ScriptTask!
@@ -63,9 +66,11 @@ class ProjectDirectoryCreator { //: Codable {
             // Save initial project file to disk, so PreparingViewController can open it
             self.saveProjectFile()
         }
+        var arguments: [String] = [project.baseDirectory.absoluteURL.path, project.name]
         if let templateName = templateName {
-            scriptTask = try ScriptTask(script: "TruffleInit", arguments: [project.baseDirectory.absoluteURL.path, project.name, templateName], output: output, finished: f)
+            arguments.append(templateName)
         }
+        scriptTask = try ScriptTask(script: project.framework.initScript, arguments: arguments, output: output, finished: f)        
         scriptTask.run()
         return scriptTask
     }

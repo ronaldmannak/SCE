@@ -19,7 +19,13 @@ class ChooseTemplateViewController: NSViewController {
     weak var container: TemplateContainerViewController!
     
     private var platforms:  [DependencyViewModelProtocol]!
-    var categories = [TemplateCategory]() {
+    
+    private var selectedFramework: DependencyFramework {
+        let platform = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
+        return platform.frameworks[frameworkPopup.indexOfSelectedItem].framework
+    }
+    
+    fileprivate var categories = [TemplateCategory]() {
         didSet {
             categoryTableView.reloadData()
             templateCollectionView.reloadData()
@@ -27,8 +33,8 @@ class ChooseTemplateViewController: NSViewController {
             templateCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
         }
     }
-    var projectDirectoryCreator: ProjectDirectoryCreator? = nil
-    let allRowIndex = 0 // All categories
+    fileprivate var projectDirectoryCreator: ProjectDirectoryCreator? = nil
+    fileprivate let allRowIndex = 0 // All categories
     
     override func viewDidLoad() {
         super.viewDidLoad()
