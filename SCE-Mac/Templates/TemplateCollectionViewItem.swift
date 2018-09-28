@@ -28,5 +28,4 @@ class TemplateCollectionViewItem: NSCollectionViewItem {
         view.wantsLayer = true
         view.layer?.backgroundColor = isSelected == true ? NSColor.lightGray.cgColor : NSColor.white.cgColor
     }
-
 }

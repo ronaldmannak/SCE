@@ -102,6 +102,18 @@ class ChooseTemplateViewController: NSViewController {
         self.view.window!.close()
     }
     
+    @IBAction func viewItemMoreInfoClicked(_ sender: Any) {
+        print("click")
+        guard let sender = sender as? NSView, let itemView = sender.nextResponder as? TemplateCollectionViewItem else { return }
+        print("stil here")
+        let row = templateCollectionView.indexPath(for: itemView)
+        print(row)
+//            outlineView.row(for: sender)
+        
+//        guard let item = outlineView.item(atRow: row) as? DependencyViewModelProtocol else { return }
+        
+//        run(item)
+    }
     
     @IBAction func emptyProjectClicked(_ sender: Any) {
         let savePanel = NSSavePanel()
@@ -207,10 +219,8 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
         cell.imageView?.image = item.image
         cell.textField?.stringValue = item.name
         cell.erc.stringValue = item.standard
-        // TODO: fix
-        // descriptionTextField and moreInfoButton are both nil, while erc isn't
-//        cell.descriptionTextField.stringValue = item.description ?? ""
-//        cell.moreInfoButton.isHidden = true
+        cell.descriptionTextField.stringValue = item.description ?? ""
+        cell.moreInfoButton.isHidden = item.moreInfoUrl.isEmpty
         return cell
     }
     
