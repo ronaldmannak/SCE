@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SCE-Mac/Templates/ChooseTemplateViewController.swift"
-            timestampString = "559875991.473967"
+            timestampString = "559876944.443674"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SCE-Mac/Templates/ChooseTemplateViewController.swift"
-            timestampString = "559875991.474036"
+            timestampString = "559876944.443769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SCE-Mac/Templates/PreparingViewController.swift"
-            timestampString = "559875991.474087"
+            timestampString = "559876944.4438291"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -121,13 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SCE-Mac/Edit Window/FileBrowserViewController.swift"
-            timestampString = "559875991.474144"
+            filePath = "SCE-Mac/Project/ProjectDirectoryCreator.swift"
+            timestampString = "559876944.443904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "load(url:projectName:openFile:)"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "saveProjectFile()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -137,45 +137,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SCE-Mac/Edit Window/EditWindowController.swift"
-            timestampString = "559875328.57886"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "project"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SCE-Mac/Templates/PreparingViewController.swift"
-            timestampString = "559875991.47422"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "projectDirectoryCreator"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "SCE-Mac/Project/ProjectDirectoryCreator.swift"
-            timestampString = "559875991.4742759"
+            timestampString = "559876944.44398"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "saveProjectFile()"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "create(output:finished:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SCE-Mac/ScriptTask.swift"
+            timestampString = "559876944.4441"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "init(script:ext:path:arguments:output:finished:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
