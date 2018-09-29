@@ -29,8 +29,10 @@ class FileBrowserViewController: NSViewController {
         }
     }
     
+    
     /// Called from EditWindowController
     func load(url: URL, projectName: String, openFile: String? = nil) throws {
+        
         root = try FileItem(url: url, projectName: projectName)
         fileView.reloadData()
         

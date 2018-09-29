@@ -21,7 +21,7 @@ struct SupportFiles {
         
         // Set path to app's Application Support directory
         guard let support = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first else {
-            throw EditorError.directoryNotFound("Application Support")
+            throw CompositeError.directoryNotFound("Application Support")
         }
         applicationSupportFolder = support.appendingPathComponent(Bundle.main.bundleIdentifier!)
 //        dependenciesFile = applicationSupportFolder.appendingPathComponent(filename)

@@ -90,7 +90,7 @@ class ChooseTemplateViewController: NSViewController {
     /// filename without JSON extension
     func loadTemplates(framework: String) throws -> [TemplateCategory] {
         guard let url = Bundle.main.url(forResource: "Templates-\(framework)", withExtension: "plist") else {
-            throw(EditorError.fileNotFound(framework))
+            throw(CompositeError.fileNotFound(framework))
         }
         let jsonData = try Data(contentsOf: url)
         let decoder = PropertyListDecoder()
@@ -126,25 +126,24 @@ class ChooseTemplateViewController: NSViewController {
     
     
     @IBAction func emptyProjectClicked(_ sender: Any) {
+        
         let savePanel = NSSavePanel()
         savePanel.beginSheetModal(for: view.window!) { (result) in
             
-                        guard result == .OK, let directory = savePanel.url else { return }
+            guard result == .OK, let directory = savePanel.url else { return }
+
+            // Temporary: do not allow overwriting existing files or directories
+            let fileManager = FileManager.default
+            guard fileManager.fileExists(atPath: directory.path) == false else { return }
+
+            let projectName = directory.lastPathComponent
+            let baseDirectory = directory.deletingLastPathComponent()
             
-                        // Temporary: do not allow overwriting existing files or directories
-                        let fileManager = FileManager.default
-                        guard fileManager.fileExists(atPath: directory.path) == false else { return }
+            let project = Project(name: projectName, baseDirectory: baseDirectory, framework: self.selectedFramework, lastOpenFile: nil)
+            self.projectDirectoryCreator = ProjectDirectoryCreator(templateName: nil, installScript: self.selectedFramework.initScript, project: project, copyFiles: nil)
             
-                        let projectName = directory.lastPathComponent
-                        let baseDirectory = directory.deletingLastPathComponent()
-            
-            
-            
-//                        let project = Project(name: projectName, baseDirectory: baseDirectory, lastOpenFile: selectedTemplate.openFile)
-//                        self.projectCreator = ProjectCreator(templateName: templateName, installScript: selectedCategory.command, project: project, copyFiles: selectedTemplate.copyFiles)
-            
-                        let id = NSStoryboardSegue.Identifier(rawValue: "PreparingSegue")
-                        self.performSegue(withIdentifier: id, sender: self)
+            let id = NSStoryboardSegue.Identifier(rawValue: "PreparingSegue")
+            self.performSegue(withIdentifier: id, sender: self)
         }
     }
     

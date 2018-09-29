@@ -39,6 +39,7 @@ struct Template: Codable {
     let openFile: String?
     
     let imageName: String
+    
     var image: NSImage {
         let name = imageName.isEmpty ? "Doc" : imageName
         return NSImage(named: NSImage.Name(rawValue: name)) ?? NSImage()

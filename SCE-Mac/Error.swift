@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum EditorError: Error {
+enum CompositeError: Error {
     case fileNotFound(String)
     case directoryNotFound(String)
 }

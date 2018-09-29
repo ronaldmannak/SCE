@@ -34,9 +34,16 @@ class PreparingViewController: NSViewController {
                     self.progressIndicator.stopAnimation(self)
                     let documentController = NSDocumentController.shared
                     documentController.openDocument(withContentsOf: self.projectDirectoryCreator.project.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
+                        
+                        if let error = error {
+                            self.progressIndicator.stopAnimation(self)
+                            let alert = NSAlert(error: error)
+                            alert.runModal()
+                        }
 
                         if let document = document as? Document, let editWindowController = document.editWindowController {
                             editWindowController.setConsole(self.textView.string)
+//                            editWindowController.project = self.projectDirectoryCreator.project
                         }
                         self.view.window?.close()
                     }

@@ -33,7 +33,7 @@ class ScriptTask: NSObject {
         } else if let path = Bundle.main.path(forResource: script, ofType: ext) {
             launchpath = path
         } else {
-            throw EditorError.fileNotFound("File not found")
+            throw CompositeError.fileNotFound("File not found")
         }
         self.arguments = arguments
         self.output = output        // TODO: Do we also need to route stderr?

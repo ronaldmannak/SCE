@@ -8,8 +8,12 @@ cd ${2}
 echo '$ etherlime init'
 etherlime init
 
-#echo '$ npm install openzeppelin-solidity'
-#npm install openzeppelin-solidity
+if [ "$#" -eq  "3" ]
+then
+  echo '$ npm install openzeppelin-solidity'
+  npm install openzeppelin-solidity
+fi
+
 
 #echo '$ solium --init'
 #solium --init

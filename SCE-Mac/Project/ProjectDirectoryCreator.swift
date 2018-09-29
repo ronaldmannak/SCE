@@ -56,15 +56,16 @@ class ProjectDirectoryCreator { //: Codable {
         // Closure copying custom files from bundle to project directory
         let f: () -> Void = {
 
-            defer { finished() }
+            defer {
+                // Save initial project file to disk, so PreparingViewController can open it
+                self.saveProjectFile()
+                finished()
+            }
 
             guard let copyFiles = self.copyFiles else { return }
             for file in copyFiles {
                 self.copy(file: file)
             }
-            
-            // Save initial project file to disk, so PreparingViewController can open it
-            self.saveProjectFile()
         }
         var arguments: [String] = [project.baseDirectory.absoluteURL.path, project.name]
         if let templateName = templateName {
