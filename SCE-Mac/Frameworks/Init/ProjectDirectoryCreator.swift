@@ -67,11 +67,12 @@ class ProjectDirectoryCreator { //: Codable {
                 self.copy(file: file)
             }
         }
-        var arguments: [String] = [project.baseDirectory.absoluteURL.path, project.name]
+        var arguments: [String] = [project.baseDirectory!.absoluteURL.path, project.name]
         if let templateName = templateName {
             arguments.append(templateName)
         }
-        scriptTask = try ScriptTask(script: project.framework.initScript, arguments: arguments, output: output, finished: f)        
+//        scriptTask = try ScriptTask(script: project.framework.initScript, arguments: arguments, output: output, finished: f)
+        scriptTask = try ScriptTask(script: "", arguments: arguments, output: output, finished: f)
         scriptTask.run()
         return scriptTask
     }

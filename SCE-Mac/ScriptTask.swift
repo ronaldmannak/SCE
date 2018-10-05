@@ -14,7 +14,7 @@ import Foundation
  */
 class ScriptTask: NSObject {
     
-    static var queue = DispatchQueue(label: "ScriptTaskQueue", qos: .background) //, attributes: <#T##DispatchQueue.Attributes#>, autoreleaseFrequency: <#T##DispatchQueue.AutoreleaseFrequency#>, target: <#T##DispatchQueue?#>)
+    static var queue = DispatchQueue(label: "ScriptTaskQueue", qos: .background) 
     
     var task = Process()
     let outputPipe = Pipe()

@@ -10,7 +10,27 @@ import Cocoa
 
 class Document: NSDocument {
         
-    var project: Project?
+    private (set) var project: Project?
+    
+    var interface: FrameworkInterfaceProtocol? = {
+        return nil
+    }()
+    
+    /// URL of the .comp project file E.g. ~/Projects/ProjectName/ProjectName.comp
+    var projectFileURL: URL {
+        return fileURL!
+    }
+    
+    /// Parent directory of the project, e.g. ~/Projects (not ~/Projects/ProjectName)
+    var baseDirectory: URL {
+        return workDirectory.deletingLastPathComponent()
+    }
+    
+    /// E.g. ~/Projects/ProjectName
+    var workDirectory: URL {
+        return projectFileURL.deletingLastPathComponent()
+    }
+    
     
     var editWindowController: EditWindowController? {
         for window in windowControllers {
@@ -21,34 +41,48 @@ class Document: NSDocument {
         return nil
     }
 
+    
     override init() {
         super.init()
         // Add your subclass-specific initialization here.
     }
+    
+    convenience init(project: Project, url: URL) {
+        self.init()
+        fileURL = url
+        self.project = project
+        
+        // Create directory and init
+        
+//        save(self)
+        
+        
+        
+        
+    }
 
+    
     override class var autosavesInPlace: Bool {
         return true
     }
 
+    
     override func makeWindowControllers() {
         // Returns the Storyboard that contains your Document window.
         let storyboard = NSStoryboard(name: NSStoryboard.Name("Edit"), bundle: nil)
         let windowController = storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier("EditWindow")) as! EditWindowController
         self.addWindowController(windowController)
         
-        windowController.project = self.project 
+//        windowController.project = self.project 
+    }
+    
+    
+    override func windowControllerDidLoadNib(_ windowController: NSWindowController) {
+        let _ = 0
     }
 
+    
     override func data(ofType typeName: String) throws -> Data {
-        // Insert code here to write your document to data of the specified type. If outError != nil, ensure that you create and set an appropriate error when returning nil.
-        // You can also choose to override fileWrapperOfType:error:, writeToURL:ofType:error:, or writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-//        throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
-        
-        // Save platform, tool (truffle, etc)
-        
-        // Save window restore state
-        
-        
         
         guard let editWindowController = editWindowController, let project = editWindowController.project else {
             assertionFailure()
@@ -63,17 +97,18 @@ class Document: NSDocument {
         return data
     }
 
+    
     override func read(from data: Data, ofType typeName: String) throws {
-        // Insert code here to read your document from the given data of the specified type. If outError != nil, ensure that you create and set an appropriate error when returning false.
-        // You can also choose to override readFromFileWrapper:ofType:error: or readFromURL:ofType:error: instead.
-        // If you override either of these, you should also override -isEntireFileLoaded to return false if the contents are lazily loaded.
-//        throw NSError(domain: NSOSStatusErrorDomain, code: unimpErr, userInfo: nil)
-        
+
         let decoder = PropertyListDecoder()
         project = try decoder.decode(Project.self, from: data)
-        // What if user opens a directory with no .comp file in it? Can we create default data?
+        
+        let platformName = project!.platformName
+        let frameworkName = project!.frameworkName
+        
+        
+        
     }
-
 
 }
 

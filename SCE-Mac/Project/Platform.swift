@@ -42,7 +42,7 @@ enum Platform: String, Codable, CustomStringConvertible {
         }
     }
     
-    var frameworks: [PlatformInterfaceProtocol.Type] {        
+    var frameworks: [FrameworkInterfaceProtocol.Type] {        
         switch self {
         case .ethereum:
             return [EtherlimeInterface.self, TruffleInterface.self]
@@ -51,7 +51,7 @@ enum Platform: String, Codable, CustomStringConvertible {
         }
     }
     
-    func interface(for framework: String) -> PlatformInterfaceProtocol? {
+    func interface(for framework: String) -> FrameworkInterfaceProtocol? {
         switch framework {
         case "etherlime":
             return EtherlimeInterface(self)

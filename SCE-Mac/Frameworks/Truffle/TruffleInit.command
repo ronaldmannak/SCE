@@ -6,7 +6,7 @@
 
 echo '$ cd '${1}'/'${2}
 cd ${1}
-mkdir ${2}
+#mkdir ${2}
 cd ${2}
 
 HOME=${2}

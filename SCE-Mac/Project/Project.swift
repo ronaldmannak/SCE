@@ -13,26 +13,18 @@ struct Project: Codable {
     /// Name of the project, e.g. ProjectName
     let name: String
     
-    /// URL of the .comp project file E.g. ~/Projects/ProjectName/ProjectName.comp
-    var projectFileURL: URL {
-        return workDirectory.appendingPathComponent("\(name).comp")
-    }
-    
-//    let interface: PlatformInterfaceProtocol
-    
-    /// Parent directory of the project, e.g. ~/Projects (not ~/Projects/ProjectName)
-    let baseDirectory: URL
-    
-    ///
-    let framework: DependencyFramework
-    
-    /// E.g. ~/Projects/ProjectName
-    var workDirectory: URL {
-        return baseDirectory.appendingPathComponent(name, isDirectory: true)        
-    }
-    
+    // TODO: add 
     var lastOpenFile: String?
+
+    /// Interface
+    let platformName: String
     
+    let frameworkName: String
+    
+//    var frameworkInterface: FrameworkInterfaceProtocol? {
+//        return nil
+////        return FrameworkInterface(platformName: platformName, frameworkName: frameworkName)
+//    }
 }
 
 

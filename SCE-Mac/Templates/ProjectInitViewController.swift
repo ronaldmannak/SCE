@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PreparingViewController: NSViewController {
+class ProjectInitViewController: NSViewController {
     
     @IBOutlet var textView: NSTextView!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!

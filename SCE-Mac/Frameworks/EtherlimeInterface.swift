@@ -8,15 +8,26 @@
 
 import Foundation
 
-struct EtherlimeInterface: PlatformInterfaceProtocol {
+struct EtherlimeInterface: FrameworkInterfaceProtocol {
+    var initFileURL: URL
     
     static let name: String = "Etherlime"
     
     let platform: Platform
     
     init(_ platform: Platform) {
+        self.initFileURL = URL(fileURLWithPath: "")
         self.platform = platform
     }
+    
+    func initProject(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask {
+        return try ScriptTask(script: "", arguments: [], output: { output in
+            
+        }, finished: {
+            
+        })
+    }
+    
 //    
     func run() {
         

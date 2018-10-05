@@ -8,14 +8,24 @@
 
 import Foundation
 
-struct TruffleInterface: PlatformInterfaceProtocol {
+struct TruffleInterface: FrameworkInterfaceProtocol {
+    var initFileURL: URL
     
     static let name: String = "Truffle"
     
     let platform: Platform
     
     init(_ platform: Platform) {
+        self.initFileURL = URL(fileURLWithPath: "")
         self.platform = platform
+    }
+    
+    func initProject(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask {
+        return try ScriptTask(script: "", arguments: [], output: { output in
+            
+        }, finished: {
+            
+        })
     }
     
     func run() {

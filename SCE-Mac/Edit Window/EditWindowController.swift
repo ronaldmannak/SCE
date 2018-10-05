@@ -18,19 +18,27 @@ class EditWindowController: NSWindowController {
     
     var editorURL: URL? = nil
     
-    var project: Project? = nil {
-        didSet {
-            guard let project = project else { return }
-            window?.title = project.name            
-            do {
-//                print(project.lastOpenFile)
-                try fileBrowserViewController.load(url: project.workDirectory, projectName: project.name, openFile: project.lastOpenFile)
-            } catch {
-                let alert = NSAlert(error: error)
-                alert.runModal()
-            }
-        }
+    var doc: Document {
+        return document as! Document
     }
+    
+    var project: Project? {
+        return doc.project
+    }
+    
+//    var project: Project? = nil {
+//        didSet {
+//            guard let project = project else { return }
+//            window?.title = project.name
+//            do {
+////                print(project.lastOpenFile)
+//                try fileBrowserViewController.load(url: project.workDirectory, projectName: project.name, openFile: project.lastOpenFile)
+//            } catch {
+//                let alert = NSAlert(error: error)
+//                alert.runModal()
+//            }
+//        }
+//    }
     
     var consoleTextView: NSTextView {
         return (self.window?.contentViewController?.childViewControllers[1] as! SplitViewController).consoleView
@@ -47,6 +55,16 @@ class EditWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 //        window?.appearance = NSAppearance(named: .vibrantDark)
+        
+        guard let project = project else { return }
+        window?.title = project.name
+        do {
+//                print(project.lastOpenFile)
+            try fileBrowserViewController.load(url: project.workDirectory, projectName: project.name, openFile: project.lastOpenFile)
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
+        }
     }
     
     /// Sets console vc text. Called by PreparingViewController

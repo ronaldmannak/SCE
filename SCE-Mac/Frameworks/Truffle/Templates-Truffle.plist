@@ -31,12 +31,16 @@
 						<string>TutorialToken.sol</string>
 						<key>destination</key>
 						<string>contracts</string>
+						<key>renameFileToProjectName</key>
+						<false/>
 					</dict>
 					<dict>
 						<key>filename</key>
 						<string>2_deploy_contracts.js</string>
 						<key>destination</key>
 						<string>migrations</string>
+						<key>renameFileToProjectName</key>
+						<false/>
 					</dict>
 				</array>
 			</dict>

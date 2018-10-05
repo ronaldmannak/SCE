@@ -139,11 +139,11 @@ class ChooseTemplateViewController: NSViewController {
             let projectName = directory.lastPathComponent
             let baseDirectory = directory.deletingLastPathComponent()
             
-            let project = Project(name: projectName, baseDirectory: baseDirectory, framework: self.selectedFramework, lastOpenFile: nil)
-            self.projectDirectoryCreator = ProjectDirectoryCreator(templateName: nil, installScript: self.selectedFramework.initScript, project: project, copyFiles: nil)
-            
-            let id = NSStoryboardSegue.Identifier(rawValue: "PreparingSegue")
-            self.performSegue(withIdentifier: id, sender: self)
+//            let project = Project(name: projectName, baseDirectory: baseDirectory, framework: self.selectedFramework, lastOpenFile: nil)
+//            self.projectDirectoryCreator = ProjectDirectoryCreator(templateName: nil, installScript: self.selectedFramework.initScript, project: project, copyFiles: nil)
+//            
+//            let id = NSStoryboardSegue.Identifier(rawValue: "PreparingSegue")
+//            self.performSegue(withIdentifier: id, sender: self)
         }
     }
     
@@ -180,7 +180,7 @@ class ChooseTemplateViewController: NSViewController {
         super.prepare(for: segue, sender: sender)
         assert(projectDirectoryCreator != nil)
         
-        let preparingViewController = ((segue.destinationController as! NSWindowController).contentViewController! as! PreparingViewController)
+        let preparingViewController = ((segue.destinationController as! NSWindowController).contentViewController! as! ProjectInitViewController)
         preparingViewController.projectDirectoryCreator = projectDirectoryCreator
         self.view.window!.close()
     }
