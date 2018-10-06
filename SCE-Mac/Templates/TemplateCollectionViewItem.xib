@@ -52,7 +52,7 @@
                         <font key="font" metaFont="smallSystemBold"/>
                     </buttonCell>
                     <connections>
-                        <action selector="viewItemMoreInfoClicked:" target="-1" id="4uV-xs-cys"/>
+                        <action selector="viewMoreInfoClicked:" target="-1" id="zHY-Ig-Itr"/>
                     </connections>
                 </button>
             </subviews>

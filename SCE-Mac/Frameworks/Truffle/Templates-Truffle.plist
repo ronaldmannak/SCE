@@ -24,6 +24,8 @@
 				<string>https://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin</string>
 				<key>openFile</key>
 				<string>contracts/TutorialToken.sol</string>
+				<key>detailViewType</key>
+				<string>erc-20</string>
 				<key>copyFiles</key>
 				<array>
 					<dict>

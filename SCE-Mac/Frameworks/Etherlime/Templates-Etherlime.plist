@@ -24,6 +24,8 @@
 				<string>https://github.com/ethereum/eips/issues/20</string>
 				<key>openFile</key>
 				<string></string>
+				<key>detailViewType</key>
+				<string>erc-20</string>
 				<key>copyFiles</key>
 				<array>
 					<dict>
@@ -51,6 +53,8 @@
 				<string>https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md</string>
 				<key>openFile</key>
 				<string></string>
+				<key>detailViewType</key>
+				<string>erc-721</string>
 				<key>copyFiles</key>
 				<array>
 					<dict>
@@ -77,6 +81,8 @@
 				<key>moreInfoUrl</key>
 				<string>https://github.com/ethereum/eips/issues/1155</string>
 				<key>openFile</key>
+				<string></string>
+				<key>detailViewType</key>
 				<string></string>
 				<key>copyFiles</key>
 				<array>

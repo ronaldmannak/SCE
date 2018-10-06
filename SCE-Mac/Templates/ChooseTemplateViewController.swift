@@ -104,9 +104,14 @@ class ChooseTemplateViewController: NSViewController {
     @IBAction func ChooseClicked(_ sender: Any) {
         
         guard let selection = templateCollectionView.selectionIndexPaths.first else { return }
-        showSavePanel(template: item(at: selection))
         
-//        container.showOptions()
+        let template = item(at: selection)
+        guard let detailType = template.detailViewType, detailType.isEmpty == false else {
+            // No detail type
+            showSavePanel(template: template)
+            return
+        }
+        container.showOptions()
     }
     
     
@@ -114,9 +119,7 @@ class ChooseTemplateViewController: NSViewController {
         self.view.window!.close()
     }
     
-    
-    @IBAction func viewItemMoreInfoClicked(_ sender: Any) {
-        print("click")
+    @IBAction func viewMoreInfoClicked(_ sender: Any) {
         guard let sender = sender as? NSView,
             let itemView = sender.nextResponder?.nextResponder as? TemplateCollectionViewItem,
             let indexPath = templateCollectionView.indexPath(for: itemView)

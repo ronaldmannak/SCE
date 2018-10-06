@@ -38,6 +38,8 @@ struct Template: Codable {
     /// File to open in editor by default. E.g. ["contracts", "TutorialToken.sol"]
     let openFile: String?
     
+    let detailViewType: String?
+    
     let imageName: String
     
     var image: NSImage {
