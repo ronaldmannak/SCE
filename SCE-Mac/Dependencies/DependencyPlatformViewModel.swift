@@ -10,7 +10,7 @@ import Foundation
 
 class DependencyPlatformViewModel: DependencyViewModelProtocol {
     
-    private let platform: DependencyPlatform
+    let platformDependency: DependencyPlatform
     
     /// Name of the platform
     let name: String
@@ -74,7 +74,7 @@ class DependencyPlatformViewModel: DependencyViewModelProtocol {
     
     
     init(_ platform: DependencyPlatform) {
-        self.platform = platform
+        self.platformDependency = platform
         frameworks = platform.frameworks.map{ DependencyFrameworkViewModel($0) }
         name = platform.name
         
@@ -82,11 +82,11 @@ class DependencyPlatformViewModel: DependencyViewModelProtocol {
     
     func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
         
-        return try platform.install(output: output, finished: finished)
+        return try platformDependency.install(output: output, finished: finished)
     }
     
     func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
         
-        return try platform.update(output: output, finished: finished)
+        return try platformDependency.update(output: output, finished: finished)
     }
 }

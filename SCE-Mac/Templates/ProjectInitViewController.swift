@@ -16,12 +16,12 @@ class ProjectInitViewController: NSViewController {
     @IBOutlet weak var cancelButton: NSButton!
     var counter: Int = 0
 
-    var projectDirectoryCreator: ProjectDirectoryCreator! {
+    var projectInit: ProjectInitProtocol! {
         didSet {
             progressIndicator.startAnimation(self)
-            progressIndicator.maxValue = 8
+            progressIndicator.maxValue = Double(projectInit.stdOutputLines)
             do {
-                _ = try projectDirectoryCreator.create(output: { output in
+                _ = try projectInit.create(output: { output in
                     // Output in text view
                     let previousOutput = self.textView.string
                     let nextOutput = previousOutput + "\n" + output
@@ -33,17 +33,17 @@ class ProjectInitViewController: NSViewController {
                 }) {
                     self.progressIndicator.stopAnimation(self)
                     let documentController = NSDocumentController.shared
-                    documentController.openDocument(withContentsOf: self.projectDirectoryCreator.project.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
+                    documentController.openDocument(withContentsOf: self.projectInit.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
                         
                         if let error = error {
                             self.progressIndicator.stopAnimation(self)
                             let alert = NSAlert(error: error)
                             alert.runModal()
                         }
-
+                        
                         if let document = document as? Document, let editWindowController = document.editWindowController {
                             editWindowController.setConsole(self.textView.string)
-//                            editWindowController.project = self.projectDirectoryCreator.project
+                            //                            editWindowController.project = self.projectDirectoryCreator.project
                         }
                         self.view.window?.close()
                     }
@@ -56,12 +56,52 @@ class ProjectInitViewController: NSViewController {
         }
     }
     
+//    var projectDirectoryCreator: ProjectDirectoryCreator! {
+//        didSet {
+//            progressIndicator.startAnimation(self)
+//            progressIndicator.maxValue = 8
+//            do {
+//                _ = try projectDirectoryCreator.create(output: { output in
+//                    // Output in text view
+//                    let previousOutput = self.textView.string
+//                    let nextOutput = previousOutput + "\n" + output
+//                    self.textView.string = nextOutput
+//                    let range = NSRange(location:nextOutput.count,length:0)
+//                    self.textView.scrollRangeToVisible(range)
+//                    self.progressIndicator.increment(by: 1)
+//                    self.counter = self.counter + 1
+//                }) {
+//                    self.progressIndicator.stopAnimation(self)
+//                    let documentController = NSDocumentController.shared
+//                    documentController.openDocument(withContentsOf: self.projectDirectoryCreator.project.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
+//
+//                        if let error = error {
+//                            self.progressIndicator.stopAnimation(self)
+//                            let alert = NSAlert(error: error)
+//                            alert.runModal()
+//                        }
+//
+//                        if let document = document as? Document, let editWindowController = document.editWindowController {
+//                            editWindowController.setConsole(self.textView.string)
+////                            editWindowController.project = self.projectDirectoryCreator.project
+//                        }
+//                        self.view.window?.close()
+//                    }
+//                }
+//            } catch {
+//                self.progressIndicator.stopAnimation(self)
+//                let alert = NSAlert(error: error)
+//                alert.runModal()
+//            }
+//        }
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func cancelClicked(_ sender: Any) {
-        projectDirectoryCreator.scriptTask.terminate()
+        projectInit.scriptTask?.terminate()
         view.window?.close()
     }    
 }

@@ -42,24 +42,24 @@ enum Platform: String, Codable, CustomStringConvertible {
         }
     }
     
-    var frameworks: [FrameworkInterfaceProtocol.Type] {        
-        switch self {
-        case .ethereum:
-            return [EtherlimeInterface.self, TruffleInterface.self]
-        default:
-            return []
-        }
-    }
-    
-    func interface(for framework: String) -> FrameworkInterfaceProtocol? {
-        switch framework {
-        case "etherlime":
-            return EtherlimeInterface(self)
-        case "truffle":
-            return TruffleInterface(self)
-        default:
-            return nil
-        }
-    }
+//    var frameworks: [FrameworkInterfaceProtocol.Type] {        
+//        switch self {
+//        case .ethereum:
+//            return [EtherlimeInterface.self, TruffleInterface.self]
+//        default:
+//            return []
+//        }
+//    }
+//    
+//    func interface(for framework: String) -> FrameworkInterfaceProtocol? {
+//        switch framework {
+//        case "etherlime":
+//            return EtherlimeInterface(self)
+//        case "truffle":
+//            return TruffleInterface(self)
+//        default:
+//            return nil
+//        }
+//    }
     
 }

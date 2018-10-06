@@ -97,22 +97,22 @@ class ScriptTask: NSObject {
 
 extension ScriptTask {
     
-    static func run(project: Project, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
+    static func run(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
         // TODO: Switch truffle vs Embark
-        let task = try ScriptTask(script: "TruffleRun", arguments: [project.workDirectory.path], output: output, finished: finished)
+        let task = try ScriptTask(script: "TruffleRun", arguments: [workDirectory.path], output: output, finished: finished)
         task.run()
         return task
     }
     
-    static func webserver(project: Project, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
+    static func webserver(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
         // TODO: Switch truffle vs Embark
-        let task = try ScriptTask(script: "TruffleWebserver", arguments: [project.workDirectory.path], output: output, finished: finished)
+        let task = try ScriptTask(script: "TruffleWebserver", arguments: [workDirectory.path], output: output, finished: finished)
         task.run()
         return task
     }
     
-    static func lint(project: Project, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
-        let task = try ScriptTask(script: "SoliumTruffle", arguments: [project.workDirectory.path], output: output, finished: finished)
+    static func lint(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
+        let task = try ScriptTask(script: "SoliumTruffle", arguments: [workDirectory.path], output: output, finished: finished)
         task.run()
         return task
     }

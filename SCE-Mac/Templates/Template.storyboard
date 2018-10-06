@@ -99,7 +99,7 @@ Gw
                                 <rect key="frame" x="0.0" y="61" width="130" height="355"/>
                                 <clipView key="contentView" id="a0h-lu-CD9">
                                     <rect key="frame" x="1" y="1" width="128" height="353"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="36" rowSizeStyle="large" id="lUG-MY-0Xd">
                                             <rect key="frame" x="0.0" y="0.0" width="155" height="353"/>
@@ -145,7 +145,7 @@ Gw
                                 <rect key="frame" x="138" y="61" width="559" height="355"/>
                                 <clipView key="contentView" drawsBackground="NO" id="kxi-QU-Q3R">
                                     <rect key="frame" x="1" y="1" width="557" height="353"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView selectable="YES" allowsEmptySelection="NO" id="BXo-12-RnO">
                                             <rect key="frame" x="0.0" y="0.0" width="557" height="353"/>
@@ -226,7 +226,7 @@ Gw
                         <outlet property="languagePopup" destination="CWd-tz-E4L" id="Uiq-fJ-4lo"/>
                         <outlet property="platformPopup" destination="1Hq-2Z-Fok" id="pw5-im-Nxr"/>
                         <outlet property="templateCollectionView" destination="BXo-12-RnO" id="bOz-9B-Ube"/>
-                        <segue destination="aiD-bt-la6" kind="show" identifier="PreparingSegue" id="Gt1-ra-VF6"/>
+                        <segue destination="aiD-bt-la6" kind="show" identifier="ProjectInitSegue" id="Gt1-ra-VF6"/>
                     </connections>
                 </viewController>
                 <customObject id="EoG-Ib-E2H" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -491,7 +491,7 @@ Gw
                                 <rect key="frame" x="0.0" y="41" width="480" height="229"/>
                                 <clipView key="contentView" id="ahC-vj-Ewj">
                                     <rect key="frame" x="1" y="1" width="478" height="227"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" selectable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="86x-4c-iaj">
                                             <rect key="frame" x="0.0" y="0.0" width="478" height="227"/>

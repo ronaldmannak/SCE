@@ -18,12 +18,12 @@ class EditWindowController: NSWindowController {
     
     var editorURL: URL? = nil
     
-    var doc: Document {
-        return document as! Document
+    var doc: Document? {
+        return document as? Document
     }
     
     var project: Project? {
-        return doc.project
+        return doc?.project
     }
     
 //    var project: Project? = nil {
@@ -60,7 +60,7 @@ class EditWindowController: NSWindowController {
         window?.title = project.name
         do {
 //                print(project.lastOpenFile)
-            try fileBrowserViewController.load(url: project.workDirectory, projectName: project.name, openFile: project.lastOpenFile)
+//            try fileBrowserViewController.load(url: project.workDirectory, projectName: project.name, openFile: project.lastOpenFile)
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
@@ -108,23 +108,23 @@ class EditWindowController: NSWindowController {
 
     @IBAction func runButtonClicked(_ sender: Any) {
         
-        guard let project = project, let sender = sender as? NSButton else { return }
-        saveEditorFile()
-        script?.terminate()
-        
-        sender.isEnabled = false
-        do {
-            script = try ScriptTask.run(project: project, output: { output in
-                self.setConsole(output)
-            }) {
-                sender.isEnabled = true
-                self.script = nil
-            }
-        } catch {
-            let alert = NSAlert(error: error)
-            alert.runModal()
-            sender.isEnabled = true
-        }
+//        guard let project = project, let sender = sender as? NSButton else { return }
+//        saveEditorFile()
+//        script?.terminate()
+//
+//        sender.isEnabled = false
+//        do {
+//            script = try ScriptTask.run(project: project, output: { output in
+//                self.setConsole(output)
+//            }) {
+//                sender.isEnabled = true
+//                self.script = nil
+//            }
+//        } catch {
+//            let alert = NSAlert(error: error)
+//            alert.runModal()
+//            sender.isEnabled = true
+//        }
 
     }
 
@@ -137,41 +137,41 @@ class EditWindowController: NSWindowController {
     
     @IBAction func lintButtonClicked(_ sender: Any) {
         
-        guard let project = project else { return }
-        script?.terminate()
-        saveEditorFile()
-        
-        do {
-            script = try ScriptTask.lint(project: project, output: { output in
-                self.setConsole(output)
-            }, finished: {
-                // do nothing
-            })
-        } catch {
-            let alert = NSAlert(error: error)
-            alert.runModal()            
-        }
+//        guard let project = project else { return }
+//        script?.terminate()
+//        saveEditorFile()
+//
+//        do {
+//            script = try ScriptTask.lint(project: project, output: { output in
+//                self.setConsole(output)
+//            }, finished: {
+//                // do nothing
+//            })
+//        } catch {
+//            let alert = NSAlert(error: error)
+//            alert.runModal()
+//        }
     }
     
     @IBAction func webButtonClicked(_ sender: Any) {
         
         guard let project = project, let sender = sender as? NSButton else { return }
-        
-        if let webserver = webserver { webserver.terminate() }
-        
-        if sender.state == .on {
-//            sender.highlight(true)
-            do {
-                webserver = try ScriptTask.webserver(project: project, output: { output in
-                    self.setConsole(output)
-                }) {
-                    // finish
-                }
-            } catch {
-//                sender.highlight(false)
-                let alert = NSAlert(error: error)
-                alert.runModal()
-            }
-        }
+//
+//        if let webserver = webserver { webserver.terminate() }
+//
+//        if sender.state == .on {
+////            sender.highlight(true)
+//            do {
+//                webserver = try ScriptTask.webserver(project: project, output: { output in
+//                    self.setConsole(output)
+//                }) {
+//                    // finish
+//                }
+//            } catch {
+////                sender.highlight(false)
+//                let alert = NSAlert(error: error)
+//                alert.runModal()
+//            }
+//        }
     }
 }

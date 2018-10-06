@@ -12,14 +12,14 @@ struct Project: Codable {
     
     /// Name of the project, e.g. ProjectName
     let name: String
-    
-    // TODO: add 
-    var lastOpenFile: String?
 
     /// Interface
     let platformName: String
     
     let frameworkName: String
+    
+    // TODO: add
+    var lastOpenFile: String?
     
 //    var frameworkInterface: FrameworkInterfaceProtocol? {
 //        return nil

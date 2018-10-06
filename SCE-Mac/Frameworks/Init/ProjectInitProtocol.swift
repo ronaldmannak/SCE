@@ -19,7 +19,7 @@ protocol ProjectInitProtocol {
     var project: Project { get }
     
     
-    var template: Template { get }
+    var template: Template? { get }
     
     
     /// URL of the .comp project file E.g. ~/Projects/ProjectName/ProjectName.comp
@@ -37,6 +37,10 @@ protocol ProjectInitProtocol {
     var workDirectory: URL { get }
     
     
+    ///
+    var scriptTask: ScriptTask? { get }
+    
+    
     /// Used to calculate progress bar in PreparingViewController
     var stdOutputLines: Int { get }
     
@@ -48,8 +52,18 @@ protocol ProjectInitProtocol {
     ///   - project: <#project description#>
     ///   - info: <#info description#>
     /// - Throws: <#throws value description#>
-    init(template: Template, project: Project, info: Any) throws
+    init(project: Project, baseDirectory: URL, template: Template?, info: Any?) throws
     
+    init(projectInit: ProjectInitProtocol, info: Any?)
+    
+    /// Creates a new project on disk
+    ///
+    /// - Parameters:
+    ///   - output: <#output description#>
+    ///   - finished: <#finished description#>
+    /// - Returns: <#return value description#>
+    /// - Throws: <#throws value description#>
+    func create(output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask 
     
     /// Default implementation provided
     func copy(file: CopyFile) throws
@@ -80,7 +94,7 @@ extension ProjectInitProtocol {
             filename = file.filename
         }
         
-        let destination = document.workDirectory.appendingPathComponent(file.destination).appendingPathComponent(filename)
+        let destination = workDirectory.appendingPathComponent(file.destination).appendingPathComponent(filename)
         try FileManager.default.copyItem(at: source, to: destination)
     }
 }

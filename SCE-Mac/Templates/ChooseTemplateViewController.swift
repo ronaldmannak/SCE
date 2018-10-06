@@ -20,10 +20,10 @@ class ChooseTemplateViewController: NSViewController {
     
     private var platforms:  [DependencyViewModelProtocol]!
     
-    private var selectedFramework: DependencyFramework {
-        let platform = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
-        return platform.frameworks[frameworkPopup.indexOfSelectedItem].framework
-    }
+//    private var selectedFramework: DependencyFramework {
+//        let platform = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
+//        return platform.frameworks[frameworkPopup.indexOfSelectedItem].framework
+//    }
     
     fileprivate var categories = [TemplateCategory]() {
         didSet {
@@ -33,8 +33,10 @@ class ChooseTemplateViewController: NSViewController {
             templateCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
         }
     }
-    fileprivate var projectDirectoryCreator: ProjectDirectoryCreator? = nil
-    fileprivate let allRowIndex = 0 // All categories
+    fileprivate var projectInit: ProjectInitProtocol? = nil
+    
+    /// Index for "All categories"
+    fileprivate let allRowIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +48,7 @@ class ChooseTemplateViewController: NSViewController {
     
     
     /// Loads platforms and populates popup buttons
-    func loadPlatforms() {
+    private func loadPlatforms() {
         
         // Load dependencies from disk
         do {
@@ -73,7 +75,7 @@ class ChooseTemplateViewController: NSViewController {
     }
     
     
-    func setTemplates() {
+    private func setTemplates() {
         
         guard let framework = platforms[platformPopup.indexOfSelectedItem].children?[frameworkPopup.indexOfSelectedItem] as? DependencyFrameworkViewModel else { return }
         
@@ -88,7 +90,7 @@ class ChooseTemplateViewController: NSViewController {
     
     
     /// filename without JSON extension
-    func loadTemplates(framework: String) throws -> [TemplateCategory] {
+    private func loadTemplates(framework: String) throws -> [TemplateCategory] {
         guard let url = Bundle.main.url(forResource: "Templates-\(framework)", withExtension: "plist") else {
             throw(CompositeError.fileNotFound(framework))
         }
@@ -100,7 +102,12 @@ class ChooseTemplateViewController: NSViewController {
     
     
     @IBAction func ChooseClicked(_ sender: Any) {
-        container.showOptions()
+        
+        guard let selection = templateCollectionView.selectionIndexes.first, let template = templateCollectionView.item(at: selection) else { return }
+        print(template)
+//        showSavePanel(template: template)
+        
+//        container.showOptions()
     }
     
     
@@ -126,25 +133,7 @@ class ChooseTemplateViewController: NSViewController {
     
     
     @IBAction func emptyProjectClicked(_ sender: Any) {
-        
-        let savePanel = NSSavePanel()
-        savePanel.beginSheetModal(for: view.window!) { (result) in
-            
-            guard result == .OK, let directory = savePanel.url else { return }
-
-            // Temporary: do not allow overwriting existing files or directories
-            let fileManager = FileManager.default
-            guard fileManager.fileExists(atPath: directory.path) == false else { return }
-
-            let projectName = directory.lastPathComponent
-            let baseDirectory = directory.deletingLastPathComponent()
-            
-//            let project = Project(name: projectName, baseDirectory: baseDirectory, framework: self.selectedFramework, lastOpenFile: nil)
-//            self.projectDirectoryCreator = ProjectDirectoryCreator(templateName: nil, installScript: self.selectedFramework.initScript, project: project, copyFiles: nil)
-//            
-//            let id = NSStoryboardSegue.Identifier(rawValue: "PreparingSegue")
-//            self.performSegue(withIdentifier: id, sender: self)
-        }
+        showSavePanel()
     }
     
     
@@ -178,11 +167,53 @@ class ChooseTemplateViewController: NSViewController {
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         
         super.prepare(for: segue, sender: sender)
-        assert(projectDirectoryCreator != nil)
+        guard let projectInit = projectInit else { return }
         
-        let preparingViewController = ((segue.destinationController as! NSWindowController).contentViewController! as! ProjectInitViewController)
-        preparingViewController.projectDirectoryCreator = projectDirectoryCreator
+        if let destination = segue.destinationController as? NSWindowController, let projectInitWindow = destination.contentViewController as? ProjectInitViewController {
+            projectInitWindow.projectInit = projectInit
+        } else {
+            print("Here")
+        }
         self.view.window!.close()
+    }
+    
+    
+    private func showSavePanel(template: Template? = nil) {
+        
+        let savePanel = NSSavePanel()
+        savePanel.beginSheetModal(for: view.window!) { (result) in
+            
+            guard result == .OK, let directory = savePanel.url else { return }
+            
+            // Temporary: do not allow overwriting existing files or directories
+            let fileManager = FileManager.default
+            guard fileManager.fileExists(atPath: directory.path) == false else { return }
+            
+            let projectName = directory.lastPathComponent // e.g. "MyProject"
+            let baseDirectory = directory.deletingLastPathComponent() // e.g. "/~/Documents/"
+            
+            guard let projectInit = self.createProjectInit(projectname: projectName, baseDirectory: baseDirectory, template: template) else { return }
+            self.projectInit = projectInit
+            
+            let id = NSStoryboardSegue.Identifier(rawValue: "ProjectInitSegue")
+            self.performSegue(withIdentifier: id, sender: self)
+        }
+    }
+    
+    private func createProjectInit(projectname: String, baseDirectory: URL, template: Template? = nil) -> ProjectInitProtocol? {
+        
+        let selectedPlatformViewModel = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
+        let selectedPlatform = selectedPlatformViewModel.platformDependency.platform
+        let selectedFrameworkName = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].framework.name
+        
+        do {
+            let projectInit = try ProjectInitFactory.create(projectname: projectname ,baseDirectory: baseDirectory, platform: selectedPlatform, framework: selectedFrameworkName, template: template, info: nil)
+            return projectInit
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
+        }
+        return nil
     }
 }
 

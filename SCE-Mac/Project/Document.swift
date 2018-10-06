@@ -12,9 +12,9 @@ class Document: NSDocument {
         
     private (set) var project: Project?
     
-    var interface: FrameworkInterfaceProtocol? = {
-        return nil
-    }()
+//    var interface: FrameworkInterfaceProtocol? = {
+//        return nil
+//    }()
     
     /// URL of the .comp project file E.g. ~/Projects/ProjectName/ProjectName.comp
     var projectFileURL: URL {

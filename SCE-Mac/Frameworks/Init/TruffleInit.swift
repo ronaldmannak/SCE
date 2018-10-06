@@ -8,14 +8,44 @@
 
 import Foundation
 
-struct TruffleInit: ProjectInitProtocol {
+class TruffleInit: ProjectInitProtocol {    
     
-//    init(templateName: String?, installScript: String, project: Project, copyFiles: [CopyFile]? = nil) {
-//        self.templateName = templateName
-//        self.installScript = installScript
-//        self.project = project
-//        self.copyFiles = copyFiles
-//    }
+    let project: Project
+    
+    let template: Template?
+    
+    let baseDirectory: URL
+    
+    var projectFileURL: URL {
+        return workDirectory.appendingPathComponent(project.name).appendingPathExtension("comp")
+    }
+    
+    var workDirectory: URL {
+        return baseDirectory.appendingPathComponent(project.name)
+    }
+    
+    private (set) var scriptTask: ScriptTask? = nil
+    
+    let stdOutputLines: Int
+    
+    required init(project: Project, baseDirectory: URL, template: Template?, info: Any?) throws {
+        self.template = template
+        self.project = project
+        self.baseDirectory = baseDirectory
+        
+        self.stdOutputLines = 8
+    }
+    
+    required init(projectInit: ProjectInitProtocol, info: Any?) {
+        self.template = projectInit.template
+        self.project = projectInit.project
+        self.baseDirectory = projectInit.baseDirectory
+        self.stdOutputLines = projectInit.stdOutputLines
+        
+        // TODO: info = ...
+    }
+    
+    
     
     /// Creates a new project on disk
     ///
@@ -37,23 +67,31 @@ struct TruffleInit: ProjectInitProtocol {
             defer {
                 // Save initial project file to disk, so PreparingViewController can open it
                 self.saveProjectFile()
+                self.scriptTask = nil
                 finished()
             }
             
-            guard let copyFiles = self.copyFiles else { return }
-            for file in copyFiles {
-                self.copy(file: file)
+            if let copyFiles = self.template?.copyFiles {
+                for file in copyFiles {
+                    do {
+                        try self.copy(file: file)
+                    } catch {
+                        print(error)
+                        assertionFailure()
+                    }
+                }
             }
         }
         
-        var arguments: [String] = [project.baseDirectory!.absoluteURL.path, project.name]
-        if let templateName = templateName {
+        var arguments: [String] = [workDirectory.path, project.name]
+        if let templateName = template?.name {
             arguments.append(templateName)
         }
-        //        scriptTask = try ScriptTask(script: project.framework.initScript, arguments: arguments, output: output, finished: f)
-        scriptTask = try ScriptTask(script: "", arguments: arguments, output: output, finished: f)
-        scriptTask.run()
-        return scriptTask
+        
+//        let scriptTask = try ScriptTask(script: project.framework.initScript, arguments: arguments, output: output, finished: f)
+        scriptTask = try ScriptTask(script: "TruffleInit", arguments: arguments, output: output, finished: f)
+        scriptTask!.run()
+        return scriptTask!
     }
     
     
@@ -62,7 +100,7 @@ struct TruffleInit: ProjectInitProtocol {
         encoder.outputFormat = .xml
         do {
             let data = try encoder.encode(self.project)
-            FileManager.default.createFile(atPath: self.project.projectFileURL.path, contents: data, attributes: nil)
+            FileManager.default.createFile(atPath: projectFileURL.path, contents: data, attributes: nil)
         } catch {
             print(error)
             assertionFailure()
