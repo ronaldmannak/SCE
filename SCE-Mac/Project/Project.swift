@@ -13,18 +13,24 @@ struct Project: Codable {
     /// Name of the project, e.g. ProjectName
     let name: String
 
+    
     /// Interface
     let platformName: String
     
+    
     let frameworkName: String
+    
     
     // TODO: add
     var lastOpenFile: String?
     
-//    var frameworkInterface: FrameworkInterfaceProtocol? {
-//        return nil
-////        return FrameworkInterface(platformName: platformName, frameworkName: frameworkName)
-//    }
+    
+    init(name: String, platformName: String, frameworkName: String, lastOpenFile: String?) {
+        self.name = name
+        self.platformName = platformName
+        self.frameworkName = frameworkName
+        self.lastOpenFile = lastOpenFile?.replaceOccurrencesOfProjectName(with: name)
+    }
 }
 
 

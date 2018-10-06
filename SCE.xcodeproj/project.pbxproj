@@ -53,6 +53,10 @@
 		C7050A862168096C003DDA2B /* ProjectInitFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A7221672384003DDA2B /* ProjectInitFactory.swift */; };
 		C7050A8721680970003DDA2B /* TruffleInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A6C216719C3003DDA2B /* TruffleInit.swift */; };
 		C7050A8821680971003DDA2B /* TruffleInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A6C216719C3003DDA2B /* TruffleInit.swift */; };
+		C7050A8B216938B1003DDA2B /* celer.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7050A8A216938B1003DDA2B /* celer.sol */; };
+		C7050A8C216938B1003DDA2B /* celer.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7050A8A216938B1003DDA2B /* celer.sol */; };
+		C7050A8E216938EC003DDA2B /* 2_celer_migrations.js in Resources */ = {isa = PBXBuildFile; fileRef = C7050A8D216938EC003DDA2B /* 2_celer_migrations.js */; };
+		C7050A8F216938EC003DDA2B /* 2_celer_migrations.js in Resources */ = {isa = PBXBuildFile; fileRef = C7050A8D216938EC003DDA2B /* 2_celer_migrations.js */; };
 		C70B96FE21320EA600B0E4C8 /* EmbarkInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */; };
 		C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */; };
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
@@ -168,6 +172,8 @@
 		C7050A6C216719C3003DDA2B /* TruffleInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruffleInit.swift; sourceTree = "<group>"; };
 		C7050A6F21671AFD003DDA2B /* EmbarkInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbarkInit.swift; sourceTree = "<group>"; };
 		C7050A7221672384003DDA2B /* ProjectInitFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInitFactory.swift; sourceTree = "<group>"; };
+		C7050A8A216938B1003DDA2B /* celer.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = celer.sol; sourceTree = "<group>"; };
+		C7050A8D216938EC003DDA2B /* 2_celer_migrations.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = 2_celer_migrations.js; sourceTree = "<group>"; };
 		C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmbarkInit.command; sourceTree = "<group>"; };
 		C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateSectionHeaderView.xib; sourceTree = "<group>"; };
 		C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSectionHeaderView.swift; sourceTree = "<group>"; };
@@ -323,6 +329,15 @@
 			path = Init;
 			sourceTree = "<group>";
 		};
+		C7050A892169388D003DDA2B /* Celer */ = {
+			isa = PBXGroup;
+			children = (
+				C7050A8A216938B1003DDA2B /* celer.sol */,
+				C7050A8D216938EC003DDA2B /* 2_celer_migrations.js */,
+			);
+			path = Celer;
+			sourceTree = "<group>";
+		};
 		C70B97032135145F00B0E4C8 /* Solium */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +370,7 @@
 				C7A8FDC1212F207B005E20AC /* OpenZeppelin */,
 				C70B97032135145F00B0E4C8 /* Solium */,
 				C7A8FDC0212F2067005E20AC /* Embark */,
+				C7050A892169388D003DDA2B /* Celer */,
 				C7A8FDBF212F2060005E20AC /* Truffle */,
 			);
 			path = Frameworks;
@@ -697,11 +713,13 @@
 			files = (
 				C7F0B983210DACCF005A8FE2 /* LaunchScreen.storyboard in Resources */,
 				C7050A0C215C6D70003DDA2B /* Templates-Etherlime.plist in Resources */,
+				C7050A8E216938EC003DDA2B /* 2_celer_migrations.js in Resources */,
 				C7F0B980210DACCF005A8FE2 /* Assets.xcassets in Resources */,
 				C7050A0F215C7047003DDA2B /* Templates-Truffle.plist in Resources */,
 				C7F0B97E210DACCB005A8FE2 /* Main.storyboard in Resources */,
 				C7050A322166E4F8003DDA2B /* FrameworkInterface.plist in Resources */,
 				C7050A00215A1538003DDA2B /* EthereumTruffle.json in Resources */,
+				C7050A8B216938B1003DDA2B /* celer.sol in Resources */,
 				F8F7FB4D214B4E58001A6F49 /* BrewInstall.command in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,7 +739,9 @@
 				C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */,
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
 				C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */,
+				C7050A8C216938B1003DDA2B /* celer.sol in Resources */,
 				C7DDD75A2141E02800674942 /* InstallWizard.storyboard in Resources */,
+				C7050A8F216938EC003DDA2B /* 2_celer_migrations.js in Resources */,
 				C7E764462123539100867DA4 /* Template.storyboard in Resources */,
 				C70B97052135148A00B0E4C8 /* SoliumTruffle.command in Resources */,
 				C70B96FE21320EA600B0E4C8 /* EmbarkInit.command in Resources */,

@@ -106,12 +106,12 @@ class ChooseTemplateViewController: NSViewController {
         guard let selection = templateCollectionView.selectionIndexPaths.first else { return }
         
         let template = item(at: selection)
-        guard let detailType = template.detailViewType, detailType.isEmpty == false else {
+//        guard let detailType = template.detailViewType, detailType.isEmpty == false else {
             // No detail type
             showSavePanel(template: template)
             return
-        }
-        container.showOptions()
+//        }
+//        container.showOptions()
     }
     
     

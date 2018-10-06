@@ -86,16 +86,22 @@ extension ProjectInitProtocol {
             return
         }
         
+        // Rename file to project name
         let filename: String
         if file.renameFileToProjectName == true {
-            // TODO:
             let ext = (file.filename as NSString).pathExtension
             filename = project.name + "." + ext
         } else {
             filename = file.filename
         }
         
+        // Copy file
         let destination = workDirectory.appendingPathComponent(file.destination).appendingPathComponent(filename)
         try FileManager.default.copyItem(at: source, to: destination)
+        
+        // Open file and replace all instances of <#__project_name#> with the project name
+        let content = try String(contentsOf: destination)
+        try content.replaceOccurrencesOfProjectName(with: project.name).write(to: destination, atomically: true, encoding: .utf8)
+//         content.write(to: destination, atomically: true, encoding: .utf8)
     }
 }
