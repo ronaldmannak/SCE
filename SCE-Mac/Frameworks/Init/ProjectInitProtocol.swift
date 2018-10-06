@@ -88,6 +88,7 @@ extension ProjectInitProtocol {
         
         let filename: String
         if file.renameFileToProjectName == true {
+            // TODO:
             let ext = (file.filename as NSString).pathExtension
             filename = project.name + "." + ext
         } else {

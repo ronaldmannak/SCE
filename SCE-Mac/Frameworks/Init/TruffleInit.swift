@@ -57,6 +57,7 @@ class TruffleInit: ProjectInitProtocol {
     func create(output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
         
         // Create project directory
+        // (note: Truffle init can only run in an empty directory)
         let fileManager = FileManager.default
         try fileManager.createDirectory(at: workDirectory, withIntermediateDirectories: false)
         
@@ -66,8 +67,8 @@ class TruffleInit: ProjectInitProtocol {
             
             defer {
                 // Save initial project file to disk, so PreparingViewController can open it
-                self.saveProjectFile()
                 self.scriptTask = nil
+                self.saveProjectFile()
                 finished()
             }
             
@@ -77,18 +78,17 @@ class TruffleInit: ProjectInitProtocol {
                         try self.copy(file: file)
                     } catch {
                         print(error)
-                        assertionFailure()
+//                        assertionFailure()
                     }
                 }
             }
         }
         
         var arguments: [String] = [workDirectory.path, project.name]
-        if let templateName = template?.name {
+        if let templateName = template?.templateName {
             arguments.append(templateName)
         }
         
-//        let scriptTask = try ScriptTask(script: project.framework.initScript, arguments: arguments, output: output, finished: f)
         scriptTask = try ScriptTask(script: "TruffleInit", arguments: arguments, output: output, finished: f)
         scriptTask!.run()
         return scriptTask!

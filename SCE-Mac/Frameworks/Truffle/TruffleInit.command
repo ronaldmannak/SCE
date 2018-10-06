@@ -1,13 +1,11 @@
 #!/bin/sh
 
-# ${1} is base directory
+# ${1} is work directory
 # ${2} is project name
-# ${3} (optional) is
+# ${3} (optional) template name
 
-echo '$ cd '${1}'/'${2}
+echo '$ cd '${1}
 cd ${1}
-#mkdir ${2}
-cd ${2}
 
 HOME=${2}
 export HOME
@@ -15,7 +13,8 @@ export HOME
 if [ "$#" -eq  "2" ]
 then
 
-# Create an empty project
+# If there's no template name passed,
+# create an empty project
   echo '$ truffle init'
   truffle init
 

@@ -103,9 +103,8 @@ class ChooseTemplateViewController: NSViewController {
     
     @IBAction func ChooseClicked(_ sender: Any) {
         
-        guard let selection = templateCollectionView.selectionIndexes.first, let template = templateCollectionView.item(at: selection) else { return }
-        print(template)
-//        showSavePanel(template: template)
+        guard let selection = templateCollectionView.selectionIndexPaths.first else { return }
+        showSavePanel(template: item(at: selection))
         
 //        container.showOptions()
     }
@@ -123,8 +122,8 @@ class ChooseTemplateViewController: NSViewController {
             let indexPath = templateCollectionView.indexPath(for: itemView)
             else { return }
 
-        let item = itemAt(indexPath)
-        guard let url = URL(string: item.moreInfoUrl) else { return }        
+        let template = item(at: indexPath)
+        guard let url = URL(string: template.moreInfoUrl) else { return }
         NSWorkspace.shared.open(url)
         // Nice to have: select cell so user have confirmation which "more info" button they clicked
 //        templateCollectionView.deselectAll(self)
@@ -220,7 +219,7 @@ class ChooseTemplateViewController: NSViewController {
 
 extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollectionViewDelegate {
     
-    fileprivate func itemAt(_ indexPath: IndexPath) -> Template {
+    fileprivate func item(at indexPath: IndexPath) -> Template {
         if categoryTableView.selectedRow == allRowIndex {
             return categories[indexPath.section].templates![indexPath.item]
         } else {
@@ -262,13 +261,13 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
             return NSCollectionViewItem()
         }
 
-        let item = itemAt(indexPath)
+        let template = item(at: indexPath)
 
-        cell.imageView?.image = item.image
-        cell.textField?.stringValue = item.name
-        cell.erc.stringValue = item.standard
-        cell.descriptionTextField.stringValue = item.description ?? ""
-        cell.moreInfoButton.isHidden = item.moreInfoUrl.isEmpty
+        cell.imageView?.image = template.image
+        cell.textField?.stringValue = template.name
+        cell.erc.stringValue = template.standard
+        cell.descriptionTextField.stringValue = template.description ?? ""
+        cell.moreInfoButton.isHidden = template.moreInfoUrl.isEmpty
         return cell
     }
     
