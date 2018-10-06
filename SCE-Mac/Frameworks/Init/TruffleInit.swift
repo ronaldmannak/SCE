@@ -78,7 +78,7 @@ class TruffleInit: ProjectInitProtocol {
                         try self.copy(file: file)
                     } catch {
                         print(error)
-//                        assertionFailure()
+                        assertionFailure()
                     }
                 }
             }

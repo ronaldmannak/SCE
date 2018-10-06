@@ -18,27 +18,17 @@ class EditWindowController: NSWindowController {
     
     var editorURL: URL? = nil
     
-    var doc: Document? {
-        return document as? Document
+    
+    override var document: AnyObject? {
+        didSet {
+            loadBrowser()
+        }
     }
     
     var project: Project? {
-        return doc?.project
+        guard let document = self.document as? Document else { return nil }
+        return document.project
     }
-    
-//    var project: Project? = nil {
-//        didSet {
-//            guard let project = project else { return }
-//            window?.title = project.name
-//            do {
-////                print(project.lastOpenFile)
-//                try fileBrowserViewController.load(url: project.workDirectory, projectName: project.name, openFile: project.lastOpenFile)
-//            } catch {
-//                let alert = NSAlert(error: error)
-//                alert.runModal()
-//            }
-//        }
-//    }
     
     var consoleTextView: NSTextView {
         return (self.window?.contentViewController?.childViewControllers[1] as! SplitViewController).consoleView
@@ -55,17 +45,24 @@ class EditWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 //        window?.appearance = NSAppearance(named: .vibrantDark)
-        
-        guard let project = project else { return }
-        window?.title = project.name
+ 
+    }
+    
+    override func awakeFromNib() {
+        loadBrowser()
+    }
+    
+    func loadBrowser() {
+        guard let project = project, let document = document as? Document else { return }
+        window?.title = project.name        
         do {
-//                print(project.lastOpenFile)
-//            try fileBrowserViewController.load(url: project.workDirectory, projectName: project.name, openFile: project.lastOpenFile)
+            try fileBrowserViewController.load(url: document.workDirectory, projectName: project.name, openFile: project.lastOpenFile)
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
         }
     }
+
     
     /// Sets console vc text. Called by PreparingViewController
     func setConsole(_ string: String) {
@@ -107,7 +104,7 @@ class EditWindowController: NSWindowController {
     }
 
     @IBAction func runButtonClicked(_ sender: Any) {
-        
+        print(document)
 //        guard let project = project, let sender = sender as? NSButton else { return }
 //        saveEditorFile()
 //        script?.terminate()
