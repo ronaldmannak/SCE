@@ -67,7 +67,7 @@ extension FileBrowserViewController: NSOutlineViewDelegate {
     func outlineViewSelectionDidChange(_ notification: Notification) {
         guard let outlineView = notification.object as? NSOutlineView else { return }
         
-        let supportedPathExtensions = ["sol"]
+        let supportedPathExtensions = ["sol", "js", "json"]
         let selectedIndex = outlineView.selectedRow
         guard let item = outlineView.item(atRow: selectedIndex) as? FileItem, supportedPathExtensions.contains(item.url.pathExtension) else { return }
 

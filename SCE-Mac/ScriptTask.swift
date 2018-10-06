@@ -79,7 +79,7 @@ class ScriptTask: NSObject {
             guard let outputString = String(data: output, encoding: String.Encoding.utf8), !outputString.isEmpty else { return }
             
             DispatchQueue.main.async(execute: {
-//                print(outputString)
+                print(outputString)
                 assert(self.output != nil)
                 self.output?(outputString)
             })

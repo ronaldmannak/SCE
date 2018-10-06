@@ -84,9 +84,27 @@ class TruffleInit: ProjectInitProtocol {
             }
         }
         
+        /*
+         arguments:
+         
+         # ${1} is work directory
+         # ${2} is project name
+         # ${3} is truffle command argument, e.g. "init" or "unbox"
+         # ${4} (optional) template name
+         */
+        
+//        // TODO: fix
+//        let command: String
+//        if let template = template, template.templateName == "tutorialtoken" {
+//            command = "unbox"
+//        } else {
+//            command = "init"
+//        }
+        
         var arguments: [String] = [workDirectory.path, project.name]
-        if let templateName = template?.templateName {
-            arguments.append(templateName)
+        if let template = template {
+            arguments.append(template.templateName == "tutorialtoken" ? "unbox" : "init") // TODO: fix
+            arguments.append(template.templateName)
         }
         
         scriptTask = try ScriptTask(script: "TruffleInit", arguments: arguments, output: output, finished: f)
