@@ -21,7 +21,17 @@ class EditWindowController: NSWindowController {
     
     override var document: AnyObject? {
         didSet {
-            loadBrowser()
+            
+            // Load file browser and open last opened file
+            var lastOpenFile: URL? = nil
+            if let file = project?.lastOpenFile {
+                lastOpenFile = (document as! Document).workDirectory.appendingPathComponent(file)
+            }
+            
+            loadBrowser(select: lastOpenFile?.path)
+            if let lastOpenFile = lastOpenFile {
+                setEditor(url: lastOpenFile)
+            }
         }
     }
     
@@ -52,11 +62,11 @@ class EditWindowController: NSWindowController {
         loadBrowser()
     }
     
-    func loadBrowser() {
+    func loadBrowser(select item: String? = nil) {
         guard let project = project, let document = document as? Document else { return }
         window?.title = project.name        
         do {
-            try fileBrowserViewController.load(url: document.workDirectory, projectName: project.name, openFile: project.lastOpenFile)
+            try fileBrowserViewController.load(url: document.workDirectory, projectName: project.name, openFile: item)
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()

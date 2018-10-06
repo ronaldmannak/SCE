@@ -93,14 +93,6 @@ class TruffleInit: ProjectInitProtocol {
          # ${4} (optional) template name
          */
         
-//        // TODO: fix
-//        let command: String
-//        if let template = template, template.templateName == "tutorialtoken" {
-//            command = "unbox"
-//        } else {
-//            command = "init"
-//        }
-        
         var arguments: [String] = [workDirectory.path, project.name]
         if let template = template {
             arguments.append(template.templateName == "tutorialtoken" ? "unbox" : "init") // TODO: fix

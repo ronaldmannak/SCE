@@ -12,7 +12,7 @@ struct ProjectInitFactory {
     
     static func create(projectname: String, baseDirectory: URL, platform: Platform, framework: String, template: Template? = nil, info: Any? = nil) throws -> ProjectInitProtocol {
     
-        let project = Project(name: projectname, platformName: platform.rawValue, frameworkName: framework, lastOpenFile: nil)
+        let project = Project(name: projectname, platformName: platform.rawValue, frameworkName: framework, lastOpenFile: "contracts/" + projectname + ".sol")
         switch platform {
         case .ethereum:
             switch framework.lowercased() {
