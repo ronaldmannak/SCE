@@ -8,18 +8,9 @@
 echo '$ cd '${1}
 cd ${1}
 
-HOME=${2}
-export HOME
+#HOME=${2}
+#export HOME
 
-#if [ "$#" -eq  "2" ]
-#then
-
-# If there's no template name passed,
-# create an empty project
-#  echo '$ truffle init'
-#  truffle init
-#
-#else
 
   # unbox template
 echo '$ truffle '${3}' '${4}

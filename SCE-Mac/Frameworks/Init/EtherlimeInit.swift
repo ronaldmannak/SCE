@@ -46,7 +46,6 @@ class EtherlimeInit: ProjectInitProtocol {
     }
     
     
-    
     /// Creates a new project on disk
     ///
     /// - Parameters:
@@ -60,6 +59,7 @@ class EtherlimeInit: ProjectInitProtocol {
         // (note: Truffle init can only run in an empty directory)
         let fileManager = FileManager.default
         try fileManager.createDirectory(at: workDirectory, withIntermediateDirectories: false)
+        print("*** Creating directory \(workDirectory)")
         
         // Closure copying custom files from bundle to project directory
         // Will be executed after scriptTaks finishes
