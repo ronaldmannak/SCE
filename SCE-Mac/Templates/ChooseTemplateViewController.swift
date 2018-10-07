@@ -174,7 +174,7 @@ class ChooseTemplateViewController: NSViewController {
         if let destination = segue.destinationController as? NSWindowController, let projectInitWindow = destination.contentViewController as? ProjectInitViewController {
             projectInitWindow.projectInit = projectInit
         } else {
-            print("Here")
+            assertionFailure()
         }
         self.view.window!.close()
     }
@@ -241,8 +241,10 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         
         if categoryTableView.selectedRow == allRowIndex {
+//            print("number of sections: \(categories.count)")
             return categories.count // All
         } else {
+//            print("number of sections: 1")
             return 1 // Show only selected category
         }
     }
@@ -251,6 +253,7 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if categoryTableView.selectedRow == allRowIndex {
+            print("number of items in section \(section): \(categories[section].templates?.count ?? 0)")
             return categories[section].templates?.count ?? 0
         }
         return categories[categoryTableView.selectedRow - 1].templates?.count ?? 0
@@ -265,6 +268,8 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
         }
 
         let template = item(at: indexPath)
+        
+//        print("Creating cell for \(template.name)")
 
         cell.imageView?.image = template.image
         cell.textField?.stringValue = template.name
@@ -298,6 +303,7 @@ extension ChooseTemplateViewController : NSCollectionViewDelegateFlowLayout {
 extension ChooseTemplateViewController: NSTableViewDataSource {
     
     func numberOfRows(in tableView: NSTableView) -> Int {
+//        print("number of rows: \(categories.count + 1)")
         return categories.count + 1 // all categories plus "All"
     }
     
