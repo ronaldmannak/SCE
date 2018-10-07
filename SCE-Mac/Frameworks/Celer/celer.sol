@@ -7,16 +7,16 @@ contract <#__project_name#> {
     @param _stateproof is serialized off-chain state
     @param _signatures is serialized signatures
     */
-function intendSettle(bytes _stateproof, bytes _signatures) {
-
-}
+    function intendSettle(bytes _stateproof, bytes _signatures) {
+        <#off-chain state#>
+    }
 
 
     /**
     @notice Confirm off-chain state is settled and update on-chain states
     */
     function confirmSettle() {
-        // Update on-chain state here
+        <#Update on-chain state#>
     }
 
 
@@ -28,7 +28,9 @@ function intendSettle(bytes _stateproof, bytes _signatures) {
     */
     function isFinalized(bytes _query, uint _timeout) public view returns (bool) {
 
+        return <#is done#>
     }
+
 
     /**
     @notice Query the game result
@@ -37,13 +39,18 @@ function intendSettle(bytes _stateproof, bytes _signatures) {
     */
     function queryResult(bytes _query) public view returns (bool) {
 
+        return <#did win#>
+
     }
+
 
     /**
     @notice Get the deadline of off-chain state settle
     @return block number of the settle deadline
     */
     function getSettleTime() public view returns (uint) {
+
+        return <#block number#>
 
     }
 }

@@ -92,6 +92,43 @@
 					</dict>
 				</array>
 			</dict>
+			<dict>
+				<key>name</key>
+				<string>Celer Gomoku Demo</string>
+				<key>templateName</key>
+				<string></string>
+				<key>imageName</key>
+				<string></string>
+				<key>standard</key>
+				<string></string>
+				<key>description</key>
+				<string>Celer Network can scale out to billions of transactions per second through off-chain scaling.</string>
+				<key>moreInfoUrl</key>
+				<string>https://github.com/celer-network/cApps-eth/tree/master/Gomoku</string>
+				<key>openFile</key>
+				<string>contracts/&lt;#__project_name#&gt;.sol</string>
+				<key>detailViewType</key>
+				<string></string>
+				<key>copyFiles</key>
+				<array>
+					<dict>
+						<key>filename</key>
+						<string>celer.sol</string>
+						<key>destination</key>
+						<string>contracts</string>
+						<key>renameFileToProjectName</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>filename</key>
+						<string>2_celer_migrations.js</string>
+						<key>destination</key>
+						<string>migrations</string>
+						<key>renameFileToProjectName</key>
+						<false/>
+					</dict>
+				</array>
+			</dict>
 		</array>
 	</dict>
 </array>
