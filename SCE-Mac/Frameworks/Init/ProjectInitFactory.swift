@@ -16,8 +16,8 @@ struct ProjectInitFactory {
         switch platform {
         case .ethereum:
             switch framework.lowercased() {
-//            case "etherlime":
-//                return EtherlimeInit()
+            case "etherlime":
+                return try EtherlimeInit(project: project, baseDirectory: baseDirectory, template: template, info: info)
             case "truffle":
                 return try TruffleInit(project: project, baseDirectory: baseDirectory, template: template, info: info)
             default:

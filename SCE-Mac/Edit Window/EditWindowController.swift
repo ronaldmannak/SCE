@@ -114,7 +114,7 @@ class EditWindowController: NSWindowController {
     }
 
     @IBAction func runButtonClicked(_ sender: Any) {
-        print(document)
+//        print(document)
 //        guard let project = project, let sender = sender as? NSButton else { return }
 //        saveEditorFile()
 //        script?.terminate()
@@ -162,7 +162,7 @@ class EditWindowController: NSWindowController {
     
     @IBAction func webButtonClicked(_ sender: Any) {
         
-        guard let project = project, let sender = sender as? NSButton else { return }
+//        guard let project = project, let sender = sender as? NSButton else { return }
 //
 //        if let webserver = webserver { webserver.terminate() }
 //
