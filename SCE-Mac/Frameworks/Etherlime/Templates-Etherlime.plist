@@ -30,11 +30,11 @@
 				<array>
 					<dict>
 						<key>filename</key>
-						<string></string>
+						<string>ERC-20.sol</string>
 						<key>destination</key>
-						<string></string>
+						<string>contracts</string>
 						<key>renameFileToProjectName</key>
-						<false/>
+						<true/>
 					</dict>
 				</array>
 			</dict>
@@ -55,7 +55,7 @@
 				<string></string>
 				<key>detailViewType</key>
 				<string></string>
-				<key>copyFiles</key>
+				<key>copyFiles-empty</key>
 				<array>
 					<dict>
 						<key>filename</key>
@@ -84,7 +84,7 @@
 				<string></string>
 				<key>detailViewType</key>
 				<string></string>
-				<key>copyFiles</key>
+				<key>copyFiles-empty</key>
 				<array>
 					<dict>
 						<key>filename</key>

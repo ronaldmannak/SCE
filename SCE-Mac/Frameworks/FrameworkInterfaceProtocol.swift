@@ -16,10 +16,8 @@ protocol FrameworkInterfaceProtocol: Codable {
     
     var initFileURL: URL { get }
     
-    
     init(_ platform: Platform)
     
-    func initProject(output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask
     func run()
     func lint()
     func debug()
@@ -27,31 +25,6 @@ protocol FrameworkInterfaceProtocol: Codable {
 
 // Default implementations
 extension FrameworkInterfaceProtocol {
-    
-//    func initProject(output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
-//
-//        // Closure copying custom files from bundle to project directory
-//        let f: () -> Void = {
-//
-//            defer {
-//                // Save initial project file to disk, so PreparingViewController can open it
-//                self.saveProjectFile()
-//                finished()
-//            }
-//
-//            guard let copyFiles = self.copyFiles else { return }
-//            for file in copyFiles {
-//                self.copy(file: file)
-//            }
-//        }
-//        var arguments: [String] = [project.baseDirectory.absoluteURL.path, project.name]
-//        if let templateName = templateName {
-//            arguments.append(templateName)
-//        }
-//        scriptTask = try ScriptTask(script: project.framework.initScript, arguments: arguments, output: output, finished: f)
-//        scriptTask.run()
-//        return scriptTask
-//    }
 
 }
 

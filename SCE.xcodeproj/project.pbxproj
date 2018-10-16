@@ -80,6 +80,18 @@
 		C7DDD75A2141E02800674942 /* InstallWizard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD7592141E02800674942 /* InstallWizard.storyboard */; };
 		C7E4AFA2216A641B00D5716B /* EtherlimeInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A69216719BD003DDA2B /* EtherlimeInit.swift */; };
 		C7E4AFA3216A641C00D5716B /* EtherlimeInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A69216719BD003DDA2B /* EtherlimeInit.swift */; };
+		C7E4AFA5216AADD900D5716B /* Init.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E4AFA4216AADD900D5716B /* Init.command */; };
+		C7E4AFA6216AADD900D5716B /* Init.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E4AFA4216AADD900D5716B /* Init.command */; };
+		C7E4AFA82175886800D5716B /* EditWindowRestoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */; };
+		C7E4AFA92175886800D5716B /* EditWindowRestoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */; };
+		C7E4AFAA2175999B00D5716B /* FrameworkInterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509D621541C8C003DDA2B /* FrameworkInterfaceProtocol.swift */; };
+		C7E4AFAB2175999B00D5716B /* FrameworkInterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509D621541C8C003DDA2B /* FrameworkInterfaceProtocol.swift */; };
+		C7E4AFAC2175999E00D5716B /* EtherlimeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509D921541CAA003DDA2B /* EtherlimeInterface.swift */; };
+		C7E4AFAF217599A000D5716B /* EtherlimeInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509D921541CAA003DDA2B /* EtherlimeInterface.swift */; };
+		C7E4AFB0217599A200D5716B /* TruffleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509DC21541CBA003DDA2B /* TruffleInterface.swift */; };
+		C7E4AFB1217599A300D5716B /* TruffleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509DC21541CBA003DDA2B /* TruffleInterface.swift */; };
+		C7E4AFB32175BA4800D5716B /* FrameworkInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFB22175BA4800D5716B /* FrameworkInterface.swift */; };
+		C7E4AFB42175BA4800D5716B /* FrameworkInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFB22175BA4800D5716B /* FrameworkInterface.swift */; };
 		C7E76437211EC16300867DA4 /* EditWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76436211EC16300867DA4 /* EditWindowController.swift */; };
 		C7E7643A21214D4600867DA4 /* ChooseTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7643921214D4600867DA4 /* ChooseTemplateViewController.swift */; };
 		C7E7643F2122A2CF00867DA4 /* TemplateCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7643D2122A2CF00867DA4 /* TemplateCollectionViewItem.swift */; };
@@ -93,7 +105,7 @@
 		C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645E2128F04800867DA4 /* OutputViewController.swift */; };
 		C7E76463212936E300867DA4 /* FileBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76462212936E300867DA4 /* FileBrowserViewController.swift */; };
 		C7E76467212937F100867DA4 /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76466212937F100867DA4 /* FileItem.swift */; };
-		C7E76469212D3D0400867DA4 /* TutorialToken.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7E76468212D3D0400867DA4 /* TutorialToken.sol */; };
+		C7E76469212D3D0400867DA4 /* ERC-20.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7E76468212D3D0400867DA4 /* ERC-20.sol */; };
 		C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */; };
 		C7E7646D212E28F300867DA4 /* TruffleRun.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646C212E28F200867DA4 /* TruffleRun.command */; };
 		C7E76471212E59F100867DA4 /* TruffleWebserver.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76470212E59F000867DA4 /* TruffleWebserver.command */; };
@@ -198,6 +210,9 @@
 		C7DDD754214102B900674942 /* General.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = General.command; sourceTree = "<group>"; };
 		C7DDD756214113CB00674942 /* Which.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = Which.command; sourceTree = "<group>"; };
 		C7DDD7592141E02800674942 /* InstallWizard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InstallWizard.storyboard; sourceTree = "<group>"; };
+		C7E4AFA4216AADD900D5716B /* Init.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = Init.command; sourceTree = "<group>"; };
+		C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWindowRestoration.swift; sourceTree = "<group>"; };
+		C7E4AFB22175BA4800D5716B /* FrameworkInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkInterface.swift; sourceTree = "<group>"; };
 		C7E76436211EC16300867DA4 /* EditWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWindowController.swift; sourceTree = "<group>"; };
 		C7E7643921214D4600867DA4 /* ChooseTemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTemplateViewController.swift; sourceTree = "<group>"; };
 		C7E7643D2122A2CF00867DA4 /* TemplateCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCollectionViewItem.swift; sourceTree = "<group>"; };
@@ -211,7 +226,7 @@
 		C7E7645E2128F04800867DA4 /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
 		C7E76462212936E300867DA4 /* FileBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowserViewController.swift; sourceTree = "<group>"; };
 		C7E76466212937F100867DA4 /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
-		C7E76468212D3D0400867DA4 /* TutorialToken.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = TutorialToken.sol; sourceTree = "<group>"; };
+		C7E76468212D3D0400867DA4 /* ERC-20.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ERC-20.sol"; sourceTree = "<group>"; };
 		C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = 2_deploy_contracts.js; sourceTree = "<group>"; };
 		C7E7646C212E28F200867DA4 /* TruffleRun.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = TruffleRun.command; sourceTree = "<group>"; };
 		C7E76470212E59F000867DA4 /* TruffleWebserver.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = TruffleWebserver.command; sourceTree = "<group>"; };
@@ -327,6 +342,7 @@
 				C7050A69216719BD003DDA2B /* EtherlimeInit.swift */,
 				C7050A6C216719C3003DDA2B /* TruffleInit.swift */,
 				C7050A6F21671AFD003DDA2B /* EmbarkInit.swift */,
+				C7E4AFA4216AADD900D5716B /* Init.command */,
 			);
 			path = Init;
 			sourceTree = "<group>";
@@ -364,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				C70509D621541C8C003DDA2B /* FrameworkInterfaceProtocol.swift */,
+				C7E4AFB22175BA4800D5716B /* FrameworkInterface.swift */,
 				C70509D921541CAA003DDA2B /* EtherlimeInterface.swift */,
 				C70509DC21541CBA003DDA2B /* TruffleInterface.swift */,
 				C7050A312166E4F8003DDA2B /* FrameworkInterface.plist */,
@@ -394,7 +411,7 @@
 				C7E76458212610DA00867DA4 /* TruffleInit.command */,
 				C7E7646C212E28F200867DA4 /* TruffleRun.command */,
 				C7E76470212E59F000867DA4 /* TruffleWebserver.command */,
-				C7E76468212D3D0400867DA4 /* TutorialToken.sol */,
+				C7E76468212D3D0400867DA4 /* ERC-20.sol */,
 				C70509FF215A1538003DDA2B /* EthereumTruffle.json */,
 				C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */,
 				C7050A0E215C7047003DDA2B /* Templates-Truffle.plist */,
@@ -567,6 +584,7 @@
 				C7E76462212936E300867DA4 /* FileBrowserViewController.swift */,
 				C7E76466212937F100867DA4 /* FileItem.swift */,
 				C7F0B9A62112945F005A8FE2 /* Edit.storyboard */,
+				C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */,
 				C7050A342166FBC9003DDA2B /* LanguageServer.swift */,
 			);
 			path = "Edit Window";
@@ -713,6 +731,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E4AFA5216AADD900D5716B /* Init.command in Resources */,
 				C7F0B983210DACCF005A8FE2 /* LaunchScreen.storyboard in Resources */,
 				C7050A0C215C6D70003DDA2B /* Templates-Etherlime.plist in Resources */,
 				C7050A8E216938EC003DDA2B /* 2_celer_migrations.js in Resources */,
@@ -751,13 +770,14 @@
 				C70509F62159D28C003DDA2B /* EtherlimeInit.command in Resources */,
 				C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */,
 				C7F0B9A52112945F005A8FE2 /* Assets.xcassets in Resources */,
-				C7E76469212D3D0400867DA4 /* TutorialToken.sol in Resources */,
+				C7E76469212D3D0400867DA4 /* ERC-20.sol in Resources */,
 				C7050A10215C7047003DDA2B /* Templates-Truffle.plist in Resources */,
 				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
 				C7050A0D215C6D70003DDA2B /* Templates-Etherlime.plist in Resources */,
 				C7F0B9A82112945F005A8FE2 /* Edit.storyboard in Resources */,
 				C7050A332166E4F8003DDA2B /* FrameworkInterface.plist in Resources */,
 				C7E7646D212E28F300867DA4 /* TruffleRun.command in Resources */,
+				C7E4AFA6216AADD900D5716B /* Init.command in Resources */,
 				C7DDD755214102B900674942 /* General.command in Resources */,
 				C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */,
 				C7050A01215A1538003DDA2B /* EthereumTruffle.json in Resources */,
@@ -896,13 +916,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E4AFAA2175999B00D5716B /* FrameworkInterfaceProtocol.swift in Sources */,
 				C70509FA2159D4D7003DDA2B /* Platform.swift in Sources */,
 				C70509EF2155C9D6003DDA2B /* DependencyPlatformViewModel.swift in Sources */,
 				C7F0B97B210DACCB005A8FE2 /* DetailViewController.swift in Sources */,
 				C7050A06215C510B003DDA2B /* TemplateContainerViewController.swift in Sources */,
 				C70509ED2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift in Sources */,
+				C7E4AFA82175886800D5716B /* EditWindowRestoration.swift in Sources */,
 				C7050A382166FCA8003DDA2B /* Document.swift in Sources */,
 				C7050A03215A174E003DDA2B /* UserDefaults.swift in Sources */,
+				C7E4AFB32175BA4800D5716B /* FrameworkInterface.swift in Sources */,
+				C7E4AFAC2175999E00D5716B /* EtherlimeInterface.swift in Sources */,
+				C7E4AFB0217599A200D5716B /* TruffleInterface.swift in Sources */,
 				C7F0B979210DACCB005A8FE2 /* MasterViewController.swift in Sources */,
 				C70509F221561357003DDA2B /* DepedencyViewModelProtocol.swift in Sources */,
 				C7E4AFA2216A641B00D5716B /* EtherlimeInit.swift in Sources */,
@@ -935,12 +960,16 @@
 			files = (
 				C7E7643F2122A2CF00867DA4 /* TemplateCollectionViewItem.swift in Sources */,
 				C7F0B9C22113CF7E005A8FE2 /* SplitViewController.swift in Sources */,
+				C7E4AFAF217599A000D5716B /* EtherlimeInterface.swift in Sources */,
 				C7050A8421680964003DDA2B /* ProjectInitProtocol.swift in Sources */,
 				C7E76467212937F100867DA4 /* FileItem.swift in Sources */,
 				C7F0B9C62113EA39005A8FE2 /* ScriptTask.swift in Sources */,
 				C70509EE2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift in Sources */,
+				C7E4AFAB2175999B00D5716B /* FrameworkInterfaceProtocol.swift in Sources */,
 				C7DDD74E2140AFDC00674942 /* DependencyPlatform.swift in Sources */,
 				C7DDD7502140B68C00674942 /* Platform.swift in Sources */,
+				C7E4AFB1217599A300D5716B /* TruffleInterface.swift in Sources */,
+				C7E4AFB42175BA4800D5716B /* FrameworkInterface.swift in Sources */,
 				C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */,
 				C7E4AFA3216A641C00D5716B /* EtherlimeInit.swift in Sources */,
 				C7050A362166FBC9003DDA2B /* LanguageServer.swift in Sources */,
@@ -951,6 +980,7 @@
 				C7050A07215C510B003DDA2B /* TemplateContainerViewController.swift in Sources */,
 				C70509D4214D97A8003DDA2B /* DependencyFramework.swift in Sources */,
 				C7F0B99F2112945D005A8FE2 /* AppDelegate.swift in Sources */,
+				C7E4AFA92175886800D5716B /* EditWindowRestoration.swift in Sources */,
 				C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */,
 				C7050A302166CE6C003DDA2B /* Shell.swift in Sources */,
 				C7F0B9A32112945D005A8FE2 /* Document.swift in Sources */,

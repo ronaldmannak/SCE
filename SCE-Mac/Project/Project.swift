@@ -17,18 +17,22 @@ struct Project: Codable {
     /// Interface
     let platformName: String
     
-    
+    // E.g. etherlime
     let frameworkName: String
+    
+    // E.g. 0.9.5
+    let frameworkVersion: String?
     
     
     // TODO: add
     var lastOpenFile: String?
     
     
-    init(name: String, platformName: String, frameworkName: String, lastOpenFile: String?) {
+    init(name: String, platformName: String, frameworkName: String, frameworkVersion: String? = nil, lastOpenFile: String?) {
         self.name = name
         self.platformName = platformName
         self.frameworkName = frameworkName
+        self.frameworkVersion = frameworkVersion // If nil, find latest version
         self.lastOpenFile = lastOpenFile?.replaceOccurrencesOfProjectName(with: name)
     }
 }

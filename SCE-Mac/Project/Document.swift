@@ -9,12 +9,12 @@
 import Cocoa
 
 class Document: NSDocument {
-        
+    
+    ///
     private (set) var project: Project?
     
-//    var interface: FrameworkInterfaceProtocol? = {
-//        return nil
-//    }()
+    ///
+    private (set) var interface: FrameworkInterfaceProtocol? = nil
     
     /// URL of the .comp project file E.g. ~/Projects/ProjectName/ProjectName.comp
     var projectFileURL: URL {
@@ -51,14 +51,6 @@ class Document: NSDocument {
         self.init()
         fileURL = url
         self.project = project
-        
-        // Create directory and init
-        
-//        save(self)
-        
-        
-        
-        
     }
 
     
@@ -74,11 +66,6 @@ class Document: NSDocument {
         self.addWindowController(windowController)
         
 //        windowController.project = self.project 
-    }
-    
-    
-    override func windowControllerDidLoadNib(_ windowController: NSWindowController) {
-        let _ = 0
     }
 
     
@@ -105,8 +92,12 @@ class Document: NSDocument {
         
         let platformName = project!.platformName
         let frameworkName = project!.frameworkName
+        let frameworkVersion = project!.frameworkVersion
         
+        guard let platform = Platform.init(rawValue: platformName) else { throw CompositeError.platformNotFound(platformName) }
         
+//        interface = request interface. use version
+        // What does the plist do?
         
     }
 

@@ -11,4 +11,6 @@ import Foundation
 enum CompositeError: Error {
     case fileNotFound(String)
     case directoryNotFound(String)
+    case platformNotFound(String)
+    case frameworkNotFound(String)
 }

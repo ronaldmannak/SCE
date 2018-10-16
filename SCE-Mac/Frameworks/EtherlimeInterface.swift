@@ -20,13 +20,6 @@ struct EtherlimeInterface: FrameworkInterfaceProtocol {
         self.platform = platform
     }
     
-    func initProject(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask {
-        return try ScriptTask(script: "", arguments: [], output: { output in
-            
-        }, finished: {
-            
-        })
-    }
     
 //    
     func run() {

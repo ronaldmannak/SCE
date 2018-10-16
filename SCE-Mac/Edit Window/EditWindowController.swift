@@ -18,7 +18,6 @@ class EditWindowController: NSWindowController {
     
     var editorURL: URL? = nil
     
-    
     override var document: AnyObject? {
         didSet {
             
@@ -55,12 +54,12 @@ class EditWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
 //        window?.appearance = NSAppearance(named: .vibrantDark)
- 
+//            window?.restorationClass = EditWindowRestoration.self
     }
     
-    override func awakeFromNib() {
-        loadBrowser()
-    }
+//    override func awakeFromNib() {
+//        loadBrowser()
+//    }
     
     func loadBrowser(select item: String? = nil) {
         guard let project = project, let document = document as? Document else { return }
@@ -114,7 +113,14 @@ class EditWindowController: NSWindowController {
     }
 
     @IBAction func runButtonClicked(_ sender: Any) {
-//        print(document)
+        
+        guard let document = document as? Document, let interface = document.interface else {
+            return
+        }
+        
+        
+        
+        print("OK")
 //        guard let project = project, let sender = sender as? NSButton else { return }
 //        saveEditorFile()
 //        script?.terminate()
@@ -161,6 +167,8 @@ class EditWindowController: NSWindowController {
     }
     
     @IBAction func webButtonClicked(_ sender: Any) {
+        
+      
         
 //        guard let project = project, let sender = sender as? NSButton else { return }
 //

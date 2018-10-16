@@ -207,9 +207,10 @@ class ChooseTemplateViewController: NSViewController {
         let selectedPlatformViewModel = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
         let selectedPlatform = selectedPlatformViewModel.platformDependency.platform
         let selectedFrameworkName = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].framework.name
+        let selectedFrameworkVersion = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].version
         
         do {
-            let projectInit = try ProjectInitFactory.create(projectname: projectname ,baseDirectory: baseDirectory, platform: selectedPlatform, framework: selectedFrameworkName, template: template, info: nil)
+            let projectInit = try ProjectInitFactory.create(projectname: projectname ,baseDirectory: baseDirectory, platform: selectedPlatform, framework: selectedFrameworkName, frameworkVersion: selectedFrameworkVersion, template: template, info: nil)
             return projectInit
         } catch {
             let alert = NSAlert(error: error)

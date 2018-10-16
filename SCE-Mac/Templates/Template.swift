@@ -33,7 +33,7 @@ struct Template: Codable {
     let standard: String
     
     /// Files to copy during instalation
-    let copyFiles: [CopyFile]
+    let copyFiles: [CopyFile]?
     
     /// File to open in editor by default. E.g. ["contracts", "TutorialToken.sol"]
     let openFile: String?
