@@ -82,7 +82,7 @@
 						<key>installCommand</key>
 						<string>npm i -g etherlime</string>
 						<key>updateCommand</key>
-						<string>npm update --save etherlime</string>
+						<string>npm -g update --save etherlime</string>
 						<key>comment</key>
 						<string></string>
 						<key>required</key>
@@ -351,6 +351,18 @@
 				<true/>
 			</dict>
 		</array>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>ultrain</string>
+		<key>projectUrl</key>
+		<string>https://tezos.foundation</string>
+		<key>documentationUrl</key>
+		<string>http://tezos.gitlab.io/mainnet/</string>
+		<key>frameworks</key>
+		<array/>
+		<key>dependencies</key>
+		<array/>
 	</dict>
 	<dict>
 		<key>platform</key>

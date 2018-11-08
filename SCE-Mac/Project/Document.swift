@@ -6,6 +6,7 @@
 //  Copyright © 2018 A Puzzle A Day. All rights reserved.
 //
 
+import Foundation
 import Cocoa
 
 class Document: NSDocument {
@@ -14,7 +15,7 @@ class Document: NSDocument {
     private (set) var project: Project?
     
     ///
-    private (set) var interface: FrameworkInterfaceProtocol? = nil
+    private (set) var interface: EditorInterface? = nil
     
     /// URL of the .comp project file E.g. ~/Projects/ProjectName/ProjectName.comp
     var projectFileURL: URL {
@@ -96,9 +97,7 @@ class Document: NSDocument {
         
         guard let platform = Platform.init(rawValue: platformName) else { throw CompositeError.platformNotFound(platformName) }
         
-//        interface = request interface. use version
-        // What does the plist do?
-        
+        interface = try EditorInterface.loadInterface(platform: platform, framework: frameworkName, version: frameworkVersion).first
     }
 
 }

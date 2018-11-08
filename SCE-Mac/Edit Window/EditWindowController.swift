@@ -114,30 +114,20 @@ class EditWindowController: NSWindowController {
 
     @IBAction func runButtonClicked(_ sender: Any) {
         
-        guard let document = document as? Document, let interface = document.interface else {
-            return
+        guard let document = document as? Document, let interface = document.interface else { return }
+        script?.terminate()
+        saveEditorFile()
+
+        do {
+            script = try interface.executeRun(workDirectory: document.workDirectory, output: { output in
+                self.setConsole(output)
+            }) {
+                self.script = nil
+            }
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
         }
-        
-        
-        
-        print("OK")
-//        guard let project = project, let sender = sender as? NSButton else { return }
-//        saveEditorFile()
-//        script?.terminate()
-//
-//        sender.isEnabled = false
-//        do {
-//            script = try ScriptTask.run(project: project, output: { output in
-//                self.setConsole(output)
-//            }) {
-//                sender.isEnabled = true
-//                self.script = nil
-//            }
-//        } catch {
-//            let alert = NSAlert(error: error)
-//            alert.runModal()
-//            sender.isEnabled = true
-//        }
 
     }
 
@@ -150,20 +140,20 @@ class EditWindowController: NSWindowController {
     
     @IBAction func lintButtonClicked(_ sender: Any) {
         
-//        guard let project = project else { return }
-//        script?.terminate()
-//        saveEditorFile()
-//
-//        do {
-//            script = try ScriptTask.lint(project: project, output: { output in
-//                self.setConsole(output)
-//            }, finished: {
-//                // do nothing
-//            })
-//        } catch {
-//            let alert = NSAlert(error: error)
-//            alert.runModal()
-//        }
+        guard let document = document as? Document, let interface = document.interface else { return }
+        script?.terminate()
+        saveEditorFile()
+
+        do {
+            script = try interface.executeLint(workDirectory: document.workDirectory, output: { output in
+                self.setConsole(output)
+            }, finished: {
+                // do nothing
+            })
+        } catch {
+            let alert = NSAlert(error: error)
+            alert.runModal()
+        }
     }
     
     @IBAction func webButtonClicked(_ sender: Any) {
