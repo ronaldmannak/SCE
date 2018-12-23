@@ -99,7 +99,7 @@
 		C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645E2128F04800867DA4 /* OutputViewController.swift */; };
 		C7E76463212936E300867DA4 /* FileBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76462212936E300867DA4 /* FileBrowserViewController.swift */; };
 		C7E76467212937F100867DA4 /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76466212937F100867DA4 /* FileItem.swift */; };
-		C7E76469212D3D0400867DA4 /* ERC-20.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7E76468212D3D0400867DA4 /* ERC-20.sol */; };
+		C7E76469212D3D0400867DA4 /* ERC20.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7E76468212D3D0400867DA4 /* ERC20.sol */; };
 		C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */; };
 		C7E7646D212E28F300867DA4 /* TruffleRun.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646C212E28F200867DA4 /* TruffleRun.command */; };
 		C7E76471212E59F100867DA4 /* TruffleWebserver.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76470212E59F000867DA4 /* TruffleWebserver.command */; };
@@ -217,7 +217,7 @@
 		C7E7645E2128F04800867DA4 /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
 		C7E76462212936E300867DA4 /* FileBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowserViewController.swift; sourceTree = "<group>"; };
 		C7E76466212937F100867DA4 /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
-		C7E76468212D3D0400867DA4 /* ERC-20.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ERC-20.sol"; sourceTree = "<group>"; };
+		C7E76468212D3D0400867DA4 /* ERC20.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = ERC20.sol; sourceTree = "<group>"; };
 		C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = 2_deploy_contracts.js; sourceTree = "<group>"; };
 		C7E7646C212E28F200867DA4 /* TruffleRun.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = TruffleRun.command; sourceTree = "<group>"; };
 		C7E76470212E59F000867DA4 /* TruffleWebserver.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = TruffleWebserver.command; sourceTree = "<group>"; };
@@ -399,7 +399,7 @@
 				C7E76458212610DA00867DA4 /* TruffleInit.command */,
 				C7E7646C212E28F200867DA4 /* TruffleRun.command */,
 				C7E76470212E59F000867DA4 /* TruffleWebserver.command */,
-				C7E76468212D3D0400867DA4 /* ERC-20.sol */,
+				C7E76468212D3D0400867DA4 /* ERC20.sol */,
 				C70509FF215A1538003DDA2B /* EthereumTruffle.json */,
 				C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */,
 				C7050A0E215C7047003DDA2B /* Templates-Truffle.plist */,
@@ -758,7 +758,7 @@
 				C70509F62159D28C003DDA2B /* EtherlimeInit.command in Resources */,
 				C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */,
 				C7F0B9A52112945F005A8FE2 /* Assets.xcassets in Resources */,
-				C7E76469212D3D0400867DA4 /* ERC-20.sol in Resources */,
+				C7E76469212D3D0400867DA4 /* ERC20.sol in Resources */,
 				C7050A10215C7047003DDA2B /* Templates-Truffle.plist in Resources */,
 				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
 				C7050A0D215C6D70003DDA2B /* Templates-Etherlime.plist in Resources */,

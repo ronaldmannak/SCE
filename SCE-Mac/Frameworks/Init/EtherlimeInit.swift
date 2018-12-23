@@ -89,8 +89,6 @@ class EtherlimeInit: ProjectInitProtocol {
          
          # ${1} is work directory
          # ${2} is project name
-         # ${3} is truffle command argument, e.g. "init" or "unbox"
-         # ${4} (optional) template name
          */
         
         var arguments: [String] = [workDirectory.path, project.name]

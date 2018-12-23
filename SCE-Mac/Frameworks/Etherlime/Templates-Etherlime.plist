@@ -30,7 +30,7 @@
 				<array>
 					<dict>
 						<key>filename</key>
-						<string>ERC-20.sol</string>
+						<string>ERC20.sol</string>
 						<key>destination</key>
 						<string>contracts</string>
 						<key>renameFileToProjectName</key>

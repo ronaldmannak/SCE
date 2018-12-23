@@ -16,7 +16,7 @@ cd ${1}
 echo '$ truffle '${3}' '${4}
 truffle ${3} ${4}
 
-  echo '$ npm install openzeppelin-solidity'
+  echo '$ npm install --save-exact openzeppelin-solidity'
   npm install openzeppelin-solidity
 
   echo '$ solium --init'

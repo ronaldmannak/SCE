@@ -100,5 +100,6 @@ class Document: NSDocument {
         interface = try EditorInterface.loadInterface(platform: platform, framework: frameworkName, version: frameworkVersion).first
     }
 
+    
 }
 

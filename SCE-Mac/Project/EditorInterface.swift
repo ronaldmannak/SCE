@@ -84,27 +84,6 @@ extension EditorInterface {
         task.run()
         return task
     }
-    
-    //    static func run(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
-    //        // TODO: Switch truffle vs Embark
-    //        let task = try ScriptTask(script: "TruffleRun", arguments: [workDirectory.path], output: output, finished: finished)
-    //        task.run()
-    //        return task
-    //    }
-    //
-    //    static func webserver(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
-    //        // TODO: Switch truffle vs Embark
-    //        let task = try ScriptTask(script: "TruffleWebserver", arguments: [workDirectory.path], output: output, finished: finished)
-    //        task.run()
-    //        return task
-    //    }
-    //
-    //    static func lint(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
-    //        let task = try ScriptTask(script: "SoliumTruffle", arguments: [workDirectory.path], output: output, finished: finished)
-    //        task.run()
-    //        return task
-    //    }
-
 }
 
 extension EditorInterface {
