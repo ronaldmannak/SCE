@@ -21,7 +21,7 @@ class FileItem: NSObject {
         let filemanager = FileManager.default
         var isDirectory: ObjCBool = false
         guard filemanager.fileExists(atPath: url.path, isDirectory: &isDirectory) else {
-            throw EditorError.fileNotFound(url.path)
+            throw CompositeError.fileNotFound(url.path)
         }
         
         self.url = url

@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>platform</key>
+		<string>ethereum</string>
+		<key>projectUrl</key>
+		<string>https://www.ethereum.org</string>
+		<key>documentationUrl</key>
+		<string>http://www.ethdocs.org/en/latest/</string>
+		<key>frameworks</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Etherlime</string>
+				<key>dependencies</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>brew</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>1.7.4</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>brew -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
+						<key>updateCommand</key>
+						<string>brew update</string>
+						<key>comment</key>
+						<string>Brew is needed for installing npm</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>node</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin</string>
+						<key>minimumVersion</key>
+						<string>10.10.0</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>node -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>brew install node</string>
+						<key>updateCommand</key>
+						<string>brew upgrade node</string>
+						<key>comment</key>
+						<string>node and npm are required by Truffle</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>etherlime</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>0.9.5</string>
+						<key>isPlatformVersion</key>
+						<true/>
+						<key>versionCommand</key>
+						<string>etherlime --version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm i -g etherlime</string>
+						<key>updateCommand</key>
+						<string>npm -g update --save etherlime</string>
+						<key>comment</key>
+						<string></string>
+						<key>required</key>
+						<true/>
+					</dict>
+				</array>
+				<key>description</key>
+				<string>Etherlime is an ethereum development and deployment framework based on ethers.js.</string>
+				<key>initScript</key>
+				<string>EtherlimeInit</string>
+				<key>projectUrl</key>
+				<string>https://github.com/LimeChain/etherlime</string>
+				<key>documentationUrl</key>
+				<string>https://etherlime.readthedocs.io/en/latest/</string>
+				<key>defaultFramework</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Truffle</string>
+				<key>dependencies</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>brew</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>1.7.4</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>brew -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
+						<key>updateCommand</key>
+						<string>brew update</string>
+						<key>comment</key>
+						<string>Brew is needed for installing npm</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>node</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin</string>
+						<key>minimumVersion</key>
+						<string>10.10.0</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>node -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>brew install node</string>
+						<key>updateCommand</key>
+						<string>brew upgrade node</string>
+						<key>comment</key>
+						<string>node and npm are required by Truffle</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>truffle</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>4.1.13</string>
+						<key>isPlatformVersion</key>
+						<true/>
+						<key>versionCommand</key>
+						<string>truffle version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm install -g truffle</string>
+						<key>updateCommand</key>
+						<string>npm update --save truffle</string>
+						<key>comment</key>
+						<string></string>
+						<key>required</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>solium</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>1.1.8</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>solium -V</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm install -g solium</string>
+						<key>updateCommand</key>
+						<string>npm update --save solium</string>
+						<key>comment</key>
+						<string></string>
+						<key>required</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>Ganache.app</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/Applications</string>
+						<key>minimumVersion</key>
+						<string>1.2.1</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>defaults read /Applications/Ganache.app/Contents/Info CFBundleShortVersionString</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installLink</key>
+						<string>https://truffleframework.com/ganache</string>
+						<key>updateCommand</key>
+						<string></string>
+						<key>comment</key>
+						<string></string>
+						<key>required</key>
+						<true/>
+					</dict>
+				</array>
+				<key>description</key>
+				<string>A world class development environment, testing framework and asset pipeline for blockchains using the Ethereum Virtual Machine (EVM), aiming to make life as a developer easier.</string>
+				<key>initScript</key>
+				<string>TruffleInit</string>
+				<key>projectUrl</key>
+				<string>https://truffleframework.com/truffle</string>
+				<key>documentationUrl</key>
+				<string>https://truffleframework.com/docs/truffle/overview</string>
+				<key>defaultFramework</key>
+				<false/>
+			</dict>
+		</array>
+		<key>dependencies-2</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>brew</string>
+				<key>customLocation</key>
+				<string></string>
+				<key>defaultLocation</key>
+				<string>/usr/local/bin/</string>
+				<key>minimumVersion</key>
+				<string>1.7.4</string>
+				<key>versionCommand</key>
+				<string>brew -v</string>
+				<key>versionRegex</key>
+				<string></string>
+				<key>installCommand</key>
+				<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
+				<key>upgradeCommand</key>
+				<string>brew update</string>
+				<key>comment</key>
+				<string>Brew is needed for installing npm</string>
+				<key>required</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>node</string>
+				<key>customLocation</key>
+				<string></string>
+				<key>defaultLocation</key>
+				<string>/usr/local/bin</string>
+				<key>minimumVersion</key>
+				<string>10.10.0</string>
+				<key>versionCommand</key>
+				<string>node -v</string>
+				<key>versionRegex</key>
+				<string></string>
+				<key>installCommand</key>
+				<string>brew install node</string>
+				<key>upgradeCommand</key>
+				<string>brew upgrade node</string>
+				<key>comment</key>
+				<string>node and npm are required by Truffle</string>
+				<key>required</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>truffle</string>
+				<key>customLocation</key>
+				<string></string>
+				<key>defaultLocation</key>
+				<string>/usr/local/bin/</string>
+				<key>minimumVersion</key>
+				<string>4.1.13</string>
+				<key>versionCommand</key>
+				<string>truffle version</string>
+				<key>versionRegex</key>
+				<string></string>
+				<key>installCommand</key>
+				<string>npm install -g truffle</string>
+				<key>upgradeCommand</key>
+				<string>npm update --save truffle</string>
+				<key>comment</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>solium</string>
+				<key>customLocation</key>
+				<string></string>
+				<key>defaultLocation</key>
+				<string>/usr/local/bin/</string>
+				<key>minimumVersion</key>
+				<string>1.1.8</string>
+				<key>versionCommand</key>
+				<string>solium -V</string>
+				<key>versionRegex</key>
+				<string></string>
+				<key>installCommand</key>
+				<string>npm install -g solium</string>
+				<key>upgradeCommand</key>
+				<string>npm update --save solium</string>
+				<key>comment</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Ganache.app</string>
+				<key>customLocation</key>
+				<string></string>
+				<key>defaultLocation</key>
+				<string>/Applications</string>
+				<key>minimumVersion</key>
+				<string>1.2.1</string>
+				<key>versionCommand</key>
+				<string>defaults read /Applications/Ganache.app/Contents/Info CFBundleShortVersionString</string>
+				<key>versionRegex</key>
+				<string></string>
+				<key>installLink</key>
+				<string>https://truffleframework.com/ganache</string>
+				<key>upgradeCommand</key>
+				<string></string>
+				<key>comment</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>ultrain</string>
+		<key>projectUrl</key>
+		<string>https://tezos.foundation</string>
+		<key>documentationUrl</key>
+		<string>http://tezos.gitlab.io/mainnet/</string>
+		<key>frameworks</key>
+		<array/>
+		<key>dependencies</key>
+		<array/>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>cosmos</string>
+		<key>projectUrl</key>
+		<string>https://cosmos.network</string>
+		<key>documentationUrl</key>
+		<string>https://cosmos.network/docs/</string>
+		<key>frameworks</key>
+		<array/>
+		<key>dependencies</key>
+		<array/>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>stellar</string>
+		<key>projectUrl</key>
+		<string>https://www.stellar.org/</string>
+		<key>documentationUrl</key>
+		<string>https://www.stellar.org/developers/guides/walkthroughs/stellar-smart-contracts.html</string>
+		<key>frameworks</key>
+		<array/>
+		<key>dependencies</key>
+		<array/>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>qtum</string>
+		<key>projectUrl</key>
+		<string>https://www.ethereum.org</string>
+		<key>documentationUrl</key>
+		<string>http://www.ethdocs.org/en/latest/</string>
+		<key>frameworks</key>
+		<array/>
+		<key>dependencies</key>
+		<array/>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>dispatch</string>
+		<key>projectUrl</key>
+		<string>https://dispatchlabs.io</string>
+		<key>documentationUrl</key>
+		<string>https://dispatchlabs.io</string>
+		<key>frameworks</key>
+		<array/>
+		<key>dependencies</key>
+		<array/>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>nebulas</string>
+		<key>projectUrl</key>
+		<string>https://nebulas.io</string>
+		<key>documentationUrl</key>
+		<string>https://github.com/nebulasio/wiki/wiki</string>
+		<key>frameworks</key>
+		<array/>
+		<key>dependencies</key>
+		<array/>
+	</dict>
+</array>
+</plist>

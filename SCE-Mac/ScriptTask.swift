@@ -14,7 +14,7 @@ import Foundation
  */
 class ScriptTask: NSObject {
     
-    static var queue = DispatchQueue(label: "ScriptTaskQueue", qos: .background) //, attributes: <#T##DispatchQueue.Attributes#>, autoreleaseFrequency: <#T##DispatchQueue.AutoreleaseFrequency#>, target: <#T##DispatchQueue?#>)
+    static var queue = DispatchQueue(label: "ScriptTaskQueue", qos: .background) 
     
     var task = Process()
     let outputPipe = Pipe()
@@ -33,7 +33,7 @@ class ScriptTask: NSObject {
         } else if let path = Bundle.main.path(forResource: script, ofType: ext) {
             launchpath = path
         } else {
-            throw EditorError.fileNotFound("File not found")
+            throw CompositeError.fileNotFound("File not found")
         }
         self.arguments = arguments
         self.output = output        // TODO: Do we also need to route stderr?
@@ -79,7 +79,7 @@ class ScriptTask: NSObject {
             guard let outputString = String(data: output, encoding: String.Encoding.utf8), !outputString.isEmpty else { return }
             
             DispatchQueue.main.async(execute: {
-//                print(outputString)
+                print(outputString)
                 assert(self.output != nil)
                 self.output?(outputString)
             })
@@ -92,35 +92,4 @@ class ScriptTask: NSObject {
     func terminate() {
         task.terminate()
     }
-}
-
-
-extension ScriptTask {
-    
-    static func run(project: Project, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
-        // TODO: Switch truffle vs Embark
-        let task = try ScriptTask(script: "TruffleRun", arguments: [project.workDirectory.path], output: output, finished: finished)
-        task.run()
-        return task
-    }
-    
-    static func webserver(project: Project, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
-        // TODO: Switch truffle vs Embark
-        let task = try ScriptTask(script: "TruffleWebserver", arguments: [project.workDirectory.path], output: output, finished: finished)
-        task.run()
-        return task
-    }
-    
-    static func lint(project: Project, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
-        let task = try ScriptTask(script: "SoliumTruffle", arguments: [project.workDirectory.path], output: output, finished: finished)
-        task.run()
-        return task
-    }
-    
-    //    static func truffleInit(path: URL, projectname: String, templatename: String, output: @escaping (String)->Void, finished: @escaping () -> Void) -> ScriptTask {
-    //        //        let task = ScriptTask(script: "TruffleInit", arguments: [""], path: path, output: output, finished: finished)
-    //        let task = ScriptTask(script: "listdir", arguments: [""], path: path, output: output, finished: finished)
-    //        task.run()
-    //        return task
-    //    }
 }

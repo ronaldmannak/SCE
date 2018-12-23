@@ -47,4 +47,14 @@ extension String {
     public func isVersion(greaterThanOrEqualTo targetVersion: String) -> Bool { return compare(toVersion: targetVersion) != .orderedAscending }
     public func isVersion(lessThan targetVersion: String) -> Bool { return compare(toVersion: targetVersion) == .orderedAscending }
     public func isVersion(lessThanOrEqualTo targetVersion: String) -> Bool { return compare(toVersion: targetVersion) != .orderedDescending }
+    
+    
+    /// Replaces occurrences of <#__project_name#> in string with the project name
+    ///
+    /// - Parameter with: project name
+    /// - Returns: New string with projectname placeholders replaced with project name
+    public func replaceOccurrencesOfProjectName(with name: String) -> String {
+        return replacingOccurrences(of: "<#__project_name#>", with: name.replacingOccurrences(of: " ", with: "-"))
+    }
+    
 }
