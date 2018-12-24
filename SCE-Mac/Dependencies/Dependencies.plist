@@ -354,47 +354,113 @@
 	</dict>
 	<dict>
 		<key>platform</key>
-		<string>ultrain</string>
+		<string>tron</string>
+		<key>projectUrl</key>
+		<string>https://tron.network</string>
+		<key>documentationUrl</key>
+		<string>https://developers.tron.network</string>
+		<key>frameworks</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>TronBox</string>
+				<key>dependencies</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>brew</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>1.7.4</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>brew -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
+						<key>updateCommand</key>
+						<string>brew update</string>
+						<key>comment</key>
+						<string>Brew is needed for installing npm</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>node</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin</string>
+						<key>minimumVersion</key>
+						<string>10.10.0</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>node -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>brew install node</string>
+						<key>updateCommand</key>
+						<string>brew upgrade node</string>
+						<key>comment</key>
+						<string>node and npm are required by Truffle</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>TronBox</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>0.9.5</string>
+						<key>isPlatformVersion</key>
+						<true/>
+						<key>versionCommand</key>
+						<string>tronbox --version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm install -g tronbox</string>
+						<key>updateCommand</key>
+						<string>npm -g update --save tronbox</string>
+						<key>comment</key>
+						<string></string>
+						<key>required</key>
+						<true/>
+					</dict>
+				</array>
+				<key>description</key>
+				<string>TronBox is a Tron development and delpoyment framework based on Ethereum&apos;s Truffle </string>
+				<key>initScript</key>
+				<string>TronBoxInit</string>
+				<key>projectUrl</key>
+				<string>https://tron.network</string>
+				<key>documentationUrl</key>
+				<string>https://developers.tron.network</string>
+				<key>defaultFramework</key>
+				<true/>
+			</dict>
+		</array>
+		<key>dependencies</key>
+		<array/>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>tezos</string>
 		<key>projectUrl</key>
 		<string>https://tezos.foundation</string>
 		<key>documentationUrl</key>
 		<string>http://tezos.gitlab.io/mainnet/</string>
-		<key>frameworks</key>
-		<array/>
-		<key>dependencies</key>
-		<array/>
-	</dict>
-	<dict>
-		<key>platform</key>
-		<string>cosmos</string>
-		<key>projectUrl</key>
-		<string>https://cosmos.network</string>
-		<key>documentationUrl</key>
-		<string>https://cosmos.network/docs/</string>
-		<key>frameworks</key>
-		<array/>
-		<key>dependencies</key>
-		<array/>
-	</dict>
-	<dict>
-		<key>platform</key>
-		<string>stellar</string>
-		<key>projectUrl</key>
-		<string>https://www.stellar.org/</string>
-		<key>documentationUrl</key>
-		<string>https://www.stellar.org/developers/guides/walkthroughs/stellar-smart-contracts.html</string>
-		<key>frameworks</key>
-		<array/>
-		<key>dependencies</key>
-		<array/>
-	</dict>
-	<dict>
-		<key>platform</key>
-		<string>qtum</string>
-		<key>projectUrl</key>
-		<string>https://www.ethereum.org</string>
-		<key>documentationUrl</key>
-		<string>http://www.ethdocs.org/en/latest/</string>
 		<key>frameworks</key>
 		<array/>
 		<key>dependencies</key>
@@ -407,18 +473,6 @@
 		<string>https://dispatchlabs.io</string>
 		<key>documentationUrl</key>
 		<string>https://dispatchlabs.io</string>
-		<key>frameworks</key>
-		<array/>
-		<key>dependencies</key>
-		<array/>
-	</dict>
-	<dict>
-		<key>platform</key>
-		<string>nebulas</string>
-		<key>projectUrl</key>
-		<string>https://nebulas.io</string>
-		<key>documentationUrl</key>
-		<string>https://github.com/nebulasio/wiki/wiki</string>
 		<key>frameworks</key>
 		<array/>
 		<key>dependencies</key>
