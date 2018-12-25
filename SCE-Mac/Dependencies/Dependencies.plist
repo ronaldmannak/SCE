@@ -422,7 +422,7 @@
 						<key>defaultLocation</key>
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
-						<string>0.9.5</string>
+						<string>2.3.4</string>
 						<key>isPlatformVersion</key>
 						<true/>
 						<key>versionCommand</key>
@@ -449,10 +449,46 @@
 				<string>https://developers.tron.network</string>
 				<key>defaultFramework</key>
 				<true/>
+				<key>commands</key>
+				<dict>
+					<key>init</key>
+					<dict>
+						<key>command</key>
+						<string>tronbox init</string>
+						<key>inProjectDirectory</key>
+						<true/>
+					</dict>
+					<key>lint</key>
+					<dict>
+						<key>tool</key>
+						<string></string>
+					</dict>
+					<key>build</key>
+					<dict>
+						<key>tool</key>
+						<string>/usr/bin/tronbox</string>
+						<key>incrementalCompile</key>
+						<string>compile</string>
+						<key>cleanCompile</key>
+						<string>compile --compile-all</string>
+						<key>incrementalDeploy</key>
+						<string>migrate rest</string>
+						<key>cleanDeploy</key>
+						<string>migrate rest --reset</string>
+						<key>runTests</key>
+						<string>test $(PATH)</string>
+						<key>cleanRunTests</key>
+						<string>test $(PATH) --reset</string>
+						<key>console</key>
+						<string>console</string>
+						<key>errorRegex</key>
+						<string>*</string>
+						<key>warningRegex</key>
+						<string>*</string>
+					</dict>
+				</dict>
 			</dict>
 		</array>
-		<key>dependencies</key>
-		<array/>
 	</dict>
 	<dict>
 		<key>platform</key>
