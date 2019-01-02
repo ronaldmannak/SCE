@@ -456,7 +456,7 @@
 						<key>commands</key>
 						<array>
 							<string>tronbox init</string>
-							<string>npm install --save-exact openzeppelin-solidity@1.7.0</string>
+							<string>npm install zeppelin-solidity@1.7.0 --save-exact</string>
 						</array>
 						<key>createProjectDirectory</key>
 						<true/>
