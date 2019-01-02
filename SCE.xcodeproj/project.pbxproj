@@ -61,6 +61,7 @@
 		C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */; };
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
 		C70B97052135148A00B0E4C8 /* SoliumTruffle.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B97042135148A00B0E4C8 /* SoliumTruffle.command */; };
+		C711F58921DCB9FF005EBC5D /* Execute.command in Resources */ = {isa = PBXBuildFile; fileRef = C711F58821DCB9FF005EBC5D /* Execute.command */; };
 		C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7303B63212E75E70007E708 /* Preferences.storyboard */; };
 		C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */; };
 		C76FC32021439FAC00DB2C62 /* InstallBlockchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */; };
@@ -75,7 +76,7 @@
 		C7DDD74E2140AFDC00674942 /* DependencyPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */; };
 		C7DDD7502140B68C00674942 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD74F2140B68C00674942 /* Platform.swift */; };
 		C7DDD753214100D200674942 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD752214100D200674942 /* String.swift */; };
-		C7DDD755214102B900674942 /* General.command in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD754214102B900674942 /* General.command */; };
+		C7DDD755214102B900674942 /* Command.command in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD754214102B900674942 /* Command.command */; };
 		C7DDD757214113CB00674942 /* Which.command in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD756214113CB00674942 /* Which.command */; };
 		C7DDD75A2141E02800674942 /* InstallWizard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD7592141E02800674942 /* InstallWizard.storyboard */; };
 		C7E4AFA2216A641B00D5716B /* EtherlimeInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A69216719BD003DDA2B /* EtherlimeInit.swift */; };
@@ -183,6 +184,8 @@
 		C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateSectionHeaderView.xib; sourceTree = "<group>"; };
 		C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSectionHeaderView.swift; sourceTree = "<group>"; };
 		C70B97042135148A00B0E4C8 /* SoliumTruffle.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SoliumTruffle.command; sourceTree = "<group>"; };
+		C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Tronbox.plist"; sourceTree = "<group>"; };
+		C711F58821DCB9FF005EBC5D /* Execute.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = Execute.command; sourceTree = "<group>"; };
 		C7303B63212E75E70007E708 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallContainerViewController.swift; sourceTree = "<group>"; };
 		C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallBlockchainViewController.swift; sourceTree = "<group>"; };
@@ -198,7 +201,7 @@
 		C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyPlatform.swift; sourceTree = "<group>"; };
 		C7DDD74F2140B68C00674942 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		C7DDD752214100D200674942 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		C7DDD754214102B900674942 /* General.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = General.command; sourceTree = "<group>"; };
+		C7DDD754214102B900674942 /* Command.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Command.command; sourceTree = "<group>"; };
 		C7DDD756214113CB00674942 /* Which.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = Which.command; sourceTree = "<group>"; };
 		C7DDD7592141E02800674942 /* InstallWizard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InstallWizard.storyboard; sourceTree = "<group>"; };
 		C7E4AFA4216AADD900D5716B /* Init.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Init.command; sourceTree = "<group>"; };
@@ -357,6 +360,14 @@
 			path = Solium;
 			sourceTree = "<group>";
 		};
+		C711F58621DCAB50005EBC5D /* Tronbox */ = {
+			isa = PBXGroup;
+			children = (
+				C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */,
+			);
+			path = Tronbox;
+			sourceTree = "<group>";
+		};
 		C7303B62212E75C70007E708 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +389,7 @@
 				C70B97032135145F00B0E4C8 /* Solium */,
 				C7A8FDC0212F2067005E20AC /* Embark */,
 				C7050A892169388D003DDA2B /* Celer */,
+				C711F58621DCAB50005EBC5D /* Tronbox */,
 				C7A8FDBF212F2060005E20AC /* Truffle */,
 			);
 			path = Frameworks;
@@ -463,7 +475,8 @@
 				C70509EB2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift */,
 				C70509E52155B47B003DDA2B /* DependencyViewModel.swift */,
 				C7DDD74B2140AB6D00674942 /* Dependencies.plist */,
-				C7DDD754214102B900674942 /* General.command */,
+				C7DDD754214102B900674942 /* Command.command */,
+				C711F58821DCB9FF005EBC5D /* Execute.command */,
 				F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */,
 				C7DDD756214113CB00674942 /* Which.command */,
 				F81936C3214C6F2F00C3222B /* uninstall.command */,
@@ -726,6 +739,7 @@
 				C7F0B980210DACCF005A8FE2 /* Assets.xcassets in Resources */,
 				C7050A0F215C7047003DDA2B /* Templates-Truffle.plist in Resources */,
 				C7F0B97E210DACCB005A8FE2 /* Main.storyboard in Resources */,
+				C711F58921DCB9FF005EBC5D /* Execute.command in Resources */,
 				C7050A322166E4F8003DDA2B /* EditorInterface.plist in Resources */,
 				C7050A00215A1538003DDA2B /* EthereumTruffle.json in Resources */,
 				C7050A8B216938B1003DDA2B /* celer.sol in Resources */,
@@ -766,7 +780,7 @@
 				C7050A332166E4F8003DDA2B /* EditorInterface.plist in Resources */,
 				C7E7646D212E28F300867DA4 /* TruffleRun.command in Resources */,
 				C7E4AFA6216AADD900D5716B /* Init.command in Resources */,
-				C7DDD755214102B900674942 /* General.command in Resources */,
+				C7DDD755214102B900674942 /* Command.command in Resources */,
 				C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */,
 				C7050A01215A1538003DDA2B /* EthereumTruffle.json in Resources */,
 				C7DDD757214113CB00674942 /* Which.command in Resources */,

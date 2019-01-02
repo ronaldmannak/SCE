@@ -363,7 +363,7 @@
 		<array>
 			<dict>
 				<key>name</key>
-				<string>TronBox</string>
+				<string>Tron-Box</string>
 				<key>dependencies</key>
 				<array>
 					<dict>
@@ -440,7 +440,7 @@
 					</dict>
 				</array>
 				<key>description</key>
-				<string>TronBox is a Tron development and delpoyment framework based on Ethereum&apos;s Truffle </string>
+				<string>Tron-Box is a Tron development and deployment framework based on Ethereum&apos;s Truffle </string>
 				<key>initScript</key>
 				<string>TronBoxInit</string>
 				<key>projectUrl</key>
@@ -453,9 +453,12 @@
 				<dict>
 					<key>init</key>
 					<dict>
-						<key>command</key>
-						<string>tronbox init</string>
-						<key>inProjectDirectory</key>
+						<key>commands</key>
+						<array>
+							<string>tronbox init</string>
+							<string>npm install --save-exact openzeppelin-solidity@1.7.0</string>
+						</array>
+						<key>createProjectDirectory</key>
 						<true/>
 					</dict>
 					<key>lint</key>
@@ -467,6 +470,8 @@
 					<dict>
 						<key>tool</key>
 						<string>/usr/bin/tronbox</string>
+						<key>version</key>
+						<string>--version</string>
 						<key>incrementalCompile</key>
 						<string>compile</string>
 						<key>cleanCompile</key>

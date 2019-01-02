@@ -11,5 +11,5 @@ import Foundation
 
 enum UserDefaultStrings: String {
     case doNotShowDependencyWizard
-    
+    case home
 }

@@ -54,7 +54,7 @@ struct DependencyFramework: Codable {
 ////        if let installCommand = installCommand {
 ////
 ////            let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-////            task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in
+////            task = try ScriptTask(script: "Execute", arguments: [installCommand, homePath], output: { console in
 ////                output(console)
 ////            }) {
 ////                self.task = nil

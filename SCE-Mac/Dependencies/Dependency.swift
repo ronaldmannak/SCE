@@ -123,7 +123,7 @@ extension Dependency {
         }
         let homePath = FileManager.default.homeDirectoryForCurrentUser.path
         var lines = 1
-        let task = try ScriptTask(script: "General", arguments: [versionCommand, homePath], output: { output in
+        let task = try ScriptTask(script: "Execute", arguments: [versionCommand, homePath], output: { output in
             
             // Assumes that the correct version number is always returned on the first line
             if lines > 1 { return }
@@ -187,7 +187,7 @@ extension Dependency {
         if let installCommand = installCommand {
             
             let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-            task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in
+            task = try ScriptTask(script: "Execute", arguments: [installCommand, homePath], output: { console in
                 output(console)
             }) {
                 self.task = nil
@@ -235,7 +235,7 @@ extension Dependency {
         }
         
         let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-        task = try ScriptTask(script: "General", arguments: [updateCommand, homePath], output: { console in
+        task = try ScriptTask(script: "Execute", arguments: [updateCommand, homePath], output: { console in
             output(console)
         }) {
             self.task = nil
