@@ -16,9 +16,22 @@ usage() {
     exit 1;
 }
 
-dflag=false # d argument is not set
-colorReset="$(tput sgr0)" #reset
-colorRed="$(tput setaf 1)" #red
+printCommand() {
+    local array
+    local i
+    array=("$@")
+
+    printf '\n%s%s' $bold '$ '
+    for i in "${array[@]}" ; do
+        printf '%s ' "$i"
+    done
+    printf '%s\n' $colorReset
+}
+
+dflag=false                 # d argument is not set
+colorReset="$(tput sgr0)"   # reset
+colorRed="$(tput setaf 1)"  # red
+bold="$(tput bold)"         # bold
 
 while getopts ":p:d:h" opt; do
     case "$opt" in
@@ -37,8 +50,8 @@ then
 fi
 
 # 2. cd to directory
-echo cd $d
-cd $d
+printCommand 'cd ' $d
+cd $d || exit 1
 
 # 3. Set path if $p is set
 if [ -n "$p" ]; then
@@ -48,6 +61,6 @@ echo "PATH="$PATH
 
 # 4. Execute the commands
 for command in "$@"; do
-    echo $command
-    $command
+    printCommand $command
+    $command || exit 1
 done
