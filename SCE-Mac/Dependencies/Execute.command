@@ -1,4 +1,4 @@
-#! /bin/bash 
+#! /bin/bash
 
 usage() {
     echo "Usage: $0 [-h] [-p <string>] -d <string> <string>...
@@ -19,21 +19,22 @@ usage() {
 }
 
 printCommand() {
-    local array
-    local i
-    array=("$@")
-
-    printf '\n%s%s' $bold '$ '
-    for i in "${array[@]}" ; do
-        printf '%s ' "$i"
-    done
-    printf '%s\n' $colorReset
+    echo '$ '$@
+#    local array
+#    local i
+#    array=("$@")
+#
+#    printf '\n%s%s' $bold '$ '
+#    for i in "${array[@]}" ; do
+#        printf '%s ' "$i"
+#    done
+#    printf '%s\n' $colorReset
 }
 
 dflag=false                 # d argument is not set
-colorReset="$(tput sgr0)"   # reset
-colorRed="$(tput setaf 1)"  # red
-bold="$(tput bold)"         # bold
+#colorReset="$(tput sgr0)"   # reset
+#colorRed="$(tput setaf 1)"  # red
+#bold="$(tput bold)"         # bold
 
 while getopts ":p:d:h" opt; do
     case "$opt" in
@@ -55,12 +56,10 @@ fi
 if [ -n "$p" ]; then
     export PATH=$PATH:$p
 fi
-#echo "PATH="$PATH
+echo "PATH="$PATH
 
 # 3. cd to directory
-#printCommand 'cd '$d
-echo received:
-echo ${d}
+printCommand 'cd '$d
 cd "${d}" || exit 1
 
 # 4. Execute the commands
@@ -69,4 +68,4 @@ cd "${d}" || exit 1
 #    $command || exit 1
 #done
 
-echo '\nReady.'
+printf '\nReady.\n'
