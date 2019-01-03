@@ -18,6 +18,7 @@ class ScriptTask: NSObject {
     
     var task = Process()
     let outputPipe = Pipe()
+    let inputPipe = Pipe()
     
     let launchpath: String
     var notification: NSObjectProtocol!
@@ -48,6 +49,7 @@ class ScriptTask: NSObject {
         
         ScriptTask.queue.async {
             
+            self.task.standardInput = self.inputPipe
             self.task.launchPath = self.launchpath
             self.task.arguments = self.arguments
             self.task.environment = ["PATH": "/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin"]                    
@@ -104,13 +106,29 @@ class ScriptTask: NSObject {
     /// - Throws: forwarded exception from designated initializer
     convenience init(directory: String, path: String? = nil, commands: [String], output: @escaping (String)->Void, finished: @escaping (Int) -> Void) throws {
         
+        // Expand ~ since NSTask does not do that
+        var expandedDirectory = ""
+        if directory == "~" {
+            expandedDirectory = FileManager.default.homeDirectoryForCurrentUser.path
+        } else {
+            expandedDirectory = directory.escapedSpaces
+        }
+        
         var arguments = [String]()
-        arguments.append("-d \(directory.escapedSpaces)")
-        if let path = path { arguments.append("-p \(path.escapedSpaces)") }
+        arguments.append("-d")
+        arguments.append(expandedDirectory)
+        
+        if let path = path {
+            arguments.append("-p")
+            arguments.append(path.escapedSpaces)
+        }
         
         for command in commands {
             arguments.append("\"\(command)\"")
         }
+        
+//        arguments = ["-d", expandedDirectory, "ls"]
+        print(arguments)
         try self.init(script: "Execute", arguments: arguments, output: output, finished: finished)
     }
 }

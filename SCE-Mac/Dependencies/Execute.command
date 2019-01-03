@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/bash 
 
 usage() {
     echo "Usage: $0 [-h] [-p <string>] -d <string> <string>...
@@ -55,16 +55,18 @@ fi
 if [ -n "$p" ]; then
     export PATH=$PATH:$p
 fi
-echo "PATH="$PATH
+#echo "PATH="$PATH
 
 # 3. cd to directory
-printCommand 'cd ' $d
+#printCommand 'cd '$d
+echo received:
+echo ${d}
 cd "${d}" || exit 1
 
 # 4. Execute the commands
-for command in "$@"; do
-    printCommand $command
-    $command || exit 1
-done
+#for command in "$@"; do
+#    printCommand $command
+#    $command || exit 1
+#done
 
 echo '\nReady.'
