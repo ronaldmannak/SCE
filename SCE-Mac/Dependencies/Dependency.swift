@@ -149,6 +149,7 @@ extension Dependency {
         }) { exitStatus in
             
             guard exitStatus == 0 else {
+                print("Error: \(versionCommand) returned \(exitStatus)")
                 let error = CompositeError.bashScriptFailed("Bash error")
                 let alert = NSAlert(error: error)
                 alert.runModal()

@@ -52,7 +52,10 @@ class ScriptTask: NSObject {
             self.task.standardInput = self.inputPipe
             self.task.launchPath = self.launchpath
             self.task.arguments = self.arguments
-            self.task.environment = ["PATH": "/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin"]                    
+            self.task.environment = [
+                "PATH": "/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin",
+                "HOME": FileManager.default.homeDirectoryForCurrentUser.path
+            ]            
             
             // Handle termination
             self.task.terminationHandler = { task in
@@ -124,11 +127,9 @@ class ScriptTask: NSObject {
         }
         
         for command in commands {
-            arguments.append("\"\(command)\"")
+            arguments.append(command)
         }
-        
-//        arguments = ["-d", expandedDirectory, "ls"]
-        print(arguments)
+                
         try self.init(script: "Execute", arguments: arguments, output: output, finished: finished)
     }
 }

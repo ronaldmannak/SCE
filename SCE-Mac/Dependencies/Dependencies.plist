@@ -426,7 +426,7 @@
 						<key>isPlatformVersion</key>
 						<true/>
 						<key>versionCommand</key>
-						<string>tronbox --version</string>
+						<string>tronbox version</string>
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>

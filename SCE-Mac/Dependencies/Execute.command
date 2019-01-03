@@ -20,6 +20,8 @@ usage() {
 
 printCommand() {
     echo '$ '$@
+
+# The use of tput triggers errors in NSTask. Disabling for now.
 #    local array
 #    local i
 #    array=("$@")
@@ -56,16 +58,16 @@ fi
 if [ -n "$p" ]; then
     export PATH=$PATH:$p
 fi
-echo "PATH="$PATH
+#echo "PATH="$PATH
 
 # 3. cd to directory
 printCommand 'cd '$d
 cd "${d}" || exit 1
 
 # 4. Execute the commands
-#for command in "$@"; do
-#    printCommand $command
-#    $command || exit 1
-#done
+for command in "$@"; do
+    printCommand $command
+    $command || exit 1
+done
 
 printf '\nReady.\n'
