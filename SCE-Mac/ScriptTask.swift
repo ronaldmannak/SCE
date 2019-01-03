@@ -24,9 +24,9 @@ class ScriptTask: NSObject {
     let arguments: [String]
     
     var output: ((String) -> Void)?
-    var finished: (() -> Void)?
+    var finished: ((Int) -> Void)?
     
-    init(script: String, ext: String = "command", path: URL? = nil, arguments: [String], output: @escaping (String)->Void, finished: @escaping () -> Void) throws {
+    init(script: String, ext: String = "command", path: URL? = nil, arguments: [String], output: @escaping (String)->Void, finished: @escaping (Int) -> Void) throws {
         
         if let path = path {
             launchpath = path.appendingPathComponent(script, isDirectory: false).appendingPathExtension(ext).absoluteString
@@ -46,7 +46,6 @@ class ScriptTask: NSObject {
     
     func run() {
         
-//        let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
         ScriptTask.queue.async {
             
             self.task.launchPath = self.launchpath
@@ -55,7 +54,8 @@ class ScriptTask: NSObject {
             
             // Handle termination
             self.task.terminationHandler = { task in
-                DispatchQueue.main.async(execute: { self.finished?() })
+                let exitStatus = task.terminationStatus
+                DispatchQueue.main.async(execute: { self.finished?(Int(exitStatus)) })
             }
             
             // Handle output

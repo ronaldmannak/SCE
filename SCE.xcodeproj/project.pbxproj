@@ -41,8 +41,6 @@
 		C7050A0D215C6D70003DDA2B /* Templates-Etherlime.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7050A0B215C6D70003DDA2B /* Templates-Etherlime.plist */; };
 		C7050A0F215C7047003DDA2B /* Templates-Truffle.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7050A0E215C7047003DDA2B /* Templates-Truffle.plist */; };
 		C7050A10215C7047003DDA2B /* Templates-Truffle.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7050A0E215C7047003DDA2B /* Templates-Truffle.plist */; };
-		C7050A2F2166CE6C003DDA2B /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A2E2166CE6B003DDA2B /* Shell.swift */; };
-		C7050A302166CE6C003DDA2B /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A2E2166CE6B003DDA2B /* Shell.swift */; };
 		C7050A322166E4F8003DDA2B /* EditorInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7050A312166E4F8003DDA2B /* EditorInterface.plist */; };
 		C7050A332166E4F8003DDA2B /* EditorInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7050A312166E4F8003DDA2B /* EditorInterface.plist */; };
 		C7050A362166FBC9003DDA2B /* LanguageServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A342166FBC9003DDA2B /* LanguageServer.swift */; };
@@ -61,7 +59,7 @@
 		C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */; };
 		C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */; };
 		C70B97052135148A00B0E4C8 /* SoliumTruffle.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B97042135148A00B0E4C8 /* SoliumTruffle.command */; };
-		C711F58921DCB9FF005EBC5D /* Execute.command in Resources */ = {isa = PBXBuildFile; fileRef = C711F58821DCB9FF005EBC5D /* Execute.command */; };
+		C711F58A21DDB68F005EBC5D /* Execute.command in Resources */ = {isa = PBXBuildFile; fileRef = C711F58821DCB9FF005EBC5D /* Execute.command */; };
 		C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7303B63212E75E70007E708 /* Preferences.storyboard */; };
 		C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */; };
 		C76FC32021439FAC00DB2C62 /* InstallBlockchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */; };
@@ -368,6 +366,15 @@
 			path = Tronbox;
 			sourceTree = "<group>";
 		};
+		C711F58B21DDCEFD005EBC5D /* unused */ = {
+			isa = PBXGroup;
+			children = (
+				C7050A2E2166CE6B003DDA2B /* Shell.swift */,
+				C7050A2B2161D1AD003DDA2B /* BuildTool.swift */,
+			);
+			path = unused;
+			sourceTree = "<group>";
+		};
 		C7303B62212E75C70007E708 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -545,10 +552,9 @@
 				C7F0B99E2112945D005A8FE2 /* AppDelegate.swift */,
 				C7F0B9C52113EA39005A8FE2 /* ScriptTask.swift */,
 				C7E7645C212675AF00867DA4 /* Error.swift */,
-				C7050A2B2161D1AD003DDA2B /* BuildTool.swift */,
 				C70509FC215A1289003DDA2B /* SupportFiles.swift */,
 				C7050A02215A174E003DDA2B /* UserDefaults.swift */,
-				C7050A2E2166CE6B003DDA2B /* Shell.swift */,
+				C711F58B21DDCEFD005EBC5D /* unused */,
 				C7A8FDBA212E9EBB005E20AC /* Main.storyboard */,
 				C7F0B9A42112945F005A8FE2 /* Assets.xcassets */,
 				C7F0B9A92112945F005A8FE2 /* Info.plist */,
@@ -739,7 +745,6 @@
 				C7F0B980210DACCF005A8FE2 /* Assets.xcassets in Resources */,
 				C7050A0F215C7047003DDA2B /* Templates-Truffle.plist in Resources */,
 				C7F0B97E210DACCB005A8FE2 /* Main.storyboard in Resources */,
-				C711F58921DCB9FF005EBC5D /* Execute.command in Resources */,
 				C7050A322166E4F8003DDA2B /* EditorInterface.plist in Resources */,
 				C7050A00215A1538003DDA2B /* EthereumTruffle.json in Resources */,
 				C7050A8B216938B1003DDA2B /* celer.sol in Resources */,
@@ -767,6 +772,7 @@
 				C7050A8F216938EC003DDA2B /* 2_celer_migrations.js in Resources */,
 				C7E764462123539100867DA4 /* Template.storyboard in Resources */,
 				C70B97052135148A00B0E4C8 /* SoliumTruffle.command in Resources */,
+				C711F58A21DDB68F005EBC5D /* Execute.command in Resources */,
 				C70B96FE21320EA600B0E4C8 /* EmbarkInit.command in Resources */,
 				C7E76459212610DA00867DA4 /* TruffleInit.command in Resources */,
 				C70509F62159D28C003DDA2B /* EtherlimeInit.command in Resources */,
@@ -939,7 +945,6 @@
 				C7050A8321680964003DDA2B /* ProjectInitProtocol.swift in Sources */,
 				C7050A09215C5129003DDA2B /* TemplateOptionsViewController.swift in Sources */,
 				C7050A8721680970003DDA2B /* TruffleInit.swift in Sources */,
-				C7050A2F2166CE6C003DDA2B /* Shell.swift in Sources */,
 				C70509FD215A1289003DDA2B /* SupportFiles.swift in Sources */,
 				C7F0B9BE2112C3CA005A8FE2 /* SolidityLexer.swift in Sources */,
 			);
@@ -978,7 +983,6 @@
 				C7F0B99F2112945D005A8FE2 /* AppDelegate.swift in Sources */,
 				C7E4AFA92175886800D5716B /* EditWindowRestoration.swift in Sources */,
 				C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */,
-				C7050A302166CE6C003DDA2B /* Shell.swift in Sources */,
 				C7F0B9A32112945D005A8FE2 /* Document.swift in Sources */,
 				C7E764422122AC2100867DA4 /* Template.swift in Sources */,
 				C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */,

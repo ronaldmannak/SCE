@@ -9,6 +9,8 @@ usage() {
     -d Set directory the commands will be executed (mandatory)
     List of commands to be executed
 
+    Note: if the directory contains spaces, either escape the spaces or surround the directory with quotes.
+
     Example:
     To show home directory content, use
     $0 -d ~ \"ls -l\"
@@ -49,15 +51,15 @@ then
     usage
 fi
 
-# 2. cd to directory
-printCommand 'cd ' $d
-cd $d || exit 1
-
-# 3. Set path if $p is set
+# 2. Set path if $p is set
 if [ -n "$p" ]; then
     export PATH=$PATH:$p
 fi
 echo "PATH="$PATH
+
+# 3. cd to directory
+printCommand 'cd ' $d
+cd "${d}" || exit 1
 
 # 4. Execute the commands
 for command in "$@"; do

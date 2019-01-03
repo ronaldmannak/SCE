@@ -146,7 +146,15 @@ extension Dependency {
             guard let versionString = versions.first else { return }
             version(versionString)
             lines = lines + 1
-        }) {}
+        }) { exitStatus in
+            
+            guard exitStatus == 0 else {
+                let error = CompositeError.bashScriptFailed("Bash error")
+                let alert = NSAlert(error: error)
+                alert.runModal()
+                return
+            }
+        }
         task.run()
     }
     
@@ -163,7 +171,15 @@ extension Dependency {
     func suggestLocation(completion: (String) -> ()) throws {
         let task = try ScriptTask(script: "Which", arguments: ["brew"], output: { output in
             print(output)
-        }) {}
+        }) { exitStatus in
+            
+            guard exitStatus == 0 else {
+                let error = CompositeError.bashScriptFailed("Bash error")
+                let alert = NSAlert(error: error)
+                alert.runModal()
+                return
+            }
+        }
         task.run()
     }
     
@@ -189,9 +205,17 @@ extension Dependency {
             let homePath = FileManager.default.homeDirectoryForCurrentUser.path
             task = try ScriptTask(script: "Execute", arguments: [installCommand, homePath], output: { console in
                 output(console)
-            }) {
+            }) { exitStatus in
+                
                 self.task = nil
                 finished()
+
+                guard exitStatus == 0 else {
+                    let error = CompositeError.bashScriptFailed("Bash error")
+                    let alert = NSAlert(error: error)
+                    alert.runModal()
+                    return
+                }
             }
             return task
         }
@@ -237,12 +261,28 @@ extension Dependency {
         let homePath = FileManager.default.homeDirectoryForCurrentUser.path
         task = try ScriptTask(script: "Execute", arguments: [updateCommand, homePath], output: { console in
             output(console)
-        }) {
+        }) { exitStatus in
+            
             self.task = nil
             finished()
+            
+            guard exitStatus == 0 else {
+                let error = CompositeError.bashScriptFailed("Bash error")
+                let alert = NSAlert(error: error)
+                alert.runModal()
+                return
+            }
         }
         return task
     }
     
+    static func executeScriptTask(directory: String, path: String? = nil, commands: [String]) {
+        
+        var arguments = [String]()
+        arguments.append("-d \(directory)")
+        if let path = path { arguments.append("-p \(path)")}
+        
+        
+    }
 }
 

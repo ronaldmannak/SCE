@@ -30,8 +30,16 @@ class ProjectInitViewController: NSViewController {
                     self.textView.scrollRangeToVisible(range)
                     self.progressIndicator.increment(by: 1)
                     self.counter = self.counter + 1
-                }) {
+                }) { exitStatus in
                     self.progressIndicator.stopAnimation(self)
+                    
+                    guard exitStatus == 0 else {
+                        let error = CompositeError.bashScriptFailed("Bash error")
+                        let alert = NSAlert(error: error)
+                        alert.runModal()
+                        return
+                    }
+                    
                     let documentController = NSDocumentController.shared
                     documentController.openDocument(withContentsOf: self.projectInit.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
                         

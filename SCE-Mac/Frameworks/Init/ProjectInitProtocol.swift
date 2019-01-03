@@ -63,7 +63,7 @@ protocol ProjectInitProtocol {
     ///   - finished: <#finished description#>
     /// - Returns: <#return value description#>
     /// - Throws: <#throws value description#>
-    func create(output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask 
+    func create(output: @escaping (String)->Void, finished: @escaping (Int) -> Void) throws -> ScriptTask 
     
     /// Default implementation provided
     func copy(file: CopyFile) throws
