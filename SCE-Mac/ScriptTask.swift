@@ -92,4 +92,25 @@ class ScriptTask: NSObject {
     func terminate() {
         task.terminate()
     }
+    
+    /// Convenience initializer for generic Execute.command script
+    ///
+    /// - Parameters:
+    ///   - directory: directory where script will be run (e.g. project directory)
+    ///   - path: Add custom path environment variable
+    ///   - commands: Commands to execute. Quotes will be added
+    ///   - output: Output of the script will be send here
+    ///   - finished: Called when finished with exit code
+    /// - Throws: forwarded exception from designated initializer
+    convenience init(directory: String, path: String? = nil, commands: [String], output: @escaping (String)->Void, finished: @escaping (Int) -> Void) throws {
+        
+        var arguments = [String]()
+        arguments.append("-d \(directory.escapedSpaces)")
+        if let path = path { arguments.append("-p \(path.escapedSpaces)") }
+        
+        for command in commands {
+            arguments.append("\"\(command)\"")
+        }
+        try self.init(script: "Execute", arguments: arguments, output: output, finished: finished)
+    }
 }

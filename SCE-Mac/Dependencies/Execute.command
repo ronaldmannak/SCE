@@ -66,3 +66,5 @@ for command in "$@"; do
     printCommand $command
     $command || exit 1
 done
+
+echo '\nReady.'

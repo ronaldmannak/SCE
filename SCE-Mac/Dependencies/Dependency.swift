@@ -194,7 +194,7 @@ extension Dependency {
         
         // Hardcoded edgecase for brew.
         // The brew installer needs to run as admin.
-        // Running an NSTask
+        // TODO: figure out how to run Processes as root
         if name == "brew" {
             try installBrew(output: output, finished: finished)
             return nil
@@ -203,7 +203,9 @@ extension Dependency {
         if let installCommand = installCommand {
             
             let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-            task = try ScriptTask(script: "Execute", arguments: [installCommand, homePath], output: { console in
+            task = try ScriptTask(directory: "~", commands: <#T##[String]#>, output: <#T##(String) -> Void#>, finished: <#T##(Int) -> Void#>)
+                
+                ScriptTask(script: "Execute", arguments: [installCommand, homePath], output: { console in
                 output(console)
             }) { exitStatus in
                 
@@ -274,15 +276,6 @@ extension Dependency {
             }
         }
         return task
-    }
-    
-    static func executeScriptTask(directory: String, path: String? = nil, commands: [String]) {
-        
-        var arguments = [String]()
-        arguments.append("-d \(directory)")
-        if let path = path { arguments.append("-p \(path)")}
-        
-        
     }
 }
 
