@@ -62,6 +62,8 @@
 		C711F58A21DDB68F005EBC5D /* Execute.command in Resources */ = {isa = PBXBuildFile; fileRef = C711F58821DCB9FF005EBC5D /* Execute.command */; };
 		C711F58D21DDF30B005EBC5D /* FrameworkCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F58C21DDF30B005EBC5D /* FrameworkCommands.swift */; };
 		C711F58E21DDF30B005EBC5D /* FrameworkCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F58C21DDF30B005EBC5D /* FrameworkCommands.swift */; };
+		C711F59021DF2D89005EBC5D /* Templates-Tronbox.plist in Resources */ = {isa = PBXBuildFile; fileRef = C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */; };
+		C711F59221DF37BA005EBC5D /* ERC20.sol in Resources */ = {isa = PBXBuildFile; fileRef = C711F59121DF379D005EBC5D /* ERC20.sol */; };
 		C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7303B63212E75E70007E708 /* Preferences.storyboard */; };
 		C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */; };
 		C76FC32021439FAC00DB2C62 /* InstallBlockchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */; };
@@ -99,7 +101,7 @@
 		C7E764602128F04800867DA4 /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645E2128F04800867DA4 /* OutputViewController.swift */; };
 		C7E76463212936E300867DA4 /* FileBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76462212936E300867DA4 /* FileBrowserViewController.swift */; };
 		C7E76467212937F100867DA4 /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E76466212937F100867DA4 /* FileItem.swift */; };
-		C7E76469212D3D0400867DA4 /* ERC20.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7E76468212D3D0400867DA4 /* ERC20.sol */; };
+		C7E76469212D3D0400867DA4 /* TRC20.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7E76468212D3D0400867DA4 /* TRC20.sol */; };
 		C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */; };
 		C7E7646D212E28F300867DA4 /* TruffleRun.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646C212E28F200867DA4 /* TruffleRun.command */; };
 		C7E76471212E59F100867DA4 /* TruffleWebserver.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76470212E59F000867DA4 /* TruffleWebserver.command */; };
@@ -186,6 +188,7 @@
 		C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Tronbox.plist"; sourceTree = "<group>"; };
 		C711F58821DCB9FF005EBC5D /* Execute.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = Execute.command; sourceTree = "<group>"; };
 		C711F58C21DDF30B005EBC5D /* FrameworkCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkCommands.swift; sourceTree = "<group>"; };
+		C711F59121DF379D005EBC5D /* ERC20.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = ERC20.sol; sourceTree = "<group>"; };
 		C7303B63212E75E70007E708 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallContainerViewController.swift; sourceTree = "<group>"; };
 		C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallBlockchainViewController.swift; sourceTree = "<group>"; };
@@ -220,7 +223,7 @@
 		C7E7645E2128F04800867DA4 /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
 		C7E76462212936E300867DA4 /* FileBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowserViewController.swift; sourceTree = "<group>"; };
 		C7E76466212937F100867DA4 /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
-		C7E76468212D3D0400867DA4 /* ERC20.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = ERC20.sol; sourceTree = "<group>"; };
+		C7E76468212D3D0400867DA4 /* TRC20.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = TRC20.sol; sourceTree = "<group>"; };
 		C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = 2_deploy_contracts.js; sourceTree = "<group>"; };
 		C7E7646C212E28F200867DA4 /* TruffleRun.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = TruffleRun.command; sourceTree = "<group>"; };
 		C7E76470212E59F000867DA4 /* TruffleWebserver.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = TruffleWebserver.command; sourceTree = "<group>"; };
@@ -363,6 +366,7 @@
 		C711F58621DCAB50005EBC5D /* Tronbox */ = {
 			isa = PBXGroup;
 			children = (
+				C7E76468212D3D0400867DA4 /* TRC20.sol */,
 				C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */,
 			);
 			path = Tronbox;
@@ -419,10 +423,10 @@
 		C7A8FDBF212F2060005E20AC /* Truffle */ = {
 			isa = PBXGroup;
 			children = (
+				C711F59121DF379D005EBC5D /* ERC20.sol */,
 				C7E76458212610DA00867DA4 /* TruffleInit.command */,
 				C7E7646C212E28F200867DA4 /* TruffleRun.command */,
 				C7E76470212E59F000867DA4 /* TruffleWebserver.command */,
-				C7E76468212D3D0400867DA4 /* ERC20.sol */,
 				C70509FF215A1538003DDA2B /* EthereumTruffle.json */,
 				C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */,
 				C7050A0E215C7047003DDA2B /* Templates-Truffle.plist */,
@@ -781,10 +785,12 @@
 				C70509F62159D28C003DDA2B /* EtherlimeInit.command in Resources */,
 				C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */,
 				C7F0B9A52112945F005A8FE2 /* Assets.xcassets in Resources */,
-				C7E76469212D3D0400867DA4 /* ERC20.sol in Resources */,
 				C7050A10215C7047003DDA2B /* Templates-Truffle.plist in Resources */,
-				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
+				C711F59021DF2D89005EBC5D /* Templates-Tronbox.plist in Resources */,
 				C7050A0D215C6D70003DDA2B /* Templates-Etherlime.plist in Resources */,
+				C7E76469212D3D0400867DA4 /* TRC20.sol in Resources */,
+				C711F59221DF37BA005EBC5D /* ERC20.sol in Resources */,
+				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
 				C7F0B9A82112945F005A8FE2 /* Edit.storyboard in Resources */,
 				C7050A332166E4F8003DDA2B /* EditorInterface.plist in Resources */,
 				C7E7646D212E28F300867DA4 /* TruffleRun.command in Resources */,

@@ -11,26 +11,26 @@
 		<array>
 			<dict>
 				<key>name</key>
-				<string>ERC-20 Token</string>
+				<string>TRC-20 Token</string>
 				<key>templateName</key>
 				<string>token</string>
 				<key>imageName</key>
 				<string></string>
 				<key>standard</key>
-				<string>ERC-20</string>
+				<string>TRC-20</string>
 				<key>description</key>
-				<string>ERC-20 is a technical standard used for smart contracts on the Ethereum blockchain for implementing tokens.</string>
+				<string>TRC‌-20 is a technical standard used for smart contracts on the TRON blockchain for implementing tokens with the TRON Virtual Machine (TVM). It is fully compatible to ERC‌-20.</string>
 				<key>moreInfoUrl</key>
-				<string>https://github.com/ethereum/eips/issues/20</string>
+				<string>https://developers.tron.network/docs/trc10-token</string>
 				<key>openFile</key>
 				<string></string>
 				<key>detailViewType</key>
-				<string>erc-20</string>
+				<string>trc-20</string>
 				<key>copyFiles</key>
 				<array>
 					<dict>
 						<key>filename</key>
-						<string>ERC20.sol</string>
+						<string>TRC20.sol</string>
 						<key>destination</key>
 						<string>contracts</string>
 						<key>renameFileToProjectName</key>
@@ -46,7 +46,7 @@
 				<key>imageName</key>
 				<string></string>
 				<key>standard</key>
-				<string>ERC-721</string>
+				<string>TRC-721</string>
 				<key>description</key>
 				<string>A special type of cryptographic token which represents something unique; non-fungible tokens are thus not interchangeable.</string>
 				<key>moreInfoUrl</key>
@@ -75,7 +75,7 @@
 				<key>imageName</key>
 				<string></string>
 				<key>standard</key>
-				<string>ERC-1155</string>
+				<string>TRC-1155</string>
 				<key>description</key>
 				<string>One contract can represent any number of Fungible and Non-Fungible assets in a single contract. </string>
 				<key>moreInfoUrl</key>
