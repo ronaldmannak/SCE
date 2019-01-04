@@ -252,7 +252,7 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if categoryTableView.selectedRow == allRowIndex {
-            print("number of items in section \(section): \(categories[section].templates?.count ?? 0)")
+//            print("number of items in section \(section): \(categories[section].templates?.count ?? 0)")
             return categories[section].templates?.count ?? 0
         }
         return categories[categoryTableView.selectedRow - 1].templates?.count ?? 0
@@ -268,8 +268,6 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
 
         let template = item(at: indexPath)
         
-//        print("Creating cell for \(template.name)")
-
         cell.imageView?.image = template.image
         cell.textField?.stringValue = template.name
         cell.erc.stringValue = template.standard
