@@ -53,30 +53,40 @@ class ChooseTemplateViewController: NSViewController {
         // Load dependencies from disk
         do {
             self.platforms = try DependencyPlatform.loadViewModels()
-            if let framework = self.platforms.first?.children?.first as? DependencyFrameworkViewModel {
-                categories = try loadTemplates(framework: framework.name)
-            }
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
         }
         
         platformPopup.removeAllItems()
-        frameworkPopup.removeAllItems()
         
         let platforms = self.platforms as! [DependencyPlatformViewModel]
         for platform in platforms {
             self.platformPopup.addItem(withTitle: platform.name)
-            self.platformPopup.item(withTitle: platform.name)?.isEnabled = !platform.frameworks.isEmpty
-            for framework in platform.frameworks {
-                self.frameworkPopup.addItem(withTitle: framework.name)
-            }
+            let installedFrameworks = platform.frameworks.filter{ $0.state != .notInstalled }
+            self.platformPopup.item(withTitle: platform.name)?.isEnabled = installedFrameworks.count > 0
         }
+        setFrameworkPopup()
+    }
+    
+    private func setFrameworkPopup() {
+        
+        frameworkPopup.removeAllItems()
+        guard let platforms = platforms as? [DependencyPlatformViewModel], platformPopup.indexOfSelectedItem != -1 else { return }
+        
+        let selectedPlatform = platforms[platformPopup.indexOfSelectedItem]
+        guard selectedPlatform.frameworks.count > 0 else { return }
+        
+        for framework in selectedPlatform.frameworks {
+            frameworkPopup.addItem(withTitle: framework.name)
+            frameworkPopup.item(withTitle: framework.name)?.isEnabled = framework.state != .notInstalled
+        }
+        frameworkPopup.selectItem(at: 0)
     }
     
     
     private func setTemplates() {
-        
+        return
         guard let framework = platforms[platformPopup.indexOfSelectedItem].children?[frameworkPopup.indexOfSelectedItem] as? DependencyFrameworkViewModel else { return }
         
         // Load templates
@@ -89,14 +99,13 @@ class ChooseTemplateViewController: NSViewController {
     }
     
     
-    /// filename without JSON extension
     private func loadTemplates(framework: String) throws -> [TemplateCategory] {
         guard let url = Bundle.main.url(forResource: "Templates-\(framework)", withExtension: "plist") else {
             throw(CompositeError.fileNotFound(framework))
         }
-        let jsonData = try Data(contentsOf: url)
+        let data = try Data(contentsOf: url)
         let decoder = PropertyListDecoder()
-        let category = try decoder.decode([TemplateCategory].self, from: jsonData)
+        let category = try decoder.decode([TemplateCategory].self, from: data)
         return category
     }
     
@@ -140,19 +149,10 @@ class ChooseTemplateViewController: NSViewController {
     
     
     @IBAction func platformClicked(_ sender: Any) {
-        
-        // Fetch selected Platform
-        let selected = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
-        
-        // Populate Framework popups
-        self.frameworkPopup.removeAllItems()
-        for framework in selected.frameworks {
-            self.frameworkPopup.addItem(withTitle: framework.name)
-        }
-        
-        // Load new templates
+        setFrameworkPopup()
         setTemplates()
     }
+    
     
     @IBAction func frameworkClicked(_ sender: Any) {
         // Load templates of this framework
@@ -252,7 +252,7 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
     
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+        return 0
         if categoryTableView.selectedRow == allRowIndex {
             print("number of items in section \(section): \(categories[section].templates?.count ?? 0)")
             return categories[section].templates?.count ?? 0
