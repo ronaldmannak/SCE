@@ -39,6 +39,8 @@
 						<string>brew update</string>
 						<key>comment</key>
 						<string>Brew is needed for installing npm</string>
+						<key>url</key>
+						<string>https://brew.sh</string>
 						<key>required</key>
 						<false/>
 					</dict>
@@ -62,7 +64,9 @@
 						<key>updateCommand</key>
 						<string>brew upgrade node</string>
 						<key>comment</key>
-						<string>node and npm are required by Truffle</string>
+						<string></string>
+						<key>url</key>
+						<string>https://nodejs.org/</string>
 						<key>required</key>
 						<false/>
 					</dict>
@@ -74,7 +78,7 @@
 						<key>defaultLocation</key>
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
-						<string>2.3.4</string>
+						<string>2.3.9</string>
 						<key>isPlatformVersion</key>
 						<true/>
 						<key>versionCommand</key>
@@ -87,16 +91,18 @@
 						<string>npm -g update --save tronbox</string>
 						<key>comment</key>
 						<string></string>
+						<key>url</key>
+						<string>https://developers.tron.network/docs/tron-box-user-guide</string>
 						<key>required</key>
 						<true/>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>EthLint</string>
+						<string>Tron Docker</string>
 						<key>customLocation</key>
 						<string></string>
 						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
+						<string></string>
 						<key>minimumVersion</key>
 						<string>2.3.4</string>
 						<key>isPlatformVersion</key>
@@ -106,11 +112,15 @@
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
-						<string>npm install -g solium</string>
+						<string></string>
+						<key>installLink</key>
+						<string>https://developers.tron.network/docs/getting-started-1</string>
 						<key>updateCommand</key>
 						<string>npm -g update --save solium</string>
 						<key>comment</key>
 						<string></string>
+						<key>url</key>
+						<string>https://developers.tron.network/docs/getting-started-1</string>
 						<key>required</key>
 						<false/>
 					</dict>
@@ -199,6 +209,8 @@
 						<string>brew update</string>
 						<key>comment</key>
 						<string>Brew is needed for installing npm</string>
+						<key>url</key>
+						<string>https://brew.sh</string>
 						<key>required</key>
 						<false/>
 					</dict>
@@ -223,6 +235,8 @@
 						<string>brew upgrade node</string>
 						<key>comment</key>
 						<string>node and npm are required by Truffle</string>
+						<key>url</key>
+						<string>https://nodejs.org/</string>
 						<key>required</key>
 						<false/>
 					</dict>
@@ -290,6 +304,8 @@
 						<string>brew update</string>
 						<key>comment</key>
 						<string>Brew is needed for installing npm</string>
+						<key>url</key>
+						<string>https://brew.sh</string>
 						<key>required</key>
 						<false/>
 					</dict>
@@ -314,6 +330,8 @@
 						<string>brew upgrade node</string>
 						<key>comment</key>
 						<string>node and npm are required by Truffle</string>
+						<key>url</key>
+						<string>https://nodejs.org/</string>
 						<key>required</key>
 						<false/>
 					</dict>
@@ -338,6 +356,8 @@
 						<string>npm update --save truffle</string>
 						<key>comment</key>
 						<string></string>
+						<key>url</key>
+						<string>https://truffleframework.com</string>
 						<key>required</key>
 						<true/>
 					</dict>
@@ -362,6 +382,8 @@
 						<string>npm update --save solium</string>
 						<key>comment</key>
 						<string></string>
+						<key>url</key>
+						<string>https://github.com/duaraghav8/Ethlint</string>
 						<key>required</key>
 						<true/>
 					</dict>
@@ -386,6 +408,8 @@
 						<string></string>
 						<key>comment</key>
 						<string></string>
+						<key>url</key>
+						<string>https://truffleframework.com/ganache</string>
 						<key>required</key>
 						<true/>
 					</dict>
