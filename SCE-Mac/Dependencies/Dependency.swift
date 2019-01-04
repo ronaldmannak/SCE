@@ -143,6 +143,7 @@ extension Dependency {
             // Some dependencies return multiple lines for their version information
             // Ignore lines where no version is found
             guard let versionString = versions.first else { return }
+            self.versionNumber = versionString
             version(versionString)
             lines = lines + 1
         }) { exitStatus in
@@ -206,14 +207,27 @@ extension Dependency {
                 output(console)
             }) { exitStatus in
                 
-                self.task = nil
-                finished(exitStatus)
-
+                func done() {
+                    self.task = nil
+                    finished(exitStatus)
+                }
+               
                 guard exitStatus == 0 else {
                     let error = CompositeError.bashScriptFailed("Bash error")
                     let alert = NSAlert(error: error)
                     alert.runModal()
+                    done()
                     return
+                }
+
+                // Update version number
+                do {
+                    try self.fileVersion { version in
+                        self.versionNumber = version
+                        done()
+                    }
+                } catch {
+                    done()
                 }
             }
             return task
@@ -261,13 +275,26 @@ extension Dependency {
             output(console)
         }) { exitStatus in
             
-            self.task = nil
-            finished(exitStatus)
+            func done() {
+                self.task = nil
+                finished(exitStatus)
+            }
             
             guard exitStatus == 0 else {
                 // Node returns an error when trying to update an up-to-date version
                 print("Error updating \(self.name)")
+                done()
                 return
+            }
+            
+            // Update version number
+            do {
+                try self.fileVersion { version in
+                    self.versionNumber = version
+                    done()
+                }
+            } catch {
+                done()
             }
         }
         return task

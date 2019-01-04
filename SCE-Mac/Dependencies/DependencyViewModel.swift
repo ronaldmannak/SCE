@@ -19,7 +19,7 @@ class DependencyViewModel: DependencyViewModelProtocol {
     
     let path: String?
     
-    private (set) var version: String? = nil
+    var version: String? { return dependency.versionNumber }
     
     private (set) var isPlatformVersion: Bool
     
@@ -76,9 +76,7 @@ class DependencyViewModel: DependencyViewModelProtocol {
     }
     
     func updateVersion(completion: @escaping (String) -> ()) throws {
-        
         try dependency.fileVersion {
-            self.version = $0
             completion($0)
         }
     }
