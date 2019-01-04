@@ -27,8 +27,6 @@
 		C70509FB2159E1EE003DDA2B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E7645A21262D1800867DA4 /* Project.swift */; };
 		C70509FD215A1289003DDA2B /* SupportFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509FC215A1289003DDA2B /* SupportFiles.swift */; };
 		C70509FE215A1289003DDA2B /* SupportFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509FC215A1289003DDA2B /* SupportFiles.swift */; };
-		C7050A00215A1538003DDA2B /* EthereumTruffle.json in Resources */ = {isa = PBXBuildFile; fileRef = C70509FF215A1538003DDA2B /* EthereumTruffle.json */; };
-		C7050A01215A1538003DDA2B /* EthereumTruffle.json in Resources */ = {isa = PBXBuildFile; fileRef = C70509FF215A1538003DDA2B /* EthereumTruffle.json */; };
 		C7050A03215A174E003DDA2B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A02215A174E003DDA2B /* UserDefaults.swift */; };
 		C7050A04215A174E003DDA2B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A02215A174E003DDA2B /* UserDefaults.swift */; };
 		C7050A06215C510B003DDA2B /* TemplateContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A05215C510B003DDA2B /* TemplateContainerViewController.swift */; };
@@ -76,6 +74,16 @@
 		C711F5A321DF4702005EBC5D /* TruffleInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76458212610DA00867DA4 /* TruffleInit.command */; };
 		C711F5A421DF4702005EBC5D /* TruffleWebserver.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76470212E59F000867DA4 /* TruffleWebserver.command */; };
 		C711F5A521DF4702005EBC5D /* TruffleWebserver.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76470212E59F000867DA4 /* TruffleWebserver.command */; };
+		C711F5A821DF4BDC005EBC5D /* EmbarkInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A6F21671AFD003DDA2B /* EmbarkInit.swift */; };
+		C711F5A921DF4BDC005EBC5D /* EmbarkInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A6F21671AFD003DDA2B /* EmbarkInit.swift */; };
+		C711F5AB21DF4E69005EBC5D /* ProjectInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */; };
+		C711F5AC21DF4E69005EBC5D /* ProjectInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */; };
+		C711F5B121DF4ED1005EBC5D /* EthereumTruffle.json in Resources */ = {isa = PBXBuildFile; fileRef = C711F5B021DF4ED0005EBC5D /* EthereumTruffle.json */; };
+		C711F5B221DF4ED1005EBC5D /* EthereumTruffle.json in Resources */ = {isa = PBXBuildFile; fileRef = C711F5B021DF4ED0005EBC5D /* EthereumTruffle.json */; };
+		C711F5B421DF5004005EBC5D /* FrameworkInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5B321DF5004005EBC5D /* FrameworkInit.swift */; };
+		C711F5B521DF5004005EBC5D /* FrameworkInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5B321DF5004005EBC5D /* FrameworkInit.swift */; };
+		C711F5B721DF50EB005EBC5D /* CopyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5B621DF50EB005EBC5D /* CopyFile.swift */; };
+		C711F5B821DF50EB005EBC5D /* CopyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5B621DF50EB005EBC5D /* CopyFile.swift */; };
 		C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7303B63212E75E70007E708 /* Preferences.storyboard */; };
 		C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */; };
 		C76FC32021439FAC00DB2C62 /* InstallBlockchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */; };
@@ -172,7 +180,6 @@
 		C70509F42159D28C003DDA2B /* EtherlimeInit.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = EtherlimeInit.command; sourceTree = "<group>"; };
 		C70509F72159D307003DDA2B /* EtherlimeRun.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = EtherlimeRun.command; sourceTree = "<group>"; };
 		C70509FC215A1289003DDA2B /* SupportFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportFiles.swift; sourceTree = "<group>"; };
-		C70509FF215A1538003DDA2B /* EthereumTruffle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = EthereumTruffle.json; path = "SCE-Mac/Frameworks/Etherlime/EthereumTruffle.json"; sourceTree = SOURCE_ROOT; };
 		C7050A02215A174E003DDA2B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		C7050A05215C510B003DDA2B /* TemplateContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateContainerViewController.swift; sourceTree = "<group>"; };
 		C7050A08215C5129003DDA2B /* TemplateOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateOptionsViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +206,10 @@
 		C711F58C21DDF30B005EBC5D /* FrameworkCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkCommands.swift; sourceTree = "<group>"; };
 		C711F59121DF379D005EBC5D /* ERC20.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = ERC20.sol; sourceTree = "<group>"; };
 		C711F59521DF3F91005EBC5D /* FrameworkCommands.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FrameworkCommands.plist; sourceTree = "<group>"; };
+		C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInit.swift; sourceTree = "<group>"; };
+		C711F5B021DF4ED0005EBC5D /* EthereumTruffle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EthereumTruffle.json; sourceTree = "<group>"; };
+		C711F5B321DF5004005EBC5D /* FrameworkInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkInit.swift; sourceTree = "<group>"; };
+		C711F5B621DF50EB005EBC5D /* CopyFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyFile.swift; sourceTree = "<group>"; };
 		C7303B63212E75E70007E708 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallContainerViewController.swift; sourceTree = "<group>"; };
 		C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallBlockchainViewController.swift; sourceTree = "<group>"; };
@@ -350,7 +361,6 @@
 				C7050A7221672384003DDA2B /* ProjectInitFactory.swift */,
 				C7050A69216719BD003DDA2B /* EtherlimeInit.swift */,
 				C7050A6C216719C3003DDA2B /* TruffleInit.swift */,
-				C7050A6F21671AFD003DDA2B /* EmbarkInit.swift */,
 			);
 			path = Init;
 			sourceTree = "<group>";
@@ -367,6 +377,7 @@
 		C711F58B21DDCEFD005EBC5D /* unused */ = {
 			isa = PBXGroup;
 			children = (
+				C7050A6F21671AFD003DDA2B /* EmbarkInit.swift */,
 				C7E76458212610DA00867DA4 /* TruffleInit.command */,
 				C7E7646C212E28F200867DA4 /* TruffleRun.command */,
 				C7E76470212E59F000867DA4 /* TruffleWebserver.command */,
@@ -428,6 +439,9 @@
 			children = (
 				C711F58C21DDF30B005EBC5D /* FrameworkCommands.swift */,
 				C711F59521DF3F91005EBC5D /* FrameworkCommands.plist */,
+				C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */,
+				C711F5B321DF5004005EBC5D /* FrameworkInit.swift */,
+				C711F5B621DF50EB005EBC5D /* CopyFile.swift */,
 				C7050A652167196D003DDA2B /* Init */,
 			);
 			path = Frameworks;
@@ -436,7 +450,7 @@
 		C7A8FDBF212F2060005E20AC /* Truffle */ = {
 			isa = PBXGroup;
 			children = (
-				C70509FF215A1538003DDA2B /* EthereumTruffle.json */,
+				C711F5B021DF4ED0005EBC5D /* EthereumTruffle.json */,
 				C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */,
 			);
 			path = Truffle;
@@ -746,6 +760,7 @@
 				C7050A0C215C6D70003DDA2B /* Templates-Etherlime.plist in Resources */,
 				C711F5A321DF4702005EBC5D /* TruffleInit.command in Resources */,
 				C7050A8E216938EC003DDA2B /* 2_celer_migrations.js in Resources */,
+				C711F5B121DF4ED1005EBC5D /* EthereumTruffle.json in Resources */,
 				C711F5A121DF4702005EBC5D /* TruffleRun.command in Resources */,
 				C711F59F21DF46EA005EBC5D /* EtherlimeRun.command in Resources */,
 				C7F0B980210DACCF005A8FE2 /* Assets.xcassets in Resources */,
@@ -755,7 +770,6 @@
 				C7050A0F215C7047003DDA2B /* Templates-Truffle.plist in Resources */,
 				C7F0B97E210DACCB005A8FE2 /* Main.storyboard in Resources */,
 				C7050A322166E4F8003DDA2B /* EditorInterface.plist in Resources */,
-				C7050A00215A1538003DDA2B /* EthereumTruffle.json in Resources */,
 				C7050A8B216938B1003DDA2B /* celer.sol in Resources */,
 				F8F7FB4D214B4E58001A6F49 /* BrewInstall.command in Resources */,
 				C711F59B21DF46EA005EBC5D /* SoliumTruffle.command in Resources */,
@@ -798,11 +812,11 @@
 				C7E4AFA6216AADD900D5716B /* Init.command in Resources */,
 				C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */,
 				C711F5A421DF4702005EBC5D /* TruffleWebserver.command in Resources */,
-				C7050A01215A1538003DDA2B /* EthereumTruffle.json in Resources */,
 				C711F59721DF3F91005EBC5D /* FrameworkCommands.plist in Resources */,
 				C711F5A021DF4702005EBC5D /* TruffleRun.command in Resources */,
 				C711F59E21DF46EA005EBC5D /* EtherlimeRun.command in Resources */,
 				C711F5A221DF4702005EBC5D /* TruffleInit.command in Resources */,
+				C711F5B221DF4ED1005EBC5D /* EthereumTruffle.json in Resources */,
 				C7DDD757214113CB00674942 /* Which.command in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -940,12 +954,15 @@
 				C70509EF2155C9D6003DDA2B /* DependencyPlatformViewModel.swift in Sources */,
 				C7F0B97B210DACCB005A8FE2 /* DetailViewController.swift in Sources */,
 				C7050A06215C510B003DDA2B /* TemplateContainerViewController.swift in Sources */,
+				C711F5B721DF50EB005EBC5D /* CopyFile.swift in Sources */,
 				C70509ED2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift in Sources */,
 				C7E4AFA82175886800D5716B /* EditWindowRestoration.swift in Sources */,
 				C7050A382166FCA8003DDA2B /* Document.swift in Sources */,
 				C7050A03215A174E003DDA2B /* UserDefaults.swift in Sources */,
 				C7E4AFB32175BA4800D5716B /* EditorInterface.swift in Sources */,
+				C711F5AB21DF4E69005EBC5D /* ProjectInit.swift in Sources */,
 				C7F0B979210DACCB005A8FE2 /* MasterViewController.swift in Sources */,
+				C711F5B421DF5004005EBC5D /* FrameworkInit.swift in Sources */,
 				C70509F221561357003DDA2B /* DepedencyViewModelProtocol.swift in Sources */,
 				C7E4AFA2216A641B00D5716B /* EtherlimeInit.swift in Sources */,
 				C70509FB2159E1EE003DDA2B /* Project.swift in Sources */,
@@ -955,6 +972,7 @@
 				C70509E62155B47B003DDA2B /* DependencyViewModel.swift in Sources */,
 				C7050A852168096B003DDA2B /* ProjectInitFactory.swift in Sources */,
 				C7050A8321680964003DDA2B /* ProjectInitProtocol.swift in Sources */,
+				C711F5A921DF4BDC005EBC5D /* EmbarkInit.swift in Sources */,
 				C7050A09215C5129003DDA2B /* TemplateOptionsViewController.swift in Sources */,
 				C711F58D21DDF30B005EBC5D /* FrameworkCommands.swift in Sources */,
 				C7050A8721680970003DDA2B /* TruffleInit.swift in Sources */,
@@ -981,12 +999,15 @@
 				C7E76467212937F100867DA4 /* FileItem.swift in Sources */,
 				C7F0B9C62113EA39005A8FE2 /* ScriptTask.swift in Sources */,
 				C70509EE2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift in Sources */,
+				C711F5B521DF5004005EBC5D /* FrameworkInit.swift in Sources */,
 				C7DDD74E2140AFDC00674942 /* DependencyPlatform.swift in Sources */,
+				C711F5AC21DF4E69005EBC5D /* ProjectInit.swift in Sources */,
 				C7DDD7502140B68C00674942 /* Platform.swift in Sources */,
 				C7E4AFB42175BA4800D5716B /* EditorInterface.swift in Sources */,
 				C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */,
 				C7E4AFA3216A641C00D5716B /* EtherlimeInit.swift in Sources */,
 				C7050A362166FBC9003DDA2B /* LanguageServer.swift in Sources */,
+				C711F5A821DF4BDC005EBC5D /* EmbarkInit.swift in Sources */,
 				C7E7645D212675AF00867DA4 /* Error.swift in Sources */,
 				C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */,
 				C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */,
@@ -1018,6 +1039,7 @@
 				C7E76448212358A900867DA4 /* ProjectInitViewController.swift in Sources */,
 				C7F0B9C42113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift in Sources */,
 				C7050A04215A174E003DDA2B /* UserDefaults.swift in Sources */,
+				C711F5B821DF50EB005EBC5D /* CopyFile.swift in Sources */,
 				C7E76437211EC16300867DA4 /* EditWindowController.swift in Sources */,
 				C7E7645B21262D1800867DA4 /* Project.swift in Sources */,
 				C76FC3232143A6BF00DB2C62 /* InstallCompleteViewController.swift in Sources */,

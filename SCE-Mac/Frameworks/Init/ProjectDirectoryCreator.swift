@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct CopyFile: Codable {
-    let filename: String
-    let destination: String
-    // let rename: String ?
-}
+//struct CopyFile: Codable {
+//    let filename: String
+//    let destination: String
+//    // let rename: String ?
+//}
 
 
 /// Creates the project directory and files
