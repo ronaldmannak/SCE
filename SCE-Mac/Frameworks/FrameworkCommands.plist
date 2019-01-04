@@ -40,6 +40,15 @@
 				<key>commands</key>
 				<array>
 					<string>tronbox init</string>
+				</array>
+				<key>createProjectDirectory</key>
+				<true/>
+			</dict>
+			<key>initTemplate</key>
+			<dict>
+				<key>commands</key>
+				<array>
+					<string>tronbox init</string>
 					<string>npm install --save-exact zeppelin-solidity@1.7.0</string>
 					<string>solium init</string>
 				</array>
@@ -84,6 +93,15 @@
 			<key>warningRegex</key>
 			<string>*</string>
 			<key>init</key>
+			<dict>
+				<key>commands</key>
+				<array>
+					<string>etherlime init</string>
+				</array>
+				<key>createProjectDirectory</key>
+				<true/>
+			</dict>
+			<key>initTemplate</key>
 			<dict>
 				<key>commands</key>
 				<array>
@@ -136,6 +154,26 @@
 				<key>commands</key>
 				<array>
 					<string>truffle init</string>
+				</array>
+				<key>createProjectDirectory</key>
+				<true/>
+			</dict>
+			<key>initTemplate</key>
+			<dict>
+				<key>commands</key>
+				<array>
+					<string>truffle init</string>
+					<string>npm init -y</string>
+					<string>npm install --save-exact openzeppelin-solidity</string>
+				</array>
+				<key>createProjectDirectory</key>
+				<true/>
+			</dict>
+			<key>initExample</key>
+			<dict>
+				<key>commands</key>
+				<array>
+					<string>truffle unbox ($TEMPLATE)</string>
 					<string>npm init -y</string>
 					<string>npm install --save-exact openzeppelin-solidity</string>
 				</array>
