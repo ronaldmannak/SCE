@@ -4,6 +4,166 @@
 <array>
 	<dict>
 		<key>platform</key>
+		<string>tron</string>
+		<key>projectUrl</key>
+		<string>https://tron.network</string>
+		<key>documentationUrl</key>
+		<string>https://developers.tron.network</string>
+		<key>frameworks</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Tronbox</string>
+				<key>dependencies</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>brew</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>1.7.4</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>brew -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string></string>
+						<key>installCommand-rem</key>
+						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
+						<key>updateCommand</key>
+						<string>brew update</string>
+						<key>comment</key>
+						<string>Brew is needed for installing npm</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>node</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin</string>
+						<key>minimumVersion</key>
+						<string>10.10.0</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>node -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>brew install node</string>
+						<key>updateCommand</key>
+						<string>brew upgrade node</string>
+						<key>comment</key>
+						<string>node and npm are required by Truffle</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>TronBox</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>2.3.4</string>
+						<key>isPlatformVersion</key>
+						<true/>
+						<key>versionCommand</key>
+						<string>tronbox version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm install -g tronbox</string>
+						<key>updateCommand</key>
+						<string>npm -g update --save tronbox</string>
+						<key>comment</key>
+						<string></string>
+						<key>required</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>EthLint</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>2.3.4</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>solium --version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm install -g solium</string>
+						<key>updateCommand</key>
+						<string>npm -g update --save solium</string>
+						<key>comment</key>
+						<string></string>
+						<key>required</key>
+						<false/>
+					</dict>
+				</array>
+				<key>description</key>
+				<string>Tronbox is a Tron development and deployment framework based on Ethereum&apos;s Truffle </string>
+				<key>initScript</key>
+				<string>TronBoxInit</string>
+				<key>projectUrl</key>
+				<string>https://tron.network</string>
+				<key>documentationUrl</key>
+				<string>https://developers.tron.network</string>
+				<key>defaultFramework</key>
+				<true/>
+				<key>commands</key>
+				<dict>
+					<key>compile</key>
+					<string>tronbox compile</string>
+					<key>cleanCompile</key>
+					<string>tronbox compile --compile-all</string>
+					<key>deploy</key>
+					<string>tronbox migrate rest</string>
+					<key>cleanDeploy</key>
+					<string>tronbox migrate rest --reset</string>
+					<key>runTests</key>
+					<string>tronbox test $(PATH)</string>
+					<key>cleanRunTests</key>
+					<string>tronbox test $(PATH) --reset</string>
+					<key>console</key>
+					<string>tronbox console</string>
+					<key>lint</key>
+					<string>solium --dir .</string>
+					<key>errorRegex</key>
+					<string>*</string>
+					<key>warningRegex</key>
+					<string>*</string>
+					<key>init</key>
+					<dict>
+						<key>commands</key>
+						<array>
+							<string>tronbox init</string>
+							<string>npm install zeppelin-solidity@1.7.0 --save-exact</string>
+							<string>solium init</string>
+						</array>
+						<key>createProjectDirectory</key>
+						<true/>
+					</dict>
+				</dict>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>platform</key>
 		<string>ethereum</string>
 		<key>projectUrl</key>
 		<string>https://www.ethereum.org</string>
@@ -32,6 +192,8 @@
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
+						<string></string>
+						<key>installCommand-rem</key>
 						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
 						<key>updateCommand</key>
 						<string>brew update</string>
@@ -121,6 +283,8 @@
 						<key>versionRegex</key>
 						<string></string>
 						<key>installCommand</key>
+						<string></string>
+						<key>installCommand-rem</key>
 						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
 						<key>updateCommand</key>
 						<string>brew update</string>
@@ -351,188 +515,6 @@
 				<true/>
 			</dict>
 		</array>
-	</dict>
-	<dict>
-		<key>platform</key>
-		<string>tron</string>
-		<key>projectUrl</key>
-		<string>https://tron.network</string>
-		<key>documentationUrl</key>
-		<string>https://developers.tron.network</string>
-		<key>frameworks</key>
-		<array>
-			<dict>
-				<key>name</key>
-				<string>Tronbox</string>
-				<key>dependencies</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>brew</string>
-						<key>customLocation</key>
-						<string></string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
-						<key>minimumVersion</key>
-						<string>1.7.4</string>
-						<key>isPlatformVersion</key>
-						<false/>
-						<key>versionCommand</key>
-						<string>brew -v</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
-						<key>updateCommand</key>
-						<string>brew update</string>
-						<key>comment</key>
-						<string>Brew is needed for installing npm</string>
-						<key>required</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>node</string>
-						<key>customLocation</key>
-						<string></string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin</string>
-						<key>minimumVersion</key>
-						<string>10.10.0</string>
-						<key>isPlatformVersion</key>
-						<false/>
-						<key>versionCommand</key>
-						<string>node -v</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string>brew install node</string>
-						<key>updateCommand</key>
-						<string>brew upgrade node</string>
-						<key>comment</key>
-						<string>node and npm are required by Truffle</string>
-						<key>required</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>TronBox</string>
-						<key>customLocation</key>
-						<string></string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
-						<key>minimumVersion</key>
-						<string>2.3.4</string>
-						<key>isPlatformVersion</key>
-						<true/>
-						<key>versionCommand</key>
-						<string>tronbox version</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string>npm install -g tronbox</string>
-						<key>updateCommand</key>
-						<string>npm -g update --save tronbox</string>
-						<key>comment</key>
-						<string></string>
-						<key>required</key>
-						<true/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>EthLint</string>
-						<key>customLocation</key>
-						<string></string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
-						<key>minimumVersion</key>
-						<string>2.3.4</string>
-						<key>isPlatformVersion</key>
-						<false/>
-						<key>versionCommand</key>
-						<string>solium --version</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string>npm install -g solium</string>
-						<key>updateCommand</key>
-						<string>npm -g update --save solium</string>
-						<key>comment</key>
-						<string></string>
-						<key>required</key>
-						<true/>
-					</dict>
-				</array>
-				<key>description</key>
-				<string>Tronbox is a Tron development and deployment framework based on Ethereum&apos;s Truffle </string>
-				<key>initScript</key>
-				<string>TronBoxInit</string>
-				<key>projectUrl</key>
-				<string>https://tron.network</string>
-				<key>documentationUrl</key>
-				<string>https://developers.tron.network</string>
-				<key>defaultFramework</key>
-				<true/>
-				<key>commands</key>
-				<dict>
-					<key>compile</key>
-					<string>tronbox compile</string>
-					<key>cleanCompile</key>
-					<string>tronbox compile --compile-all</string>
-					<key>deploy</key>
-					<string>tronbox migrate rest</string>
-					<key>cleanDeploy</key>
-					<string>tronbox migrate rest --reset</string>
-					<key>runTests</key>
-					<string>tronbox test $(PATH)</string>
-					<key>cleanRunTests</key>
-					<string>tronbox test $(PATH) --reset</string>
-					<key>console</key>
-					<string>tronbox console</string>
-					<key>lint</key>
-					<string>solium --dir .</string>
-					<key>errorRegex</key>
-					<string>*</string>
-					<key>warningRegex</key>
-					<string>*</string>
-					<key>init</key>
-					<dict>
-						<key>commands</key>
-						<array>
-							<string>tronbox init</string>
-							<string>npm install zeppelin-solidity@1.7.0 --save-exact</string>
-							<string>solium init</string>
-						</array>
-						<key>createProjectDirectory</key>
-						<true/>
-					</dict>
-				</dict>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>platform</key>
-		<string>tezos</string>
-		<key>projectUrl</key>
-		<string>https://tezos.foundation</string>
-		<key>documentationUrl</key>
-		<string>http://tezos.gitlab.io/mainnet/</string>
-		<key>frameworks</key>
-		<array/>
-		<key>dependencies</key>
-		<array/>
-	</dict>
-	<dict>
-		<key>platform</key>
-		<string>dispatch</string>
-		<key>projectUrl</key>
-		<string>https://dispatchlabs.io</string>
-		<key>documentationUrl</key>
-		<string>https://dispatchlabs.io</string>
-		<key>frameworks</key>
-		<array/>
-		<key>dependencies</key>
-		<array/>
 	</dict>
 </array>
 </plist>

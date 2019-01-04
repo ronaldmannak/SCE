@@ -53,20 +53,18 @@ class DependencyPlatformViewModel: DependencyViewModelProtocol {
             return .installing
         }
         
-        // All required dependencies are up to date
-        if frameworks.filter({ $0.state == .uptodate && $0.required == true }).count == frameworks.filter({ $0.required == true }).count {
-            return .uptodate
-        }
-        
-        //            print(frameworks.filter({ $0.state == .notInstalled && $0.required == true }))
-        // Not all required dependencies are installed
-        if frameworks.filter({ $0.state == .notInstalled && $0.required == true }).isEmpty == false {
+        if frameworks.filter({ $0.state == .notInstalled}).isEmpty == false {
             return .notInstalled
         }
         
         // Not all required dependencies are up to date
         if frameworks.filter({ $0.state == .outdated && $0.required == true }).isEmpty == false {
             return .outdated
+        }
+        
+        // All required dependencies are up to date
+        if frameworks.filter({ $0.state == .uptodate && $0.required == true }).count == frameworks.filter({ $0.required == true }).count {
+            return .uptodate
         }
         
         return .unknown
@@ -80,12 +78,12 @@ class DependencyPlatformViewModel: DependencyViewModelProtocol {
         
     }
     
-    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
+    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
         
         return try platformDependency.install(output: output, finished: finished)
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
+    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
         
         return try platformDependency.update(output: output, finished: finished)
     }

@@ -117,13 +117,12 @@ extension Dependency {
     func fileVersion(version:@escaping (String) -> ()) throws {
         
         // If this dependency doesn't have a version query command, return empty string
-        guard let versionCommand = versionCommand else {
+        guard let versionCommand = versionCommand, isInstalled == true else {
             version("")
             return
         }
-        let homePath = FileManager.default.homeDirectoryForCurrentUser.path
         var lines = 1
-        let task = try ScriptTask(directory: homePath, commands: [versionCommand], output: { output in
+        let task = try ScriptTask(directory: "~", commands: [versionCommand], output: { output in
             
             // Assumes that the correct version number is always returned on the first line
             if lines > 1 { return }
@@ -184,12 +183,12 @@ extension Dependency {
         task.run()
     }
     
-    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
+    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> ScriptTask? {
         
         guard isInstalled == false else { return nil }
         
         if let link = installLink, let url = URL(string: link) {
-            finished()
+            finished(0)
             NSWorkspace.shared.open(url)            
         }
         
@@ -203,13 +202,12 @@ extension Dependency {
         
         if let installCommand = installCommand {
             
-            let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-            task = try ScriptTask(script: "Execute", arguments: [installCommand, homePath], output: { console in
+            task = try ScriptTask(directory: "~", commands: [installCommand], output: { console in
                 output(console)
             }) { exitStatus in
                 
                 self.task = nil
-                finished()
+                finished(exitStatus)
 
                 guard exitStatus == 0 else {
                     let error = CompositeError.bashScriptFailed("Bash error")
@@ -237,7 +235,7 @@ extension Dependency {
     ///   - output: <#output description#>
     ///   - finished: <#finished description#>
     /// - Throws: <#throws value description#>
-    private func installBrew(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws  {
+    private func installBrew(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws  {
         
         let message = "Please install brew manually by copying the following text in MacOS terminal"
         let command = "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
@@ -250,27 +248,25 @@ extension Dependency {
         alert.informativeText = command
         alert.runModal()
         
-        finished()
+        finished(0)
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
+    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> ScriptTask? {
         
         guard isInstalled == true, let updateCommand = updateCommand, updateCommand.isEmpty == false else {
             return nil
         }
         
-        let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-        task = try ScriptTask(script: "Execute", arguments: [updateCommand, homePath], output: { console in
+        task = try ScriptTask(directory: "~", commands: [updateCommand], output: { console in
             output(console)
         }) { exitStatus in
             
             self.task = nil
-            finished()
+            finished(exitStatus)
             
             guard exitStatus == 0 else {
-                let error = CompositeError.bashScriptFailed("Bash error")
-                let alert = NSAlert(error: error)
-                alert.runModal()
+                // Node returns an error when trying to update an up-to-date version
+                print("Error updating \(self.name)")
                 return
             }
         }

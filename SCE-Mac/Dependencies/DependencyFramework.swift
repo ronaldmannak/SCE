@@ -38,11 +38,11 @@ struct DependencyFramework: Codable {
     // a project was created by EtherLime or Truffle?
     
     
-    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
+    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {        
         return try dependencies.compactMap { try $0.install(output: output, finished: finished) }
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
+    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
         return try dependencies.compactMap { try $0.update(output: output, finished: finished) }        
     }
 }

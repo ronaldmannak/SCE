@@ -109,8 +109,8 @@ class InstallBlockchainViewController: NSViewController {
             self.console.scrollRangeToVisible(range)
         }
 
-        let finish: () -> Void = {
-
+        let finish: (Int) -> Void = { exitCode in
+            
             do {
                 try item.updateVersion { _ in
                     self.outlineView.reloadData()
@@ -135,6 +135,7 @@ class InstallBlockchainViewController: NSViewController {
             for task in tasks {
                 task.run()
             }
+            self.updateProgressIndicator()
             self.outlineView.reloadData() // to show "installing"
             
         } catch {

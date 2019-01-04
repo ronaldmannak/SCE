@@ -83,12 +83,12 @@ class DependencyViewModel: DependencyViewModelProtocol {
         }
     }
     
-    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
+    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
         let task = try dependency.install(output: output, finished: finished)
         return task != nil ? [task!] : []
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
+    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
         let task = try dependency.update(output: output, finished: finished)
         return task != nil ? [task!] : []
     }
