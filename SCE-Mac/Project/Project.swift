@@ -13,7 +13,6 @@ struct Project: Codable {
     /// Name of the project, e.g. ProjectName
     let name: String
 
-    
     /// Interface
     let platformName: String
     
@@ -22,7 +21,6 @@ struct Project: Codable {
     
     // E.g. 0.9.5
     let frameworkVersion: String?
-    
     
     // TODO: add
     var lastOpenFile: String?

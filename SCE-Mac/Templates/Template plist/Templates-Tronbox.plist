@@ -23,7 +23,7 @@
 				<key>moreInfoUrl</key>
 				<string>https://developers.tron.network/docs/trc10-token</string>
 				<key>openFile</key>
-				<string></string>
+				<string>contract/$(PROJECT_NAME).sol</string>
 				<key>detailViewType</key>
 				<string>trc-20</string>
 				<key>initType</key>

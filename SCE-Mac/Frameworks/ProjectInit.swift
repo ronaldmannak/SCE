@@ -87,16 +87,25 @@ class ProjectInit {
     
     private func saveProjectFile() {
         
+        // Prepare openfile
+        var openFile: String? = nil
+        if let templateOpenFile = template?.openFile {
+            openFile = templateOpenFile.replacingOccurrences(of: "$(PROJECT_NAME)", with: projectName)
+        }
+        
+        // TODO: fix framework version
+        let project = Project(name: projectName, platformName: frameworkCommands.platform, frameworkName: frameworkCommands.framework, frameworkVersion: "0", lastOpenFile: openFile)
+        
         // save openFile in projectfile as lastOpenedFile
-//        let encoder = PropertyListEncoder()
-//        encoder.outputFormat = .xml
-//        do {
-//            let data = try encoder.encode(self.project)
-//            FileManager.default.createFile(atPath: self.project.projectFileURL.path, contents: data, attributes: nil)
-//        } catch {
-//            print(error)
-//            assertionFailure()
-//        }
+        let encoder = PropertyListEncoder()
+        encoder.outputFormat = .xml
+        do {
+            let data = try encoder.encode(project)
+            FileManager.default.createFile(atPath: projectDirectory.appendingPathComponent("\(projectName).comp").path, contents: data, attributes: nil)
+        } catch {
+            print(error)
+            assertionFailure()
+        }
     }
     
     func cancel() {
