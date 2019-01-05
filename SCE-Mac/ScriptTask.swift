@@ -14,6 +14,7 @@ import Foundation
  */
 class ScriptTask: NSObject {
     
+    // TODO: Refactor to NSOperationQueue so we can cancel tasks (e.g. version query in install window takes ages)
     static var queue = DispatchQueue(label: "ScriptTaskQueue", qos: .background) 
     
     var task = Process()

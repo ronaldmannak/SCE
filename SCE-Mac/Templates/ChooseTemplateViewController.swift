@@ -197,7 +197,7 @@ class ChooseTemplateViewController: NSViewController {
                 return
             }
             
-            let projectName = directory.lastPathComponent // e.g. "MyProject"
+            let projectName = directory.lastPathComponent.replacingOccurrences(of: " ", with: "-") // e.g. "MyProject"
             let baseDirectory = directory.deletingLastPathComponent() // e.g. "/~/Documents/"
             
             do {
@@ -215,12 +215,16 @@ class ChooseTemplateViewController: NSViewController {
     
     private func createProjectInit(projectname: String, baseDirectory: URL, template: Template? = nil) throws -> ProjectInit {
         
+//        forward template here, or fetch the right project init from the plist
+//        Store templateIit
+        
         let selectedPlatformViewModel = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
-        let selectedPlatform = selectedPlatformViewModel.platformDependency.platform
+//        let selectedPlatform = selectedPlatformViewModel.platformDependency.platform
         let selectedFrameworkName = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].framework.name
         let selectedFrameworkVersion = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].version
+
         
-        let projectInit = try ProjectInit(projectName: projectname, baseDirectory: baseDirectory.path, openFile: "", copyFiles: template?.copyFiles, frameworkName: selectedFrameworkName, frameworkVersion: selectedFrameworkVersion, platform: selectedFrameworkName)
+        let projectInit = try ProjectInit(projectName: projectname, baseDirectory: baseDirectory.path, template: template, frameworkName: selectedFrameworkName, frameworkVersion: selectedFrameworkVersion, platform: selectedFrameworkName)
 
         return projectInit
     }

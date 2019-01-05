@@ -50,7 +50,6 @@
 				<array>
 					<string>tronbox init</string>
 					<string>npm install --save-exact zeppelin-solidity@1.7.0</string>
-					<string>solium init</string>
 				</array>
 				<key>createProjectDirectory</key>
 				<true/>

@@ -41,12 +41,6 @@
 		C7050A332166E4F8003DDA2B /* EditorInterface.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7050A312166E4F8003DDA2B /* EditorInterface.plist */; };
 		C7050A362166FBC9003DDA2B /* LanguageServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A342166FBC9003DDA2B /* LanguageServer.swift */; };
 		C7050A382166FCA8003DDA2B /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9A22112945D005A8FE2 /* Document.swift */; };
-		C7050A8321680964003DDA2B /* ProjectInitProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A662167199F003DDA2B /* ProjectInitProtocol.swift */; };
-		C7050A8421680964003DDA2B /* ProjectInitProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A662167199F003DDA2B /* ProjectInitProtocol.swift */; };
-		C7050A852168096B003DDA2B /* ProjectInitFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A7221672384003DDA2B /* ProjectInitFactory.swift */; };
-		C7050A862168096C003DDA2B /* ProjectInitFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A7221672384003DDA2B /* ProjectInitFactory.swift */; };
-		C7050A8721680970003DDA2B /* TruffleInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A6C216719C3003DDA2B /* TruffleInit.swift */; };
-		C7050A8821680971003DDA2B /* TruffleInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A6C216719C3003DDA2B /* TruffleInit.swift */; };
 		C7050A8B216938B1003DDA2B /* celer.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7050A8A216938B1003DDA2B /* celer.sol */; };
 		C7050A8C216938B1003DDA2B /* celer.sol in Resources */ = {isa = PBXBuildFile; fileRef = C7050A8A216938B1003DDA2B /* celer.sol */; };
 		C7050A8E216938EC003DDA2B /* 2_celer_migrations.js in Resources */ = {isa = PBXBuildFile; fileRef = C7050A8D216938EC003DDA2B /* 2_celer_migrations.js */; };
@@ -74,8 +68,6 @@
 		C711F5A321DF4702005EBC5D /* TruffleInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76458212610DA00867DA4 /* TruffleInit.command */; };
 		C711F5A421DF4702005EBC5D /* TruffleWebserver.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76470212E59F000867DA4 /* TruffleWebserver.command */; };
 		C711F5A521DF4702005EBC5D /* TruffleWebserver.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76470212E59F000867DA4 /* TruffleWebserver.command */; };
-		C711F5A821DF4BDC005EBC5D /* EmbarkInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A6F21671AFD003DDA2B /* EmbarkInit.swift */; };
-		C711F5A921DF4BDC005EBC5D /* EmbarkInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A6F21671AFD003DDA2B /* EmbarkInit.swift */; };
 		C711F5AB21DF4E69005EBC5D /* ProjectInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */; };
 		C711F5AC21DF4E69005EBC5D /* ProjectInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */; };
 		C711F5B121DF4ED1005EBC5D /* EthereumTruffle.json in Resources */ = {isa = PBXBuildFile; fileRef = C711F5B021DF4ED0005EBC5D /* EthereumTruffle.json */; };
@@ -98,8 +90,6 @@
 		C7DDD753214100D200674942 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD752214100D200674942 /* String.swift */; };
 		C7DDD757214113CB00674942 /* Which.command in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD756214113CB00674942 /* Which.command */; };
 		C7DDD75A2141E02800674942 /* InstallWizard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD7592141E02800674942 /* InstallWizard.storyboard */; };
-		C7E4AFA2216A641B00D5716B /* EtherlimeInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A69216719BD003DDA2B /* EtherlimeInit.swift */; };
-		C7E4AFA3216A641C00D5716B /* EtherlimeInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7050A69216719BD003DDA2B /* EtherlimeInit.swift */; };
 		C7E4AFA5216AADD900D5716B /* Init.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E4AFA4216AADD900D5716B /* Init.command */; };
 		C7E4AFA6216AADD900D5716B /* Init.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E4AFA4216AADD900D5716B /* Init.command */; };
 		C7E4AFA82175886800D5716B /* EditWindowRestoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */; };
@@ -350,18 +340,6 @@
 			path = Project;
 			sourceTree = "<group>";
 		};
-		C7050A652167196D003DDA2B /* Init */ = {
-			isa = PBXGroup;
-			children = (
-				C7050A11215ECF0C003DDA2B /* ProjectDirectoryCreator.swift */,
-				C7050A662167199F003DDA2B /* ProjectInitProtocol.swift */,
-				C7050A7221672384003DDA2B /* ProjectInitFactory.swift */,
-				C7050A69216719BD003DDA2B /* EtherlimeInit.swift */,
-				C7050A6C216719C3003DDA2B /* TruffleInit.swift */,
-			);
-			path = Init;
-			sourceTree = "<group>";
-		};
 		C7050A892169388D003DDA2B /* Celer */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +352,11 @@
 		C711F58B21DDCEFD005EBC5D /* unused */ = {
 			isa = PBXGroup;
 			children = (
+				C7050A11215ECF0C003DDA2B /* ProjectDirectoryCreator.swift */,
+				C7050A662167199F003DDA2B /* ProjectInitProtocol.swift */,
+				C7050A7221672384003DDA2B /* ProjectInitFactory.swift */,
+				C7050A69216719BD003DDA2B /* EtherlimeInit.swift */,
+				C7050A6C216719C3003DDA2B /* TruffleInit.swift */,
 				C7050A6F21671AFD003DDA2B /* EmbarkInit.swift */,
 				C7E76458212610DA00867DA4 /* TruffleInit.command */,
 				C7E7646C212E28F200867DA4 /* TruffleRun.command */,
@@ -438,7 +421,6 @@
 				C711F58C21DDF30B005EBC5D /* FrameworkCommands.swift */,
 				C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */,
 				C711F5B621DF50EB005EBC5D /* CopyFile.swift */,
-				C7050A652167196D003DDA2B /* Init */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -959,18 +941,13 @@
 				C711F5AB21DF4E69005EBC5D /* ProjectInit.swift in Sources */,
 				C7F0B979210DACCB005A8FE2 /* MasterViewController.swift in Sources */,
 				C70509F221561357003DDA2B /* DepedencyViewModelProtocol.swift in Sources */,
-				C7E4AFA2216A641B00D5716B /* EtherlimeInit.swift in Sources */,
 				C70509FB2159E1EE003DDA2B /* Project.swift in Sources */,
 				C70509D3214D97A8003DDA2B /* DependencyFramework.swift in Sources */,
 				C7F0B977210DACCB005A8FE2 /* AppDelegate.swift in Sources */,
 				C70509E92155B486003DDA2B /* DependencyState.swift in Sources */,
 				C70509E62155B47B003DDA2B /* DependencyViewModel.swift in Sources */,
-				C7050A852168096B003DDA2B /* ProjectInitFactory.swift in Sources */,
-				C7050A8321680964003DDA2B /* ProjectInitProtocol.swift in Sources */,
-				C711F5A921DF4BDC005EBC5D /* EmbarkInit.swift in Sources */,
 				C7050A09215C5129003DDA2B /* TemplateOptionsViewController.swift in Sources */,
 				C711F58D21DDF30B005EBC5D /* FrameworkCommands.swift in Sources */,
-				C7050A8721680970003DDA2B /* TruffleInit.swift in Sources */,
 				C70509FD215A1289003DDA2B /* SupportFiles.swift in Sources */,
 				C7F0B9BE2112C3CA005A8FE2 /* SolidityLexer.swift in Sources */,
 			);
@@ -990,7 +967,6 @@
 			files = (
 				C7E7643F2122A2CF00867DA4 /* TemplateCollectionViewItem.swift in Sources */,
 				C7F0B9C22113CF7E005A8FE2 /* SplitViewController.swift in Sources */,
-				C7050A8421680964003DDA2B /* ProjectInitProtocol.swift in Sources */,
 				C7E76467212937F100867DA4 /* FileItem.swift in Sources */,
 				C7F0B9C62113EA39005A8FE2 /* ScriptTask.swift in Sources */,
 				C70509EE2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift in Sources */,
@@ -999,9 +975,7 @@
 				C7DDD7502140B68C00674942 /* Platform.swift in Sources */,
 				C7E4AFB42175BA4800D5716B /* EditorInterface.swift in Sources */,
 				C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */,
-				C7E4AFA3216A641C00D5716B /* EtherlimeInit.swift in Sources */,
 				C7050A362166FBC9003DDA2B /* LanguageServer.swift in Sources */,
-				C711F5A821DF4BDC005EBC5D /* EmbarkInit.swift in Sources */,
 				C7E7645D212675AF00867DA4 /* Error.swift in Sources */,
 				C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */,
 				C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */,
@@ -1023,12 +997,10 @@
 				C7DDD753214100D200674942 /* String.swift in Sources */,
 				C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */,
 				C711F58E21DDF30B005EBC5D /* FrameworkCommands.swift in Sources */,
-				C7050A8821680971003DDA2B /* TruffleInit.swift in Sources */,
 				C7E76463212936E300867DA4 /* FileBrowserViewController.swift in Sources */,
 				C7DDD74A2140A65700674942 /* Dependency.swift in Sources */,
 				C76FC32021439FAC00DB2C62 /* InstallBlockchainViewController.swift in Sources */,
 				C70509F321561357003DDA2B /* DepedencyViewModelProtocol.swift in Sources */,
-				C7050A862168096C003DDA2B /* ProjectInitFactory.swift in Sources */,
 				C70509EA2155B486003DDA2B /* DependencyState.swift in Sources */,
 				C7E76448212358A900867DA4 /* ProjectInitViewController.swift in Sources */,
 				C7F0B9C42113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift in Sources */,

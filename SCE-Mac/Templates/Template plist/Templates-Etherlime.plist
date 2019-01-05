@@ -26,6 +26,8 @@
 				<string></string>
 				<key>detailViewType</key>
 				<string>erc-20</string>
+				<key>initType</key>
+				<string>initTemplate</string>
 				<key>copyFiles</key>
 				<array>
 					<dict>
@@ -55,6 +57,8 @@
 				<string></string>
 				<key>detailViewType</key>
 				<string></string>
+				<key>initType</key>
+				<string>initTemplate</string>
 				<key>copyFiles-empty</key>
 				<array>
 					<dict>
@@ -84,6 +88,8 @@
 				<string></string>
 				<key>detailViewType</key>
 				<string></string>
+				<key>initType</key>
+				<string>initTemplate</string>
 				<key>copyFiles-empty</key>
 				<array>
 					<dict>
@@ -122,6 +128,8 @@
 				<string>contracts/&lt;#__project_name#&gt;.sol</string>
 				<key>detailViewType</key>
 				<string></string>
+				<key>initType</key>
+				<string>initTemplate</string>
 				<key>copyFiles</key>
 				<array>
 					<dict>

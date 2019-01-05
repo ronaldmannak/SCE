@@ -33,7 +33,7 @@ struct FrameworkCommands: Codable {
     let warningRegex: String?
     
     /// Commands
-    let commands: Commands?
+    let commands: Commands
     
     /// Loads all framework commands from FrameworkCommands.plist in the bundle
     static func loadCommands() throws -> [FrameworkCommands] {
@@ -81,7 +81,10 @@ struct Commands: Codable {
 
 struct FrameworkInit: Codable {
     
+    /// The Bash commands that will be executed to initialize the project
     let commands: [String]
     
+    /// If true, ProjectInit will create the project directory (<directory>/<projectName>) and run the commands in the project directory.
+    /// If false, ProjectInit will run the commands in <directory>. This is how Embark works.
     let createProjectDirectory: Bool
 }
