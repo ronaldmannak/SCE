@@ -60,6 +60,7 @@
 		C711F5B221DF4ED1005EBC5D /* EthereumTruffle.json in Resources */ = {isa = PBXBuildFile; fileRef = C711F5B021DF4ED0005EBC5D /* EthereumTruffle.json */; };
 		C711F5B721DF50EB005EBC5D /* CopyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5B621DF50EB005EBC5D /* CopyFile.swift */; };
 		C711F5B821DF50EB005EBC5D /* CopyFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5B621DF50EB005EBC5D /* CopyFile.swift */; };
+		C711F5CF21E0887A005EBC5D /* TRC721.sol in Resources */ = {isa = PBXBuildFile; fileRef = C711F5CD21E08851005EBC5D /* TRC721.sol */; };
 		C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7303B63212E75E70007E708 /* Preferences.storyboard */; };
 		C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */; };
 		C76FC32021439FAC00DB2C62 /* InstallBlockchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */; };
@@ -181,6 +182,7 @@
 		C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInit.swift; sourceTree = "<group>"; };
 		C711F5B021DF4ED0005EBC5D /* EthereumTruffle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EthereumTruffle.json; sourceTree = "<group>"; };
 		C711F5B621DF50EB005EBC5D /* CopyFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyFile.swift; sourceTree = "<group>"; };
+		C711F5CD21E08851005EBC5D /* TRC721.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = TRC721.sol; sourceTree = "<group>"; };
 		C7303B63212E75E70007E708 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallContainerViewController.swift; sourceTree = "<group>"; };
 		C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallBlockchainViewController.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				C7E76468212D3D0400867DA4 /* TRC20.sol */,
+				C711F5CD21E08851005EBC5D /* TRC721.sol */,
 				C711F59121DF379D005EBC5D /* ERC20.sol */,
 			);
 			path = OpenZeppelin;
@@ -756,6 +759,7 @@
 				C711F59021DF2D89005EBC5D /* Templates-Tronbox.plist in Resources */,
 				C7050A0D215C6D70003DDA2B /* Templates-Etherlime.plist in Resources */,
 				C7E76469212D3D0400867DA4 /* TRC20.sol in Resources */,
+				C711F5CF21E0887A005EBC5D /* TRC721.sol in Resources */,
 				C711F59221DF37BA005EBC5D /* ERC20.sol in Resources */,
 				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
 				C7F0B9A82112945F005A8FE2 /* Edit.storyboard in Resources */,
