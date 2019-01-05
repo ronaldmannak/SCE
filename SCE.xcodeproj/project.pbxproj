@@ -54,20 +54,6 @@
 		C711F59221DF37BA005EBC5D /* ERC20.sol in Resources */ = {isa = PBXBuildFile; fileRef = C711F59121DF379D005EBC5D /* ERC20.sol */; };
 		C711F59621DF3F91005EBC5D /* FrameworkCommands.plist in Resources */ = {isa = PBXBuildFile; fileRef = C711F59521DF3F91005EBC5D /* FrameworkCommands.plist */; };
 		C711F59721DF3F91005EBC5D /* FrameworkCommands.plist in Resources */ = {isa = PBXBuildFile; fileRef = C711F59521DF3F91005EBC5D /* FrameworkCommands.plist */; };
-		C711F59821DF46EA005EBC5D /* EtherlimeInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C70509F42159D28C003DDA2B /* EtherlimeInit.command */; };
-		C711F59921DF46EA005EBC5D /* EtherlimeInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C70509F42159D28C003DDA2B /* EtherlimeInit.command */; };
-		C711F59A21DF46EA005EBC5D /* SoliumTruffle.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B97042135148A00B0E4C8 /* SoliumTruffle.command */; };
-		C711F59B21DF46EA005EBC5D /* SoliumTruffle.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B97042135148A00B0E4C8 /* SoliumTruffle.command */; };
-		C711F59C21DF46EA005EBC5D /* EmbarkInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */; };
-		C711F59D21DF46EA005EBC5D /* EmbarkInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */; };
-		C711F59E21DF46EA005EBC5D /* EtherlimeRun.command in Resources */ = {isa = PBXBuildFile; fileRef = C70509F72159D307003DDA2B /* EtherlimeRun.command */; };
-		C711F59F21DF46EA005EBC5D /* EtherlimeRun.command in Resources */ = {isa = PBXBuildFile; fileRef = C70509F72159D307003DDA2B /* EtherlimeRun.command */; };
-		C711F5A021DF4702005EBC5D /* TruffleRun.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646C212E28F200867DA4 /* TruffleRun.command */; };
-		C711F5A121DF4702005EBC5D /* TruffleRun.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E7646C212E28F200867DA4 /* TruffleRun.command */; };
-		C711F5A221DF4702005EBC5D /* TruffleInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76458212610DA00867DA4 /* TruffleInit.command */; };
-		C711F5A321DF4702005EBC5D /* TruffleInit.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76458212610DA00867DA4 /* TruffleInit.command */; };
-		C711F5A421DF4702005EBC5D /* TruffleWebserver.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76470212E59F000867DA4 /* TruffleWebserver.command */; };
-		C711F5A521DF4702005EBC5D /* TruffleWebserver.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E76470212E59F000867DA4 /* TruffleWebserver.command */; };
 		C711F5AB21DF4E69005EBC5D /* ProjectInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */; };
 		C711F5AC21DF4E69005EBC5D /* ProjectInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C711F5AA21DF4E69005EBC5D /* ProjectInit.swift */; };
 		C711F5B121DF4ED1005EBC5D /* EthereumTruffle.json in Resources */ = {isa = PBXBuildFile; fileRef = C711F5B021DF4ED0005EBC5D /* EthereumTruffle.json */; };
@@ -90,8 +76,6 @@
 		C7DDD753214100D200674942 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD752214100D200674942 /* String.swift */; };
 		C7DDD757214113CB00674942 /* Which.command in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD756214113CB00674942 /* Which.command */; };
 		C7DDD75A2141E02800674942 /* InstallWizard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD7592141E02800674942 /* InstallWizard.storyboard */; };
-		C7E4AFA5216AADD900D5716B /* Init.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E4AFA4216AADD900D5716B /* Init.command */; };
-		C7E4AFA6216AADD900D5716B /* Init.command in Resources */ = {isa = PBXBuildFile; fileRef = C7E4AFA4216AADD900D5716B /* Init.command */; };
 		C7E4AFA82175886800D5716B /* EditWindowRestoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */; };
 		C7E4AFA92175886800D5716B /* EditWindowRestoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */; };
 		C7E4AFB32175BA4800D5716B /* EditorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFB22175BA4800D5716B /* EditorInterface.swift */; };
@@ -732,25 +716,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7E4AFA5216AADD900D5716B /* Init.command in Resources */,
-				C711F59D21DF46EA005EBC5D /* EmbarkInit.command in Resources */,
 				C7F0B983210DACCF005A8FE2 /* LaunchScreen.storyboard in Resources */,
 				C7050A0C215C6D70003DDA2B /* Templates-Etherlime.plist in Resources */,
-				C711F5A321DF4702005EBC5D /* TruffleInit.command in Resources */,
 				C7050A8E216938EC003DDA2B /* 2_celer_migrations.js in Resources */,
 				C711F5B121DF4ED1005EBC5D /* EthereumTruffle.json in Resources */,
-				C711F5A121DF4702005EBC5D /* TruffleRun.command in Resources */,
-				C711F59F21DF46EA005EBC5D /* EtherlimeRun.command in Resources */,
 				C7F0B980210DACCF005A8FE2 /* Assets.xcassets in Resources */,
-				C711F59921DF46EA005EBC5D /* EtherlimeInit.command in Resources */,
-				C711F5A521DF4702005EBC5D /* TruffleWebserver.command in Resources */,
 				C711F59621DF3F91005EBC5D /* FrameworkCommands.plist in Resources */,
 				C7050A0F215C7047003DDA2B /* Templates-Truffle.plist in Resources */,
 				C7F0B97E210DACCB005A8FE2 /* Main.storyboard in Resources */,
 				C7050A322166E4F8003DDA2B /* EditorInterface.plist in Resources */,
 				C7050A8B216938B1003DDA2B /* celer.sol in Resources */,
 				F8F7FB4D214B4E58001A6F49 /* BrewInstall.command in Resources */,
-				C711F59B21DF46EA005EBC5D /* SoliumTruffle.command in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,7 +742,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */,
-				C711F59C21DF46EA005EBC5D /* EmbarkInit.command in Resources */,
 				C7E7646B212D3D5500867DA4 /* 2_deploy_contracts.js in Resources */,
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
 				C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */,
@@ -778,22 +753,15 @@
 				C70B970021322CA000B0E4C8 /* TemplateSectionHeaderView.xib in Resources */,
 				C7F0B9A52112945F005A8FE2 /* Assets.xcassets in Resources */,
 				C7050A10215C7047003DDA2B /* Templates-Truffle.plist in Resources */,
-				C711F59821DF46EA005EBC5D /* EtherlimeInit.command in Resources */,
 				C711F59021DF2D89005EBC5D /* Templates-Tronbox.plist in Resources */,
-				C711F59A21DF46EA005EBC5D /* SoliumTruffle.command in Resources */,
 				C7050A0D215C6D70003DDA2B /* Templates-Etherlime.plist in Resources */,
 				C7E76469212D3D0400867DA4 /* TRC20.sol in Resources */,
 				C711F59221DF37BA005EBC5D /* ERC20.sol in Resources */,
 				C7A8FDBC212E9F49005E20AC /* Main.storyboard in Resources */,
 				C7F0B9A82112945F005A8FE2 /* Edit.storyboard in Resources */,
 				C7050A332166E4F8003DDA2B /* EditorInterface.plist in Resources */,
-				C7E4AFA6216AADD900D5716B /* Init.command in Resources */,
 				C7DDD74C2140AB6D00674942 /* Dependencies.plist in Resources */,
-				C711F5A421DF4702005EBC5D /* TruffleWebserver.command in Resources */,
 				C711F59721DF3F91005EBC5D /* FrameworkCommands.plist in Resources */,
-				C711F5A021DF4702005EBC5D /* TruffleRun.command in Resources */,
-				C711F59E21DF46EA005EBC5D /* EtherlimeRun.command in Resources */,
-				C711F5A221DF4702005EBC5D /* TruffleInit.command in Resources */,
 				C711F5B221DF4ED1005EBC5D /* EthereumTruffle.json in Resources */,
 				C7DDD757214113CB00674942 /* Which.command in Resources */,
 			);
