@@ -38,6 +38,9 @@ struct Template: Codable {
     /// File to open in editor by default. E.g. ["contracts", "TutorialToken.sol"]
     let openFile: String?
     
+    /// Either initEmpty, initTemplate, or initExample
+    let initType: InitType
+    
     let detailViewType: String?
     
     let imageName: String
@@ -45,5 +48,21 @@ struct Template: Codable {
     var image: NSImage {
         let name = imageName.isEmpty ? "Doc" : imageName
         return NSImage(named: NSImage.Name(rawValue: name)) ?? NSImage()
+    }
+}
+
+enum InitType: String, Codable {
+    
+    case initEmpty, initTemplate, initExample
+    
+    func commands(_ frameworkCommands: FrameworkCommands) -> FrameworkInit? {
+        switch self {
+        case .initEmpty:
+            return frameworkCommands.commands.initEmpty
+        case .initTemplate:
+            return frameworkCommands.commands.initTemplate
+        case .initExample:
+            return frameworkCommands.commands.initExample
+        }
     }
 }

@@ -14,19 +14,21 @@ import Foundation
  */
 class ScriptTask: NSObject {
     
+    // TODO: Refactor to NSOperationQueue so we can cancel tasks (e.g. version query in install window takes ages)
     static var queue = DispatchQueue(label: "ScriptTaskQueue", qos: .background) 
     
     var task = Process()
     let outputPipe = Pipe()
+    let inputPipe = Pipe()
     
     let launchpath: String
     var notification: NSObjectProtocol!
     let arguments: [String]
     
     var output: ((String) -> Void)?
-    var finished: (() -> Void)?
+    var finished: ((Int) -> Void)?
     
-    init(script: String, ext: String = "command", path: URL? = nil, arguments: [String], output: @escaping (String)->Void, finished: @escaping () -> Void) throws {
+    init(script: String, ext: String = "command", path: URL? = nil, arguments: [String], output: @escaping (String)->Void, finished: @escaping (Int) -> Void) throws {
         
         if let path = path {
             launchpath = path.appendingPathComponent(script, isDirectory: false).appendingPathExtension(ext).absoluteString
@@ -46,16 +48,20 @@ class ScriptTask: NSObject {
     
     func run() {
         
-//        let taskQueue = DispatchQueue.global(qos: DispatchQoS.QoSClass.background)
         ScriptTask.queue.async {
             
+            self.task.standardInput = self.inputPipe
             self.task.launchPath = self.launchpath
             self.task.arguments = self.arguments
-            self.task.environment = ["PATH": "/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin"]                    
+            self.task.environment = [
+                "PATH": "/usr/local/bin/:/usr/bin:/bin:/usr/sbin:/sbin",
+                "HOME": FileManager.default.homeDirectoryForCurrentUser.path
+            ]            
             
             // Handle termination
             self.task.terminationHandler = { task in
-                DispatchQueue.main.async(execute: { self.finished?() })
+                let exitStatus = task.terminationStatus
+                DispatchQueue.main.async(execute: { self.finished?(Int(exitStatus)) })
             }
             
             // Handle output
@@ -91,5 +97,40 @@ class ScriptTask: NSObject {
     
     func terminate() {
         task.terminate()
+    }
+    
+    /// Convenience initializer for generic Execute.command script
+    ///
+    /// - Parameters:
+    ///   - directory: directory where script will be run (e.g. project directory)
+    ///   - path: Add custom path environment variable
+    ///   - commands: Commands to execute. Quotes will be added
+    ///   - output: Output of the script will be send here
+    ///   - finished: Called when finished with exit code
+    /// - Throws: forwarded exception from designated initializer
+    convenience init(directory: String, path: String? = nil, commands: [String], output: @escaping (String)->Void, finished: @escaping (Int) -> Void) throws {
+        
+        // Expand ~ since NSTask does not do that
+        var expandedDirectory = ""
+        if directory == "~" {
+            expandedDirectory = FileManager.default.homeDirectoryForCurrentUser.path
+        } else {
+            expandedDirectory = directory.escapedSpaces
+        }
+        
+        var arguments = [String]()
+        arguments.append("-d")
+        arguments.append(expandedDirectory)
+        
+        if let path = path {
+            arguments.append("-p")
+            arguments.append(path.escapedSpaces)
+        }
+        
+        for command in commands {
+            arguments.append(command)
+        }
+                
+        try self.init(script: "Execute", arguments: arguments, output: output, finished: finished)
     }
 }

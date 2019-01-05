@@ -13,4 +13,5 @@ enum CompositeError: Error {
     case directoryNotFound(String)
     case platformNotFound(String)
     case frameworkNotFound(String)
+    case bashScriptFailed(String)
 }

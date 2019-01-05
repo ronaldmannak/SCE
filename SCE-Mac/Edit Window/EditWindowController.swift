@@ -121,8 +121,14 @@ class EditWindowController: NSWindowController {
         do {
             script = try interface.executeRun(workDirectory: document.workDirectory, output: { output in
                 self.setConsole(output)
-            }) {
+            }) { exitStatus in
                 self.script = nil
+                guard exitStatus == 0 else {
+                    let error = CompositeError.bashScriptFailed("Bash error")
+                    let alert = NSAlert(error: error)
+                    alert.runModal()
+                    return
+                }
             }
         } catch {
             let alert = NSAlert(error: error)
@@ -147,8 +153,13 @@ class EditWindowController: NSWindowController {
         do {
             script = try interface.executeLint(workDirectory: document.workDirectory, output: { output in
                 self.setConsole(output)
-            }, finished: {
-                // do nothing
+            }, finished: { exitStatus in
+                guard exitStatus == 0 else {
+                    let error = CompositeError.bashScriptFailed("Bash error")
+                    let alert = NSAlert(error: error)
+                    alert.runModal()
+                    return
+                }
             })
         } catch {
             let alert = NSAlert(error: error)

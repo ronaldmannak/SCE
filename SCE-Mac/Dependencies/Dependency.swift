@@ -117,13 +117,12 @@ extension Dependency {
     func fileVersion(version:@escaping (String) -> ()) throws {
         
         // If this dependency doesn't have a version query command, return empty string
-        guard let versionCommand = versionCommand else {
+        guard let versionCommand = versionCommand, isInstalled == true else {
             version("")
             return
         }
-        let homePath = FileManager.default.homeDirectoryForCurrentUser.path
         var lines = 1
-        let task = try ScriptTask(script: "General", arguments: [versionCommand, homePath], output: { output in
+        let task = try ScriptTask(directory: "~", commands: [versionCommand], output: { output in
             
             // Assumes that the correct version number is always returned on the first line
             if lines > 1 { return }
@@ -144,9 +143,19 @@ extension Dependency {
             // Some dependencies return multiple lines for their version information
             // Ignore lines where no version is found
             guard let versionString = versions.first else { return }
+            self.versionNumber = versionString
             version(versionString)
             lines = lines + 1
-        }) {}
+        }) { exitStatus in
+            
+            guard exitStatus == 0 else {
+                print("Error: \(versionCommand) returned \(exitStatus)")
+                let error = CompositeError.bashScriptFailed("Bash error")
+                let alert = NSAlert(error: error)
+                alert.runModal()
+                return
+            }
+        }
         task.run()
     }
     
@@ -163,22 +172,30 @@ extension Dependency {
     func suggestLocation(completion: (String) -> ()) throws {
         let task = try ScriptTask(script: "Which", arguments: ["brew"], output: { output in
             print(output)
-        }) {}
+        }) { exitStatus in
+            
+            guard exitStatus == 0 else {
+                let error = CompositeError.bashScriptFailed("Bash error")
+                let alert = NSAlert(error: error)
+                alert.runModal()
+                return
+            }
+        }
         task.run()
     }
     
-    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
+    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> ScriptTask? {
         
         guard isInstalled == false else { return nil }
         
         if let link = installLink, let url = URL(string: link) {
-            finished()
+            finished(0)
             NSWorkspace.shared.open(url)            
         }
         
         // Hardcoded edgecase for brew.
         // The brew installer needs to run as admin.
-        // Running an NSTask
+        // TODO: figure out how to run Processes as root
         if name == "brew" {
             try installBrew(output: output, finished: finished)
             return nil
@@ -186,12 +203,32 @@ extension Dependency {
         
         if let installCommand = installCommand {
             
-            let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-            task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in
+            task = try ScriptTask(directory: "~", commands: [installCommand], output: { console in
                 output(console)
-            }) {
-                self.task = nil
-                finished()
+            }) { exitStatus in
+                
+                func done() {
+                    self.task = nil
+                    finished(exitStatus)
+                }
+               
+                guard exitStatus == 0 else {
+                    let error = CompositeError.bashScriptFailed("Bash error")
+                    let alert = NSAlert(error: error)
+                    alert.runModal()
+                    done()
+                    return
+                }
+
+                // Update version number
+                do {
+                    try self.fileVersion { version in
+                        self.versionNumber = version
+                        done()
+                    }
+                } catch {
+                    done()
+                }
             }
             return task
         }
@@ -212,7 +249,7 @@ extension Dependency {
     ///   - output: <#output description#>
     ///   - finished: <#finished description#>
     /// - Throws: <#throws value description#>
-    private func installBrew(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws  {
+    private func installBrew(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws  {
         
         let message = "Please install brew manually by copying the following text in MacOS terminal"
         let command = "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
@@ -225,24 +262,42 @@ extension Dependency {
         alert.informativeText = command
         alert.runModal()
         
-        finished()
+        finished(0)
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
+    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> ScriptTask? {
         
         guard isInstalled == true, let updateCommand = updateCommand, updateCommand.isEmpty == false else {
             return nil
         }
         
-        let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-        task = try ScriptTask(script: "General", arguments: [updateCommand, homePath], output: { console in
+        task = try ScriptTask(directory: "~", commands: [updateCommand], output: { console in
             output(console)
-        }) {
-            self.task = nil
-            finished()
+        }) { exitStatus in
+            
+            func done() {
+                self.task = nil
+                finished(exitStatus)
+            }
+            
+            guard exitStatus == 0 else {
+                // Node returns an error when trying to update an up-to-date version
+                print("Error updating \(self.name)")
+                done()
+                return
+            }
+            
+            // Update version number
+            do {
+                try self.fileVersion { version in
+                    self.versionNumber = version
+                    done()
+                }
+            } catch {
+                done()
+            }
         }
         return task
     }
-    
 }
 

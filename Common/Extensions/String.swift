@@ -57,4 +57,7 @@ extension String {
         return replacingOccurrences(of: "<#__project_name#>", with: name.replacingOccurrences(of: " ", with: "-"))
     }
     
+    public var escapedSpaces: String {
+        return replacingOccurrences(of: " ", with: "\\ ")
+    }
 }

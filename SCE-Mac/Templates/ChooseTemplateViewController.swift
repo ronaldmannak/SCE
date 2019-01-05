@@ -20,20 +20,18 @@ class ChooseTemplateViewController: NSViewController {
     
     private var platforms:  [DependencyViewModelProtocol]!
     
-//    private var selectedFramework: DependencyFramework {
-//        let platform = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
-//        return platform.frameworks[frameworkPopup.indexOfSelectedItem].framework
-//    }
-    
     fileprivate var categories = [TemplateCategory]() {
         didSet {
             categoryTableView.reloadData()
             templateCollectionView.reloadData()
             categoryTableView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
+            guard let _ = categories.first?.templates?.first else {
+                return
+            }
             templateCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
         }
     }
-    fileprivate var projectInit: ProjectInitProtocol? = nil
+    fileprivate var projectInit: ProjectInit? = nil
     
     /// Index for "All categories"
     fileprivate let allRowIndex = 0
@@ -42,44 +40,56 @@ class ChooseTemplateViewController: NSViewController {
         super.viewDidLoad()
         
         configureTemplateView()
+        
         loadPlatforms()
+        setFrameworkPopup()
         setTemplates()
     }
     
     
-    /// Loads platforms and populates popup buttons
+    /// Loads platforms from disk and populates platform and framework popup buttons
     private func loadPlatforms() {
         
         // Load dependencies from disk
         do {
             self.platforms = try DependencyPlatform.loadViewModels()
-            if let framework = self.platforms.first?.children?.first as? DependencyFrameworkViewModel {
-                categories = try loadTemplates(framework: framework.name)
-            }
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
         }
         
         platformPopup.removeAllItems()
-        frameworkPopup.removeAllItems()
         
         let platforms = self.platforms as! [DependencyPlatformViewModel]
         for platform in platforms {
             self.platformPopup.addItem(withTitle: platform.name)
-            self.platformPopup.item(withTitle: platform.name)?.isEnabled = !platform.frameworks.isEmpty
-            for framework in platform.frameworks {
-                self.frameworkPopup.addItem(withTitle: framework.name)
-            }
+            let installedFrameworks = platform.frameworks.filter{ $0.state != .notInstalled }
+            self.platformPopup.item(withTitle: platform.name)?.isEnabled = installedFrameworks.count > 0
         }
     }
     
+    /// Populates framework popup button
+    private func setFrameworkPopup() {
+        
+        frameworkPopup.removeAllItems()
+        guard let platforms = platforms as? [DependencyPlatformViewModel], platformPopup.indexOfSelectedItem != -1 else { return }
+        
+        let selectedPlatform = platforms[platformPopup.indexOfSelectedItem]
+        guard selectedPlatform.frameworks.count > 0 else { return }
+        
+        for framework in selectedPlatform.frameworks {
+            frameworkPopup.addItem(withTitle: framework.name)
+            frameworkPopup.item(withTitle: framework.name)?.isEnabled = framework.state != .notInstalled
+        }
+        frameworkPopup.selectItem(at: 0)
+    }
     
+    /// Popupalates templates view
     private func setTemplates() {
         
         guard let framework = platforms[platformPopup.indexOfSelectedItem].children?[frameworkPopup.indexOfSelectedItem] as? DependencyFrameworkViewModel else { return }
-        
-        // Load templates
+
+        // Load templates. categories didSet triggers reload of collectionViews
         do {
             categories = try loadTemplates(framework: framework.name)
         } catch {
@@ -88,15 +98,14 @@ class ChooseTemplateViewController: NSViewController {
         }
     }
     
-    
-    /// filename without JSON extension
+    /// Loads templates from disk
     private func loadTemplates(framework: String) throws -> [TemplateCategory] {
         guard let url = Bundle.main.url(forResource: "Templates-\(framework)", withExtension: "plist") else {
             throw(CompositeError.fileNotFound(framework))
         }
-        let jsonData = try Data(contentsOf: url)
+        let data = try Data(contentsOf: url)
         let decoder = PropertyListDecoder()
-        let category = try decoder.decode([TemplateCategory].self, from: jsonData)
+        let category = try decoder.decode([TemplateCategory].self, from: data)
         return category
     }
     
@@ -140,19 +149,10 @@ class ChooseTemplateViewController: NSViewController {
     
     
     @IBAction func platformClicked(_ sender: Any) {
-        
-        // Fetch selected Platform
-        let selected = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
-        
-        // Populate Framework popups
-        self.frameworkPopup.removeAllItems()
-        for framework in selected.frameworks {
-            self.frameworkPopup.addItem(withTitle: framework.name)
-        }
-        
-        // Load new templates
+        setFrameworkPopup()
         setTemplates()
     }
+    
     
     @IBAction func frameworkClicked(_ sender: Any) {
         // Load templates of this framework
@@ -187,36 +187,46 @@ class ChooseTemplateViewController: NSViewController {
             
             guard result == .OK, let directory = savePanel.url else { return }
             
-            // Temporary: do not allow overwriting existing files or directories
+            // Do not allow overwriting existing files or directories
             let fileManager = FileManager.default
-            guard fileManager.fileExists(atPath: directory.path) == false else { return }
+            guard fileManager.fileExists(atPath: directory.path) == false else {
+                let alert = NSAlert()
+                alert.informativeText = "Cannot overwrite existing file or directory."
+                alert.messageText = "Choose another projectname."
+                alert.runModal()
+                return
+            }
             
-            let projectName = directory.lastPathComponent // e.g. "MyProject"
+            let projectName = directory.lastPathComponent.replacingOccurrences(of: " ", with: "-") // e.g. "MyProject"
             let baseDirectory = directory.deletingLastPathComponent() // e.g. "/~/Documents/"
             
-            guard let projectInit = self.createProjectInit(projectname: projectName, baseDirectory: baseDirectory, template: template) else { return }
-            self.projectInit = projectInit
+            do {
+                let projectInit = try self.createProjectInit(projectname: projectName, baseDirectory: baseDirectory, template: template)
+                self.projectInit = projectInit
+            } catch {
+                let alert = NSAlert(error: error)
+                alert.runModal()
+            }
             
             let id = NSStoryboardSegue.Identifier(rawValue: "ProjectInitSegue")
             self.performSegue(withIdentifier: id, sender: self)
         }
     }
     
-    private func createProjectInit(projectname: String, baseDirectory: URL, template: Template? = nil) -> ProjectInitProtocol? {
+    private func createProjectInit(projectname: String, baseDirectory: URL, template: Template? = nil) throws -> ProjectInit {
+        
+//        forward template here, or fetch the right project init from the plist
+//        Store templateIit
         
         let selectedPlatformViewModel = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
-        let selectedPlatform = selectedPlatformViewModel.platformDependency.platform
+//        let selectedPlatform = selectedPlatformViewModel.platformDependency.platform
         let selectedFrameworkName = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].framework.name
         let selectedFrameworkVersion = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].version
+
         
-        do {
-            let projectInit = try ProjectInitFactory.create(projectname: projectname ,baseDirectory: baseDirectory, platform: selectedPlatform, framework: selectedFrameworkName, frameworkVersion: selectedFrameworkVersion, template: template, info: nil)
-            return projectInit
-        } catch {
-            let alert = NSAlert(error: error)
-            alert.runModal()
-        }
-        return nil
+        let projectInit = try ProjectInit(projectName: projectname, baseDirectory: baseDirectory.path, template: template, frameworkName: selectedFrameworkName, frameworkVersion: selectedFrameworkVersion, platform: selectedFrameworkName)
+
+        return projectInit
     }
 }
 
@@ -242,10 +252,8 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
         
         if categoryTableView.selectedRow == allRowIndex {
-//            print("number of sections: \(categories.count)")
             return categories.count // All
         } else {
-//            print("number of sections: 1")
             return 1 // Show only selected category
         }
     }
@@ -254,7 +262,7 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if categoryTableView.selectedRow == allRowIndex {
-            print("number of items in section \(section): \(categories[section].templates?.count ?? 0)")
+//            print("number of items in section \(section): \(categories[section].templates?.count ?? 0)")
             return categories[section].templates?.count ?? 0
         }
         return categories[categoryTableView.selectedRow - 1].templates?.count ?? 0
@@ -270,8 +278,6 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
 
         let template = item(at: indexPath)
         
-//        print("Creating cell for \(template.name)")
-
         cell.imageView?.image = template.image
         cell.textField?.stringValue = template.name
         cell.erc.stringValue = template.standard
@@ -279,19 +285,6 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
         cell.moreInfoButton.isHidden = template.moreInfoUrl.isEmpty
         return cell
     }
-    
-//    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-//     
-//    }
-    
-//    func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
-//        guard let header = template.makeSupplementaryView(ofKind: .sectionHeader, withIdentifier: NSUserInterfaceItemIdentifier("TemplateSectionHeader"), for: indexPath) as? TemplateSectionHeaderView else {
-//            assertionFailure()
-//            return NSCollectionView()
-//        }
-//        header.categoryNameTextField.stringValue = "TEST Header"
-//        return header
-//    }
 }
 
 extension ChooseTemplateViewController : NSCollectionViewDelegateFlowLayout {

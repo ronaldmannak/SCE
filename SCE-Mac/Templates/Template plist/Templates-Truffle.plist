@@ -4,28 +4,30 @@
 <array>
 	<dict>
 		<key>category</key>
-		<string>Tokens</string>
+		<string>Boxes</string>
 		<key>command</key>
-		<string>test</string>
+		<string>truffleinit</string>
 		<key>templates</key>
 		<array>
 			<dict>
 				<key>name</key>
-				<string>ERC-20 Token</string>
+				<string>Tutorial Token</string>
 				<key>templateName</key>
-				<string>token</string>
+				<string>tutorialtoken</string>
 				<key>imageName</key>
-				<string></string>
+				<string>Box</string>
 				<key>standard</key>
-				<string>ERC-20</string>
-				<key>description</key>
-				<string>ERC-20 is a technical standard used for smart contracts on the Ethereum blockchain for implementing tokens.</string>
-				<key>moreInfoUrl</key>
-				<string>https://github.com/ethereum/eips/issues/20</string>
-				<key>openFile</key>
 				<string></string>
+				<key>description</key>
+				<string>ERC-20 is a technical standard used for smart contracts on the Ethereum blockchain for implementing tokens</string>
+				<key>moreInfoUrl</key>
+				<string>https://truffleframework.com/tutorials/robust-smart-contracts-with-openzeppelin</string>
+				<key>openFile</key>
+				<string>contracts/TutorialToken.sol</string>
 				<key>detailViewType</key>
 				<string>erc-20</string>
+				<key>initType</key>
+				<string>initTemplate</string>
 				<key>copyFiles</key>
 				<array>
 					<dict>
@@ -36,61 +38,11 @@
 						<key>renameFileToProjectName</key>
 						<true/>
 					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>Non-fungible Token</string>
-				<key>templateName</key>
-				<string>nonfungibletoken</string>
-				<key>imageName</key>
-				<string></string>
-				<key>standard</key>
-				<string>ERC-721</string>
-				<key>description</key>
-				<string>A special type of cryptographic token which represents something unique; non-fungible tokens are thus not interchangeable.</string>
-				<key>moreInfoUrl</key>
-				<string>https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md</string>
-				<key>openFile</key>
-				<string></string>
-				<key>detailViewType</key>
-				<string></string>
-				<key>copyFiles-empty</key>
-				<array>
 					<dict>
 						<key>filename</key>
-						<string></string>
+						<string>2_deploy_contracts.js</string>
 						<key>destination</key>
-						<string></string>
-						<key>renameFileToProjectName</key>
-						<false/>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>Crypto Item Token</string>
-				<key>templateName</key>
-				<string>cryptoitem</string>
-				<key>imageName</key>
-				<string></string>
-				<key>standard</key>
-				<string>ERC-1155</string>
-				<key>description</key>
-				<string>One contract can represent any number of Fungible and Non-Fungible assets in a single contract. </string>
-				<key>moreInfoUrl</key>
-				<string>https://github.com/ethereum/eips/issues/1155</string>
-				<key>openFile</key>
-				<string></string>
-				<key>detailViewType</key>
-				<string></string>
-				<key>copyFiles-empty</key>
-				<array>
-					<dict>
-						<key>filename</key>
-						<string></string>
-						<key>destination</key>
-						<string></string>
+						<string>migrations</string>
 						<key>renameFileToProjectName</key>
 						<false/>
 					</dict>
@@ -122,6 +74,8 @@
 				<string>contracts/&lt;#__project_name#&gt;.sol</string>
 				<key>detailViewType</key>
 				<string></string>
+				<key>initType</key>
+				<string>initTemplate</string>
 				<key>copyFiles</key>
 				<array>
 					<dict>
@@ -131,6 +85,53 @@
 						<string>contracts</string>
 						<key>renameFileToProjectName</key>
 						<true/>
+					</dict>
+					<dict>
+						<key>filename</key>
+						<string>2_celer_migrations.js</string>
+						<key>destination</key>
+						<string>migrations</string>
+						<key>renameFileToProjectName</key>
+						<false/>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Celer Gomoku Demo</string>
+				<key>templateName</key>
+				<string></string>
+				<key>imageName</key>
+				<string></string>
+				<key>standard</key>
+				<string></string>
+				<key>description</key>
+				<string>Celer Network can scale out to billions of transactions per second through off-chain scaling.</string>
+				<key>moreInfoUrl</key>
+				<string>https://github.com/celer-network/cApps-eth/tree/master/Gomoku</string>
+				<key>openFile</key>
+				<string>contracts/&lt;#__project_name#&gt;.sol</string>
+				<key>detailViewType</key>
+				<string></string>
+				<key>initType</key>
+				<string>initTemplate</string>
+				<key>copyFiles</key>
+				<array>
+					<dict>
+						<key>filename</key>
+						<string>celer.sol</string>
+						<key>destination</key>
+						<string>contracts</string>
+						<key>renameFileToProjectName</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>filename</key>
+						<string>2_celer_migrations.js</string>
+						<key>destination</key>
+						<string>migrations</string>
+						<key>renameFileToProjectName</key>
+						<false/>
 					</dict>
 				</array>
 			</dict>

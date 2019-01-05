@@ -61,25 +61,25 @@ struct EditorInterface: Codable {
 
 extension EditorInterface {
     
-    func executeRun(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
+    func executeRun(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping (Int) -> Void) throws -> ScriptTask {
         let task = try ScriptTask(script: "TruffleRun", arguments: [workDirectory.path], output: output, finished: finished)
         task.run()
         return task
     }
     
-    func executeLint(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
+    func executeLint(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping (Int) -> Void) throws -> ScriptTask {
         let task = try ScriptTask(script: "SoliumTruffle", arguments: [workDirectory.path], output: output, finished: finished)
         task.run()
         return task
     }
     
-    func executeCompile(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
+    func executeCompile(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping (Int) -> Void) throws -> ScriptTask {
         let task = try ScriptTask(script: "TruffleRun", arguments: [workDirectory.path], output: output, finished: finished)
         task.run()
         return task
     }
     
-    func executeWebserver(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
+    func executeWebserver(workDirectory: URL, output: @escaping (String)->Void, finished: @escaping (Int) -> Void) throws -> ScriptTask {
         let task = try ScriptTask(script: "TruffleWebserver", arguments: [workDirectory.path], output: output, finished: finished)
         task.run()
         return task

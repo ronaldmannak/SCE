@@ -16,12 +16,13 @@ class ProjectInitViewController: NSViewController {
     @IBOutlet weak var cancelButton: NSButton!
     var counter: Int = 0
 
-    var projectInit: ProjectInitProtocol! {
+    var projectInit: ProjectInit! {
         didSet {
             progressIndicator.startAnimation(self)
-            progressIndicator.maxValue = Double(projectInit.stdOutputLines)
+//            progressIndicator.maxValue = Double(projectInit.stdOutputLines)
             do {
-                _ = try projectInit.create(output: { output in
+                try projectInit.initializeProject(output: { output in
+                    
                     // Output in text view
                     let previousOutput = self.textView.string
                     let nextOutput = previousOutput + "\n" + output
@@ -30,17 +31,27 @@ class ProjectInitViewController: NSViewController {
                     self.textView.scrollRangeToVisible(range)
                     self.progressIndicator.increment(by: 1)
                     self.counter = self.counter + 1
-                }) {
+                    
+                }) { exitStatus in
+                    
                     self.progressIndicator.stopAnimation(self)
+                    
+                    guard exitStatus == 0 else {
+                        let error = CompositeError.bashScriptFailed("Bash error")
+                        let alert = NSAlert(error: error)
+                        alert.runModal()
+                        return
+                    }
+                    
                     let documentController = NSDocumentController.shared
                     documentController.openDocument(withContentsOf: self.projectInit.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
-                        
+
                         if let error = error {
                             self.progressIndicator.stopAnimation(self)
                             let alert = NSAlert(error: error)
                             alert.runModal()
                         }
-                        
+
                         if let document = document as? Document, let editWindowController = document.editWindowController {
                             editWindowController.setConsole(self.textView.string)
                             //                            editWindowController.project = self.projectDirectoryCreator.project
@@ -56,52 +67,12 @@ class ProjectInitViewController: NSViewController {
         }
     }
     
-//    var projectDirectoryCreator: ProjectDirectoryCreator! {
-//        didSet {
-//            progressIndicator.startAnimation(self)
-//            progressIndicator.maxValue = 8
-//            do {
-//                _ = try projectDirectoryCreator.create(output: { output in
-//                    // Output in text view
-//                    let previousOutput = self.textView.string
-//                    let nextOutput = previousOutput + "\n" + output
-//                    self.textView.string = nextOutput
-//                    let range = NSRange(location:nextOutput.count,length:0)
-//                    self.textView.scrollRangeToVisible(range)
-//                    self.progressIndicator.increment(by: 1)
-//                    self.counter = self.counter + 1
-//                }) {
-//                    self.progressIndicator.stopAnimation(self)
-//                    let documentController = NSDocumentController.shared
-//                    documentController.openDocument(withContentsOf: self.projectDirectoryCreator.project.projectFileURL, display: true) { (document, wasAlreadyOpen, error) in
-//
-//                        if let error = error {
-//                            self.progressIndicator.stopAnimation(self)
-//                            let alert = NSAlert(error: error)
-//                            alert.runModal()
-//                        }
-//
-//                        if let document = document as? Document, let editWindowController = document.editWindowController {
-//                            editWindowController.setConsole(self.textView.string)
-////                            editWindowController.project = self.projectDirectoryCreator.project
-//                        }
-//                        self.view.window?.close()
-//                    }
-//                }
-//            } catch {
-//                self.progressIndicator.stopAnimation(self)
-//                let alert = NSAlert(error: error)
-//                alert.runModal()
-//            }
-//        }
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func cancelClicked(_ sender: Any) {
-        projectInit.scriptTask?.terminate()
+//        projectInit.scriptTask?.terminate()
         view.window?.close()
     }    
 }

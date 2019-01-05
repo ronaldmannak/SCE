@@ -24,7 +24,7 @@ struct DependencyPlatform: Codable {
     
     let frameworks: [DependencyFramework]
     
-    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
+    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
         
         guard let defaultFramework = frameworks.filter({ $0.defaultFramework == true }).first else {
             return []
@@ -33,7 +33,7 @@ struct DependencyPlatform: Codable {
         return try defaultFramework.install(output: output, finished: finished)
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
+    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
   
         return try frameworks.compactMap({ try $0.update(output: output, finished: finished) }).flatMap{ $0 }
     }

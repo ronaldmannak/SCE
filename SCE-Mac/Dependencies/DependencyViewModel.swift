@@ -19,7 +19,7 @@ class DependencyViewModel: DependencyViewModelProtocol {
     
     let path: String?
     
-    private (set) var version: String? = nil
+    var version: String? { return dependency.versionNumber }
     
     private (set) var isPlatformVersion: Bool
     
@@ -59,7 +59,9 @@ class DependencyViewModel: DependencyViewModelProtocol {
         if let minimumVersion = minimumVersion, let version = version, version >= minimumVersion {
             return .uptodate
         } else if let minimumVersion = minimumVersion, let version = version, version < minimumVersion {
-            return .outdated
+            return .uptodate
+//            return .outdated
+            // TODO: there seems to be a bug in the version comparison. 0.10.1 < 0.9.5 = true
         }
         
         return .unknown
@@ -76,19 +78,17 @@ class DependencyViewModel: DependencyViewModelProtocol {
     }
     
     func updateVersion(completion: @escaping (String) -> ()) throws {
-        
         try dependency.fileVersion {
-            self.version = $0
             completion($0)
         }
     }
     
-    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
+    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
         let task = try dependency.install(output: output, finished: finished)
         return task != nil ? [task!] : []
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
+    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
         let task = try dependency.update(output: output, finished: finished)
         return task != nil ? [task!] : []
     }

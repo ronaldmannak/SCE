@@ -1,5 +1,5 @@
 //
-//  TruffleInit.swift
+//  EtherlimeInit.swift
 //  SCE
 //
 //  Created by Ronald "Danger" Mannak on 10/4/18.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-class TruffleInit: ProjectInitProtocol {    
-    
+class EtherlimeInit: ProjectInitProtocol {
+
     let project: Project
     
     let template: Template?
@@ -46,7 +46,6 @@ class TruffleInit: ProjectInitProtocol {
     }
     
     
-    
     /// Creates a new project on disk
     ///
     /// - Parameters:
@@ -54,23 +53,27 @@ class TruffleInit: ProjectInitProtocol {
     ///   - finished: <#finished description#>
     /// - Returns: <#return value description#>
     /// - Throws: <#throws value description#>
-    func create(output: @escaping (String)->Void, finished: @escaping () -> Void) throws -> ScriptTask {
+    func create(output: @escaping (String)->Void, finished: @escaping (Int) -> Void) throws -> ScriptTask {
         
         // Create project directory
         // (note: Truffle init can only run in an empty directory)
         let fileManager = FileManager.default
         try fileManager.createDirectory(at: workDirectory, withIntermediateDirectories: false)
+        print("*** Creating directory \(workDirectory)")
         
         // Closure copying custom files from bundle to project directory
-        // Will be executed after scriptTaks finishes
-        let f: () -> Void = {
-            
+        // Will be executed after scriptTask finishes
+        let f: (Int) -> Void = { exitStatus in
+
             defer {
-                // Save initial project file to disk, so PreparingViewController can open it
                 self.scriptTask = nil
-                self.saveProjectFile()
-                finished()
+                finished(exitStatus)
             }
+
+            guard exitStatus == 0 else { return }
+
+            // Save initial project file to disk, so PreparingViewController can open it
+            self.saveProjectFile()
             
             if let copyFiles = self.template?.copyFiles {
                 for file in copyFiles {
@@ -89,17 +92,15 @@ class TruffleInit: ProjectInitProtocol {
          
          # ${1} is work directory
          # ${2} is project name
-         # ${3} is truffle command argument, e.g. "init" or "unbox"
-         # ${4} (optional) template name
          */
         
-        var arguments: [String] = [workDirectory.path, project.name]
-        if let template = template {
-            arguments.append(template.templateName == "tutorialtoken" ? "unbox" : "init") // TODO: fix
-            arguments.append(template.templateName)
-        }
+        let arguments: [String] = [workDirectory.path, project.name]
+//        if let template = template {
+//            arguments.append(template.templateName == "tutorialtoken" ? "unbox" : "init") // TODO: fix
+//            arguments.append(template.templateName)
+//        }
         
-        scriptTask = try ScriptTask(script: "TruffleInit", arguments: arguments, output: output, finished: f)
+        scriptTask = try ScriptTask(script: "EtherlimeInit", arguments: arguments, output: output, finished: f)
         scriptTask!.run()
         return scriptTask!
     }

@@ -29,9 +29,9 @@ protocol DependencyViewModelProtocol {
     
     var children: [DependencyViewModelProtocol]? { get }
     
-    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask]
+    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask]
     
-    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask]
+    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask]
     
     /// Updates version number. Run this the first time requesting version, or after an update
     func updateVersion(completion: @escaping (String) -> ()) throws

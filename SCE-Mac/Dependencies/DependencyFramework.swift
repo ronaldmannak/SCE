@@ -38,29 +38,11 @@ struct DependencyFramework: Codable {
     // a project was created by EtherLime or Truffle?
     
     
-    func install(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
+    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {        
         return try dependencies.compactMap { try $0.install(output: output, finished: finished) }
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> [ScriptTask] {
+    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
         return try dependencies.compactMap { try $0.update(output: output, finished: finished) }        
     }
-    
-//    func initProject(output: @escaping (String) -> Void, finished: @escaping () -> Void) throws -> ScriptTask? {
-//
-//
-//
-//        return nil
-////        if let installCommand = installCommand {
-////
-////            let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-////            task = try ScriptTask(script: "General", arguments: [installCommand, homePath], output: { console in
-////                output(console)
-////            }) {
-////                self.task = nil
-////                finished()
-////            }
-////            return task
-////        }
-//    }
 }
