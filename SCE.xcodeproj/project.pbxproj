@@ -150,30 +150,18 @@
 		C70509EB2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyFrameworkViewModel.swift; sourceTree = "<group>"; };
 		C70509EC2155C9D6003DDA2B /* DependencyPlatformViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyPlatformViewModel.swift; sourceTree = "<group>"; };
 		C70509F121561357003DDA2B /* DepedencyViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepedencyViewModelProtocol.swift; sourceTree = "<group>"; };
-		C70509F42159D28C003DDA2B /* EtherlimeInit.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = EtherlimeInit.command; sourceTree = "<group>"; };
-		C70509F72159D307003DDA2B /* EtherlimeRun.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = EtherlimeRun.command; sourceTree = "<group>"; };
 		C70509FC215A1289003DDA2B /* SupportFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportFiles.swift; sourceTree = "<group>"; };
 		C7050A02215A174E003DDA2B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		C7050A05215C510B003DDA2B /* TemplateContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateContainerViewController.swift; sourceTree = "<group>"; };
 		C7050A08215C5129003DDA2B /* TemplateOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateOptionsViewController.swift; sourceTree = "<group>"; };
 		C7050A0B215C6D70003DDA2B /* Templates-Etherlime.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Etherlime.plist"; sourceTree = "<group>"; };
 		C7050A0E215C7047003DDA2B /* Templates-Truffle.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Truffle.plist"; sourceTree = "<group>"; };
-		C7050A11215ECF0C003DDA2B /* ProjectDirectoryCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDirectoryCreator.swift; sourceTree = "<group>"; };
-		C7050A2B2161D1AD003DDA2B /* BuildTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTool.swift; sourceTree = "<group>"; };
-		C7050A2E2166CE6B003DDA2B /* Shell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
 		C7050A312166E4F8003DDA2B /* EditorInterface.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = EditorInterface.plist; sourceTree = "<group>"; };
 		C7050A342166FBC9003DDA2B /* LanguageServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageServer.swift; sourceTree = "<group>"; };
-		C7050A662167199F003DDA2B /* ProjectInitProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInitProtocol.swift; sourceTree = "<group>"; };
-		C7050A69216719BD003DDA2B /* EtherlimeInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherlimeInit.swift; sourceTree = "<group>"; };
-		C7050A6C216719C3003DDA2B /* TruffleInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruffleInit.swift; sourceTree = "<group>"; };
-		C7050A6F21671AFD003DDA2B /* EmbarkInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbarkInit.swift; sourceTree = "<group>"; };
-		C7050A7221672384003DDA2B /* ProjectInitFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInitFactory.swift; sourceTree = "<group>"; };
 		C7050A8A216938B1003DDA2B /* celer.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = celer.sol; sourceTree = "<group>"; };
 		C7050A8D216938EC003DDA2B /* 2_celer_migrations.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = 2_celer_migrations.js; sourceTree = "<group>"; };
-		C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = EmbarkInit.command; sourceTree = "<group>"; };
 		C70B96FF21322CA000B0E4C8 /* TemplateSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TemplateSectionHeaderView.xib; sourceTree = "<group>"; };
 		C70B970121322D4800B0E4C8 /* TemplateSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateSectionHeaderView.swift; sourceTree = "<group>"; };
-		C70B97042135148A00B0E4C8 /* SoliumTruffle.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = SoliumTruffle.command; sourceTree = "<group>"; };
 		C711F58721DCAB62005EBC5D /* Templates-Tronbox.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Templates-Tronbox.plist"; sourceTree = "<group>"; };
 		C711F58821DCB9FF005EBC5D /* Execute.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = Execute.command; sourceTree = "<group>"; };
 		C711F58C21DDF30B005EBC5D /* FrameworkCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworkCommands.swift; sourceTree = "<group>"; };
@@ -198,10 +186,8 @@
 		C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyPlatform.swift; sourceTree = "<group>"; };
 		C7DDD74F2140B68C00674942 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		C7DDD752214100D200674942 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		C7DDD754214102B900674942 /* Command.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Command.command; sourceTree = "<group>"; };
 		C7DDD756214113CB00674942 /* Which.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = Which.command; sourceTree = "<group>"; };
 		C7DDD7592141E02800674942 /* InstallWizard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InstallWizard.storyboard; sourceTree = "<group>"; };
-		C7E4AFA4216AADD900D5716B /* Init.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Init.command; sourceTree = "<group>"; };
 		C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWindowRestoration.swift; sourceTree = "<group>"; };
 		C7E4AFB22175BA4800D5716B /* EditorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorInterface.swift; sourceTree = "<group>"; };
 		C7E76436211EC16300867DA4 /* EditWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWindowController.swift; sourceTree = "<group>"; };
@@ -211,7 +197,6 @@
 		C7E764412122AC2100867DA4 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		C7E764452123539100867DA4 /* Template.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Template.storyboard; sourceTree = "<group>"; };
 		C7E76447212358A900867DA4 /* ProjectInitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectInitViewController.swift; sourceTree = "<group>"; };
-		C7E76458212610DA00867DA4 /* TruffleInit.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = TruffleInit.command; sourceTree = "<group>"; };
 		C7E7645A21262D1800867DA4 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		C7E7645C212675AF00867DA4 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		C7E7645E2128F04800867DA4 /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
@@ -219,8 +204,6 @@
 		C7E76466212937F100867DA4 /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
 		C7E76468212D3D0400867DA4 /* TRC20.sol */ = {isa = PBXFileReference; lastKnownFileType = text; path = TRC20.sol; sourceTree = "<group>"; };
 		C7E7646A212D3D5500867DA4 /* 2_deploy_contracts.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = 2_deploy_contracts.js; sourceTree = "<group>"; };
-		C7E7646C212E28F200867DA4 /* TruffleRun.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = TruffleRun.command; sourceTree = "<group>"; };
-		C7E76470212E59F000867DA4 /* TruffleWebserver.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = TruffleWebserver.command; sourceTree = "<group>"; };
 		C7F0B973210DACCB005A8FE2 /* SCE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7F0B976210DACCB005A8FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7F0B978210DACCB005A8FE2 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -338,23 +321,6 @@
 		C711F58B21DDCEFD005EBC5D /* unused */ = {
 			isa = PBXGroup;
 			children = (
-				C7050A11215ECF0C003DDA2B /* ProjectDirectoryCreator.swift */,
-				C7050A662167199F003DDA2B /* ProjectInitProtocol.swift */,
-				C7050A7221672384003DDA2B /* ProjectInitFactory.swift */,
-				C7050A69216719BD003DDA2B /* EtherlimeInit.swift */,
-				C7050A6C216719C3003DDA2B /* TruffleInit.swift */,
-				C7050A6F21671AFD003DDA2B /* EmbarkInit.swift */,
-				C7E76458212610DA00867DA4 /* TruffleInit.command */,
-				C7E7646C212E28F200867DA4 /* TruffleRun.command */,
-				C7E76470212E59F000867DA4 /* TruffleWebserver.command */,
-				C70509F42159D28C003DDA2B /* EtherlimeInit.command */,
-				C70509F72159D307003DDA2B /* EtherlimeRun.command */,
-				C70B97042135148A00B0E4C8 /* SoliumTruffle.command */,
-				C70B96FD21320EA600B0E4C8 /* EmbarkInit.command */,
-				C7E4AFA4216AADD900D5716B /* Init.command */,
-				C7DDD754214102B900674942 /* Command.command */,
-				C7050A2E2166CE6B003DDA2B /* Shell.swift */,
-				C7050A2B2161D1AD003DDA2B /* BuildTool.swift */,
 			);
 			path = unused;
 			sourceTree = "<group>";
