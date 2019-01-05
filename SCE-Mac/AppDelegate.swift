@@ -15,18 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        var setup: DependencySetup!
-        var shouldDisplayInstallWizard = false
-        do {
-            setup = try DependencySetup()
-            shouldDisplayInstallWizard = try setup.setup(.ethereum, overwrite: true)         
-        } catch {
-            let alert = NSAlert(error: error)
-            alert.runModal()
-        }
-  
-        if shouldDisplayInstallWizard == true {
-            showInstallWizard(setup: setup)
+        if UserDefaults.standard.bool(forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue) == false {
+            showInstallWizard()
         } else {
             showChooseTemplate(self)
         }
@@ -49,11 +39,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        }
 //    }
     
-    func showInstallWizard(setup: DependencySetup) {
+    func showInstallWizard() {
         let installWizardStoryboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "InstallWizard"), bundle: nil)
         let installWizard = installWizardStoryboard.instantiateInitialController() as? NSWindowController
-        let installContainer = installWizard?.contentViewController as? InstallContainerViewController
-        installContainer?.dependencies = setup
         installWizard?.showWindow(self)
     }
     
