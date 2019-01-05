@@ -12,7 +12,7 @@ import Cocoa
 class DependencyViewModel {
 
     enum State {
-        case unknown, uptodate, outdated, notInstalled, installing
+        case unknown, uptodate, outdated, notInstalled, installing, comingSoon
     }
     
     let dependency: Dependency?
@@ -38,7 +38,7 @@ class DependencyViewModel {
         case .outdated: emoji = "⚠️"
         case .notInstalled:
             emoji = "❌"
-        case .installing: emoji = "🕗"
+        case .installing, .comingSoon: emoji = "🕗"
         }
         
         return emoji + " " + name
@@ -53,7 +53,7 @@ class DependencyViewModel {
         case .uptodate: image = NSImage()
         case .outdated: image = NSImage()
         case .notInstalled: image = NSImage()
-        case .installing: image = NSImage()
+        case .installing, .comingSoon: image = NSImage()
         }
         return image
     }
@@ -65,11 +65,11 @@ class DependencyViewModel {
         
         // TODO: why don't we simply subclass dependencyViewModel into platform and child?
         
-        // Handle platforms first
+        // Handle platforms 
         guard let dependency = dependency else {
             
             // If platform is an empty placeholder
-            if children.isEmpty { return .installing }
+            if children.isEmpty { return .comingSoon }
             
             // Platform installing
             if children.filter({ $0.state == .installing }).isEmpty == false {
