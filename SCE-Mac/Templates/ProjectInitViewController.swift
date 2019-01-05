@@ -16,9 +16,9 @@ class ProjectInitViewController: NSViewController {
     @IBOutlet weak var cancelButton: NSButton!
     var counter: Int = 0
 
-    var projectInit: ProjectInitProtocol! {
+    var projectInit: ProjectInit! {
         didSet {
-            progressIndicator.startAnimation(self)
+            /*progressIndicator.startAnimation(self)
             progressIndicator.maxValue = Double(projectInit.stdOutputLines)
             do {
                 _ = try projectInit.create(output: { output in
@@ -60,7 +60,7 @@ class ProjectInitViewController: NSViewController {
                 self.progressIndicator.stopAnimation(self)
                 let alert = NSAlert(error: error)
                 alert.runModal()
-            }
+            }*/
         }
     }
     
@@ -109,7 +109,7 @@ class ProjectInitViewController: NSViewController {
     }
     
     @IBAction func cancelClicked(_ sender: Any) {
-        projectInit.scriptTask?.terminate()
+//        projectInit.scriptTask?.terminate()
         view.window?.close()
     }    
 }

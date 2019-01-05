@@ -12,12 +12,49 @@ import Foundation
 /// properties are read from Dependencies.plist file
 struct FrameworkCommands: Codable {
     
-    struct InitCommands: Codable {
-        let commands: [String]
-        let createProjectDirectory: Bool
+    /// E.g. ethereum
+    let platform: String
+    
+    /// E.g. truffle
+    let framework: String
+    
+    /// Oldest version of the framework the included commands work with
+    let minVersion: String
+    
+    /// Newest version of the frameworks the included commands work with
+    let maxVersion: String
+    
+    /// Name of the configuration file
+    /// (used to open the configuration by clicking on the project name in the IDE)
+    let configurationFile: String
+    
+    let errorRegex: String?
+    
+    let warningRegex: String?
+    
+    /// Commands
+    let commands: Commands?
+    
+    /// Loads all framework commands from FrameworkCommands.plist in the bundle
+    static func loadCommands() throws -> [FrameworkCommands] {
+        
+        let dependenciesFile = Bundle.main.url(forResource: "FrameworkCommands.plist", withExtension: nil)!
+        let data = try Data(contentsOf: dependenciesFile)
+        let decoder = PropertyListDecoder()
+        return try decoder.decode([FrameworkCommands].self, from: data)
     }
     
-    let initCommands: InitCommands
+    static func loadCommands(for framework: String, version: String? = nil, platform: String? = nil) throws -> FrameworkCommands {
+        
+        // TODO: match versions
+        guard let commands = try loadCommands().filter({ $0.framework.capitalized == framework.capitalized }).first else {
+            throw CompositeError.frameworkNotFound(framework)
+        }
+        return commands
+    }
+}
+
+struct Commands: Codable {
     
     let compile: String
     
@@ -35,7 +72,16 @@ struct FrameworkCommands: Codable {
     
     let lint: String?
     
-    let errorRegex: String?
+    let initEmpty: FrameworkInit
     
-    let warningRegex: String?
+    let initTemplate: FrameworkInit?
+    
+    let initExample: FrameworkInit?
+}
+
+struct FrameworkInit: Codable {
+    
+    let commands: [String]
+    
+    let createProjectDirectory: Bool
 }

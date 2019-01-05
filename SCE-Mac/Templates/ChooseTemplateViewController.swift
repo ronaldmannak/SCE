@@ -31,7 +31,7 @@ class ChooseTemplateViewController: NSViewController {
             templateCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
         }
     }
-    fileprivate var projectInit: ProjectInitProtocol? = nil
+    fileprivate var projectInit: ProjectInit? = nil
     
     /// Index for "All categories"
     fileprivate let allRowIndex = 0
@@ -187,36 +187,42 @@ class ChooseTemplateViewController: NSViewController {
             
             guard result == .OK, let directory = savePanel.url else { return }
             
-            // Temporary: do not allow overwriting existing files or directories
+            // Do not allow overwriting existing files or directories
             let fileManager = FileManager.default
-            guard fileManager.fileExists(atPath: directory.path) == false else { return }
+            guard fileManager.fileExists(atPath: directory.path) == false else {
+                let alert = NSAlert()
+                alert.informativeText = "Cannot overwrite existing file or directory."
+                alert.messageText = "Choose another projectname."
+                alert.runModal()
+                return
+            }
             
             let projectName = directory.lastPathComponent // e.g. "MyProject"
             let baseDirectory = directory.deletingLastPathComponent() // e.g. "/~/Documents/"
             
-            guard let projectInit = self.createProjectInit(projectname: projectName, baseDirectory: baseDirectory, template: template) else { return }
-            self.projectInit = projectInit
+            do {
+                let projectInit = try self.createProjectInit(projectname: projectName, baseDirectory: baseDirectory, template: template)
+                self.projectInit = projectInit
+            } catch {
+                let alert = NSAlert(error: error)
+                alert.runModal()
+            }
             
             let id = NSStoryboardSegue.Identifier(rawValue: "ProjectInitSegue")
             self.performSegue(withIdentifier: id, sender: self)
         }
     }
     
-    private func createProjectInit(projectname: String, baseDirectory: URL, template: Template? = nil) -> ProjectInitProtocol? {
+    private func createProjectInit(projectname: String, baseDirectory: URL, template: Template? = nil) throws -> ProjectInit {
         
         let selectedPlatformViewModel = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
         let selectedPlatform = selectedPlatformViewModel.platformDependency.platform
         let selectedFrameworkName = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].framework.name
         let selectedFrameworkVersion = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].version
         
-        do {
-            let projectInit = try ProjectInitFactory.create(projectname: projectname ,baseDirectory: baseDirectory, platform: selectedPlatform, framework: selectedFrameworkName, frameworkVersion: selectedFrameworkVersion, template: template, info: nil)
-            return projectInit
-        } catch {
-            let alert = NSAlert(error: error)
-            alert.runModal()
-        }
-        return nil
+        let projectInit = try ProjectInit(projectName: projectname, baseDirectory: baseDirectory.path, openFile: "", copyFiles: template?.copyFiles, frameworkName: selectedFrameworkName, frameworkVersion: selectedFrameworkVersion, platform: selectedFrameworkName)
+
+        return projectInit
     }
 }
 

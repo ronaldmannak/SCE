@@ -16,6 +16,19 @@ struct CopyFile: Codable {
     
     func copyfile(projectName: String? = nil) {
         // ...
+        //        guard let source = Bundle.main.url(forResource: file.filename, withExtension: nil) else {
+        //            assertionFailure() // Source file does not exist in bundle
+        //            return
+        //        }
+        //        let destination = self.project.workDirectory.appendingPathComponent(file.destination).appendingPathComponent(file.filename)
+        //        do {
+        //            try FileManager.default.copyItem(at: source, to: destination)
+        //        } catch {
+        //            print("****** \(error.localizedDescription) *****")
+        //            print("From: \(source.path)")
+        //            print("To: \(destination.path)")
+        //            assertionFailure()
+        //        }
     }
 }
 

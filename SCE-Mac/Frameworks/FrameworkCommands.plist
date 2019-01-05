@@ -13,6 +13,10 @@
 		<string></string>
 		<key>configurationFile</key>
 		<string>tronbox-config.js</string>
+		<key>errorRegex</key>
+		<string>*</string>
+		<key>warningRegex</key>
+		<string>*</string>
 		<key>commands</key>
 		<dict>
 			<key>compile</key>
@@ -31,11 +35,7 @@
 			<string>tronbox console</string>
 			<key>lint</key>
 			<string>solium --dir .</string>
-			<key>errorRegex</key>
-			<string>*</string>
-			<key>warningRegex</key>
-			<string>*</string>
-			<key>init</key>
+			<key>initEmpty</key>
 			<dict>
 				<key>commands</key>
 				<array>
@@ -68,6 +68,10 @@
 		<string></string>
 		<key>configurationFile</key>
 		<string>deployment/deploy.js</string>
+		<key>errorRegex</key>
+		<string>*</string>
+		<key>warningRegex</key>
+		<string>*</string>
 		<key>commands</key>
 		<dict>
 			<key>compile</key>
@@ -88,11 +92,7 @@
 			<string></string>
 			<key>lint</key>
 			<string></string>
-			<key>errorRegex</key>
-			<string>*</string>
-			<key>warningRegex</key>
-			<string>*</string>
-			<key>init</key>
+			<key>initEmpty</key>
 			<dict>
 				<key>commands</key>
 				<array>
@@ -125,6 +125,10 @@
 		<string></string>
 		<key>configurationFile</key>
 		<string>truffle.js</string>
+		<key>errorRegex</key>
+		<string>*</string>
+		<key>warningRegex</key>
+		<string>*</string>
 		<key>commands</key>
 		<dict>
 			<key>compile</key>
@@ -145,11 +149,7 @@
 			<string></string>
 			<key>lint</key>
 			<string></string>
-			<key>errorRegex</key>
-			<string>*</string>
-			<key>warningRegex</key>
-			<string>*</string>
-			<key>init</key>
+			<key>initEmpty</key>
 			<dict>
 				<key>commands</key>
 				<array>
