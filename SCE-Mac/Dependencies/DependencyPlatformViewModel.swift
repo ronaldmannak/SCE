@@ -45,6 +45,10 @@ class DependencyPlatformViewModel: DependencyViewModelProtocol {
         completion(version)
     }
     
+    func fetchVersion(completion: @escaping (String) -> ()) throws -> BashOperation {
+        return BashOperation()
+    }
+    
     var state: DependencyState {
         
         // If platform is an empty placeholder

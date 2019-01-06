@@ -16,10 +16,36 @@ class InstallBlockchainViewController: NSViewController {
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var showOnStartupButton: NSButton!
     
+    /// Queue used to fetch versions (which can be extremely slow)
+    let fetchVersionQueue: OperationQueue = OperationQueue()
+    
+    /// Queue used to install and update tools
+    let installQueue: OperationQueue = OperationQueue()
+    
+    /// KVO for installQueue.operationCount
+    /// If operationCount is greater than zero,
+    /// the progress indicator will animate
+    private var installCount: NSKeyValueObservation?
+    
     private var platforms =  [DependencyViewModelProtocol]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchVersionQueue.maxConcurrentOperationCount = 1
+        fetchVersionQueue.qualityOfService = .userInteractive
+        installQueue.maxConcurrentOperationCount = 1
+        installQueue.qualityOfService = .userInitiated
+        installCount = installQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
+            if queue.operationCount == 0 {
+                self.progressIndicator.stopAnimation(self)
+                self.progressIndicator.isHidden = true
+            } else {
+                self.progressIndicator.startAnimation(self)
+                self.progressIndicator.isHidden = false
+            }
+        }
+        
         loadPlatforms()
         showOnStartupButton.state = UserDefaults.standard.bool(forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue) == false ? .on : .off
     }
@@ -39,8 +65,9 @@ class InstallBlockchainViewController: NSViewController {
                     
                     guard let tools = framework.children else { continue }
                     for tool in tools {
-                        
-                        try tool.updateVersion{ _ in
+                                                
+                        try tool.fetchVersion { _ in
+//                        try tool.updateVersion{ _ in
                             self.outlineView.reloadItem(framework)
                             self.outlineView.reloadItem(tool)
                         }
@@ -57,18 +84,18 @@ class InstallBlockchainViewController: NSViewController {
     }
     
     @IBAction func done(_ sender: Any) {
+        fetchVersionQueue.cancelAllOperations()
         container.showComplete()
     }
     
     @IBAction func cancel(_ sender: Any) {
-        // Stop NSTask
+        fetchVersionQueue.cancelAllOperations()
         view.window?.close()
         guard let delegate = NSApplication.shared.delegate as? AppDelegate else { return }
         delegate.showChooseTemplate(self)
     }
     
     @IBAction func button1(_ sender: Any) {
-        
         // NSButton is a subclass of NSView
         guard let sender = sender as? NSView else { return }
         let row = outlineView.row(for: sender)
@@ -95,7 +122,6 @@ class InstallBlockchainViewController: NSViewController {
         let catchClosure: (Error) -> Void = { error in
         
             self.outlineView.reloadData()
-            self.updateProgressIndicator()
             let alert = NSAlert(error: error)
             alert.runModal()
         }
@@ -114,7 +140,6 @@ class InstallBlockchainViewController: NSViewController {
             do {
                 try item.updateVersion { _ in
                     self.outlineView.reloadData()
-                    self.updateProgressIndicator()
                 }
             } catch {
                 catchClosure(error)
@@ -135,29 +160,11 @@ class InstallBlockchainViewController: NSViewController {
             for task in tasks {
                 task.run()
             }
-            self.updateProgressIndicator()
             self.outlineView.reloadData() // to show "installing"
             
         } catch {
             catchClosure(error)
         }
-    }
-}
-
-// Queue functions
-extension InstallBlockchainViewController {
-    
-    func updateProgressIndicator() {
-
-        let isUpdating = !platforms.filter { $0.state == .installing }.isEmpty
-        
-        if isUpdating == true {
-            progressIndicator.startAnimation(self)
-            progressIndicator.isHidden = false
-        } else {
-            progressIndicator.stopAnimation(self)
-            progressIndicator.isHidden = true
-        }        
     }
 }
 

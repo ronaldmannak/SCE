@@ -83,6 +83,10 @@ class DependencyViewModel: DependencyViewModelProtocol {
         }
     }
     
+    func fetchVersion(completion: @escaping (String) -> ()) throws -> BashOperation {
+        
+    }
+    
     func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
         let task = try dependency.install(output: output, finished: finished)
         return task != nil ? [task!] : []

@@ -52,7 +52,8 @@ class Dependency: Codable {
     /// If task is not nil, the view model assumes .installing state
     private (set) var task: ScriptTask? = nil
     
-    fileprivate (set) var versionNumber: String?
+    /// Cached version of the version
+    @objc dynamic private(set) var versionNumber: String?
     
     private enum CodingKeys: String, CodingKey {
         case name, customLocation, defaultLocation, minimumVersion, isPlatformVersion, versionCommand, installCommand, installLink, updateCommand, comment, required

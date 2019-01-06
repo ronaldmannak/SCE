@@ -35,4 +35,8 @@ protocol DependencyViewModelProtocol {
     
     /// Updates version number. Run this the first time requesting version, or after an update
     func updateVersion(completion: @escaping (String) -> ()) throws
+    
+    /// Queries version of dependency. This is slow, some tools need up to 20 seconds to return a version.
+    /// Once fetched, the version will be cached in the version property
+    func fetchVersion(completion: @escaping (String) -> ()) throws -> BashOperation
 }

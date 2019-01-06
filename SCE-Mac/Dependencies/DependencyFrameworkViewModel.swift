@@ -93,4 +93,8 @@ class DependencyFrameworkViewModel: DependencyViewModelProtocol {
         self.version = version
         completion(version)
     }
+    
+    func fetchVersion(completion: @escaping (String) -> ()) throws -> BashOperation {
+//        return BashOperation()
+    }
 }
