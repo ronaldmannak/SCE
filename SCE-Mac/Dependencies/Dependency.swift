@@ -11,7 +11,7 @@ import Cocoa
 
 
 /// Dependency is an application Composite depends on, e.g. truffle
-class Dependency: NSObject, Codable {
+class Dependency: Codable {
     
     /// Filename
     let name: String
@@ -48,12 +48,12 @@ class Dependency: NSObject, Codable {
     /// will ignore any tool that has required set to false
     let required: Bool
     
-    /// Used by DependencyViewModel to assert install state
-    /// If task is not nil, the view model assumes .installing state
-    private (set) var task: ScriptTask? = nil
-    
     /// Cached version of the version
-    @objc dynamic private(set) var versionNumber: String?
+    private (set) var versionNumber: String?
+    
+    private weak var installOperation: BashOperation? = nil
+    
+    private weak var updateOperation: BashOperation? = nil
     
     private enum CodingKeys: String, CodingKey {
         case name, customLocation, defaultLocation, minimumVersion, isPlatformVersion, versionCommand, installCommand, installLink, updateCommand, comment, required
@@ -93,7 +93,11 @@ extension Dependency {
         return customLocation
     }
 
-    override var description: String {
+}
+
+extension Dependency: CustomStringConvertible {
+    
+    var description: String {
         return name.capitalizedFirstChar().replacingOccurrences(of: ".app", with: "")
     }
 }
@@ -150,135 +154,79 @@ extension Dependency {
     ///
     /// - Parameter completion: Script output
     /// - Throws: FileNotFound error when the script (<script.command>) is not found
-    func suggestLocation(completion: (String) -> ()) throws {
-        let task = try ScriptTask(script: "Which", arguments: ["brew"], output: { output in
-            print(output)
-        }) { exitStatus in
-            
-            guard exitStatus == 0 else {
-                let error = CompositeError.bashScriptFailed("Bash error")
-                let alert = NSAlert(error: error)
-                alert.runModal()
-                return
-            }
-        }
-        task.run()
-    }
+//    func suggestLocation(completion: (String) -> ()) throws {
+//        let task = try ScriptTask(script: "Which", arguments: ["brew"], output: { output in
+//            print(output)
+//        }) { exitStatus in
+//            
+//            guard exitStatus == 0 else {
+//                let error = CompositeError.bashScriptFailed("Bash error")
+//                let alert = NSAlert(error: error)
+//                alert.runModal()
+//                return
+//            }
+//        }
+//        task.run()
+//    }
     
-    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> ScriptTask? {
-        
-        guard isInstalled == false else { return nil }
-        
-        if let link = installLink, let url = URL(string: link) {
-            finished(0)
-            NSWorkspace.shared.open(url)            
-        }
-        
+    func install() throws -> BashOperation? {
+
         // Hardcoded edgecase for brew.
         // The brew installer needs to run as admin.
-        // TODO: figure out how to run Processes as root
         if name == "brew" {
-            try installBrew(output: output, finished: finished)
+            installBrew()
             return nil
         }
         
-        if let installCommand = installCommand {
-            
-            task = try ScriptTask(directory: "~", commands: [installCommand], output: { console in
-                output(console)
-            }) { exitStatus in
-                
-                func done() {
-                    self.task = nil
-                    finished(exitStatus)
-                }
-               
-                guard exitStatus == 0 else {
-                    let error = CompositeError.bashScriptFailed("Bash error")
-                    let alert = NSAlert(error: error)
-                    alert.runModal()
-                    done()
-                    return
-                }
-
-                // Update version number
-                do {
-//                    try self.fileVersion { version in
-//                        self.versionNumber = version
-//                        done()
-//                    }
-                } catch {
-                    done()
-                }
-            }
-            return task
+        // If dependency is already installed, return nil
+        guard isInstalled == false else { return nil }
+        
+        // If dependency needs to be downloaded from a web page and installed manually, open url
+        if let link = installLink, let url = URL(string: link) {
+            NSWorkspace.shared.open(url)
+            return nil
         }
         
-        // TODO: if neither link or installCommand is set, finished() is never called
-        return nil
+        // If there's no installCommand, do nothing
+        guard let installCommand = installCommand else {
+            return nil
+        }
+        
+        return try BashOperation(directory: "~", commands: [installCommand])
     }
     
     
-    /// <#Description#>
+    /// TODO: Look into running task as root to install tools like Berw
     ///
     // See:
     /// https://developer.apple.com/library/archive/documentation/Security/Conceptual/SecureCodingGuide/Articles/AccessControl.html
     /// https://www.reddit.com/r/macprogramming/comments/3wuvmz/how_to_createrun_an_nstask_in_swift_with_sudo/
     /// https://www.cocoawithlove.com/2009/05/invoking-other-processes-in-cocoa.html
     /// AppleScript: http://nonsenseinbasic.blogspot.com/2013/03/mac-os-x-programming-running-nstask.html
-    /// - Parameters:
-    ///   - output: <#output description#>
-    ///   - finished: <#finished description#>
-    /// - Throws: <#throws value description#>
-    private func installBrew(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws  {
+    private func installBrew()  {
         
         let message = "Please install brew manually by copying the following text in MacOS terminal"
         let command = "/usr/bin/ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
-        
-        output(message)
-        output(command)
         
         let alert = NSAlert()
         alert.messageText = message
         alert.informativeText = command
         alert.runModal()
-        
-        finished(0)
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> ScriptTask? {
+    func update() throws -> BashOperation? {
         
         guard isInstalled == true, let updateCommand = updateCommand, updateCommand.isEmpty == false else {
             return nil
         }
         
-        task = try ScriptTask(directory: "~", commands: [updateCommand], output: { console in
-            output(console)
-        }) { exitStatus in
-            
-            func done() {
-                self.task = nil
-                finished(exitStatus)
-            }
-            
-            guard exitStatus == 0 else {
-                // Node returns an error when trying to update an up-to-date version
-                print("Error updating \(self.name)")
-                done()
-                return
-            }
-            
-            // Update version number
-            do {
-//                try self.fileVersion { version in
-//                    self.versionNumber = version
-//                    done()
-//                }
-            } catch {
-                done()
-            }
-        }
-        return task
+        return try BashOperation(directory: "~", commands: [updateCommand])
+    }
+    
+    func isInstalling() -> Bool {
+        if let i = installOperation, i.isExecuting == true { return true }
+        if let u = updateOperation, u.isExecuting == true { return true }
+        return false
     }
 }
 

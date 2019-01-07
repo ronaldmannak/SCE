@@ -10,8 +10,6 @@ import Foundation
 import Cocoa
 
 class DependencyViewModel: DependencyViewModelProtocol {
-
-//    private var versionObserver: NSKeyValueObservation?
     
     private let dependency: Dependency
     
@@ -48,7 +46,7 @@ class DependencyViewModel: DependencyViewModelProtocol {
     var state: DependencyState {
         
         // Installing
-        if dependency.task != nil {
+        if dependency.isInstalling() {
             return .installing
         }
         
@@ -77,10 +75,6 @@ class DependencyViewModel: DependencyViewModelProtocol {
         required = dependency.required
         minimumVersion = dependency.minimumVersion
         isPlatformVersion = dependency.isPlatformVersion
-        
-//        versionObserver = dependency.observe(\.versionNumber, options: .new) { dependency, change in
-//
-//        }
     }
 
     func versionQueryOperation() -> BashOperation? {
@@ -91,13 +85,13 @@ class DependencyViewModel: DependencyViewModelProtocol {
         return dependency.versionQueryParser(output)
     }
     
-    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
-        let task = try dependency.install(output: output, finished: finished)
-        return task != nil ? [task!] : []
+    func install() throws -> [BashOperation]? {
+        let operation = try dependency.install()
+        return operation != nil ? [operation!] : nil
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
-        let task = try dependency.update(output: output, finished: finished)
-        return task != nil ? [task!] : []
+    func update() throws -> [BashOperation]? {
+        let operation = try dependency.update()
+        return operation != nil ? [operation!] : nil
     }
 }

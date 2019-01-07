@@ -24,18 +24,18 @@ struct DependencyPlatform: Codable {
     
     let frameworks: [DependencyFramework]
     
-    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
+    func install() throws -> [BashOperation]? {
         
         guard let defaultFramework = frameworks.filter({ $0.defaultFramework == true }).first else {
-            return []
+            return nil
         }
         
-        return try defaultFramework.install(output: output, finished: finished)
+        return try defaultFramework.install()
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
+    func update() throws -> [BashOperation]? {
   
-        return try frameworks.compactMap({ try $0.update(output: output, finished: finished) }).flatMap{ $0 }
+        return try frameworks.compactMap({ try $0.update() }).flatMap{ $0 }
     }
     
     /// Loads all depencies for all platforms from Dependencies.plist

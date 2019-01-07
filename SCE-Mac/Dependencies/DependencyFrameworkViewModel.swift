@@ -12,8 +12,6 @@ class DependencyFrameworkViewModel: DependencyViewModelProtocol {
 
     let framework: DependencyFramework
     
-    private var task: ScriptTask? = nil
-    
     private (set) var name: String
     
     private (set) var path: String?
@@ -68,14 +66,14 @@ class DependencyFrameworkViewModel: DependencyViewModelProtocol {
         dependencies = framework.dependencies.map { DependencyViewModel($0) }
     }
 
-    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
+    func install() throws -> [BashOperation]? {
         
-        return try framework.install(output: output, finished: finished)
+        return try framework.install()
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
+    func update() throws -> [BashOperation]? {
         
-        return try framework.update(output: output, finished: finished)
+        return try framework.update()
     }
     
     func versionQueryOperation() -> BashOperation? {

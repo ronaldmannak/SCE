@@ -89,6 +89,8 @@
 						<string>npm install -g tronbox</string>
 						<key>updateCommand</key>
 						<string>npm -g update --save tronbox</string>
+						<key>outdatedCommand</key>
+						<string>npm -g outdated tronbox</string>
 						<key>comment</key>
 						<string></string>
 						<key>url</key>
@@ -225,6 +227,8 @@
 						<string>npm i -g etherlime</string>
 						<key>updateCommand</key>
 						<string>npm -g update --save etherlime</string>
+						<key>outdatedCommand</key>
+						<string>npm -g outdated etherlime</string>
 						<key>comment</key>
 						<string></string>
 						<key>required</key>
@@ -320,6 +324,8 @@
 						<string>npm install -g truffle</string>
 						<key>updateCommand</key>
 						<string>npm update --save truffle</string>
+						<key>outdatedCommand</key>
+						<string>npm -g outdated truffle</string>
 						<key>comment</key>
 						<string></string>
 						<key>url</key>
@@ -346,6 +352,8 @@
 						<string>npm install -g solium</string>
 						<key>updateCommand</key>
 						<string>npm update --save solium</string>
+						<key>outdatedCommand</key>
+						<string>npm -g outdated tronbox</string>
 						<key>comment</key>
 						<string></string>
 						<key>url</key>

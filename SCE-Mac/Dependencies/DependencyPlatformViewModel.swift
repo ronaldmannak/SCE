@@ -36,22 +36,6 @@ class DependencyPlatformViewModel: DependencyViewModelProtocol {
     func versionQueryParser(_ output: String) -> String {
         return ""
     }
-//    func updateVersion(completion: @escaping (String) -> ()) throws {
-//
-//        guard let primaryFramework = frameworks.filter({ $0.isDefaultFramework == true }).first else {
-//            completion("")
-//            return
-//        }
-//        guard let version = primaryFramework.version else {
-//            try primaryFramework.updateVersion {
-//                self.version = $0
-//                completion($0)
-//            }
-//            return
-//        }
-//        completion(version)
-//    }
-    
     
     var state: DependencyState {
         
@@ -88,13 +72,13 @@ class DependencyPlatformViewModel: DependencyViewModelProtocol {
         
     }
     
-    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
+    func install() throws -> [BashOperation]? {
         
-        return try platformDependency.install(output: output, finished: finished)
+        return try platformDependency.install()
     }
     
-    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
+    func update() throws -> [BashOperation]? {
         
-        return try platformDependency.update(output: output, finished: finished)
+        return try platformDependency.update()
     }
 }

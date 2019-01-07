@@ -125,7 +125,7 @@ class InstallBlockchainViewController: NSViewController {
     }
     
     func run(_ item: DependencyViewModelProtocol) {
-        
+        /*
         let catchClosure: (Error) -> Void = { error in
         
             self.outlineView.reloadData()
@@ -171,8 +171,8 @@ class InstallBlockchainViewController: NSViewController {
             
         } catch {
             catchClosure(error)
-        }
-    }
+        } */
+    } 
 }
 
 extension InstallBlockchainViewController: NSOutlineViewDelegate {

@@ -113,7 +113,6 @@
 		C7F0B9BF2112C3CA005A8FE2 /* SolidityLexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9BD2112C3CA005A8FE2 /* SolidityLexer.swift */; };
 		C7F0B9C22113CF7E005A8FE2 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C12113CF7E005A8FE2 /* SplitViewController.swift */; };
 		C7F0B9C42113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C32113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift */; };
-		C7F0B9C62113EA39005A8FE2 /* ScriptTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F0B9C52113EA39005A8FE2 /* ScriptTask.swift */; };
 		F8F7FB4D214B4E58001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
 		F8F7FB4E214B4E5A001A6F49 /* BrewInstall.command in Resources */ = {isa = PBXBuildFile; fileRef = F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */; };
 /* End PBXBuildFile section */
@@ -232,7 +231,6 @@
 		C7F0B9BD2112C3CA005A8FE2 /* SolidityLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidityLexer.swift; sourceTree = "<group>"; };
 		C7F0B9C12113CF7E005A8FE2 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		C7F0B9C32113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplitViewController+SyntaxTextViewDelegate.swift"; sourceTree = "<group>"; };
-		C7F0B9C52113EA39005A8FE2 /* ScriptTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptTask.swift; sourceTree = "<group>"; };
 		D54B663B8628E464C0601987 /* Pods-SCE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCE.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCE/Pods-SCE.release.xcconfig"; sourceTree = "<group>"; };
 		F1EDF41DDA83A1CD67607617 /* Pods-SCETests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCETests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCETests/Pods-SCETests.debug.xcconfig"; sourceTree = "<group>"; };
 		F81936C3214C6F2F00C3222B /* uninstall.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = uninstall.command; sourceTree = "<group>"; };
@@ -363,7 +361,6 @@
 			isa = PBXGroup;
 			children = (
 				C711F5D221E13A45005EBC5D /* BashOperation.swift */,
-				C7F0B9C52113EA39005A8FE2 /* ScriptTask.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -920,7 +917,6 @@
 				C7E7643F2122A2CF00867DA4 /* TemplateCollectionViewItem.swift in Sources */,
 				C7F0B9C22113CF7E005A8FE2 /* SplitViewController.swift in Sources */,
 				C7E76467212937F100867DA4 /* FileItem.swift in Sources */,
-				C7F0B9C62113EA39005A8FE2 /* ScriptTask.swift in Sources */,
 				C70509EE2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift in Sources */,
 				C7DDD74E2140AFDC00674942 /* DependencyPlatform.swift in Sources */,
 				C711F5AC21DF4E69005EBC5D /* ProjectInit.swift in Sources */,
