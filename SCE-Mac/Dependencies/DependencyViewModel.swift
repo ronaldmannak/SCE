@@ -11,6 +11,8 @@ import Cocoa
 
 class DependencyViewModel: DependencyViewModelProtocol {
 
+//    private var versionObserver: NSKeyValueObservation?
+    
     private let dependency: Dependency
     
     let name: String
@@ -75,16 +77,18 @@ class DependencyViewModel: DependencyViewModelProtocol {
         required = dependency.required
         minimumVersion = dependency.minimumVersion
         isPlatformVersion = dependency.isPlatformVersion
-    }
-    
-    func updateVersion(completion: @escaping (String) -> ()) throws {
-        try dependency.fileVersion {
-            completion($0)
-        }
-    }
-    
-    func fetchVersion(completion: @escaping (String) -> ()) throws -> BashOperation {
         
+//        versionObserver = dependency.observe(\.versionNumber, options: .new) { dependency, change in
+//
+//        }
+    }
+
+    func versionQueryOperation() -> BashOperation? {
+        return dependency.versionQueryOperation()
+    }
+    
+    func versionQueryParser(_ output: String) -> String {
+        return dependency.versionQueryParser(output)
     }
     
     func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {

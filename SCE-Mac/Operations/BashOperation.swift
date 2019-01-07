@@ -36,6 +36,9 @@ class BashOperation: Operation {
     /// http://www.tldp.org/LDP/abs/html/exitcodes.html
     private (set) var exitStatus: Int?
     
+    /// Complete output
+    private (set) var output: String = ""
+    
     private let task = Process()
     private let outputPipe = Pipe()
     private let inputPipe = Pipe()
@@ -134,11 +137,14 @@ class BashOperation: Operation {
             DispatchQueue.main.async(execute: {
                 print(outputString)
                 self.outputClosure?(outputString)
+                self.delegate?.bashOperation(self, receivedOutput: outputString)
+                self.output = self.output + "\n" + outputString
+                self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify() // Do we need this?
             })
-            
-            self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
         }
-        outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
+        DispatchQueue.main.async(execute: {
+            self.outputPipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
+        })
     }
     
 //    override func cancel() {

@@ -34,9 +34,14 @@ protocol DependencyViewModelProtocol {
     func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask]
     
     /// Updates version number. Run this the first time requesting version, or after an update
-    func updateVersion(completion: @escaping (String) -> ()) throws
+//    func updateVersion(completion: @escaping (String) -> ()) throws
     
     /// Queries version of dependency. This is slow, some tools need up to 20 seconds to return a version.
     /// Once fetched, the version will be cached in the version property
-    func fetchVersion(completion: @escaping (String) -> ()) throws -> BashOperation
+//    func fetchVersion(completion: @escaping (String) -> ()) throws -> BashOperation
+    
+    
+    func versionQueryOperation() -> BashOperation?
+    
+    func versionQueryParser(_ output: String) -> String
 }

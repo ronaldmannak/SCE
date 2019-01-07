@@ -65,11 +65,18 @@ class InstallBlockchainViewController: NSViewController {
                     
                     guard let tools = framework.children else { continue }
                     for tool in tools {
-                                                
-                        try tool.fetchVersion { _ in
-//                        try tool.updateVersion{ _ in
-                            self.outlineView.reloadItem(framework)
-                            self.outlineView.reloadItem(tool)
+
+                        if let versionOperation = tool.versionQueryOperation() {
+                            fetchVersionQueue.addOperation(versionOperation)
+                            
+                            versionOperation.completionBlock = {
+                                DispatchQueue.main.async {
+                                    guard versionOperation.exitStatus == 0 else { return }
+                                    _ = tool.versionQueryParser(versionOperation.output)
+                                    self.outlineView.reloadItem(framework)
+                                    self.outlineView.reloadItem(tool)
+                                }
+                            }
                         }
                     }
                 }
@@ -137,13 +144,13 @@ class InstallBlockchainViewController: NSViewController {
 
         let finish: (Int) -> Void = { exitCode in
             
-            do {
-                try item.updateVersion { _ in
-                    self.outlineView.reloadData()
-                }
-            } catch {
-                catchClosure(error)
-            }
+//            do {
+//                try item.updateVersion { _ in
+//                    self.outlineView.reloadData()
+//                }
+//            } catch {
+//                catchClosure(error)
+//            }
         }
         
         do {

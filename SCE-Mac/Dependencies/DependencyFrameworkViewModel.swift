@@ -78,23 +78,27 @@ class DependencyFrameworkViewModel: DependencyViewModelProtocol {
         return try framework.update(output: output, finished: finished)
     }
     
-    func updateVersion(completion: @escaping (String) -> ()) throws {
-        
-        guard let mainDependency = dependencies.filter({ $0.isPlatformVersion == true }).first else {
-            return
-        }
-        guard let version = mainDependency.version else {
-            try mainDependency.updateVersion {
-                self.version = $0
-                completion($0)
-            }
-            return
-        }
-        self.version = version
-        completion(version)
+    func versionQueryOperation() -> BashOperation? {
+        return nil
     }
     
-    func fetchVersion(completion: @escaping (String) -> ()) throws -> BashOperation {
-//        return BashOperation()
+    func versionQueryParser(_ output: String) -> String {
+        return ""
     }
+//    func updateVersion(completion: @escaping (String) -> ()) throws {
+//
+//        guard let mainDependency = dependencies.filter({ $0.isPlatformVersion == true }).first else {
+//            return
+//        }
+//        guard let version = mainDependency.version else {
+//            try mainDependency.updateVersion {
+//                self.version = $0
+//                completion($0)
+//            }
+//            return
+//        }
+//        self.version = version
+//        completion(version)
+//    }
+
 }

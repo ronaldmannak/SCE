@@ -11,7 +11,7 @@ import Cocoa
 
 
 /// Dependency is an application Composite depends on, e.g. truffle
-class Dependency: Codable {
+class Dependency: NSObject, Codable {
     
     /// Filename
     let name: String
@@ -93,14 +93,9 @@ extension Dependency {
         return customLocation
     }
 
-}
-
-extension Dependency: CustomStringConvertible {
-
-    var description: String {
+    override var description: String {
         return name.capitalizedFirstChar().replacingOccurrences(of: ".app", with: "")
     }
-    
 }
 
 // File validation
@@ -111,58 +106,43 @@ extension Dependency {
         return FileManager.default.fileExists(atPath: url.path)
     }
     
-    /// Fetches the version as returned by the dependency itself
+    
+    /// <#Description#>
     ///
-    /// - Parameter version: Closure returning the version number
-    /// - Throws: ScriptTask error
-    func fileVersion(version:@escaping (String) -> ()) throws {
+    /// - Returns: <#return value description#>
+    func versionQueryOperation() -> BashOperation? {
         
-        // If this dependency doesn't have a version query command, return empty string
         guard let versionCommand = versionCommand, isInstalled == true else {
-            version("")
-            return
+            return nil
         }
-        var lines = 1
-        let task = try ScriptTask(directory: "~", commands: [versionCommand], output: { output in
-            
-            // Assumes that the correct version number is always returned on the first line
-            if lines > 1 { return }
-            
-            // Filter 1.0.1-rc1 type version number
-            // Some apps return multiple lines, and this closure will be called multiple times.
-            // Therefore, if no match if found, the output closure will not be called, since the
-            // version number could be in the previous or next line.
-            guard let regex = try? NSRegularExpression(pattern: "(\\d+)\\.(\\d+)\\.(\\d+)\\-?(\\w+)?", options: .caseInsensitive) else {
-                version(output) // If somehow the regex fails, return the whole string
-                return
-            }
-
-            let versions = regex.matches(in: output, options: [], range: NSRange(location: 0, length: output.count)).map {
-                String(output[Range($0.range, in: output)!])
-            }
-            
-            // Some dependencies return multiple lines for their version information
-            // Ignore lines where no version is found
-            guard let versionString = versions.first else { return }
-            self.versionNumber = versionString
-            version(versionString)
-            lines = lines + 1
-        }) { exitStatus in
-            
-            guard exitStatus == 0 else {
-                print("Error: \(versionCommand) returned \(exitStatus)")
-                let error = CompositeError.bashScriptFailed("Bash error")
-                let alert = NSAlert(error: error)
-                alert.runModal()
-                return
-            }
-        }
-        task.run()
+        return try? BashOperation(directory: "~", commands: [versionCommand])
     }
     
-//    var versionMatch: Bool {
-//        return true
-//    }
+    
+    /// Run this after the operation has finished. Pass the operation's output property
+    ///
+    /// - Parameter output: <#output description#>
+    /// - Returns: <#return value description#>
+    func versionQueryParser(_ output: String) -> String {
+        
+        // Filter 1.0.1-rc1 type version number
+        // Some apps return multiple lines, and this closure will be called multiple times.
+        // Therefore, if no match if found, the output closure will not be called, since the
+        // version number could be in the previous or next line.
+        guard let regex = try? NSRegularExpression(pattern: "(\\d+)\\.(\\d+)\\.(\\d+)\\-?(\\w+)?", options: .caseInsensitive) else {
+            return output
+        }
+        
+        let versions = regex.matches(in: output, options: [], range: NSRange(location: 0, length: output.count)).map {
+            String(output[Range($0.range, in: output)!])
+        }
+        
+        // Some dependencies return multiple lines for their version information
+        // Ignore lines where no version is found
+        guard let versionString = versions.first else { return "" }
+        self.versionNumber = versionString
+        return versionString
+    }
     
     
     /// TODO: this doesn't work. No output. $PATH issue?
@@ -223,10 +203,10 @@ extension Dependency {
 
                 // Update version number
                 do {
-                    try self.fileVersion { version in
-                        self.versionNumber = version
-                        done()
-                    }
+//                    try self.fileVersion { version in
+//                        self.versionNumber = version
+//                        done()
+//                    }
                 } catch {
                     done()
                 }
@@ -290,10 +270,10 @@ extension Dependency {
             
             // Update version number
             do {
-                try self.fileVersion { version in
-                    self.versionNumber = version
-                    done()
-                }
+//                try self.fileVersion { version in
+//                    self.versionNumber = version
+//                    done()
+//                }
             } catch {
                 done()
             }
