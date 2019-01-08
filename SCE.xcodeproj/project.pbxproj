@@ -66,7 +66,6 @@
 		C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7303B63212E75E70007E708 /* Preferences.storyboard */; };
 		C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */; };
 		C76FC32021439FAC00DB2C62 /* InstallBlockchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */; };
-		C76FC3232143A6BF00DB2C62 /* InstallCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3212143A6BF00DB2C62 /* InstallCompleteViewController.swift */; };
 		C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */; };
 		C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */; };
 		C7A8FDB5212E85A4005E20AC /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */; };
@@ -179,7 +178,6 @@
 		C7303B63212E75E70007E708 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallContainerViewController.swift; sourceTree = "<group>"; };
 		C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallBlockchainViewController.swift; sourceTree = "<group>"; };
-		C76FC3212143A6BF00DB2C62 /* InstallCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallCompleteViewController.swift; sourceTree = "<group>"; };
 		C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesLocationsGeneralViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB4212E85A4005E20AC /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
@@ -437,7 +435,6 @@
 				C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */,
 				C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */,
 				C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */,
-				C76FC3212143A6BF00DB2C62 /* InstallCompleteViewController.swift */,
 				C7DDD74D2140AFDC00674942 /* DependencyPlatform.swift */,
 				C70509D2214D97A8003DDA2B /* DependencyFramework.swift */,
 				C7DDD7492140A65700674942 /* Dependency.swift */,
@@ -962,7 +959,6 @@
 				C711F5D321E13A45005EBC5D /* BashOperation.swift in Sources */,
 				C7E76437211EC16300867DA4 /* EditWindowController.swift in Sources */,
 				C7E7645B21262D1800867DA4 /* Project.swift in Sources */,
-				C76FC3232143A6BF00DB2C62 /* InstallCompleteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

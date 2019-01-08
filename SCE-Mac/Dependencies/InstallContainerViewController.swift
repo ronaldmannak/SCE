@@ -11,23 +11,23 @@ import Cocoa
 class InstallContainerViewController: NSViewController {
 
     weak var install: InstallBlockchainViewController!
-    weak var complete: InstallCompleteViewController!
+    //weak var complete: InstallCompleteViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         install = (childViewControllers.first! as! InstallBlockchainViewController) // Set in storyboard
-        complete = (storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Install")) as! InstallCompleteViewController)
-        addChildViewController(complete)
+        //complete = (storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Install")) as! InstallCompleteViewController)
+        //addChildViewController(complete)
         
         install.container = self
-        complete.container = self
+        //complete.container = self
     }
     
-    func showComplete() {
-        for subView in view.subviews {
-            subView.removeFromSuperview()
-        }
-        view.addSubview(complete.view)
-    }
+//    func showComplete() {
+//        for subView in view.subviews {
+//            subView.removeFromSuperview()
+//        }
+//        //view.addSubview(complete.view)
+//    }
 }

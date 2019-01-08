@@ -119,17 +119,12 @@ class InstallBlockchainViewController: NSViewController {
     
     @IBAction func done(_ sender: Any) {
         fetchVersionQueue.cancelAllOperations()
-        container.showComplete()
-    }
-    
-    @IBAction func cancel(_ sender: Any) {
-        fetchVersionQueue.cancelAllOperations()
         view.window?.close()
         guard let delegate = NSApplication.shared.delegate as? AppDelegate else { return }
         delegate.showChooseTemplate(self)
     }
     
-    @IBAction func button1(_ sender: Any) {
+    @IBAction func cellButton(_ sender: Any) {
         // NSButton is a subclass of NSView
         guard let sender = sender as? NSView else { return }
         let row = outlineView.row(for: sender)
