@@ -40,8 +40,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //    }
     
     func showInstallWizard() {
-        let installWizardStoryboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "InstallWizard"), bundle: nil)
-        let installWizard = installWizardStoryboard.instantiateInitialController() as? NSWindowController
+        let installToolchainStoryboard = NSStoryboard(name: NSStoryboard.Name(rawValue: "InstallToolchain"), bundle: nil)
+        let installWizard = installToolchainStoryboard.instantiateInitialController() as? NSWindowController
         installWizard?.showWindow(self)
     }
     

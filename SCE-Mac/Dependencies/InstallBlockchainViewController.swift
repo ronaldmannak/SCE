@@ -8,9 +8,8 @@
 
 import Cocoa
 
-class InstallBlockchainViewController: NSViewController {
+class InstallToolchainViewController: NSViewController {
     
-    weak var container: InstallContainerViewController!
     @IBOutlet weak var platformCollectionView: NSCollectionView!
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet var console: NSTextView!
@@ -204,7 +203,7 @@ class InstallBlockchainViewController: NSViewController {
 //    }
 }
 
-extension InstallBlockchainViewController: NSOutlineViewDelegate {
+extension InstallToolchainViewController: NSOutlineViewDelegate {
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         
@@ -346,7 +345,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
     }
 }
 
-extension InstallBlockchainViewController: NSOutlineViewDataSource {
+extension InstallToolchainViewController: NSOutlineViewDataSource {
     
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         
@@ -386,7 +385,7 @@ extension InstallBlockchainViewController: NSOutlineViewDataSource {
     }
 }
 
-extension InstallBlockchainViewController: NSCollectionViewDelegate {
+extension InstallToolchainViewController: NSCollectionViewDelegate {
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         
@@ -395,7 +394,7 @@ extension InstallBlockchainViewController: NSCollectionViewDelegate {
     }
 }
 
-extension InstallBlockchainViewController: NSCollectionViewDataSource {
+extension InstallToolchainViewController: NSCollectionViewDataSource {
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
         

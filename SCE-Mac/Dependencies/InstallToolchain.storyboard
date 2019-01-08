@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="93" y="191"/>
         </scene>
-        <!--Install Blockchain View Controller-->
+        <!--Install Toolchain View Controller-->
         <scene sceneID="g6Z-Wv-iIo">
             <objects>
-                <viewController storyboardIdentifier="Blockchain" id="kfv-ZF-Ptq" customClass="InstallBlockchainViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Blockchain" id="kfv-ZF-Ptq" customClass="InstallToolchainViewController" customModule="Composite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Kog-QK-oOc">
                         <rect key="frame" x="0.0" y="0.0" width="750" height="474"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -95,7 +95,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="VwG-wV-2ZD">
-                                                            <rect key="frame" x="123" y="1" width="68" height="17"/>
+                                                            <rect key="frame" x="122.5" y="1" width="68" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gak-Jd-SZn">
@@ -128,7 +128,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="hIM-Os-FkF">
-                                                            <rect key="frame" x="194" y="1" width="165" height="17"/>
+                                                            <rect key="frame" x="193.5" y="1" width="165" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpE-aL-Pbu">

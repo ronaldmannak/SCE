@@ -64,7 +64,6 @@
 		C72FEA9721E433BA000EF3C7 /* PlatformCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */; };
 		C72FEA9821E433BB000EF3C7 /* PlatformCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */; };
 		C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7303B63212E75E70007E708 /* Preferences.storyboard */; };
-		C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */; };
 		C76FC32021439FAC00DB2C62 /* InstallBlockchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */; };
 		C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */; };
 		C7A8FDB3212E846B005E20AC /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */; };
@@ -77,7 +76,7 @@
 		C7DDD7502140B68C00674942 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD74F2140B68C00674942 /* Platform.swift */; };
 		C7DDD753214100D200674942 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DDD752214100D200674942 /* String.swift */; };
 		C7DDD757214113CB00674942 /* Which.command in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD756214113CB00674942 /* Which.command */; };
-		C7DDD75A2141E02800674942 /* InstallWizard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD7592141E02800674942 /* InstallWizard.storyboard */; };
+		C7DDD75A2141E02800674942 /* InstallToolchain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DDD7592141E02800674942 /* InstallToolchain.storyboard */; };
 		C7E4AFA82175886800D5716B /* EditWindowRestoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */; };
 		C7E4AFA92175886800D5716B /* EditWindowRestoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */; };
 		C7E4AFB32175BA4800D5716B /* EditorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E4AFB22175BA4800D5716B /* EditorInterface.swift */; };
@@ -176,7 +175,6 @@
 		C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformCollectionViewItem.swift; sourceTree = "<group>"; };
 		C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlatformCollectionViewItem.xib; sourceTree = "<group>"; };
 		C7303B63212E75E70007E708 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
-		C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallContainerViewController.swift; sourceTree = "<group>"; };
 		C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallBlockchainViewController.swift; sourceTree = "<group>"; };
 		C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesLocationsGeneralViewController.swift; sourceTree = "<group>"; };
 		C7A8FDB2212E846B005E20AC /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
@@ -190,7 +188,7 @@
 		C7DDD74F2140B68C00674942 /* Platform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		C7DDD752214100D200674942 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		C7DDD756214113CB00674942 /* Which.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = Which.command; sourceTree = "<group>"; };
-		C7DDD7592141E02800674942 /* InstallWizard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InstallWizard.storyboard; sourceTree = "<group>"; };
+		C7DDD7592141E02800674942 /* InstallToolchain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InstallToolchain.storyboard; sourceTree = "<group>"; };
 		C7E4AFA72175886800D5716B /* EditWindowRestoration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWindowRestoration.swift; sourceTree = "<group>"; };
 		C7E4AFB22175BA4800D5716B /* EditorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorInterface.swift; sourceTree = "<group>"; };
 		C7E76436211EC16300867DA4 /* EditWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditWindowController.swift; sourceTree = "<group>"; };
@@ -430,8 +428,7 @@
 		C7E764512124FA0200867DA4 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				C7DDD7592141E02800674942 /* InstallWizard.storyboard */,
-				C76FC31B2143564300DB2C62 /* InstallContainerViewController.swift */,
+				C7DDD7592141E02800674942 /* InstallToolchain.storyboard */,
 				C76FC31F21439FAC00DB2C62 /* InstallBlockchainViewController.swift */,
 				C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */,
 				C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */,
@@ -729,7 +726,7 @@
 				C7E764402122A2CF00867DA4 /* TemplateCollectionViewItem.xib in Resources */,
 				C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */,
 				C7050A8C216938B1003DDA2B /* celer.sol in Resources */,
-				C7DDD75A2141E02800674942 /* InstallWizard.storyboard in Resources */,
+				C7DDD75A2141E02800674942 /* InstallToolchain.storyboard in Resources */,
 				C7050A8F216938EC003DDA2B /* 2_celer_migrations.js in Resources */,
 				C7E764462123539100867DA4 /* Template.storyboard in Resources */,
 				C711F58A21DDB68F005EBC5D /* Execute.command in Resources */,
@@ -927,7 +924,6 @@
 				C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */,
 				C7050A362166FBC9003DDA2B /* LanguageServer.swift in Sources */,
 				C7E7645D212675AF00867DA4 /* Error.swift in Sources */,
-				C76FC31C2143564400DB2C62 /* InstallContainerViewController.swift in Sources */,
 				C7A8FDB7212E8769005E20AC /* PreferencesTabViewController.swift in Sources */,
 				C70B970221322D4800B0E4C8 /* TemplateSectionHeaderView.swift in Sources */,
 				C7050A07215C510B003DDA2B /* TemplateContainerViewController.swift in Sources */,
