@@ -4,144 +4,6 @@
 <array>
 	<dict>
 		<key>platform</key>
-		<string>tron</string>
-		<key>projectUrl</key>
-		<string>https://tron.network</string>
-		<key>documentationUrl</key>
-		<string>https://developers.tron.network</string>
-		<key>frameworks</key>
-		<array>
-			<dict>
-				<key>name</key>
-				<string>Tronbox</string>
-				<key>dependencies</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>brew</string>
-						<key>customLocation</key>
-						<string></string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
-						<key>minimumVersion</key>
-						<string>1.7.4</string>
-						<key>isPlatformVersion</key>
-						<false/>
-						<key>versionCommand</key>
-						<string>brew -v</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string></string>
-						<key>installCommand-rem</key>
-						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
-						<key>updateCommand</key>
-						<string>brew update</string>
-						<key>comment</key>
-						<string>Brew is needed for installing npm</string>
-						<key>url</key>
-						<string>https://brew.sh</string>
-						<key>required</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>node</string>
-						<key>customLocation</key>
-						<string></string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin</string>
-						<key>minimumVersion</key>
-						<string>10.10.0</string>
-						<key>isPlatformVersion</key>
-						<false/>
-						<key>versionCommand</key>
-						<string>node -v</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string>brew install node</string>
-						<key>updateCommand</key>
-						<string>brew upgrade node</string>
-						<key>comment</key>
-						<string></string>
-						<key>url</key>
-						<string>https://nodejs.org/</string>
-						<key>required</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>TronBox</string>
-						<key>customLocation</key>
-						<string></string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
-						<key>minimumVersion</key>
-						<string>2.3.9</string>
-						<key>isPlatformVersion</key>
-						<true/>
-						<key>versionCommand</key>
-						<string>tronbox version</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string>npm install -g tronbox</string>
-						<key>updateCommand</key>
-						<string>npm -g update --save tronbox</string>
-						<key>outdatedCommand</key>
-						<string>npm -g outdated tronbox</string>
-						<key>comment</key>
-						<string></string>
-						<key>url</key>
-						<string>https://developers.tron.network/docs/tron-box-user-guide</string>
-						<key>required</key>
-						<true/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>Tron Docker</string>
-						<key>customLocation</key>
-						<string></string>
-						<key>defaultLocation</key>
-						<string></string>
-						<key>minimumVersion</key>
-						<string>2.3.4</string>
-						<key>isPlatformVersion</key>
-						<false/>
-						<key>versionCommand</key>
-						<string>solium --version</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string></string>
-						<key>installLink</key>
-						<string>https://developers.tron.network/docs/getting-started-1</string>
-						<key>updateCommand</key>
-						<string>npm -g update --save solium</string>
-						<key>comment</key>
-						<string></string>
-						<key>url</key>
-						<string>https://developers.tron.network/docs/getting-started-1</string>
-						<key>required</key>
-						<false/>
-					</dict>
-				</array>
-				<key>description</key>
-				<string>Tronbox is a Tron development and deployment framework based on Ethereum&apos;s Truffle </string>
-				<key>initScript</key>
-				<string>TronBoxInit</string>
-				<key>projectUrl</key>
-				<string>https://tron.network</string>
-				<key>documentationUrl</key>
-				<string>https://developers.tron.network</string>
-				<key>defaultFramework</key>
-				<true/>
-			</dict>
-		</array>
-	</dict>
-	<dict>
-		<key>platform</key>
 		<string>ethereum</string>
 		<key>projectUrl</key>
 		<string>https://www.ethereum.org</string>
@@ -149,103 +11,6 @@
 		<string>http://www.ethdocs.org/en/latest/</string>
 		<key>frameworks</key>
 		<array>
-			<dict>
-				<key>name</key>
-				<string>Etherlime</string>
-				<key>dependencies</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>brew</string>
-						<key>customLocation</key>
-						<string></string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
-						<key>minimumVersion</key>
-						<string>1.7.4</string>
-						<key>isPlatformVersion</key>
-						<false/>
-						<key>versionCommand</key>
-						<string>brew -v</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string></string>
-						<key>installCommand-rem</key>
-						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
-						<key>updateCommand</key>
-						<string>brew update</string>
-						<key>comment</key>
-						<string>Brew is needed for installing npm</string>
-						<key>url</key>
-						<string>https://brew.sh</string>
-						<key>required</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>node</string>
-						<key>customLocation</key>
-						<string></string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin</string>
-						<key>minimumVersion</key>
-						<string>10.10.0</string>
-						<key>isPlatformVersion</key>
-						<false/>
-						<key>versionCommand</key>
-						<string>node -v</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string>brew install node</string>
-						<key>updateCommand</key>
-						<string>brew upgrade node</string>
-						<key>comment</key>
-						<string>node and npm are required by Truffle</string>
-						<key>url</key>
-						<string>https://nodejs.org/</string>
-						<key>required</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>etherlime</string>
-						<key>customLocation</key>
-						<string></string>
-						<key>defaultLocation</key>
-						<string>/usr/local/bin/</string>
-						<key>minimumVersion</key>
-						<string>0.9.5</string>
-						<key>isPlatformVersion</key>
-						<true/>
-						<key>versionCommand</key>
-						<string>etherlime --version</string>
-						<key>versionRegex</key>
-						<string></string>
-						<key>installCommand</key>
-						<string>npm i -g etherlime</string>
-						<key>updateCommand</key>
-						<string>npm -g update --save etherlime</string>
-						<key>outdatedCommand</key>
-						<string>npm -g outdated etherlime</string>
-						<key>comment</key>
-						<string></string>
-						<key>required</key>
-						<true/>
-					</dict>
-				</array>
-				<key>description</key>
-				<string>Etherlime is an ethereum development and deployment framework based on ethers.js.</string>
-				<key>initScript</key>
-				<string>EtherlimeInit</string>
-				<key>projectUrl</key>
-				<string>https://github.com/LimeChain/etherlime</string>
-				<key>documentationUrl</key>
-				<string>https://etherlime.readthedocs.io/en/latest/</string>
-				<key>defaultFramework</key>
-				<true/>
-			</dict>
 			<dict>
 				<key>name</key>
 				<string>Truffle</string>
@@ -398,6 +163,241 @@
 				<string>https://truffleframework.com/docs/truffle/overview</string>
 				<key>defaultFramework</key>
 				<false/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Etherlime</string>
+				<key>dependencies</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>brew</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>1.7.4</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>brew -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string></string>
+						<key>installCommand-rem</key>
+						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
+						<key>updateCommand</key>
+						<string>brew update</string>
+						<key>comment</key>
+						<string>Brew is needed for installing npm</string>
+						<key>url</key>
+						<string>https://brew.sh</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>node</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin</string>
+						<key>minimumVersion</key>
+						<string>10.10.0</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>node -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>brew install node</string>
+						<key>updateCommand</key>
+						<string>brew upgrade node</string>
+						<key>comment</key>
+						<string>node and npm are required by Truffle</string>
+						<key>url</key>
+						<string>https://nodejs.org/</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>etherlime</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>0.9.5</string>
+						<key>isPlatformVersion</key>
+						<true/>
+						<key>versionCommand</key>
+						<string>etherlime --version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm i -g etherlime</string>
+						<key>updateCommand</key>
+						<string>npm -g update --save etherlime</string>
+						<key>outdatedCommand</key>
+						<string>npm -g outdated etherlime</string>
+						<key>comment</key>
+						<string></string>
+						<key>required</key>
+						<true/>
+					</dict>
+				</array>
+				<key>description</key>
+				<string>Etherlime is an ethereum development and deployment framework based on ethers.js.</string>
+				<key>initScript</key>
+				<string>EtherlimeInit</string>
+				<key>projectUrl</key>
+				<string>https://github.com/LimeChain/etherlime</string>
+				<key>documentationUrl</key>
+				<string>https://etherlime.readthedocs.io/en/latest/</string>
+				<key>defaultFramework</key>
+				<true/>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>platform</key>
+		<string>tron</string>
+		<key>projectUrl</key>
+		<string>https://tron.network</string>
+		<key>documentationUrl</key>
+		<string>https://developers.tron.network</string>
+		<key>frameworks</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Tronbox</string>
+				<key>dependencies</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>brew</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>1.7.4</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>brew -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string></string>
+						<key>installCommand-rem</key>
+						<string>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</string>
+						<key>updateCommand</key>
+						<string>brew update</string>
+						<key>comment</key>
+						<string>Brew is needed for installing npm</string>
+						<key>url</key>
+						<string>https://brew.sh</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>node</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin</string>
+						<key>minimumVersion</key>
+						<string>10.10.0</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>node -v</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>brew install node</string>
+						<key>updateCommand</key>
+						<string>brew upgrade node</string>
+						<key>comment</key>
+						<string></string>
+						<key>url</key>
+						<string>https://nodejs.org/</string>
+						<key>required</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>TronBox</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string>/usr/local/bin/</string>
+						<key>minimumVersion</key>
+						<string>2.3.9</string>
+						<key>isPlatformVersion</key>
+						<true/>
+						<key>versionCommand</key>
+						<string>tronbox version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string>npm install -g tronbox</string>
+						<key>updateCommand</key>
+						<string>npm -g update --save tronbox</string>
+						<key>outdatedCommand</key>
+						<string>npm -g outdated tronbox</string>
+						<key>comment</key>
+						<string></string>
+						<key>url</key>
+						<string>https://developers.tron.network/docs/tron-box-user-guide</string>
+						<key>required</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>Tron Docker</string>
+						<key>customLocation</key>
+						<string></string>
+						<key>defaultLocation</key>
+						<string></string>
+						<key>minimumVersion</key>
+						<string>2.3.4</string>
+						<key>isPlatformVersion</key>
+						<false/>
+						<key>versionCommand</key>
+						<string>solium --version</string>
+						<key>versionRegex</key>
+						<string></string>
+						<key>installCommand</key>
+						<string></string>
+						<key>installLink</key>
+						<string>https://developers.tron.network/docs/getting-started-1</string>
+						<key>updateCommand</key>
+						<string>npm -g update --save solium</string>
+						<key>comment</key>
+						<string></string>
+						<key>url</key>
+						<string>https://developers.tron.network/docs/getting-started-1</string>
+						<key>required</key>
+						<false/>
+					</dict>
+				</array>
+				<key>description</key>
+				<string>Tronbox is a Tron development and deployment framework based on Ethereum&apos;s Truffle </string>
+				<key>initScript</key>
+				<string>TronBoxInit</string>
+				<key>projectUrl</key>
+				<string>https://tron.network</string>
+				<key>documentationUrl</key>
+				<string>https://developers.tron.network</string>
+				<key>defaultFramework</key>
+				<true/>
 			</dict>
 		</array>
 	</dict>

@@ -242,32 +242,32 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                     return nil
                 }
                 
-                let button1: NSButton = buttonView.subviews.filter { $0.identifier!.rawValue == "Button1" }.first! as! NSButton
+                let cellButton: NSButton = buttonView.subviews.filter { $0.identifier!.rawValue == "Button1" }.first! as! NSButton
                 
                 switch item.state {
                     
                 case .notInstalled:
                     
-                    button1.isHidden = false
-                    button1.isEnabled = true
-                    button1.title = "Install \(item.name)"
+                    cellButton.isHidden = false
+                    cellButton.isEnabled = true
+                    cellButton.title = "Install \(item.name)"
                     
                 case .outdated, .unknown, .uptodate:
                     
-                    button1.isHidden = false
-                    button1.isEnabled = true
-                    button1.title = "Update \(item.name)"
+                    cellButton.isHidden = false
+                    cellButton.isEnabled = true
+                    cellButton.title = "Update \(item.name)"
                     
                 case .installing:
                     
-                    button1.isHidden = false
-                    button1.isEnabled = false
-                    button1.title = "Installing..."
+                    cellButton.isHidden = false
+                    cellButton.isEnabled = false
+                    cellButton.title = "Installing..."
                     
                 case .comingSoon:
                     
-                    button1.isHidden = true
-                    button1.isEnabled = true
+                    cellButton.isHidden = true
+                    cellButton.isEnabled = true
                     
                 }
                 return buttonView
@@ -301,37 +301,37 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                     return nil
                 }
                 
-                let button1: NSButton = buttonView.subviews.filter { $0.identifier!.rawValue == "Button1" }.first! as! NSButton
+                let cellButton: NSButton = buttonView.subviews.filter { $0.identifier!.rawValue == "Button1" }.first! as! NSButton
                 
                 switch item.state {
                     
                 case .notInstalled:
                     
-                    button1.isHidden = false
-                    button1.isEnabled = true
-                    button1.title = "Install \(item.name)"
+                    cellButton.isHidden = false
+                    cellButton.isEnabled = true
+                    cellButton.title = "Install \(item.name)"
                     
                 case .uptodate:
                     
-                    button1.isHidden = true
-                    button1.isEnabled = true
+                    cellButton.isHidden = true
+                    cellButton.isEnabled = true
                     
                 case .outdated, .unknown:
                     
-                    button1.isHidden = false
-                    button1.isEnabled = true
-                    button1.title = "Update \(item.name)"
+                    cellButton.isHidden = false
+                    cellButton.isEnabled = true
+                    cellButton.title = "Update \(item.name)"
                     
                 case .installing:
                     
-                    button1.isHidden = false
-                    button1.isEnabled = false
-                    button1.title = "Installing..."
+                    cellButton.isHidden = false
+                    cellButton.isEnabled = false
+                    cellButton.title = "Installing..."
                     
                 case .comingSoon:
                     
-                    button1.isHidden = true
-                    button1.isEnabled = true
+                    cellButton.isHidden = true
+                    cellButton.isEnabled = true
                     
                 }
                 return buttonView
@@ -418,6 +418,4 @@ extension InstallBlockchainViewController: NSCollectionViewDataSource {
         cell.logoImageView.image = NSImage(named: NSImage.Name(rawValue: platform.platform.description))
         return cell
     }
-    
-    
 }
