@@ -8,29 +8,19 @@
 
 import Foundation
 
-class DependencyFrameworkViewModel: DependencyViewModelProtocol {
+class DependencyFrameworkViewModel {
 
     let framework: DependencyFramework
     
     private (set) var name: String
     
-    private (set) var path: String?
-    
-    private (set) var version: String?
-    
-    private (set) var minimumVersion: String? = nil
-    
-    private (set) var required: Bool = false
-    
     var displayName: String { return state.display(name: framework.name) }
     
-    var isDefaultFramework: Bool {
-        return framework.defaultFramework
-    }
+//    var isDefaultFramework: Bool {
+//        return framework.defaultFramework
+//    }
     
     let dependencies: [DependencyViewModel]
-    
-    var children: [DependencyViewModelProtocol]? { return dependencies }
     
     var state: DependencyState {
         

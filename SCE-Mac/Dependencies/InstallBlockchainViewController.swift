@@ -11,6 +11,7 @@ import Cocoa
 class InstallBlockchainViewController: NSViewController {
     
     weak var container: InstallContainerViewController!
+    @IBOutlet weak var platformCollectionView: NSCollectionView!
     @IBOutlet weak var outlineView: NSOutlineView!
     @IBOutlet var console: NSTextView!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
@@ -27,7 +28,20 @@ class InstallBlockchainViewController: NSViewController {
     /// the progress indicator will animate
     private var installCount: NSKeyValueObservation?
     
-    private var platforms =  [DependencyViewModelProtocol]()
+    private var platforms = [DependencyPlatform]() {
+        didSet {
+            platformCollectionView.reloadData()
+            platformCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
+            frameworkViewModels = platforms.first?.frameworkViewModels ?? [DependencyFrameworkViewModel]()
+        }
+    }
+    
+    private var frameworkViewModels = [DependencyFrameworkViewModel]() {
+        didSet {
+            outlineView.reloadData()
+            outlineView.expandItem(nil, expandChildren: true) // expand all items
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +50,7 @@ class InstallBlockchainViewController: NSViewController {
         fetchVersionQueue.qualityOfService = .userInteractive
         installQueue.maxConcurrentOperationCount = 1
         installQueue.qualityOfService = .userInitiated
+        
         installCount = installQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
             if queue.operationCount == 0 {
                 self.progressIndicator.stopAnimation(self)
@@ -46,17 +61,21 @@ class InstallBlockchainViewController: NSViewController {
             }
         }
         
-        loadPlatforms()
         showOnStartupButton.state = UserDefaults.standard.bool(forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue) == false ? .on : .off
+        
+        configurePlatformCollectionView()
+        loadPlatforms()
     }
     
     func loadPlatforms() {
         
         do {
             // Load dependencies from disk
-            platforms = try DependencyPlatform.loadViewModels()
-            outlineView.reloadData()
+            platforms = try DependencyPlatform.loadPlatforms()
             
+//            outlineView.reloadData()
+            
+            /*
             // Fetch version numbers
             for platform in platforms {
                 
@@ -80,14 +99,22 @@ class InstallBlockchainViewController: NSViewController {
                         }
                     }
                 }
-            }
+            } */
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
         }
         
-        // expand all items
-        outlineView.expandItem(nil, expandChildren: true)
+        
+    }
+    
+    func configurePlatformCollectionView() {
+        view.wantsLayer = true
+        
+        let nib = NSNib(nibNamed: NSNib.Name(rawValue: "PlatformCollectionViewItem"), bundle: nil)
+        platformCollectionView.register(nib, forItemWithIdentifier: NSUserInterfaceItemIdentifier("PlatformCollectionViewItem"))
+        
+        platformCollectionView.reloadData()
     }
     
     @IBAction func done(_ sender: Any) {
@@ -107,9 +134,9 @@ class InstallBlockchainViewController: NSViewController {
         guard let sender = sender as? NSView else { return }
         let row = outlineView.row(for: sender)
 
-        guard let item = outlineView.item(atRow: row) as? DependencyViewModelProtocol else { return }
-        
-        run(item)
+//        guard let item = outlineView.item(atRow: row) as? DependencyViewModelProtocol else { return }
+//        
+//        run(item)
     }
     
     @IBAction func showOnStartup(_ sender: Any) {
@@ -117,24 +144,33 @@ class InstallBlockchainViewController: NSViewController {
         UserDefaults.standard.set(sender.state == .off, forKey: UserDefaultStrings.doNotShowDependencyWizard.rawValue)            
     }
     
-    @IBAction func button2(_ sender: Any) {
-//        let openPanel = NSOpenPanel()
-//        openPanel.beginSheetModal(for: self.view.window!) { (response) in
-//            // TODO
-//        }
+    @IBAction func platformMoreInfoButtonClicked(_ sender: Any) {
+        
+        guard let sender = sender as? NSView,
+            let itemView = sender.nextResponder?.nextResponder as? PlatformCollectionViewItem,
+            let indexPath = platformCollectionView.indexPath(for: itemView)
+            else { return }
+
+        // Select cell
+        platformCollectionView.deselectAll(self)
+        platformCollectionView.reloadData()
+        platformCollectionView.selectItems(at: [indexPath], scrollPosition: .top)
+        
+        // Open url
+        let platform = platforms[indexPath.item]
+        guard let url = URL(string: platform.projectUrl) else { return }
+        NSWorkspace.shared.open(url)
     }
     
-    func run(_ item: DependencyViewModelProtocol) {
+//    func run(_ item: DependencyViewModelProtocol) {
         /*
         let catchClosure: (Error) -> Void = { error in
-        
             self.outlineView.reloadData()
             let alert = NSAlert(error: error)
             alert.runModal()
         }
         
         let showOutputInConsole: (String) -> Void = { output in
-
             let previousOutput = self.console.string
             let nextOutput = previousOutput + "\n" + output
             self.console.string = nextOutput
@@ -143,7 +179,6 @@ class InstallBlockchainViewController: NSViewController {
         }
 
         let finish: (Int) -> Void = { exitCode in
-            
 //            do {
 //                try item.updateVersion { _ in
 //                    self.outlineView.reloadData()
@@ -154,7 +189,6 @@ class InstallBlockchainViewController: NSViewController {
         }
         
         do {
-            
             let tasks: [ScriptTask]
             
             switch item.state {
@@ -171,8 +205,8 @@ class InstallBlockchainViewController: NSViewController {
             
         } catch {
             catchClosure(error)
-        } */
-    } 
+        }*/
+//    }
 }
 
 extension InstallBlockchainViewController: NSOutlineViewDelegate {
@@ -185,70 +219,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
             return nil
         }
         
-        if let item = item as? DependencyPlatformViewModel {
-            
-            switch identifier {
-            case "DependencyColumn":
-                
-                view.imageView?.image = nil
-                view.textField?.stringValue = item.displayName
-                
-            case "VersionColumn", "PathColumn":
-                
-                view.imageView?.image = nil
-                view.textField?.stringValue = ""
-                
-            case "ActionColumn":
-                
-                // If item is an empty platform, show "coming soon" label
-                guard !item.frameworks.isEmpty else {
-                    view.imageView?.image = nil
-                    view.textField?.stringValue = "Coming soon"
-                    return view
-                }
-                
-                // Fetch the view with two buttons
-                guard let buttonView: NSTableCellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ActionCell"), owner: self) as? NSTableCellView else {
-                    return nil
-                }
-                
-                let button1: NSButton = buttonView.subviews.filter { $0.identifier!.rawValue == "Button1" }.first! as! NSButton
-                
-                switch item.state {
-                    
-                case .notInstalled:
-                    
-                    button1.isHidden = false
-                    button1.isEnabled = true
-                    button1.title = "Install toolchain"
-                    
-                case .uptodate, .outdated, .unknown:
-                    
-                    button1.isHidden = false
-                    button1.isEnabled = true
-                    button1.title = "Update toolchain"
-                    
-                case .installing:
-                    
-                    button1.isHidden = false
-                    button1.isEnabled = false
-                    button1.title = "Installing..."
-                    
-                case .comingSoon:
-                    
-                    button1.isHidden = true
-                    button1.isEnabled = true
-                    
-                }
-                return buttonView
-                
-            default:
-                
-                print("Unknown column id: \(identifier)")
-                assertionFailure()
-            }
-            
-        } else if let item = item as? DependencyFrameworkViewModel {
+        if let item = item as? DependencyFrameworkViewModel {
             
             switch identifier {
             case "DependencyColumn":
@@ -258,11 +229,11 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
                 
             case "VersionColumn":
                 
-                view.textField?.stringValue = item.version ?? ""
+                view.textField?.stringValue = "(version)" // item.version ?? ""
                 
             case "PathColumn":
                 
-                view.textField?.stringValue = item.path ?? ""
+                view.textField?.stringValue = "(path)" //item.path ?? ""
                 
             case "ActionColumn":
                 
@@ -312,7 +283,7 @@ extension InstallBlockchainViewController: NSOutlineViewDelegate {
             switch identifier {
             case "DependencyColumn":
                 
-                view.imageView?.image = item.image
+//                view.imageView?.image = item.image
                 view.textField?.stringValue = item.displayName
                 
             case "VersionColumn":
@@ -384,24 +355,69 @@ extension InstallBlockchainViewController: NSOutlineViewDataSource {
     
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         
-        // Root
-        guard let item = item as? DependencyViewModelProtocol else { return platforms.count }
+        // If item is nil, return number of frameworks
+        guard let item = item as? DependencyFrameworkViewModel else { return frameworkViewModels.count }
         
-        return item.children?.count ?? 0
+        // If item is a framework, return number of dependencies in framework
+        return item.dependencies.count
     }
 
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
         
-        guard let item = item as? DependencyViewModelProtocol, let children = item.children else { return false }
+        // Only frameworks are expandable
+        guard let item = item as? DependencyFrameworkViewModel else { return false }
         
-        return !children.isEmpty
+        // Return true if framework has dependencies
+        return !item.dependencies.isEmpty
     }
 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         
-        // Root
-        guard let item = item as? DependencyViewModelProtocol else { return platforms[index] }
-        
-        return item.children![index]
+        if item == nil {
+            
+            // If item is nil, this is the root
+            return frameworkViewModels[index]
+            
+        } else if let framework = item as? DependencyFrameworkViewModel {
+            
+            // Return number of dependencies of the framework
+            return framework.dependencies[index]
+            
+        } else {
+
+            assertionFailure()
+            return 0
+        }
     }
+}
+
+extension InstallBlockchainViewController: NSCollectionViewDelegate {
+    
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        
+        guard let index = indexPaths.first?.item else { return }
+        frameworkViewModels = platforms[index].frameworkViewModels
+    }
+}
+
+extension InstallBlockchainViewController: NSCollectionViewDataSource {
+    
+    func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return platforms.count
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
+        
+        guard let cell = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("PlatformCollectionViewItem"), for: indexPath) as? PlatformCollectionViewItem else {
+            return NSCollectionViewItem()
+        }
+        
+        let platform = platforms[indexPath.item]
+        cell.platformLabel.stringValue = platform.platform.description
+        cell.logoImageView.image = NSImage(named: NSImage.Name(rawValue: platform.platform.description))
+        return cell
+    }
+    
+    
 }

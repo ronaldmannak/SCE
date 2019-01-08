@@ -24,6 +24,10 @@ struct DependencyPlatform: Codable {
     
     let frameworks: [DependencyFramework]
     
+    var frameworkViewModels: [DependencyFrameworkViewModel] {
+        return frameworks.map{ DependencyFrameworkViewModel($0) }
+    }
+    
     func install() throws -> [BashOperation]? {
         
         guard let defaultFramework = frameworks.filter({ $0.defaultFramework == true }).first else {
@@ -66,11 +70,6 @@ struct DependencyPlatform: Codable {
         
         let platforms = try loadPlatforms()
         return platforms.filter{ (item) -> Bool in return item.frameworks.count > 0 }
-    }
-    
-    static func loadViewModels() throws -> [DependencyPlatformViewModel] {
-        
-        return try loadPlatforms().map { DependencyPlatformViewModel($0) }
     }
     
 }

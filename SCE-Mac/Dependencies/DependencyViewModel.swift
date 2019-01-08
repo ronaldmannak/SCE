@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class DependencyViewModel: DependencyViewModelProtocol {
+class DependencyViewModel {
     
     private let dependency: Dependency
     
@@ -27,21 +27,19 @@ class DependencyViewModel: DependencyViewModelProtocol {
         
     let required: Bool
     
-    var children: [DependencyViewModelProtocol]? { return nil }
-    
-    var image: NSImage {
-        
-        let image: NSImage
-        
-        switch state {
-        case .unknown: image = NSImage()
-        case .uptodate: image = NSImage()
-        case .outdated: image = NSImage()
-        case .notInstalled: image = NSImage()
-        case .installing, .comingSoon: image = NSImage()
-        }
-        return image
-    }
+//    var image: NSImage {
+//        
+//        let image: NSImage
+//        
+//        switch state {
+//        case .unknown: image = NSImage()
+//        case .uptodate: image = NSImage()
+//        case .outdated: image = NSImage()
+//        case .notInstalled: image = NSImage()
+//        case .installing, .comingSoon: image = NSImage()
+//        }
+//        return image
+//    }
     
     var state: DependencyState {
         
