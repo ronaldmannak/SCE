@@ -1,5 +1,5 @@
 //
-//  BlockchainSelectViewController.swift
+//  InstallToolchainViewController.swift
 //  SCE-Mac
 //
 //  Created by Ronald "Danger" Mannak on 9/7/18.
@@ -12,9 +12,13 @@ class InstallToolchainViewController: NSViewController {
     
     @IBOutlet weak var platformCollectionView: NSCollectionView!
     @IBOutlet weak var outlineView: NSOutlineView!
-    @IBOutlet var console: NSTextView!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     @IBOutlet weak var showOnStartupButton: NSButton!
+    
+    // Framework detail view
+    @IBOutlet weak var detailImageView: NSImageView!
+    @IBOutlet weak var detailLabel: NSTextField!
+    @IBOutlet weak var detailInfoLabel: NSTextField!
     
     /// Queue used to fetch versions (which can be extremely slow)
     let fetchVersionQueue: OperationQueue = OperationQueue()
@@ -339,10 +343,22 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
                 
         return view
     }
-
-    func selectionShouldChange(in outlineView: NSOutlineView) -> Bool {
+    
+    func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
+        
+        // do show
+        if let item = item as? DependencyFrameworkViewModel {
+            detailLabel.stringValue = item.displayName
+        } else if let item = item as? DependencyViewModel {
+            print("dependency")
+        }
+        
         return false
     }
+    
+//    func selectionShouldChange(in outlineView: NSOutlineView) -> Bool {
+//        return false
+//    }
 }
 
 extension InstallToolchainViewController: NSOutlineViewDataSource {
