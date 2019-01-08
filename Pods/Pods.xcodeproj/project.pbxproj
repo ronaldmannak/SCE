@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -142,19 +142,19 @@
 
 /* Begin PBXFileReference section */
 		09A44744A6D9D59D1B4D0D559099E7E8 /* Pods-SCE-MacTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SCE-MacTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		0A434070746CA7FB75517CD325B6FF9B /* Pods_SCETests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SCETests.framework; path = "Pods-SCETests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A434070746CA7FB75517CD325B6FF9B /* Pods_SCETests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCETests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E150A623BDB386C9F0C18735E6DA448 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F195B85711F3093A200EBF9A0362936 /* Pods-SCE-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SCE-acknowledgements.plist"; sourceTree = "<group>"; };
 		17787FB589EAB0146E0A41EB96E7C356 /* Pods-SCE-Mac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SCE-Mac-dummy.m"; sourceTree = "<group>"; };
 		18C7421B134B68E947EE2A15B9F92926 /* SavannaKit-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SavannaKit-iOS.xcconfig"; sourceTree = "<group>"; };
-		18D2820C4345B68342459BFA35F4CD49 /* Pods_SCE_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SCE_Mac.framework; path = "Pods-SCE-Mac.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		18D2820C4345B68342459BFA35F4CD49 /* Pods_SCE_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCE_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19FCCD7DBB213D2604EFBB1C90A8EA49 /* SyntaxColorTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SyntaxColorTheme.swift; path = Sources/SavannaKit/Model/SyntaxColorTheme.swift; sourceTree = "<group>"; };
 		1CCD05C221F0E49C5577C7581D57BD30 /* Pods-SCE-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCE-resources.sh"; sourceTree = "<group>"; };
 		1DAB1EC7AFB4F19696CA4AEAB03865B3 /* Lexer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Lexer.swift; path = Sources/SavannaKit/Model/Lexer.swift; sourceTree = "<group>"; };
 		21F57C12715E0E42C65D3ABF6C9AD6CB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		230C5F48F17DBBDC9EB5ED768A0C2004 /* Pods-SCETests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCETests.release.xcconfig"; sourceTree = "<group>"; };
-		23785DAA880093836CB4BDAB5D539261 /* SourceEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SourceEditor.framework; path = "SourceEditor-macOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		238404DD214E86D76BDD3F18839B38D1 /* SourceEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SourceEditor.framework; path = "SourceEditor-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23785DAA880093836CB4BDAB5D539261 /* SourceEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SourceEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		238404DD214E86D76BDD3F18839B38D1 /* SourceEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SourceEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		266072D2060ED4626E6ECD7DBBC4953A /* SavannaKit-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SavannaKit-iOS-dummy.m"; sourceTree = "<group>"; };
 		28168E0C406DCE2941DC7EA6AC538B9D /* Pods-SCE-MacTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCE-MacTests.debug.xcconfig"; sourceTree = "<group>"; };
 		282FF84AD5937EDB3596BFA0978AACDA /* SourceEditor-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SourceEditor-macOS-dummy.m"; path = "../SourceEditor-macOS/SourceEditor-macOS-dummy.m"; sourceTree = "<group>"; };
@@ -179,11 +179,11 @@
 		61588B205D35912AC4A9FA85B91681F3 /* SourceEditor-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SourceEditor-iOS-dummy.m"; sourceTree = "<group>"; };
 		61E201B871C9D1F1CE83C17E234767A7 /* Pods-SCE-MacTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCE-MacTests-resources.sh"; sourceTree = "<group>"; };
 		6347D9494799DB0510BA59228C4E4972 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69AE8FF8F8E27754B21CDA78F56C9A81 /* SavannaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SavannaKit.framework; path = "SavannaKit-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69AE8FF8F8E27754B21CDA78F56C9A81 /* SavannaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SavannaKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A114EFB1417FCB03243109694A8FF6F /* Pods-SCE-MacTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SCE-MacTests-dummy.m"; sourceTree = "<group>"; };
 		6D9D3C5695D7E8E54352F9113C3D74C3 /* Pods-SCETests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCETests-frameworks.sh"; sourceTree = "<group>"; };
 		6FA5E3C593EFADC18AFB963E11A35E12 /* Pods-SCE-MacTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SCE-MacTests-umbrella.h"; sourceTree = "<group>"; };
-		7160ED343A20D8CF1131C313205EF7BD /* SavannaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SavannaKit.framework; path = "SavannaKit-macOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7160ED343A20D8CF1131C313205EF7BD /* SavannaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SavannaKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		716EF130C996C17DD6867DAFD7B714A6 /* SyntaxTextViewLayoutManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SyntaxTextViewLayoutManager.swift; path = Sources/SavannaKit/View/SyntaxTextViewLayoutManager.swift; sourceTree = "<group>"; };
 		75C7DA219BD91ECF0E02E07DD80BC817 /* Pods-SCE-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCE-Mac.release.xcconfig"; sourceTree = "<group>"; };
 		76FC070FB6E647047AC099F3C6C832B0 /* Pods-SCE-Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCE-Mac.debug.xcconfig"; sourceTree = "<group>"; };
@@ -199,8 +199,8 @@
 		894C09DB20CFF05C9EDD36D00DEC6755 /* SourceEditor-macOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "SourceEditor-macOS.xcconfig"; path = "../SourceEditor-macOS/SourceEditor-macOS.xcconfig"; sourceTree = "<group>"; };
 		8D4EA5A9BDDC2D9A47A9DD4584FD4578 /* Pods-SCE.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SCE.modulemap"; sourceTree = "<group>"; };
 		8ECBF848BC3CB1512FCA9E12876DCFBC /* Pods-SCETests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SCETests-acknowledgements.plist"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		943EA23B125D2D04D80DD2B7ED3550EC /* Pods_SCE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SCE.framework; path = "Pods-SCE.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		943EA23B125D2D04D80DD2B7ED3550EC /* Pods_SCE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F6EEF4C5A50E2EC5110858E5A92F253 /* SwiftLexer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftLexer.swift; path = Sources/Languages/SwiftLexer.swift; sourceTree = "<group>"; };
 		A3CA33BBBC4FCCB96BC217C31CE3F485 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../SourceEditor-macOS/Info.plist"; sourceTree = "<group>"; };
 		A85803B8669CB67B50350F1618077672 /* SavannaKit-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "SavannaKit-iOS.modulemap"; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 		EA191A30A5E560E11D948127D722B771 /* SourceEditor-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SourceEditor-iOS-umbrella.h"; sourceTree = "<group>"; };
 		ED227D13B66C7D645082AA4B19DBFA97 /* SourceEditor-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SourceEditor-iOS-prefix.pch"; sourceTree = "<group>"; };
 		ED91E022C6D5260F4623FD6C6DBA4957 /* Pods-SCE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SCE.release.xcconfig"; sourceTree = "<group>"; };
-		EDF08CFCE659A61C77CBA77B5D09B621 /* Pods_SCE_MacTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SCE_MacTests.framework; path = "Pods-SCE-MacTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EDF08CFCE659A61C77CBA77B5D09B621 /* Pods_SCE_MacTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCE_MacTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4275D2789E8E9BF01A3A10BC2868173 /* InnerTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InnerTextView.swift; path = Sources/SavannaKit/View/InnerTextView.swift; sourceTree = "<group>"; };
 		F4D4F755DE8D380A6B4D208A47EF4A07 /* SavannaKit-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SavannaKit-macOS-umbrella.h"; path = "../SavannaKit-macOS/SavannaKit-macOS-umbrella.h"; sourceTree = "<group>"; };
 		F5FDF5533EC679BF7AF91C3261E0947F /* Pods-SCETests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SCETests-resources.sh"; sourceTree = "<group>"; };
@@ -353,7 +353,6 @@
 				9F6EEF4C5A50E2EC5110858E5A92F253 /* SwiftLexer.swift */,
 				2DB926AB66B791B26957F60240961F78 /* Support Files */,
 			);
-			name = SourceEditor;
 			path = SourceEditor;
 			sourceTree = "<group>";
 		};
@@ -436,7 +435,6 @@
 				BD4E7572438B674F4755DD7E8AAA52D2 /* Types.swift */,
 				570A0DB0F9DEE142E4237E6ACA5A77CE /* Support Files */,
 			);
-			name = SavannaKit;
 			path = SavannaKit;
 			sourceTree = "<group>";
 		};
@@ -758,7 +756,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1010;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -968,11 +966,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "Target Support Files/Pods-SCE-MacTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCE-MacTests/Pods-SCE-MacTests.modulemap";
@@ -1007,11 +1001,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "Target Support Files/Pods-SCE-Mac/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCE-Mac/Pods-SCE-Mac.modulemap";
@@ -1047,11 +1037,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-SCETests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCETests/Pods-SCETests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1086,11 +1072,7 @@
 				INFOPLIST_FILE = "Target Support Files/SavannaKit-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SavannaKit-iOS/SavannaKit-iOS.modulemap";
 				PRODUCT_MODULE_NAME = SavannaKit;
 				PRODUCT_NAME = SavannaKit;
@@ -1124,11 +1106,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "Target Support Files/Pods-SCE-Mac/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCE-Mac/Pods-SCE-Mac.modulemap";
@@ -1163,11 +1141,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-SCE/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCE/Pods-SCE.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1204,11 +1178,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "Target Support Files/Pods-SCE-MacTests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCE-MacTests/Pods-SCE-MacTests.modulemap";
@@ -1242,11 +1212,7 @@
 				INFOPLIST_FILE = "Target Support Files/SavannaKit-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SavannaKit-iOS/SavannaKit-iOS.modulemap";
 				PRODUCT_MODULE_NAME = SavannaKit;
 				PRODUCT_NAME = SavannaKit;
@@ -1317,6 +1283,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -1339,11 +1306,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-SCE/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCE/Pods-SCE.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1379,11 +1342,7 @@
 				INFOPLIST_FILE = "Target Support Files/SourceEditor-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SourceEditor-iOS/SourceEditor-iOS.modulemap";
 				PRODUCT_MODULE_NAME = SourceEditor;
 				PRODUCT_NAME = SourceEditor;
@@ -1418,11 +1377,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SavannaKit-macOS/SavannaKit-macOS-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SavannaKit-macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = "Target Support Files/SavannaKit-macOS/SavannaKit-macOS.modulemap";
 				PRODUCT_MODULE_NAME = SavannaKit;
@@ -1456,11 +1411,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SourceEditor-macOS/SourceEditor-macOS-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SourceEditor-macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = "Target Support Files/SourceEditor-macOS/SourceEditor-macOS.modulemap";
 				PRODUCT_MODULE_NAME = SourceEditor;
@@ -1558,11 +1509,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SourceEditor-macOS/SourceEditor-macOS-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SourceEditor-macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = "Target Support Files/SourceEditor-macOS/SourceEditor-macOS.modulemap";
 				PRODUCT_MODULE_NAME = SourceEditor;
@@ -1596,11 +1543,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SavannaKit-macOS/SavannaKit-macOS-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SavannaKit-macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = "Target Support Files/SavannaKit-macOS/SavannaKit-macOS.modulemap";
 				PRODUCT_MODULE_NAME = SavannaKit;
@@ -1633,11 +1576,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-SCETests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SCETests/Pods-SCETests.modulemap";
 				OTHER_LDFLAGS = "";
@@ -1671,11 +1610,7 @@
 				INFOPLIST_FILE = "Target Support Files/SourceEditor-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SourceEditor-iOS/SourceEditor-iOS.modulemap";
 				PRODUCT_MODULE_NAME = SourceEditor;
 				PRODUCT_NAME = SourceEditor;

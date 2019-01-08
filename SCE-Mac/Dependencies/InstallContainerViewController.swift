@@ -16,8 +16,8 @@ class InstallContainerViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        install = childViewControllers.first! as! InstallBlockchainViewController // Set in storyboard
-        complete = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Install")) as! InstallCompleteViewController
+        install = (childViewControllers.first! as! InstallBlockchainViewController) // Set in storyboard
+        complete = (storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "Install")) as! InstallCompleteViewController)
         addChildViewController(complete)
         
         install.container = self
