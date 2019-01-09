@@ -19,6 +19,8 @@ class InstallToolchainViewController: NSViewController {
     @IBOutlet weak var detailImageView: NSImageView!
     @IBOutlet weak var detailLabel: NSTextField!
     @IBOutlet weak var detailInfoLabel: NSTextField!
+    @IBOutlet weak var detailMoreInfoButton: NSButton!
+    @IBOutlet weak var detailDocumentationButton: NSButton!
     
     /// Queue used to fetch versions (which can be extremely slow)
     let fetchVersionQueue: OperationQueue = OperationQueue()
@@ -157,6 +159,16 @@ class InstallToolchainViewController: NSViewController {
         // Open url
         let platform = platforms[indexPath.item]
         guard let url = URL(string: platform.projectUrl) else { return }
+        NSWorkspace.shared.open(url)
+    }
+    
+    @IBAction func detailMoreInfo(_ sender: Any) {
+        guard let url = URL(string: (sender as! NSButton).alternateTitle) else { return }
+        NSWorkspace.shared.open(url)
+    }
+    
+    @IBAction func detailDocumentation(_ sender: Any) {
+        guard let url = URL(string: (sender as! NSButton).alternateTitle) else { return }
         NSWorkspace.shared.open(url)
     }
     
@@ -346,19 +358,30 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
     
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
         
-        // do show
+        func showDetailsFor(_ item: DependencyFrameworkViewModel) {
+            detailLabel.stringValue = item.name.capitalizedFirstChar()
+            detailInfoLabel.stringValue = item.description
+            detailImageView.image = NSImage(named: NSImage.Name(rawValue: item.name))
+            detailMoreInfoButton.alternateTitle = item.framework.projectUrl
+            detailDocumentationButton.alternateTitle = item.framework.documentationUrl
+        }
+        
+        // Show framework details
         if let item = item as? DependencyFrameworkViewModel {
-            detailLabel.stringValue = item.displayName
+            showDetailsFor(item)
         } else if let item = item as? DependencyViewModel {
-            print("dependency")
+            for framework in frameworkViewModels {
+                for dependency in framework.dependencies {
+                    if dependency === item {
+                        showDetailsFor(framework)
+                        return false
+                    }
+                }
+            }
         }
         
         return false
     }
-    
-//    func selectionShouldChange(in outlineView: NSOutlineView) -> Bool {
-//        return false
-//    }
 }
 
 extension InstallToolchainViewController: NSOutlineViewDataSource {

@@ -16,6 +16,7 @@ class DependencyFrameworkViewModel {
     
     var displayName: String { return state.display(name: framework.name) }
     
+    var description: String { return framework.description }
 //    var isDefaultFramework: Bool {
 //        return framework.defaultFramework
 //    }

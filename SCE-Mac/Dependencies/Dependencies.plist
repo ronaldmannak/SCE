@@ -251,7 +251,7 @@
 					</dict>
 				</array>
 				<key>description</key>
-				<string>Etherlime is an ethereum development and deployment framework based on ethers.js.</string>
+				<string>Etherlime is an ethereum development and deployment framework based on ethers.js. This framework provides alternative to the other web3.js based frameworks and allows for ultimate control by the developer.</string>
 				<key>initScript</key>
 				<string>EtherlimeInit</string>
 				<key>projectUrl</key>
@@ -389,7 +389,7 @@
 					</dict>
 				</array>
 				<key>description</key>
-				<string>Tronbox is a Tron development and deployment framework based on Ethereum&apos;s Truffle </string>
+				<string>TRON is an ambitious project dedicated to the establishment of a truly decentralized Internet and its infrastructure. The TRON Protocol, one of the largest blockchain based operating systems in the world, offers base public blockchain support of high throughput, high scalability, and high availability for all decentralized applications in the TRON ecosystem.</string>
 				<key>initScript</key>
 				<string>TronBoxInit</string>
 				<key>projectUrl</key>
