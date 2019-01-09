@@ -45,6 +45,9 @@ class InstallToolchainViewController: NSViewController {
         didSet {
             outlineView.reloadData()
             outlineView.expandItem(nil, expandChildren: true) // expand all items
+            
+            // Fetch version numbers
+            try? self.fetchVersionNumbers()
         }
     }
     
@@ -77,40 +80,31 @@ class InstallToolchainViewController: NSViewController {
         do {
             // Load dependencies from disk
             platforms = try DependencyPlatform.loadPlatforms()
-            
-//            outlineView.reloadData()
-            
-            /*
-            // Fetch version numbers
-            for platform in platforms {
-                
-                guard let frameworks = platform.children else { continue }
-                for framework in frameworks {
-                    
-                    guard let tools = framework.children else { continue }
-                    for tool in tools {
-
-                        if let versionOperation = tool.versionQueryOperation() {
-                            fetchVersionQueue.addOperation(versionOperation)
-                            
-                            versionOperation.completionBlock = {
-                                DispatchQueue.main.async {
-                                    guard versionOperation.exitStatus == 0 else { return }
-                                    _ = tool.versionQueryParser(versionOperation.output)
-                                    self.outlineView.reloadItem(framework)
-                                    self.outlineView.reloadItem(tool)
-                                }
-                            }
-                        }
-                    }
-                }
-            } */
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
         }
+    }
+    
+    func fetchVersionNumbers(forceReload: Bool = false) throws {
         
+        fetchVersionQueue.cancelAllOperations()
         
+        for frameworkViewModel in frameworkViewModels {
+            for tool in frameworkViewModel.dependencies {
+                
+                if forceReload == false && tool.version != nil { continue }
+                
+                guard let operation = tool.versionQueryOperation() else { continue }
+                operation.completionBlock = {
+                    DispatchQueue.main.async {
+                        _ = tool.versionQueryParser(operation.output)
+                        self.outlineView.reloadData()
+                    }
+                }
+                fetchVersionQueue.addOperation(operation)
+            }
+        }
     }
     
     func configurePlatformCollectionView() {
@@ -272,7 +266,8 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
                 
             case "VersionColumn":
                 
-                view.textField?.stringValue = ""
+                view.textField?.stringValue = item.version
+                view.textField?.textColor = NSColor.black
                 
             case "PathColumn":
                 
@@ -305,10 +300,12 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
             case "VersionColumn":
                 
                 view.textField?.stringValue = item.version ?? ""
+                view.textField?.textColor = NSColor.gray
                 
             case "PathColumn":
                 
                 view.textField?.stringValue = item.path ?? ""
+                view.textField?.textColor = NSColor.gray
                 
             case "ActionColumn":
                 

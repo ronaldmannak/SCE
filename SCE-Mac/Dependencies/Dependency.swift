@@ -26,7 +26,7 @@ class Dependency: Codable {
     let minimumVersion: String?
     
     /// Version of this dependency is forwarded to the framework
-    let isPlatformVersion: Bool
+    let isFrameworkVersion: Bool
     
     /// Command to display version
     let versionCommand: String?
@@ -56,16 +56,16 @@ class Dependency: Codable {
     private weak var updateOperation: BashOperation? = nil
     
     private enum CodingKeys: String, CodingKey {
-        case name, customLocation, defaultLocation, minimumVersion, isPlatformVersion, versionCommand, installCommand, installLink, updateCommand, comment, required
+        case name, customLocation, defaultLocation, minimumVersion, isFrameworkVersion, versionCommand, installCommand, installLink, updateCommand, comment, required
     }
     
     ///
-    init(name: String, customLocation: String?, defaultLocation: String, minimumVersion: String?, isPlatformVersion: Bool, versionCommand: String?, installCommand: String?, installLink: String?, updateCommand: String?, comment: String, required: Bool, versionNumber: String?) {
+    init(name: String, customLocation: String?, defaultLocation: String, minimumVersion: String?, isFrameworkVersion: Bool, versionCommand: String?, installCommand: String?, installLink: String?, updateCommand: String?, comment: String, required: Bool, versionNumber: String?) {
         self.name = name
         self.customLocation = customLocation
         self.defaultLocation = defaultLocation
         self.minimumVersion = minimumVersion
-        self.isPlatformVersion = isPlatformVersion
+        self.isFrameworkVersion = isFrameworkVersion
         self.versionCommand = versionCommand
         self.installCommand = installCommand
         self.installLink = installLink

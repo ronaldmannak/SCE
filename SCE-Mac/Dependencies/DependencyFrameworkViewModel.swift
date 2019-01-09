@@ -14,6 +14,15 @@ class DependencyFrameworkViewModel {
     
     private (set) var name: String
     
+    var version: String {
+        for dependency in dependencies {
+            if dependency.isFrameworkVersion == true {
+                return dependency.version ?? ""
+            }
+        }
+        return ""
+    }
+    
     var displayName: String { return state.display(name: framework.name) }
     
     var description: String { return framework.description }
@@ -66,28 +75,4 @@ class DependencyFrameworkViewModel {
         
         return try framework.update()
     }
-    
-    func versionQueryOperation() -> BashOperation? {
-        return nil
-    }
-    
-    func versionQueryParser(_ output: String) -> String {
-        return ""
-    }
-//    func updateVersion(completion: @escaping (String) -> ()) throws {
-//
-//        guard let mainDependency = dependencies.filter({ $0.isPlatformVersion == true }).first else {
-//            return
-//        }
-//        guard let version = mainDependency.version else {
-//            try mainDependency.updateVersion {
-//                self.version = $0
-//                completion($0)
-//            }
-//            return
-//        }
-//        self.version = version
-//        completion(version)
-//    }
-
 }

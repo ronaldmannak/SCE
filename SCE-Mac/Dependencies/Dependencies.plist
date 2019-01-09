@@ -25,7 +25,7 @@
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
 						<string>1.7.4</string>
-						<key>isPlatformVersion</key>
+						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
 						<string>brew -v</string>
@@ -53,7 +53,7 @@
 						<string>/usr/local/bin</string>
 						<key>minimumVersion</key>
 						<string>10.10.0</string>
-						<key>isPlatformVersion</key>
+						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
 						<string>node -v</string>
@@ -79,7 +79,7 @@
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
 						<string>4.1.13</string>
-						<key>isPlatformVersion</key>
+						<key>isFrameworkVersion</key>
 						<true/>
 						<key>versionCommand</key>
 						<string>truffle version</string>
@@ -107,7 +107,7 @@
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
 						<string>1.1.8</string>
-						<key>isPlatformVersion</key>
+						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
 						<string>solium -V</string>
@@ -135,7 +135,7 @@
 						<string>/Applications</string>
 						<key>minimumVersion</key>
 						<string>1.2.1</string>
-						<key>isPlatformVersion</key>
+						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
 						<string>defaults read /Applications/Ganache.app/Contents/Info CFBundleShortVersionString</string>
@@ -178,7 +178,7 @@
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
 						<string>1.7.4</string>
-						<key>isPlatformVersion</key>
+						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
 						<string>brew -v</string>
@@ -206,7 +206,7 @@
 						<string>/usr/local/bin</string>
 						<key>minimumVersion</key>
 						<string>10.10.0</string>
-						<key>isPlatformVersion</key>
+						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
 						<string>node -v</string>
@@ -232,7 +232,7 @@
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
 						<string>0.9.5</string>
-						<key>isPlatformVersion</key>
+						<key>isFrameworkVersion</key>
 						<true/>
 						<key>versionCommand</key>
 						<string>etherlime --version</string>
@@ -286,7 +286,7 @@
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
 						<string>1.7.4</string>
-						<key>isPlatformVersion</key>
+						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
 						<string>brew -v</string>
@@ -314,7 +314,7 @@
 						<string>/usr/local/bin</string>
 						<key>minimumVersion</key>
 						<string>10.10.0</string>
-						<key>isPlatformVersion</key>
+						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
 						<string>node -v</string>
@@ -340,7 +340,7 @@
 						<string>/usr/local/bin/</string>
 						<key>minimumVersion</key>
 						<string>2.3.9</string>
-						<key>isPlatformVersion</key>
+						<key>isFrameworkVersion</key>
 						<true/>
 						<key>versionCommand</key>
 						<string>tronbox version</string>
@@ -368,7 +368,7 @@
 						<string></string>
 						<key>minimumVersion</key>
 						<string>2.3.4</string>
-						<key>isPlatformVersion</key>
+						<key>isFrameworkVersion</key>
 						<false/>
 						<key>versionCommand</key>
 						<string>solium --version</string>

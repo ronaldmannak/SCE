@@ -21,7 +21,7 @@ class DependencyViewModel {
     
     var version: String? { return dependency.versionNumber }
     
-    private (set) var isPlatformVersion: Bool
+    private (set) var isFrameworkVersion: Bool
     
     private (set) var minimumVersion: String?
         
@@ -72,7 +72,7 @@ class DependencyViewModel {
         path = dependency.url.path
         required = dependency.required
         minimumVersion = dependency.minimumVersion
-        isPlatformVersion = dependency.isPlatformVersion
+        isFrameworkVersion = dependency.isFrameworkVersion
     }
 
     func versionQueryOperation() -> BashOperation? {
