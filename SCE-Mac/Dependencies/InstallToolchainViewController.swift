@@ -33,21 +33,18 @@ class InstallToolchainViewController: NSViewController {
     /// the progress indicator will animate
     private var installCount: NSKeyValueObservation?
     
-    private var platforms = [DependencyPlatform]() {
+    private var platforms = [DependencyPlatformViewModel]() {
         didSet {
             platformCollectionView.reloadData()
             platformCollectionView.selectItems(at: [IndexPath(item: 0, section: 0)], scrollPosition: .top)
-            frameworkViewModels = platforms.first?.frameworkViewModels ?? [DependencyFrameworkViewModel]()
+            frameworkViewModels = platforms.first?.frameworks ?? [DependencyFrameworkViewModel]()
         }
     }
     
     private var frameworkViewModels = [DependencyFrameworkViewModel]() {
         didSet {
             outlineView.reloadData()
-//            outlineView.expandItem(nil, expandChildren: true) // expand all items
-            
-            // Fetch version numbers
-            try? self.fetchVersionNumbers()
+            try? self.fetchVersionNumbers()     // Fetch version numbers
         }
     }
     
@@ -90,7 +87,7 @@ class InstallToolchainViewController: NSViewController {
         
         do {
             // Load dependencies from disk
-            platforms = try DependencyPlatform.loadPlatforms()
+            platforms = try DependencyPlatformViewModel.loadPlatforms()
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
@@ -409,7 +406,7 @@ extension InstallToolchainViewController: NSCollectionViewDelegate {
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
         
         guard let index = indexPaths.first?.item else { return }
-        frameworkViewModels = platforms[index].frameworkViewModels
+        frameworkViewModels = platforms[index].frameworks
     }
 }
 

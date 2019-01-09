@@ -24,23 +24,6 @@ struct DependencyPlatform: Codable {
     
     let frameworks: [DependencyFramework]
     
-    var frameworkViewModels: [DependencyFrameworkViewModel] {
-        return frameworks.map{ DependencyFrameworkViewModel($0) }
-    }
-    
-//    func install() throws -> [BashOperation]? {
-//        
-//        guard let defaultFramework = frameworks.filter({ $0.defaultFramework == true }).first else {
-//            return nil
-//        }
-//        
-//        return try defaultFramework.install()
-//    }
-//    
-//    func update() throws -> [BashOperation]? {
-//  
-//        return try frameworks.compactMap({ try $0.update() }).flatMap{ $0 }
-//    }
     
     /// Loads all depencies for all platforms from Dependencies.plist
     ///
@@ -71,6 +54,5 @@ struct DependencyPlatform: Codable {
         let platforms = try loadPlatforms()
         return platforms.filter{ (item) -> Bool in return item.frameworks.count > 0 }
     }
-    
 }
 

@@ -63,6 +63,8 @@
 		C72FEA9621E433BA000EF3C7 /* PlatformCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */; };
 		C72FEA9721E433BA000EF3C7 /* PlatformCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */; };
 		C72FEA9821E433BB000EF3C7 /* PlatformCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */; };
+		C72FEA9D21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FEA9C21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift */; };
+		C72FEA9E21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72FEA9C21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift */; };
 		C7303B64212E75E70007E708 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7303B63212E75E70007E708 /* Preferences.storyboard */; };
 		C76FC32021439FAC00DB2C62 /* InstallToolchainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */; };
 		C76FC32B2144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */; };
@@ -174,6 +176,7 @@
 		C711F5D421E1B299005EBC5D /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		C72FEA9321E433BA000EF3C7 /* PlatformCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformCollectionViewItem.swift; sourceTree = "<group>"; };
 		C72FEA9421E433BA000EF3C7 /* PlatformCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlatformCollectionViewItem.xib; sourceTree = "<group>"; };
+		C72FEA9C21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyPlatformViewModel.swift; sourceTree = "<group>"; };
 		C7303B63212E75E70007E708 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		C76FC31F21439FAC00DB2C62 /* InstallToolchainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallToolchainViewController.swift; sourceTree = "<group>"; };
 		C76FC3292144E62F00DB2C62 /* PreferencesLocationsGeneralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesLocationsGeneralViewController.swift; sourceTree = "<group>"; };
@@ -436,6 +439,7 @@
 				C70509D2214D97A8003DDA2B /* DependencyFramework.swift */,
 				C7DDD7492140A65700674942 /* Dependency.swift */,
 				C70509E82155B486003DDA2B /* DependencyState.swift */,
+				C72FEA9C21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift */,
 				C70509EB2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift */,
 				C70509E52155B47B003DDA2B /* DependencyViewModel.swift */,
 				C7DDD74B2140AB6D00674942 /* Dependencies.plist */,
@@ -891,6 +895,7 @@
 				C7F0B979210DACCB005A8FE2 /* MasterViewController.swift in Sources */,
 				C70509FB2159E1EE003DDA2B /* Project.swift in Sources */,
 				C70509D3214D97A8003DDA2B /* DependencyFramework.swift in Sources */,
+				C72FEA9D21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift in Sources */,
 				C7F0B977210DACCB005A8FE2 /* AppDelegate.swift in Sources */,
 				C70509E92155B486003DDA2B /* DependencyState.swift in Sources */,
 				C70509E62155B47B003DDA2B /* DependencyViewModel.swift in Sources */,
@@ -916,6 +921,7 @@
 				C7E7643F2122A2CF00867DA4 /* TemplateCollectionViewItem.swift in Sources */,
 				C7F0B9C22113CF7E005A8FE2 /* SplitViewController.swift in Sources */,
 				C7E76467212937F100867DA4 /* FileItem.swift in Sources */,
+				C72FEA9E21E5EDCC000EF3C7 /* DependencyPlatformViewModel.swift in Sources */,
 				C70509EE2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift in Sources */,
 				C7DDD74E2140AFDC00674942 /* DependencyPlatform.swift in Sources */,
 				C711F5AC21DF4E69005EBC5D /* ProjectInit.swift in Sources */,

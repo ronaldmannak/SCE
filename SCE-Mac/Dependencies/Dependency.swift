@@ -44,21 +44,6 @@ class Dependency: Codable {
     /// can be installed without Brew. If all tools are installed, but not Brew, Composite
     /// will ignore any tool that has required set to false
     let required: Bool
-    
-    ///
-//    init(name: String, customLocation: String?, defaultLocation: String, isFrameworkVersion: Bool, versionCommand: String?, installCommand: String?, installLink: String?, updateCommand: String?, comment: String, required: Bool, versionNumber: String?) {
-//        self.name = name
-//        self.customLocation = customLocation
-//        self.defaultLocation = defaultLocation
-//        self.isFrameworkVersion = isFrameworkVersion
-//        self.versionCommand = versionCommand
-//        self.installCommand = installCommand
-//        self.installLink = installLink
-//        self.updateCommand = updateCommand
-//        self.comment = comment
-//        self.required = required
-//        self.versionNumber = versionNumber
-//    }
 }
 
 
