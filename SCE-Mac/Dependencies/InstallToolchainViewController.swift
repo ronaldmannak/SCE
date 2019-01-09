@@ -154,6 +154,7 @@ class InstallToolchainViewController: NSViewController {
         platformCollectionView.deselectAll(self)
         platformCollectionView.reloadData()
         platformCollectionView.selectItems(at: [indexPath], scrollPosition: .top)
+        frameworkViewModels = platforms[indexPath.item].frameworks
         
         // Open url
         let platform = platforms[indexPath.item]
