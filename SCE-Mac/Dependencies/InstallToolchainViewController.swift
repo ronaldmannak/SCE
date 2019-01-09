@@ -44,6 +44,9 @@ class InstallToolchainViewController: NSViewController {
     private var frameworkViewModels = [DependencyFrameworkViewModel]() {
         didSet {
             outlineView.reloadData()
+            if let first = frameworkViewModels.first {
+                showDetailsFor(first)
+            }
             try? self.fetchVersionNumbers()     // Fetch version numbers
         }
     }
@@ -112,13 +115,23 @@ class InstallToolchainViewController: NSViewController {
         }
     }
     
-    func configurePlatformCollectionView() {
+    private func configurePlatformCollectionView() {
         view.wantsLayer = true
         
         let nib = NSNib(nibNamed: NSNib.Name(rawValue: "PlatformCollectionViewItem"), bundle: nil)
         platformCollectionView.register(nib, forItemWithIdentifier: NSUserInterfaceItemIdentifier("PlatformCollectionViewItem"))
         
         platformCollectionView.reloadData()
+    }
+    
+    private func showDetailsFor(_ item: DependencyFrameworkViewModel) {
+        detailLabel.stringValue = item.name.capitalizedFirstChar()
+        detailInfoLabel.stringValue = item.description
+        detailImageView.image = NSImage(named: NSImage.Name(rawValue: item.name))
+        detailMoreInfoButton.alternateTitle = item.projectUrl
+        detailMoreInfoButton.isHidden = false
+        detailDocumentationButton.alternateTitle = item.documentationUrl
+        detailDocumentationButton.isHidden = false
     }
     
     @IBAction func done(_ sender: Any) {
@@ -335,16 +348,6 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
     }
     
     func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
-        
-        func showDetailsFor(_ item: DependencyFrameworkViewModel) {
-            detailLabel.stringValue = item.name.capitalizedFirstChar()
-            detailInfoLabel.stringValue = item.description
-            detailImageView.image = NSImage(named: NSImage.Name(rawValue: item.name))
-            detailMoreInfoButton.alternateTitle = item.projectUrl
-            detailMoreInfoButton.isHidden = false
-            detailDocumentationButton.alternateTitle = item.documentationUrl
-            detailDocumentationButton.isHidden = false
-        }
         
         // Show framework details
         if let item = item as? DependencyFrameworkViewModel {
