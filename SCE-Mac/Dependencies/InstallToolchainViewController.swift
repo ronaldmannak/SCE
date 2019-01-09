@@ -223,6 +223,39 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         
+        func setButton(_ cellButton: NSButton, state: DependencyState, name: String) {
+            
+            switch state {
+                
+            case .notInstalled:
+                
+                cellButton.isHidden = false
+                cellButton.isEnabled = true
+                cellButton.title = "Install \(name)"
+                
+            case .outdated, .unknown:
+                
+                cellButton.isHidden = false
+                cellButton.isEnabled = true
+                cellButton.title = "Update \(name)"
+                
+            case .uptodate:
+                
+                cellButton.isHidden = true
+                
+            case .installing:
+                
+                cellButton.isHidden = false
+                cellButton.isEnabled = false
+                cellButton.title = "Installing..."
+                
+            case .comingSoon:
+                
+                cellButton.isHidden = true
+                cellButton.isEnabled = true
+            }
+        }
+        
         guard let identifier = tableColumn?.identifier.rawValue else { return nil }
         
         guard let view: NSTableCellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "NameCell"), owner: self) as? NSTableCellView else {
@@ -239,47 +272,21 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
                 
             case "VersionColumn":
                 
-                view.textField?.stringValue = "(version)" // item.version ?? ""
+                view.textField?.stringValue = ""
                 
             case "PathColumn":
                 
-                view.textField?.stringValue = "(path)" //item.path ?? ""
+                view.textField?.stringValue = ""
                 
             case "ActionColumn":
                 
-                // Fetch the view with two buttons
+                // Fetch the button view
                 guard let buttonView: NSTableCellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "ActionCell"), owner: self) as? NSTableCellView else {
                     return nil
                 }
                 
                 let cellButton: NSButton = buttonView.subviews.filter { $0.identifier!.rawValue == "Button1" }.first! as! NSButton
-                
-                switch item.state {
-                    
-                case .notInstalled:
-                    
-                    cellButton.isHidden = false
-                    cellButton.isEnabled = true
-                    cellButton.title = "Install \(item.name)"
-                    
-                case .outdated, .unknown, .uptodate:
-                    
-                    cellButton.isHidden = false
-                    cellButton.isEnabled = true
-                    cellButton.title = "Update \(item.name)"
-                    
-                case .installing:
-                    
-                    cellButton.isHidden = false
-                    cellButton.isEnabled = false
-                    cellButton.title = "Installing..."
-                    
-                case .comingSoon:
-                    
-                    cellButton.isHidden = true
-                    cellButton.isEnabled = true
-                    
-                }
+                setButton(cellButton, state: item.state, name: item.name)
                 return buttonView
                 
             default:
@@ -293,7 +300,6 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
             switch identifier {
             case "DependencyColumn":
                 
-//                view.imageView?.image = item.image
                 view.textField?.stringValue = item.displayName
                 
             case "VersionColumn":
@@ -312,38 +318,7 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
                 }
                 
                 let cellButton: NSButton = buttonView.subviews.filter { $0.identifier!.rawValue == "Button1" }.first! as! NSButton
-                
-                switch item.state {
-                    
-                case .notInstalled:
-                    
-                    cellButton.isHidden = false
-                    cellButton.isEnabled = true
-                    cellButton.title = "Install \(item.name)"
-                    
-                case .uptodate:
-                    
-                    cellButton.isHidden = true
-                    cellButton.isEnabled = true
-                    
-                case .outdated, .unknown:
-                    
-                    cellButton.isHidden = false
-                    cellButton.isEnabled = true
-                    cellButton.title = "Update \(item.name)"
-                    
-                case .installing:
-                    
-                    cellButton.isHidden = false
-                    cellButton.isEnabled = false
-                    cellButton.title = "Installing..."
-                    
-                case .comingSoon:
-                    
-                    cellButton.isHidden = true
-                    cellButton.isEnabled = true
-                    
-                }
+                setButton(cellButton, state: item.state, name: item.name)
                 return buttonView
                 
             default:
