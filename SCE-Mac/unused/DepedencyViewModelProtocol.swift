@@ -23,8 +23,6 @@ protocol DependencyViewModelProtocol {
     /// Returns cached version number or nil if no version has been cached
     var version: String? { get }
     
-    var minimumVersion: String? { get }
-    
     var required: Bool { get }
     
     var children: [DependencyViewModelProtocol]? { get }

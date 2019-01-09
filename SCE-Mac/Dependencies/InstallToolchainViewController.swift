@@ -44,7 +44,7 @@ class InstallToolchainViewController: NSViewController {
     private var frameworkViewModels = [DependencyFrameworkViewModel]() {
         didSet {
             outlineView.reloadData()
-            outlineView.expandItem(nil, expandChildren: true) // expand all items
+//            outlineView.expandItem(nil, expandChildren: true) // expand all items
             
             // Fetch version numbers
             try? self.fetchVersionNumbers()
@@ -53,6 +53,13 @@ class InstallToolchainViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.dependencyChange(notification:)),
+            name: NSNotification.Name(rawValue: DependencyViewModel.notificationString),
+            object: nil)
+        
         
         fetchVersionQueue.maxConcurrentOperationCount = 1
         fetchVersionQueue.qualityOfService = .userInteractive
@@ -75,6 +82,10 @@ class InstallToolchainViewController: NSViewController {
         loadPlatforms()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: DependencyViewModel.notificationString), object: nil)
+    }
+    
     func loadPlatforms() {
         
         do {
@@ -86,24 +97,21 @@ class InstallToolchainViewController: NSViewController {
         }
     }
     
-    func fetchVersionNumbers(forceReload: Bool = false) throws {
+    func fetchVersionNumbers() throws {
         
         fetchVersionQueue.cancelAllOperations()
         
         for frameworkViewModel in frameworkViewModels {
             for tool in frameworkViewModel.dependencies {
-                
-                if forceReload == false && tool.version != nil { continue }
-                
-                guard let operation = tool.versionQueryOperation() else { continue }
-                operation.completionBlock = {
-                    DispatchQueue.main.async {
-                        _ = tool.versionQueryParser(operation.output)
-                        self.outlineView.reloadData()
-                    }
-                }
+                guard tool.version.isEmpty, let operation = try tool.versionQueryOperation() else { continue }
                 fetchVersionQueue.addOperation(operation)
             }
+        }
+    }
+    
+    @objc private func dependencyChange(notification: NSNotification){
+        DispatchQueue.main.async {
+            self.outlineView.reloadData()
         }
     }
     
@@ -299,12 +307,12 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
                 
             case "VersionColumn":
                 
-                view.textField?.stringValue = item.version ?? ""
+                view.textField?.stringValue = item.version
                 view.textField?.textColor = NSColor.gray
                 
             case "PathColumn":
                 
-                view.textField?.stringValue = item.path ?? ""
+                view.textField?.stringValue = item.path 
                 view.textField?.textColor = NSColor.gray
                 
             case "ActionColumn":
@@ -334,8 +342,8 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
             detailLabel.stringValue = item.name.capitalizedFirstChar()
             detailInfoLabel.stringValue = item.description
             detailImageView.image = NSImage(named: NSImage.Name(rawValue: item.name))
-            detailMoreInfoButton.alternateTitle = item.framework.projectUrl
-            detailDocumentationButton.alternateTitle = item.framework.documentationUrl
+            detailMoreInfoButton.alternateTitle = item.projectUrl
+            detailDocumentationButton.alternateTitle = item.documentationUrl
         }
         
         // Show framework details

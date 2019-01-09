@@ -10,20 +10,24 @@ import Foundation
 
 class DependencyFrameworkViewModel {
 
-    let framework: DependencyFramework
+    private let framework: DependencyFramework
     
     private (set) var name: String
     
     var version: String {
         for dependency in dependencies {
             if dependency.isFrameworkVersion == true {
-                return dependency.version ?? ""
+                return dependency.version
             }
         }
         return ""
     }
     
     var displayName: String { return state.display(name: framework.name) }
+    
+    let projectUrl: String
+    
+    let documentationUrl: String
     
     var description: String { return framework.description }
 //    var isDefaultFramework: Bool {
@@ -63,16 +67,16 @@ class DependencyFrameworkViewModel {
     init(_ framework: DependencyFramework) {
         self.framework = framework
         name = framework.name
+        projectUrl = framework.projectUrl
+        documentationUrl = framework.documentationUrl
         dependencies = framework.dependencies.map { DependencyViewModel($0) }
     }
-
-    func install() throws -> [BashOperation]? {
-        
-        return try framework.install()
+    
+    func install() throws -> [BashOperation] {
+        return try dependencies.compactMap { try $0.install() }
     }
     
-    func update() throws -> [BashOperation]? {
-        
-        return try framework.update()
+    func update() throws -> [BashOperation] {
+        return try dependencies.compactMap { try $0.update() }
     }
 }

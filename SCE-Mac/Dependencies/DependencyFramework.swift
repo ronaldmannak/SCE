@@ -33,16 +33,7 @@ struct DependencyFramework: Codable {
     /// True if is this is the default framework for the platform
     let defaultFramework: Bool
 
-    // Can we add a filter or regex or something that will scan and recognize an
+    // TODO: Can we add a filter or regex or something that will scan and recognize an
     // existing project as a project created in this framework? E.g. to recognize if
     // a project was created by EtherLime or Truffle?
-    
-    
-    func install() throws -> [BashOperation] {
-        return try dependencies.compactMap { try $0.install() }
-    }
-    
-    func update() throws -> [BashOperation] {
-        return try dependencies.compactMap { try $0.update() }        
-    }
 }

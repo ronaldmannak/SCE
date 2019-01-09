@@ -25,8 +25,6 @@ class DependencyPlatformViewModel: DependencyViewModelProtocol {
     
     private (set) var version: String? = nil
     
-    private (set) var minimumVersion: String?
-    
     private (set) var required: Bool = false
     
     func versionQueryOperation() -> BashOperation? {
