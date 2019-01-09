@@ -30,9 +30,6 @@ class DependencyFrameworkViewModel {
     let documentationUrl: String
     
     var description: String { return framework.description }
-//    var isDefaultFramework: Bool {
-//        return framework.defaultFramework
-//    }
     
     let dependencies: [DependencyViewModel]
     

@@ -149,8 +149,6 @@
 		C70509E52155B47B003DDA2B /* DependencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyViewModel.swift; sourceTree = "<group>"; };
 		C70509E82155B486003DDA2B /* DependencyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyState.swift; sourceTree = "<group>"; };
 		C70509EB2155C9D6003DDA2B /* DependencyFrameworkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyFrameworkViewModel.swift; sourceTree = "<group>"; };
-		C70509EC2155C9D6003DDA2B /* DependencyPlatformViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyPlatformViewModel.swift; sourceTree = "<group>"; };
-		C70509F121561357003DDA2B /* DepedencyViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepedencyViewModelProtocol.swift; sourceTree = "<group>"; };
 		C70509FC215A1289003DDA2B /* SupportFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportFiles.swift; sourceTree = "<group>"; };
 		C7050A02215A174E003DDA2B /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		C7050A05215C510B003DDA2B /* TemplateContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateContainerViewController.swift; sourceTree = "<group>"; };
@@ -324,8 +322,6 @@
 		C711F58B21DDCEFD005EBC5D /* unused */ = {
 			isa = PBXGroup;
 			children = (
-				C70509EC2155C9D6003DDA2B /* DependencyPlatformViewModel.swift */,
-				C70509F121561357003DDA2B /* DepedencyViewModelProtocol.swift */,
 			);
 			path = unused;
 			sourceTree = "<group>";
