@@ -41,7 +41,7 @@
                                     <rect key="frame" x="1" y="0.0" width="493" height="188"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="yGz-3G-C73" viewBased="YES" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="vh9-DM-Ne5" id="igj-mF-5Zp">
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" headerView="yGz-3G-C73" viewBased="YES" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="vh9-DM-Ne5" id="igj-mF-5Zp">
                                             <rect key="frame" x="0.0" y="0.0" width="493.5" height="165"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -268,11 +268,11 @@
                                                 <constraint firstAttribute="width" constant="72" id="CNm-qx-PIT"/>
                                                 <constraint firstAttribute="height" constant="72" id="k6b-2d-uIV"/>
                                             </constraints>
-                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Etherlime" id="f2j-sk-DjV"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="f2j-sk-DjV"/>
                                         </imageView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LGD-1r-Om8">
                                             <rect key="frame" x="98" y="75" width="585" height="17"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" title="Label" id="Wnl-5q-jxs">
+                                            <textFieldCell key="cell" lineBreakMode="clipping" enabled="NO" id="Wnl-5q-jxs">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -280,13 +280,13 @@
                                         </textField>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Qbx-DU-OfD">
                                             <rect key="frame" x="98" y="6" width="479" height="61"/>
-                                            <textFieldCell key="cell" enabled="NO" title="Multiline Label" id="7CQ-qy-Qfy">
+                                            <textFieldCell key="cell" enabled="NO" id="7CQ-qy-Qfy">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uCA-sR-UcT">
+                                        <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uCA-sR-UcT">
                                             <rect key="frame" x="583" y="19" width="98" height="17"/>
                                             <buttonCell key="cell" type="inline" title="Documentation" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="lm7-Tn-CmS">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -296,7 +296,7 @@
                                                 <action selector="detailDocumentation:" target="kfv-ZF-Ptq" id="Nfl-dw-t9d"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pSV-uc-b0P">
+                                        <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pSV-uc-b0P">
                                             <rect key="frame" x="583" y="43" width="98" height="17"/>
                                             <buttonCell key="cell" type="inline" title="More Info" bezelStyle="inline" alignment="center" borderStyle="border" inset="2" id="eTo-g9-mUw">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -363,7 +363,4 @@
             <point key="canvasLocation" x="885.5" y="206.5"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Etherlime" width="596" height="596"/>
-    </resources>
 </document>

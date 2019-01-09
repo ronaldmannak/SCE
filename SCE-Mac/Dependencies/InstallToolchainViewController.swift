@@ -341,7 +341,9 @@ extension InstallToolchainViewController: NSOutlineViewDelegate {
             detailInfoLabel.stringValue = item.description
             detailImageView.image = NSImage(named: NSImage.Name(rawValue: item.name))
             detailMoreInfoButton.alternateTitle = item.projectUrl
+            detailMoreInfoButton.isHidden = false
             detailDocumentationButton.alternateTitle = item.documentationUrl
+            detailDocumentationButton.isHidden = false
         }
         
         // Show framework details
