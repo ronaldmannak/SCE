@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SCE.xcodeproj">
+      location = "group:/Users/ronalddanger/Development/Projects/Blockchain/SCE/Composite.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

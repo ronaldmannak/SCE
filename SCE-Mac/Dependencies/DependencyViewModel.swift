@@ -214,6 +214,7 @@ extension DependencyViewModel {
     /// https://www.reddit.com/r/macprogramming/comments/3wuvmz/how_to_createrun_an_nstask_in_swift_with_sudo/
     /// https://www.cocoawithlove.com/2009/05/invoking-other-processes-in-cocoa.html
     /// AppleScript: http://nonsenseinbasic.blogspot.com/2013/03/mac-os-x-programming-running-nstask.html
+    /// https://github.com/coteditor/cot/blob/develop/cot
     private func installBrew()  {
         
         let message = "Please install brew manually by copying the following text in MacOS terminal"
