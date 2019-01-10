@@ -103,11 +103,13 @@ extension DependencyViewModel {
     /// <#Description#>
     ///
     /// - Returns: <#return value description#>
-    func versionQueryOperation() throws -> BashOperation? {
+    func versionQueryOperation() -> BashOperation? {
         
-        guard let command = versionCommand, command.isEmpty == false, isInstalled == true else { return nil }
-        
-        let operation = try BashOperation(directory: "~", commands: [command])
+        guard
+            let command = versionCommand,
+            command.isEmpty == false,
+            let operation = try? BashOperation(directory: "~", commands: [command])
+            else { return nil }
         
         operation.completionBlock = {
             if let version = self.versionQueryParser(operation.output) {
@@ -118,11 +120,14 @@ extension DependencyViewModel {
         return operation
     }
     
-    func outdatedOperation() throws -> BashOperation? {
+    func outdatedOperation() -> BashOperation? {
         
-        guard let command = outdatedCommand, let versionCommand = versionCommand, command.isEmpty == false, isInstalled == true else { return nil }
+        guard
+            let command = outdatedCommand,
+            command.isEmpty == false,
+            let operation = try? BashOperation(directory: "~", commands: [command])
+            else { return nil }
         
-        let operation = try BashOperation(directory: "~", commands: [command, versionCommand])
         operation.completionBlock = {
             self.newerVersionAvailable = self.versionQueryParser(operation.output)
         }
@@ -130,7 +135,7 @@ extension DependencyViewModel {
         return operation
     }
     
-    func install() throws -> BashOperation? {
+    func install() -> [BashOperation]? {
         
         // Hardcoded edgecase for brew.
         // The brew installer needs to run as admin.
@@ -149,18 +154,24 @@ extension DependencyViewModel {
         }
         
         // If there's no installCommand, do nothing
-        guard let command = installCommand, let versionCommand = versionCommand, command.isEmpty == false else { return nil }
-    
-        let operation = try BashOperation(directory: "~", commands: [command, versionCommand])
-        installOperation = operation
-        return operation
+        guard
+            let command = installCommand,
+            command.isEmpty == false,
+            let operation = try? BashOperation(directory: "~", commands: [command])
+            else { return nil }
+        
+        installOperation = operation        
+        return [operation, versionQueryOperation()].compactMap{ $0 }
     }
     
-    func update() throws -> BashOperation? {
+    func update() -> [BashOperation]? {
         
-        guard let command = updateCommand, let versionCommand = versionCommand, command.isEmpty == false, isInstalled == true else { return nil }
-        
-        let operation = try BashOperation(directory: "~", commands: [command, versionCommand])
+        guard
+            let command = updateCommand,
+            command.isEmpty == false,
+            isInstalled == true,
+            let operation = try? BashOperation(directory: "~", commands: [command])
+            else { return nil }
         
         operation.completionBlock = {
             if let version = self.versionQueryParser(operation.output) {
@@ -168,7 +179,7 @@ extension DependencyViewModel {
             }
         }
         updateOperation = operation
-        return operation
+        return [operation, versionQueryOperation()].compactMap{ $0 }
     }
     
     

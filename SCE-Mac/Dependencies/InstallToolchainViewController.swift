@@ -26,12 +26,13 @@ class InstallToolchainViewController: NSViewController {
     let fetchVersionQueue: OperationQueue = OperationQueue()
     
     /// Queue used to install and update tools
-    let installQueue: OperationQueue = OperationQueue()
+    let userInitiatedQueue: OperationQueue = OperationQueue()
     
     /// KVO for installQueue.operationCount
     /// If operationCount is greater than zero,
     /// the progress indicator will animate
-    private var installCount: NSKeyValueObservation?
+    private var installCountObserver: NSKeyValueObservation?
+    private var TotalInstallCount = 0
     
     private var platforms = [DependencyPlatformViewModel]() {
         didSet {
@@ -63,16 +64,23 @@ class InstallToolchainViewController: NSViewController {
         
         fetchVersionQueue.maxConcurrentOperationCount = 1
         fetchVersionQueue.qualityOfService = .userInteractive
-        installQueue.maxConcurrentOperationCount = 1
-        installQueue.qualityOfService = .userInitiated
+        userInitiatedQueue.maxConcurrentOperationCount = 1
+        userInitiatedQueue.qualityOfService = .userInitiated
         
-        installCount = installQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
-            if queue.operationCount == 0 {
-                self.progressIndicator.stopAnimation(self)
-                self.progressIndicator.isHidden = true
-            } else {
-                self.progressIndicator.startAnimation(self)
-                self.progressIndicator.isHidden = false
+        installCountObserver = userInitiatedQueue.observe(\OperationQueue.operationCount, options: .new) { queue, change in
+            DispatchQueue.main.async {
+                if queue.operationCount == 0 {
+                    self.progressIndicator.stopAnimation(self)
+                    self.progressIndicator.isHidden = true
+                    self.TotalInstallCount = 0
+                } else {
+                    if queue.operationCount > self.TotalInstallCount {
+                        self.TotalInstallCount = queue.operationCount
+                    }
+                    self.progressIndicator.doubleValue = (1.0 - (Double(queue.operationCount) / Double(self.TotalInstallCount))) * 100.0
+                    self.progressIndicator.startAnimation(self)
+                    self.progressIndicator.isHidden = false
+                }
             }
         }
         
@@ -103,14 +111,14 @@ class InstallToolchainViewController: NSViewController {
         
         for frameworkViewModel in frameworkViewModels {
             for tool in frameworkViewModel.dependencies {
-                guard tool.version.isEmpty, let operation = try tool.versionQueryOperation() else { continue }
+                guard tool.version.isEmpty, let operation = tool.versionQueryOperation() else { continue }
                 fetchVersionQueue.addOperation(operation)
             }
         }
     }
     
     @objc private func dependencyChange(notification: NSNotification){
-        DispatchQueue.main.async {
+        DispatchQueue.main.async {            
             self.outlineView.reloadData()
         }
     }
@@ -141,14 +149,29 @@ class InstallToolchainViewController: NSViewController {
         delegate.showChooseTemplate(self)
     }
     
+    
     @IBAction func cellButton(_ sender: Any) {
         // NSButton is a subclass of NSView
         guard let sender = sender as? NSView else { return }
         let row = outlineView.row(for: sender)
-
-//        guard let item = outlineView.item(atRow: row) as? DependencyViewModelProtocol else { return }
-//        
-//        run(item)
+        
+        var models = [DependencyViewModel]()
+        
+        if let framework = outlineView.item(atRow: row) as? DependencyFrameworkViewModel {
+            for dependency in framework.dependencies {
+                models.append(dependency)
+            }
+        } else if let dependency = outlineView.item(atRow: row) as? DependencyViewModel {
+            models.append(dependency)
+        }
+        
+        for model in models {
+            if model.state == .notInstalled, let operations = model.install() {
+                _ = operations.map { self.userInitiatedQueue.addOperation($0) }
+            } else if let operations = model.update() {
+                _ = operations.map { self.userInitiatedQueue.addOperation($0) }
+            }
+        }
     }
     
     @IBAction func showOnStartup(_ sender: Any) {

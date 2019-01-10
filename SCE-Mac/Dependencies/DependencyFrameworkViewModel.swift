@@ -68,12 +68,4 @@ class DependencyFrameworkViewModel {
         documentationUrl = framework.documentationUrl
         dependencies = framework.dependencies.map { DependencyViewModel($0) }
     }
-    
-    func install() throws -> [BashOperation] {
-        return try dependencies.compactMap { try $0.install() }
-    }
-    
-    func update() throws -> [BashOperation] {
-        return try dependencies.compactMap { try $0.update() }
-    }
 }
