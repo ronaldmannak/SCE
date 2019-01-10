@@ -18,7 +18,7 @@ class ChooseTemplateViewController: NSViewController {
 
     weak var container: TemplateContainerViewController!
     
-    private var platforms:  [DependencyViewModelProtocol]!
+    private var platforms: [DependencyPlatformViewModel]!
     
     fileprivate var categories = [TemplateCategory]() {
         didSet {
@@ -52,7 +52,7 @@ class ChooseTemplateViewController: NSViewController {
         
         // Load dependencies from disk
         do {
-            self.platforms = try DependencyPlatform.loadViewModels()
+            self.platforms = try DependencyPlatformViewModel.loadPlatforms()
         } catch {
             let alert = NSAlert(error: error)
             alert.runModal()
@@ -60,7 +60,6 @@ class ChooseTemplateViewController: NSViewController {
         
         platformPopup.removeAllItems()
         
-        let platforms = self.platforms as! [DependencyPlatformViewModel]
         for platform in platforms {
             self.platformPopup.addItem(withTitle: platform.name)
             let installedFrameworks = platform.frameworks.filter{ $0.state != .notInstalled }
@@ -72,11 +71,11 @@ class ChooseTemplateViewController: NSViewController {
     private func setFrameworkPopup() {
         
         frameworkPopup.removeAllItems()
-        guard let platforms = platforms as? [DependencyPlatformViewModel], platformPopup.indexOfSelectedItem != -1 else { return }
-        
+        guard platformPopup.indexOfSelectedItem != -1 else { return }   // -1 means no item selected
+
         let selectedPlatform = platforms[platformPopup.indexOfSelectedItem]
         guard selectedPlatform.frameworks.count > 0 else { return }
-        
+
         for framework in selectedPlatform.frameworks {
             frameworkPopup.addItem(withTitle: framework.name)
             frameworkPopup.item(withTitle: framework.name)?.isEnabled = framework.state != .notInstalled
@@ -87,7 +86,7 @@ class ChooseTemplateViewController: NSViewController {
     /// Popupalates templates view
     private func setTemplates() {
         
-        guard let framework = platforms[platformPopup.indexOfSelectedItem].children?[frameworkPopup.indexOfSelectedItem] as? DependencyFrameworkViewModel else { return }
+        let framework = platforms[platformPopup.indexOfSelectedItem].frameworks[frameworkPopup.indexOfSelectedItem]
 
         // Load templates. categories didSet triggers reload of collectionViews
         do {
@@ -218,14 +217,17 @@ class ChooseTemplateViewController: NSViewController {
 //        forward template here, or fetch the right project init from the plist
 //        Store templateIit
         
-        let selectedPlatformViewModel = platforms[platformPopup.indexOfSelectedItem] as! DependencyPlatformViewModel
-//        let selectedPlatform = selectedPlatformViewModel.platformDependency.platform
-        let selectedFrameworkName = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].framework.name
+        let selectedPlatformViewModel = platforms[platformPopup.indexOfSelectedItem]
+//        let selectedPlatform = selectedPlatformViewModel.platformDependency.platform this one was commented out
+        let selectedFrameworkName = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].name
         let selectedFrameworkVersion = selectedPlatformViewModel.frameworks[frameworkPopup.indexOfSelectedItem].version
 
+        print(selectedFrameworkName)
+        print(selectedFrameworkVersion)
         
         let projectInit = try ProjectInit(projectName: projectname, baseDirectory: baseDirectory.path, template: template, frameworkName: selectedFrameworkName, frameworkVersion: selectedFrameworkVersion, platform: selectedFrameworkName)
 
+//        let projectInit = try ProjectInit(projectName: "test", baseDirectory: "~", template: template, frameworkName: "test", frameworkVersion: "1", platform: "2")
         return projectInit
     }
 }
@@ -285,13 +287,6 @@ extension ChooseTemplateViewController: NSCollectionViewDataSource, NSCollection
         cell.moreInfoButton.isHidden = template.moreInfoUrl.isEmpty
         return cell
     }
-}
-
-extension ChooseTemplateViewController : NSCollectionViewDelegateFlowLayout {
-    
-//    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
-//        return category.selectedRow == allRowIndex ? NSSize.zero : NSSize(width: 1000, height: 40)
-//    }
 }
 
 extension ChooseTemplateViewController: NSTableViewDataSource {
