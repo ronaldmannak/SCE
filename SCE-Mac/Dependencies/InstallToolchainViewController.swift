@@ -154,6 +154,9 @@ class InstallToolchainViewController: NSViewController {
         // NSButton is a subclass of NSView
         guard let sender = sender as? NSView else { return }
         let row = outlineView.row(for: sender)
+        if let item = outlineView.item(atRow: row) as? DependencyFrameworkViewModel {
+            showDetailsFor(item)
+        }
         
         var models = [DependencyViewModel]()
         
@@ -207,52 +210,6 @@ class InstallToolchainViewController: NSViewController {
         guard let url = URL(string: (sender as! NSButton).alternateTitle) else { return }
         NSWorkspace.shared.open(url)
     }
-    
-//    func run(_ item: DependencyViewModelProtocol) {
-        /*
-        let catchClosure: (Error) -> Void = { error in
-            self.outlineView.reloadData()
-            let alert = NSAlert(error: error)
-            alert.runModal()
-        }
-        
-        let showOutputInConsole: (String) -> Void = { output in
-            let previousOutput = self.console.string
-            let nextOutput = previousOutput + "\n" + output
-            self.console.string = nextOutput
-            let range = NSRange(location:nextOutput.count,length:0)
-            self.console.scrollRangeToVisible(range)
-        }
-
-        let finish: (Int) -> Void = { exitCode in
-//            do {
-//                try item.updateVersion { _ in
-//                    self.outlineView.reloadData()
-//                }
-//            } catch {
-//                catchClosure(error)
-//            }
-        }
-        
-        do {
-            let tasks: [ScriptTask]
-            
-            switch item.state {
-            case .notInstalled:
-                tasks = try item.install(output: showOutputInConsole, finished: finish)
-            default:
-                tasks = try item.update(output: showOutputInConsole, finished: finish)
-            }
-            
-            for task in tasks {
-                task.run()
-            }
-            self.outlineView.reloadData() // to show "installing"
-            
-        } catch {
-            catchClosure(error)
-        }*/
-//    }
 }
 
 extension InstallToolchainViewController: NSOutlineViewDelegate {
