@@ -2,91 +2,37 @@
 //  DependencyPlatformViewModel.swift
 //  SCE
 //
-//  Created by Ronald "Danger" Mannak on 9/21/18.
-//  Copyright © 2018 A Puzzle A Day. All rights reserved.
+//  Created by Ronald "Danger" Mannak on 1/9/19.
+//  Copyright © 2019 A Puzzle A Day. All rights reserved.
 //
 
 import Foundation
 
-class DependencyPlatformViewModel: DependencyViewModelProtocol {
+class DependencyPlatformViewModel {
     
-    let platformDependency: DependencyPlatform
+    let platform: Platform
     
-    /// Name of the platform
-    let name: String
+    // URL path to more info, usually project site. E.g. https://ethereum.org
+    let projectUrl: String
     
-    var displayName: String { return name }
+    // URL path to documenation, e.g. http://www.ethdocs.org/en/latest/
+    let documentationUrl: String
+    
+    var name: String
     
     let frameworks: [DependencyFrameworkViewModel]
     
-    var children: [DependencyViewModelProtocol]? { return frameworks }
-
-    let path: String? = nil
     
-    private (set) var version: String? = nil
-    
-    private (set) var minimumVersion: String?
-    
-    private (set) var required: Bool = false
-    
-    func updateVersion(completion: @escaping (String) -> ()) throws {
-        
-        guard let primaryFramework = frameworks.filter({ $0.isDefaultFramework == true }).first else {
-            completion("")
-            return
-        }
-        guard let version = primaryFramework.version else {
-            try primaryFramework.updateVersion {
-                self.version = $0
-                completion($0)
-            }
-            return
-        }
-        completion(version)
-    }
-    
-    var state: DependencyState {
-        
-        // If platform is an empty placeholder
-        if frameworks.isEmpty { return .comingSoon }
-        
-        // Platform installing
-        if frameworks.filter({ $0.state == .installing }).isEmpty == false {
-            return .installing
-        }
-        
-        if frameworks.filter({ $0.state == .notInstalled}).isEmpty == false {
-            return .notInstalled
-        }
-        
-        // Not all required dependencies are up to date
-        if frameworks.filter({ $0.state == .outdated && $0.required == true }).isEmpty == false {
-            return .outdated
-        }
-        
-        // All required dependencies are up to date
-        if frameworks.filter({ $0.state == .uptodate && $0.required == true }).count == frameworks.filter({ $0.required == true }).count {
-            return .uptodate
-        }
-        
-        return .unknown
-    }
-    
-    
-    init(_ platform: DependencyPlatform) {
-        self.platformDependency = platform
-        frameworks = platform.frameworks.map{ DependencyFrameworkViewModel($0) }
+    init(platform: DependencyPlatform) {
+        self.platform = platform.platform
+        projectUrl = platform.projectUrl
+        documentationUrl = platform.documentationUrl
         name = platform.name
-        
+        frameworks = platform.frameworks.map{ DependencyFrameworkViewModel($0) }
     }
     
-    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
-        
-        return try platformDependency.install(output: output, finished: finished)
-    }
-    
-    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
-        
-        return try platformDependency.update(output: output, finished: finished)
+    static func loadPlatforms() throws -> [DependencyPlatformViewModel] {        
+        let platforms = try DependencyPlatform.loadPlatforms()
+        return platforms.map { DependencyPlatformViewModel(platform: $0) }
     }
 }

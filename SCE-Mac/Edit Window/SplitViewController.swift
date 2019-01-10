@@ -21,7 +21,7 @@ class SplitViewController: NSSplitViewController {
         
         // Set editor view
         splitViewItems.first!.minimumThickness = 60
-        editorView = splitViewItems.first!.viewController.view as! SyntaxTextView
+        editorView = (splitViewItems.first!.viewController.view as! SyntaxTextView)
 
         editorView.theme = DefaultSourceCodeTheme()
 //        SyntaxTextView.tintColor = Color(named: .white)
@@ -29,7 +29,7 @@ class SplitViewController: NSSplitViewController {
         
         consoleView = {
             let scrollView = splitViewItems.last!.viewController.view as! NSScrollView
-            return scrollView.documentView as! NSTextView
+            return (scrollView.documentView as! NSTextView)
         }()
         
         

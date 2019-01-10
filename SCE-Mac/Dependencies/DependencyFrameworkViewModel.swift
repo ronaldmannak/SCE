@@ -8,31 +8,30 @@
 
 import Foundation
 
-class DependencyFrameworkViewModel: DependencyViewModelProtocol {
+class DependencyFrameworkViewModel {
 
-    let framework: DependencyFramework
-    
-    private var task: ScriptTask? = nil
+    private let framework: DependencyFramework
     
     private (set) var name: String
     
-    private (set) var path: String?
-    
-    private (set) var version: String?
-    
-    private (set) var minimumVersion: String? = nil
-    
-    private (set) var required: Bool = false
+    var version: String {
+        for dependency in dependencies {
+            if dependency.isFrameworkVersion == true {
+                return dependency.version
+            }
+        }
+        return ""
+    }
     
     var displayName: String { return state.display(name: framework.name) }
     
-    var isDefaultFramework: Bool {
-        return framework.defaultFramework
-    }
+    let projectUrl: String
+    
+    let documentationUrl: String
+    
+    var description: String { return framework.description }
     
     let dependencies: [DependencyViewModel]
-    
-    var children: [DependencyViewModelProtocol]? { return dependencies }
     
     var state: DependencyState {
         
@@ -65,32 +64,8 @@ class DependencyFrameworkViewModel: DependencyViewModelProtocol {
     init(_ framework: DependencyFramework) {
         self.framework = framework
         name = framework.name
+        projectUrl = framework.projectUrl
+        documentationUrl = framework.documentationUrl
         dependencies = framework.dependencies.map { DependencyViewModel($0) }
-    }
-
-    func install(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
-        
-        return try framework.install(output: output, finished: finished)
-    }
-    
-    func update(output: @escaping (String) -> Void, finished: @escaping (Int) -> Void) throws -> [ScriptTask] {
-        
-        return try framework.update(output: output, finished: finished)
-    }
-    
-    func updateVersion(completion: @escaping (String) -> ()) throws {
-        
-        guard let mainDependency = dependencies.filter({ $0.isPlatformVersion == true }).first else {
-            return
-        }
-        guard let version = mainDependency.version else {
-            try mainDependency.updateVersion {
-                self.version = $0
-                completion($0)
-            }
-            return
-        }
-        self.version = version
-        completion(version)
     }
 }

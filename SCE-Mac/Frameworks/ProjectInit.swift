@@ -11,7 +11,7 @@ import Foundation
 
 class ProjectInit {
 
-    private var script: ScriptTask? = nil
+    private let operationQueue = OperationQueue()
     
     /// Name of the project (and project directory)
     let projectName: String
@@ -41,6 +41,9 @@ class ProjectInit {
         projectFileURL = URL(fileURLWithPath: baseDirectory).appendingPathComponent(projectName).appendingPathComponent("\(projectName).comp")
         
         frameworkCommands = try FrameworkCommands.loadCommands(for: frameworkName)
+        
+        operationQueue.maxConcurrentOperationCount = 1
+        operationQueue.qualityOfService = .userInitiated
     }
     
     func initializeProject(output: @escaping (String)->Void, finished: @escaping (Int) -> Void) throws {
@@ -61,9 +64,9 @@ class ProjectInit {
             bashDirectory = baseDirectory
         }
         
-        script = try ScriptTask(directory: bashDirectory, commands: frameworkInit.commands, output: { string in
-            output(string)
-        }, finished: { exitCode in
+        let operation = try BashOperation(directory: bashDirectory, commands: frameworkInit.commands)
+        operation.outputClosure = output
+        operation.completionBlock = {
             
             // Copy files
             if let copyFiles = self.template?.copyFiles {
@@ -76,13 +79,14 @@ class ProjectInit {
                     }
                 }
             }
-
+            
             // Create .comp project file
             self.saveProjectFile()
             
-            finished(exitCode)
-        })
-        script?.run()
+            finished(operation.exitStatus ?? 0)
+        }
+        operationQueue.addOperation(operation)
+
     }
     
     private func saveProjectFile() {
@@ -109,7 +113,6 @@ class ProjectInit {
     }
     
     func cancel() {
-        script?.terminate()
-        script = nil
+        operationQueue.cancelAllOperations()
     }
 }

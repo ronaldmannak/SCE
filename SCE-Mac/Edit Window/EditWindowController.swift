@@ -13,9 +13,6 @@ class EditWindowController: NSWindowController {
     
     @IBOutlet weak var runButton: NSToolbarItem!
     
-    var script: ScriptTask? = nil
-    var webserver: ScriptTask? = nil
-    
     var editorURL: URL? = nil
     
     override var document: AnyObject? {
@@ -114,57 +111,57 @@ class EditWindowController: NSWindowController {
 
     @IBAction func runButtonClicked(_ sender: Any) {
         
-        guard let document = document as? Document, let interface = document.interface else { return }
-        script?.terminate()
-        saveEditorFile()
-
-        do {
-            script = try interface.executeRun(workDirectory: document.workDirectory, output: { output in
-                self.setConsole(output)
-            }) { exitStatus in
-                self.script = nil
-                guard exitStatus == 0 else {
-                    let error = CompositeError.bashScriptFailed("Bash error")
-                    let alert = NSAlert(error: error)
-                    alert.runModal()
-                    return
-                }
-            }
-        } catch {
-            let alert = NSAlert(error: error)
-            alert.runModal()
-        }
+//        guard let document = document as? Document, let interface = document.interface else { return }
+//        script?.terminate()
+//        saveEditorFile()
+//
+//        do {
+//            script = try interface.executeRun(workDirectory: document.workDirectory, output: { output in
+//                self.setConsole(output)
+//            }) { exitStatus in
+//                self.script = nil
+//                guard exitStatus == 0 else {
+//                    let error = CompositeError.bashScriptFailed("Bash error")
+//                    let alert = NSAlert(error: error)
+//                    alert.runModal()
+//                    return
+//                }
+//            }
+//        } catch {
+//            let alert = NSAlert(error: error)
+//            alert.runModal()
+//        }
 
     }
 
     @IBAction func pauseButtonClicked(_ sender: Any) {
-        script?.terminate()
-        script = nil
-        setConsole("Cancelled.")
-        runButton.isEnabled = true
+//        script?.terminate()
+//        script = nil
+//        setConsole("Cancelled.")
+//        runButton.isEnabled = true
     }
     
     @IBAction func lintButtonClicked(_ sender: Any) {
         
-        guard let document = document as? Document, let interface = document.interface else { return }
-        script?.terminate()
-        saveEditorFile()
-
-        do {
-            script = try interface.executeLint(workDirectory: document.workDirectory, output: { output in
-                self.setConsole(output)
-            }, finished: { exitStatus in
-                guard exitStatus == 0 else {
-                    let error = CompositeError.bashScriptFailed("Bash error")
-                    let alert = NSAlert(error: error)
-                    alert.runModal()
-                    return
-                }
-            })
-        } catch {
-            let alert = NSAlert(error: error)
-            alert.runModal()
-        }
+//        guard let document = document as? Document, let interface = document.interface else { return }
+//        script?.terminate()
+//        saveEditorFile()
+//
+//        do {
+//            script = try interface.executeLint(workDirectory: document.workDirectory, output: { output in
+//                self.setConsole(output)
+//            }, finished: { exitStatus in
+//                guard exitStatus == 0 else {
+//                    let error = CompositeError.bashScriptFailed("Bash error")
+//                    let alert = NSAlert(error: error)
+//                    alert.runModal()
+//                    return
+//                }
+//            })
+//        } catch {
+//            let alert = NSAlert(error: error)
+//            alert.runModal()
+//        }
     }
     
     @IBAction func webButtonClicked(_ sender: Any) {
