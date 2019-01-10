@@ -48,7 +48,7 @@ class InstallToolchainViewController: NSViewController {
             if let first = frameworkViewModels.first {
                 showDetailsFor(first)
             }
-            try? self.fetchVersionNumbers()     // Fetch version numbers
+            self.fetchVersionNumbers()      // Fetch version numbers
         }
     }
     
@@ -105,14 +105,20 @@ class InstallToolchainViewController: NSViewController {
         }
     }
     
-    func fetchVersionNumbers() throws {
+    func fetchVersionNumbers() {
         
         fetchVersionQueue.cancelAllOperations()
         
         for frameworkViewModel in frameworkViewModels {
             for tool in frameworkViewModel.dependencies {
+                
+                // Fetch version
                 guard tool.version.isEmpty, let operation = tool.versionQueryOperation() else { continue }
                 fetchVersionQueue.addOperation(operation)
+                
+                // Check if newer version is available
+                guard let outdatedOperation = tool.outdatedOperation() else { continue }
+                fetchVersionQueue.addOperation(outdatedOperation)
             }
         }
     }
@@ -171,7 +177,7 @@ class InstallToolchainViewController: NSViewController {
         for model in models {
             if model.state == .notInstalled, let operations = model.install() {
                 _ = operations.map { self.userInitiatedQueue.addOperation($0) }
-            } else if let operations = model.update() {
+            } else if model.state == .outdated, let operations = model.update() {
                 _ = operations.map { self.userInitiatedQueue.addOperation($0) }
             }
         }

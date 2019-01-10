@@ -160,7 +160,7 @@ extension DependencyViewModel {
             let operation = try? BashOperation(directory: "~", commands: [command])
             else { return nil }
         
-        installOperation = operation        
+        installOperation = operation
         return [operation, versionQueryOperation()].compactMap{ $0 }
     }
     
@@ -174,6 +174,7 @@ extension DependencyViewModel {
             else { return nil }
         
         operation.completionBlock = {
+            self.newerVersionAvailable = nil
             if let version = self.versionQueryParser(operation.output) {
                 self.version = version
             }

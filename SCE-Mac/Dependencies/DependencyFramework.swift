@@ -21,9 +21,6 @@ struct DependencyFramework: Codable {
     /// Text to display to user explaining what the framework is
     let description: String
     
-    /// Script in app bundle to be called to initiate a new project
-    let initScript: String
-    
     /// Framework project Github url
     let projectUrl: String
     

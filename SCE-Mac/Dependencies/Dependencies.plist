@@ -141,8 +141,6 @@
 				</array>
 				<key>description</key>
 				<string>A world class development environment, testing framework and asset pipeline for blockchains using the Ethereum Virtual Machine (EVM), aiming to make life as a developer easier.</string>
-				<key>initScript</key>
-				<string>TruffleInit</string>
 				<key>projectUrl</key>
 				<string>https://truffleframework.com/truffle</string>
 				<key>documentationUrl</key>
@@ -230,8 +228,6 @@
 				</array>
 				<key>description</key>
 				<string>Etherlime is an ethereum development and deployment framework based on ethers.js. This framework provides alternative to the other web3.js based frameworks and allows for ultimate control by the developer.</string>
-				<key>initScript</key>
-				<string>EtherlimeInit</string>
 				<key>projectUrl</key>
 				<string>https://github.com/LimeChain/etherlime</string>
 				<key>documentationUrl</key>
@@ -319,8 +315,6 @@
 				</array>
 				<key>description</key>
 				<string>Etherlime is an ethereum development and deployment framework based on ethers.js. This framework provides alternative to the other web3.js based frameworks and allows for ultimate control by the developer.</string>
-				<key>initScript</key>
-				<string>EtherlimeInit</string>
 				<key>projectUrl</key>
 				<string>https://github.com/LimeChain/etherlime</string>
 				<key>documentationUrl</key>
@@ -408,8 +402,6 @@
 				</array>
 				<key>description</key>
 				<string>Etherlime is an ethereum development and deployment framework based on ethers.js. This framework provides alternative to the other web3.js based frameworks and allows for ultimate control by the developer.</string>
-				<key>initScript</key>
-				<string>EtherlimeInit</string>
 				<key>projectUrl</key>
 				<string>https://github.com/LimeChain/etherlime</string>
 				<key>documentationUrl</key>
@@ -536,8 +528,6 @@
 				</array>
 				<key>description</key>
 				<string>TRON is an ambitious project dedicated to the establishment of a truly decentralized Internet and its infrastructure. The TRON Protocol, one of the largest blockchain based operating systems in the world, offers base public blockchain support of high throughput, high scalability, and high availability for all decentralized applications in the TRON ecosystem.</string>
-				<key>initScript</key>
-				<string>TronBoxInit</string>
 				<key>projectUrl</key>
 				<string>https://tron.network</string>
 				<key>documentationUrl</key>
