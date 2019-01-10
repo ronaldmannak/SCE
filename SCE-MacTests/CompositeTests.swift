@@ -1,13 +1,13 @@
 //
-//  SCE_MacTests.swift
-//  SCE-MacTests
+//  CompositeTests.swift
+//  CompositeTests
 //
 //  Created by Ronald "Danger" Mannak on 8/1/18.
 //  Copyright © 2018 A Puzzle A Day. All rights reserved.
 //
 
 import XCTest
-@testable import SCE_Mac
+@testable import Composite
 
 class SCE_MacTests: XCTestCase {
     
