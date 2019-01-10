@@ -6,7 +6,7 @@ target 'Composite' do
 
   pod 'SourceEditor', '~> 1.0'
 
-  target 'SCE-MacTests' do
+  target 'CompositeTests' do
     inherit! :search_paths
     # Pods for testing
   end
