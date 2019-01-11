@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		084FBDD1196536CA5F0CD35E /* Pods_Composite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A0B5A92EE307299A3136A6 /* Pods_Composite.framework */; };
 		209F57B1084BBFB40431A7B6 /* Pods_SCE_Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9A6A475886FA02C9611640 /* Pods_SCE_Mac.framework */; };
+		572BC5C4D719830BD6FD93C9 /* Pods_CompositeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDC5DAB165358AA5C48CD2CC /* Pods_CompositeTests.framework */; };
 		6F1A3BDD2371DB2730951110 /* Pods_SCE_MacTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4FA972095B5D6274482826 /* Pods_SCE_MacTests.framework */; };
 		C70509D4214D97A8003DDA2B /* DependencyFramework.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509D2214D97A8003DDA2B /* DependencyFramework.swift */; };
 		C70509E72155B47B003DDA2B /* DependencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70509E52155B47B003DDA2B /* DependencyViewModel.swift */; };
@@ -89,15 +91,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		029102825FA6C2A4FF42EDA2 /* Pods-SCE-MacTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCE-MacTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCE-MacTests/Pods-SCE-MacTests.release.xcconfig"; sourceTree = "<group>"; };
-		0D3D7EF76F7CE201078766A9 /* Pods-SCE-MacTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCE-MacTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCE-MacTests/Pods-SCE-MacTests.debug.xcconfig"; sourceTree = "<group>"; };
-		1733C8FEF8A42DFEA995AC5E /* Pods-SCE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCE/Pods-SCE.debug.xcconfig"; sourceTree = "<group>"; };
-		2391A3F05FDCF39259FAF2F6 /* Pods-SCETests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCETests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCETests/Pods-SCETests.release.xcconfig"; sourceTree = "<group>"; };
-		294898E9D046C12D6CD260F5 /* Pods-SCE-Mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCE-Mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCE-Mac/Pods-SCE-Mac.release.xcconfig"; sourceTree = "<group>"; };
+		16A0B5A92EE307299A3136A6 /* Pods_Composite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Composite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4FA972095B5D6274482826 /* Pods_SCE_MacTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCE_MacTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54A43741EBE055AC47EB4EA9 /* Pods_SCETests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCETests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		61204EAAC87995DD73D918CE /* Pods-CompositeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompositeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CompositeTests/Pods-CompositeTests.release.xcconfig"; sourceTree = "<group>"; };
 		76DAF4D440B83CBE32C049B1 /* Pods_SCE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A57AC0A470301A863C8CA09A /* Pods-SCE-Mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCE-Mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCE-Mac/Pods-SCE-Mac.debug.xcconfig"; sourceTree = "<group>"; };
+		797BDF63474D3EDDF20E89A8 /* Pods-CompositeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompositeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CompositeTests/Pods-CompositeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB9A6A475886FA02C9611640 /* Pods_SCE_Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCE_Mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C70509D2214D97A8003DDA2B /* DependencyFramework.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyFramework.swift; sourceTree = "<group>"; };
 		C70509E52155B47B003DDA2B /* DependencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyViewModel.swift; sourceTree = "<group>"; };
@@ -172,10 +171,11 @@
 		C7F0B9BD2112C3CA005A8FE2 /* SolidityLexer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidityLexer.swift; sourceTree = "<group>"; };
 		C7F0B9C12113CF7E005A8FE2 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		C7F0B9C32113D48A005A8FE2 /* SplitViewController+SyntaxTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplitViewController+SyntaxTextViewDelegate.swift"; sourceTree = "<group>"; };
-		D54B663B8628E464C0601987 /* Pods-SCE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCE.release.xcconfig"; path = "Pods/Target Support Files/Pods-SCE/Pods-SCE.release.xcconfig"; sourceTree = "<group>"; };
-		F1EDF41DDA83A1CD67607617 /* Pods-SCETests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCETests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SCETests/Pods-SCETests.debug.xcconfig"; sourceTree = "<group>"; };
+		DDC5DAB165358AA5C48CD2CC /* Pods_CompositeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompositeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3ADFB43AD93923447FB2DEE /* Pods-Composite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Composite.release.xcconfig"; path = "Pods/Target Support Files/Pods-Composite/Pods-Composite.release.xcconfig"; sourceTree = "<group>"; };
 		F81936C3214C6F2F00C3222B /* uninstall.command */ = {isa = PBXFileReference; lastKnownFileType = text; path = uninstall.command; sourceTree = "<group>"; };
 		F8F7FB4C214B4E58001A6F49 /* BrewInstall.command */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = BrewInstall.command; sourceTree = "<group>"; };
+		FD947489CBF3625B1F816E6A /* Pods-Composite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Composite.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Composite/Pods-Composite.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				209F57B1084BBFB40431A7B6 /* Pods_SCE_Mac.framework in Frameworks */,
+				084FBDD1196536CA5F0CD35E /* Pods_Composite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F1A3BDD2371DB2730951110 /* Pods_SCE_MacTests.framework in Frameworks */,
+				572BC5C4D719830BD6FD93C9 /* Pods_CompositeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +207,8 @@
 				BB9A6A475886FA02C9611640 /* Pods_SCE_Mac.framework */,
 				3B4FA972095B5D6274482826 /* Pods_SCE_MacTests.framework */,
 				54A43741EBE055AC47EB4EA9 /* Pods_SCETests.framework */,
+				16A0B5A92EE307299A3136A6 /* Pods_Composite.framework */,
+				DDC5DAB165358AA5C48CD2CC /* Pods_CompositeTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -212,14 +216,10 @@
 		6D6A5A13038D0C7F42C4CBE3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1733C8FEF8A42DFEA995AC5E /* Pods-SCE.debug.xcconfig */,
-				D54B663B8628E464C0601987 /* Pods-SCE.release.xcconfig */,
-				A57AC0A470301A863C8CA09A /* Pods-SCE-Mac.debug.xcconfig */,
-				294898E9D046C12D6CD260F5 /* Pods-SCE-Mac.release.xcconfig */,
-				0D3D7EF76F7CE201078766A9 /* Pods-SCE-MacTests.debug.xcconfig */,
-				029102825FA6C2A4FF42EDA2 /* Pods-SCE-MacTests.release.xcconfig */,
-				F1EDF41DDA83A1CD67607617 /* Pods-SCETests.debug.xcconfig */,
-				2391A3F05FDCF39259FAF2F6 /* Pods-SCETests.release.xcconfig */,
+				FD947489CBF3625B1F816E6A /* Pods-Composite.debug.xcconfig */,
+				F3ADFB43AD93923447FB2DEE /* Pods-Composite.release.xcconfig */,
+				797BDF63474D3EDDF20E89A8 /* Pods-CompositeTests.debug.xcconfig */,
+				61204EAAC87995DD73D918CE /* Pods-CompositeTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -579,18 +579,22 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SCE-Mac/Pods-SCE-Mac-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SavannaKit-macOS/SavannaKit.framework",
-				"${BUILT_PRODUCTS_DIR}/SourceEditor-macOS/SourceEditor.framework",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Composite/Pods-Composite-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SavannaKit/SavannaKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SourceEditor/SourceEditor.framework",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SavannaKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SourceEditor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SCE-Mac/Pods-SCE-Mac-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Composite/Pods-Composite-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		86BE3E6C816CAD49DAA91FFC /* [CP] Check Pods Manifest.lock */ = {
@@ -604,7 +608,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SCE-MacTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CompositeTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -622,7 +626,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SCE-Mac-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Composite-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -835,7 +839,7 @@
 		};
 		C7F0B9B72112945F005A8FE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A57AC0A470301A863C8CA09A /* Pods-SCE-Mac.debug.xcconfig */;
+			baseConfigurationReference = FD947489CBF3625B1F816E6A /* Pods-Composite.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -860,7 +864,7 @@
 		};
 		C7F0B9B82112945F005A8FE2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 294898E9D046C12D6CD260F5 /* Pods-SCE-Mac.release.xcconfig */;
+			baseConfigurationReference = F3ADFB43AD93923447FB2DEE /* Pods-Composite.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -884,7 +888,7 @@
 		};
 		C7F0B9BA2112945F005A8FE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D3D7EF76F7CE201078766A9 /* Pods-SCE-MacTests.debug.xcconfig */;
+			baseConfigurationReference = 797BDF63474D3EDDF20E89A8 /* Pods-CompositeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -909,7 +913,7 @@
 		};
 		C7F0B9BB2112945F005A8FE2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 029102825FA6C2A4FF42EDA2 /* Pods-SCE-MacTests.release.xcconfig */;
+			baseConfigurationReference = 61204EAAC87995DD73D918CE /* Pods-CompositeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

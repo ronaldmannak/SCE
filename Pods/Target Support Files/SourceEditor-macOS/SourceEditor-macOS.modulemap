@@ -1,6 +1,0 @@
-framework module SourceEditor {
-  umbrella header "SourceEditor-macOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,6 +1,0 @@
-framework module Pods_SCE_MacTests {
-  umbrella header "Pods-SCE-MacTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
